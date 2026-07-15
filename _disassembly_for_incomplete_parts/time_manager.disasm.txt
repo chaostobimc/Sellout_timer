@@ -1,0 +1,1557 @@
+time_manager.pyc (Python 3.12)
+[Code]
+    File Name: backend\time_manager.py
+    Object Name: <module>
+    Qualified Name: <module>
+    Arg Count: 0
+    Pos Only Arg Count: 0
+    KW Only Arg Count: 0
+    Stack Size: 4
+    Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+    [Names]
+        '__future__'
+        'annotations'
+        'asyncio'
+        'logging'
+        'time'
+        'typing'
+        'Any'
+        'websocket_manager'
+        'WebSocketManager'
+        'getLogger'
+        '__name__'
+        'log'
+        'TimeManager'
+    [Locals+Names]
+    [Constants]
+        0
+        (
+            'annotations'
+        )
+        None
+        (
+            'Any'
+        )
+        1
+        (
+            'WebSocketManager'
+        )
+        [Code]
+            File Name: backend\time_manager.py
+            Object Name: TimeManager
+            Qualified Name: TimeManager
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+            [Names]
+                '__name__'
+                '__module__'
+                '__qualname__'
+                '__doc__'
+                '__init__'
+                'start_ticker'
+                'stop_ticker'
+                '_ticker_loop'
+                'add_time'
+                'remove_time'
+                'set_time'
+                'pause'
+                'resume'
+                'snapshot'
+                'get_remaining_seconds'
+                'broadcast_state'
+            [Locals+Names]
+            [Constants]
+                'TimeManager'
+                'Zentraler Timer im RAM. Keine Maximalzeit-Begrenzung.'
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: __init__
+                    Qualified Name: TimeManager.__init__
+                    Arg Count: 3
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 6
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_ws'
+                        'max'
+                        'int'
+                        '_remaining_seconds'
+                        '_paused'
+                        'asyncio'
+                        'Lock'
+                        '_lock'
+                        '_ticker_task'
+                        '_tick_interval'
+                    [Locals+Names]
+                        'self'
+                        'websocket_manager'
+                        'initial_seconds'
+                    [Constants]
+                        None
+                        0
+                        False
+                        1
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       1: websocket_manager
+                        4       LOAD_FAST                       0: self
+                        6       STORE_ATTR                      0: _ws
+                        16      LOAD_GLOBAL                     3: NULL + max
+                        26      LOAD_CONST                      1: 0
+                        28      LOAD_GLOBAL                     5: NULL + int
+                        38      LOAD_FAST                       2: initial_seconds
+                        40      CALL                            1
+                        48      CALL                            2
+                        56      LOAD_FAST                       0: self
+                        58      STORE_ATTR                      3: _remaining_seconds
+                        68      LOAD_CONST                      2: False
+                        70      LOAD_FAST                       0: self
+                        72      STORE_ATTR                      4: _paused
+                        82      LOAD_GLOBAL                     11: NULL + asyncio
+                        92      LOAD_ATTR                       12: Lock
+                        112     CALL                            0
+                        120     LOAD_FAST                       0: self
+                        122     STORE_ATTR                      7: _lock
+                        132     LOAD_CONST                      0: None
+                        134     LOAD_FAST                       0: self
+                        136     STORE_ATTR                      8: _ticker_task
+                        146     LOAD_CONST                      3: 1
+                        148     LOAD_FAST                       0: self
+                        150     STORE_ATTR                      9: _tick_interval
+                        160     RETURN_CONST                    0: None
+                    [Exception Table]
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: start_ticker
+                    Qualified Name: TimeManager.start_ticker
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 6
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'max'
+                        'float'
+                        '_tick_interval'
+                        '_ticker_task'
+                        'done'
+                        'asyncio'
+                        'create_task'
+                        '_ticker_loop'
+                        'log'
+                        'info'
+                    [Locals+Names]
+                        'self'
+                        'tick_interval'
+                    [Constants]
+                        None
+                        0.2
+                        'timer-ticker'
+                        (
+                            'name'
+                        )
+                        'Timer-Ticker gestartet'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_GLOBAL                     1: NULL + max
+                        16      LOAD_CONST                      1: 0.2
+                        18      LOAD_GLOBAL                     3: NULL + float
+                        28      LOAD_FAST                       1: tick_interval
+                        30      CALL                            1
+                        38      CALL                            2
+                        46      LOAD_FAST                       0: self
+                        48      STORE_ATTR                      2: _tick_interval
+                        58      LOAD_FAST                       0: self
+                        60      LOAD_ATTR                       6: _ticker_task
+                        80      POP_JUMP_IF_NONE                26 (to 134)
+                        82      LOAD_FAST                       0: self
+                        84      LOAD_ATTR                       6: _ticker_task
+                        104     LOAD_ATTR                       9: done
+                        124     CALL                            0
+                        132     POP_JUMP_IF_FALSE               64 (to 262)
+                        134     LOAD_GLOBAL                     11: NULL + asyncio
+                        144     LOAD_ATTR                       12: create_task
+                        164     LOAD_FAST                       0: self
+                        166     LOAD_ATTR                       15: _ticker_loop
+                        186     CALL                            0
+                        194     LOAD_CONST                      2: 'timer-ticker'
+                        196     KW_NAMES                        3: ('name',)
+                        198     CALL                            2
+                        206     LOAD_FAST                       0: self
+                        208     STORE_ATTR                      3: _ticker_task
+                        218     LOAD_GLOBAL                     16: log
+                        228     LOAD_ATTR                       19: info
+                        248     LOAD_CONST                      4: 'Timer-Ticker gestartet'
+                        250     CALL                            1
+                        258     POP_TOP                         
+                        260     RETURN_CONST                    0: None
+                        262     RETURN_CONST                    0: None
+                        264     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        266     RERAISE                         1
+                    [Exception Table]
+                        4 to 264 -> 264 [0] lasti
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: stop_ticker
+                    Qualified Name: TimeManager.stop_ticker
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_ticker_task'
+                        'done'
+                        'cancel'
+                        'asyncio'
+                        'CancelledError'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _ticker_task
+                        28      POP_JUMP_IF_FALSE               75 (to 180)
+                        30      LOAD_FAST                       0: self
+                        32      LOAD_ATTR                       0: _ticker_task
+                        52      LOAD_ATTR                       3: done
+                        72      CALL                            0
+                        80      POP_JUMP_IF_TRUE                48 (to 178)
+                        82      LOAD_FAST                       0: self
+                        84      LOAD_ATTR                       0: _ticker_task
+                        104     LOAD_ATTR                       5: cancel
+                        124     CALL                            0
+                        132     POP_TOP                         
+                        134     NOP                             
+                        136     LOAD_FAST                       0: self
+                        138     LOAD_ATTR                       0: _ticker_task
+                        158     GET_AWAITABLE                   0
+                        160     LOAD_CONST                      0: None
+                        162     SEND                            3 (to 170)
+                        166     YIELD_VALUE                     3
+                        168     RESUME                          3
+                        170     JUMP_BACKWARD_NO_INTERRUPT      5 (to 162)
+                        172     END_SEND                        
+                        174     POP_TOP                         
+                        176     RETURN_CONST                    0: None
+                        178     RETURN_CONST                    0: None
+                        180     RETURN_CONST                    0: None
+                        182     CLEANUP_THROW                   
+                        184     JUMP_BACKWARD                   7 (to 172)
+                        186     PUSH_EXC_INFO                   
+                        188     LOAD_GLOBAL                     6: asyncio
+                        198     LOAD_ATTR                       8: CancelledError
+                        218     CHECK_EXC_MATCH                 
+                        220     POP_JUMP_IF_FALSE               3 (to 228)
+                        222     POP_TOP                         
+                        224     POP_EXCEPT                      
+                        226     RETURN_CONST                    0: None
+                        228     RERAISE                         0
+                        230     COPY                            3
+                        232     POP_EXCEPT                      
+                        234     RERAISE                         1
+                        236     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        238     RERAISE                         1
+                    [Exception Table]
+                        4 to 134 -> 236 [0] lasti
+                        136 to 166 -> 186 [0] 
+                        166 to 168 -> 182 [2] 
+                        168 to 176 -> 186 [0] 
+                        176 to 182 -> 236 [0] lasti
+                        182 to 184 -> 186 [0] 
+                        186 to 224 -> 230 [1] lasti
+                        224 to 228 -> 236 [0] lasti
+                        228 to 230 -> 230 [1] lasti
+                        230 to 236 -> 236 [0] lasti
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: _ticker_loop
+                    Qualified Name: TimeManager._ticker_loop
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 10
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'asyncio'
+                        'sleep'
+                        '_tick_interval'
+                        '_lock'
+                        '_paused'
+                        '_remaining_seconds'
+                        'max'
+                        'int'
+                        'round'
+                        'broadcast_state'
+                        'CancelledError'
+                        'log'
+                        'info'
+                        'Exception'
+                        'exception'
+                    [Locals+Names]
+                        'self'
+                        'changed'
+                    [Constants]
+                        None
+                        True
+                        False
+                        0
+                        'tick'
+                        (
+                            'reason'
+                        )
+                        'Timer-Ticker beendet'
+                        'Unerwarteter Fehler im Timer-Ticker'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       NOP                             
+                        8       NOP                             
+                        10      LOAD_GLOBAL                     1: NULL + asyncio
+                        20      LOAD_ATTR                       2: sleep
+                        40      LOAD_FAST                       0: self
+                        42      LOAD_ATTR                       4: _tick_interval
+                        62      CALL                            1
+                        70      GET_AWAITABLE                   0
+                        72      LOAD_CONST                      0: None
+                        74      SEND                            3 (to 82)
+                        78      YIELD_VALUE                     3
+                        80      RESUME                          3
+                        82      JUMP_BACKWARD_NO_INTERRUPT      5 (to 74)
+                        84      END_SEND                        
+                        86      POP_TOP                         
+                        88      LOAD_CONST                      2: False
+                        90      STORE_FAST                      1: changed
+                        92      LOAD_FAST                       0: self
+                        94      LOAD_ATTR                       6: _lock
+                        114     BEFORE_ASYNC_WITH               
+                        116     GET_AWAITABLE                   1
+                        118     LOAD_CONST                      0: None
+                        120     SEND                            3 (to 128)
+                        124     YIELD_VALUE                     3
+                        126     RESUME                          3
+                        128     JUMP_BACKWARD_NO_INTERRUPT      5 (to 120)
+                        130     END_SEND                        
+                        132     POP_TOP                         
+                        134     LOAD_FAST                       0: self
+                        136     LOAD_ATTR                       8: _paused
+                        156     POP_JUMP_IF_TRUE                75 (to 308)
+                        158     LOAD_FAST                       0: self
+                        160     LOAD_ATTR                       10: _remaining_seconds
+                        180     LOAD_CONST                      3: 0
+                        182     COMPARE_OP                      68 (>)
+                        186     POP_JUMP_IF_FALSE               60 (to 308)
+                        188     LOAD_GLOBAL                     13: NULL + max
+                        198     LOAD_CONST                      3: 0
+                        200     LOAD_FAST                       0: self
+                        202     LOAD_ATTR                       10: _remaining_seconds
+                        222     LOAD_GLOBAL                     15: NULL + int
+                        232     LOAD_GLOBAL                     17: NULL + round
+                        242     LOAD_FAST                       0: self
+                        244     LOAD_ATTR                       4: _tick_interval
+                        264     CALL                            1
+                        272     CALL                            1
+                        280     BINARY_OP                       10 (-)
+                        284     CALL                            2
+                        292     LOAD_FAST                       0: self
+                        294     STORE_ATTR                      5: _remaining_seconds
+                        304     LOAD_CONST                      1: True
+                        306     STORE_FAST                      1: changed
+                        308     LOAD_CONST                      0: None
+                        310     LOAD_CONST                      0: None
+                        312     LOAD_CONST                      0: None
+                        314     CALL                            2
+                        322     GET_AWAITABLE                   2
+                        324     LOAD_CONST                      0: None
+                        326     SEND                            3 (to 334)
+                        330     YIELD_VALUE                     3
+                        332     RESUME                          3
+                        334     JUMP_BACKWARD_NO_INTERRUPT      5 (to 326)
+                        336     END_SEND                        
+                        338     POP_TOP                         
+                        340     LOAD_FAST                       1: changed
+                        342     POP_JUMP_IF_FALSE               26 (to 396)
+                        344     LOAD_FAST                       0: self
+                        346     LOAD_ATTR                       19: broadcast_state
+                        366     LOAD_CONST                      4: 'tick'
+                        368     KW_NAMES                        5: ('reason',)
+                        370     CALL                            1
+                        378     GET_AWAITABLE                   0
+                        380     LOAD_CONST                      0: None
+                        382     SEND                            3 (to 390)
+                        386     YIELD_VALUE                     3
+                        388     RESUME                          3
+                        390     JUMP_BACKWARD_NO_INTERRUPT      5 (to 382)
+                        392     END_SEND                        
+                        394     POP_TOP                         
+                        396     JUMP_BACKWARD                   194 (to 10)
+                        398     CLEANUP_THROW                   
+                        400     JUMP_BACKWARD                   159 (to 84)
+                        402     CLEANUP_THROW                   
+                        404     JUMP_BACKWARD                   138 (to 130)
+                        406     CLEANUP_THROW                   
+                        408     JUMP_BACKWARD                   37 (to 336)
+                        410     PUSH_EXC_INFO                   
+                        412     WITH_EXCEPT_START               
+                        414     GET_AWAITABLE                   2
+                        416     LOAD_CONST                      0: None
+                        418     SEND                            4 (to 428)
+                        422     YIELD_VALUE                     4
+                        424     RESUME                          3
+                        426     JUMP_BACKWARD_NO_INTERRUPT      5 (to 418)
+                        428     CLEANUP_THROW                   
+                        430     END_SEND                        
+                        432     POP_JUMP_IF_TRUE                1 (to 436)
+                        434     RERAISE                         2
+                        436     POP_TOP                         
+                        438     POP_EXCEPT                      
+                        440     POP_TOP                         
+                        442     POP_TOP                         
+                        444     JUMP_BACKWARD                   53 (to 340)
+                        446     COPY                            3
+                        448     POP_EXCEPT                      
+                        450     RERAISE                         1
+                        452     CLEANUP_THROW                   
+                        454     JUMP_BACKWARD                   32 (to 392)
+                        456     PUSH_EXC_INFO                   
+                        458     LOAD_GLOBAL                     0: asyncio
+                        468     LOAD_ATTR                       20: CancelledError
+                        488     CHECK_EXC_MATCH                 
+                        490     POP_JUMP_IF_FALSE               23 (to 538)
+                        492     POP_TOP                         
+                        494     LOAD_GLOBAL                     22: log
+                        504     LOAD_ATTR                       25: info
+                        524     LOAD_CONST                      6: 'Timer-Ticker beendet'
+                        526     CALL                            1
+                        534     POP_TOP                         
+                        536     RAISE_VARARGS                   0
+                        538     LOAD_GLOBAL                     26: Exception
+                        548     CHECK_EXC_MATCH                 
+                        550     POP_JUMP_IF_FALSE               24 (to 600)
+                        552     POP_TOP                         
+                        554     LOAD_GLOBAL                     22: log
+                        564     LOAD_ATTR                       29: exception
+                        584     LOAD_CONST                      7: 'Unerwarteter Fehler im Timer-Ticker'
+                        586     CALL                            1
+                        594     POP_TOP                         
+                        596     POP_EXCEPT                      
+                        598     RETURN_CONST                    0: None
+                        600     RERAISE                         0
+                        602     COPY                            3
+                        604     POP_EXCEPT                      
+                        606     RERAISE                         1
+                        608     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        610     RERAISE                         1
+                    [Exception Table]
+                        4 to 6 -> 608 [0] lasti
+                        8 to 78 -> 456 [0] 
+                        78 to 80 -> 398 [2] 
+                        80 to 124 -> 456 [0] 
+                        124 to 126 -> 402 [3] 
+                        126 to 132 -> 456 [0] 
+                        132 to 308 -> 410 [1] lasti
+                        308 to 330 -> 456 [0] 
+                        330 to 332 -> 406 [2] 
+                        332 to 386 -> 456 [0] 
+                        386 to 388 -> 452 [2] 
+                        388 to 400 -> 456 [0] 
+                        402 to 404 -> 456 [0] 
+                        406 to 408 -> 456 [0] 
+                        410 to 422 -> 446 [3] lasti
+                        422 to 424 -> 428 [6] 
+                        424 to 438 -> 446 [3] lasti
+                        438 to 454 -> 456 [0] 
+                        456 to 596 -> 602 [1] lasti
+                        596 to 600 -> 608 [0] lasti
+                        600 to 602 -> 602 [1] lasti
+                        602 to 608 -> 608 [0] lasti
+                None
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: add_time
+                    Qualified Name: TimeManager.add_time
+                    Arg Count: 4
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'int'
+                        'get_remaining_seconds'
+                        '_lock'
+                        '_remaining_seconds'
+                        'broadcast_state'
+                    [Locals+Names]
+                        'self'
+                        'seconds'
+                        'source'
+                        'meta'
+                        'remaining'
+                    [Constants]
+                        None
+                        0
+                        'add'
+                        (
+                            'reason'
+                            'source'
+                            'seconds_added'
+                            'meta'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_GLOBAL                     1: NULL + int
+                        16      LOAD_FAST                       1: seconds
+                        18      CALL                            1
+                        26      STORE_FAST                      1: seconds
+                        28      LOAD_FAST                       1: seconds
+                        30      LOAD_CONST                      1: 0
+                        32      COMPARE_OP                      26 (<=)
+                        36      POP_JUMP_IF_FALSE               24 (to 86)
+                        38      LOAD_FAST                       0: self
+                        40      LOAD_ATTR                       3: get_remaining_seconds
+                        60      CALL                            0
+                        68      GET_AWAITABLE                   0
+                        70      LOAD_CONST                      0: None
+                        72      SEND                            3 (to 80)
+                        76      YIELD_VALUE                     2
+                        78      RESUME                          3
+                        80      JUMP_BACKWARD_NO_INTERRUPT      5 (to 72)
+                        82      END_SEND                        
+                        84      RETURN_VALUE                    
+                        86      LOAD_FAST                       0: self
+                        88      LOAD_ATTR                       4: _lock
+                        108     BEFORE_ASYNC_WITH               
+                        110     GET_AWAITABLE                   1
+                        112     LOAD_CONST                      0: None
+                        114     SEND                            3 (to 122)
+                        118     YIELD_VALUE                     2
+                        120     RESUME                          3
+                        122     JUMP_BACKWARD_NO_INTERRUPT      5 (to 114)
+                        124     END_SEND                        
+                        126     POP_TOP                         
+                        128     LOAD_FAST                       0: self
+                        130     COPY                            1
+                        132     LOAD_ATTR                       6: _remaining_seconds
+                        152     LOAD_FAST                       1: seconds
+                        154     BINARY_OP                       13 (+=)
+                        158     SWAP                            2
+                        160     STORE_ATTR                      3: _remaining_seconds
+                        170     LOAD_FAST                       0: self
+                        172     LOAD_ATTR                       6: _remaining_seconds
+                        192     STORE_FAST                      4: remaining
+                        194     LOAD_CONST                      0: None
+                        196     LOAD_CONST                      0: None
+                        198     LOAD_CONST                      0: None
+                        200     CALL                            2
+                        208     GET_AWAITABLE                   2
+                        210     LOAD_CONST                      0: None
+                        212     SEND                            3 (to 220)
+                        216     YIELD_VALUE                     2
+                        218     RESUME                          3
+                        220     JUMP_BACKWARD_NO_INTERRUPT      5 (to 212)
+                        222     END_SEND                        
+                        224     POP_TOP                         
+                        226     LOAD_FAST                       0: self
+                        228     LOAD_ATTR                       9: broadcast_state
+                        248     LOAD_CONST                      2: 'add'
+                        250     LOAD_FAST                       2: source
+                        252     LOAD_FAST                       1: seconds
+                        254     LOAD_FAST                       3: meta
+                        256     COPY                            1
+                        258     POP_JUMP_IF_TRUE                2 (to 264)
+                        260     POP_TOP                         
+                        262     BUILD_MAP                       0
+                        264     KW_NAMES                        3: ('reason', 'source', 'seconds_added', 'meta')
+                        266     CALL                            4
+                        274     GET_AWAITABLE                   0
+                        276     LOAD_CONST                      0: None
+                        278     SEND                            3 (to 286)
+                        282     YIELD_VALUE                     2
+                        284     RESUME                          3
+                        286     JUMP_BACKWARD_NO_INTERRUPT      5 (to 278)
+                        288     END_SEND                        
+                        290     POP_TOP                         
+                        292     LOAD_FAST_CHECK                 4: remaining
+                        294     RETURN_VALUE                    
+                        296     CLEANUP_THROW                   
+                        298     JUMP_BACKWARD                   109 (to 82)
+                        300     CLEANUP_THROW                   
+                        302     JUMP_BACKWARD                   90 (to 124)
+                        304     CLEANUP_THROW                   
+                        306     JUMP_BACKWARD                   43 (to 222)
+                        308     PUSH_EXC_INFO                   
+                        310     WITH_EXCEPT_START               
+                        312     GET_AWAITABLE                   2
+                        314     LOAD_CONST                      0: None
+                        316     SEND                            4 (to 326)
+                        320     YIELD_VALUE                     3
+                        322     RESUME                          3
+                        324     JUMP_BACKWARD_NO_INTERRUPT      5 (to 316)
+                        326     CLEANUP_THROW                   
+                        328     END_SEND                        
+                        330     POP_JUMP_IF_TRUE                1 (to 334)
+                        332     RERAISE                         2
+                        334     POP_TOP                         
+                        336     POP_EXCEPT                      
+                        338     POP_TOP                         
+                        340     POP_TOP                         
+                        342     JUMP_BACKWARD                   59 (to 226)
+                        344     COPY                            3
+                        346     POP_EXCEPT                      
+                        348     RERAISE                         1
+                        350     CLEANUP_THROW                   
+                        352     JUMP_BACKWARD                   33 (to 288)
+                        354     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        356     RERAISE                         1
+                    [Exception Table]
+                        4 to 76 -> 354 [0] lasti
+                        76 to 78 -> 296 [2] 
+                        78 to 118 -> 354 [0] lasti
+                        118 to 120 -> 300 [3] 
+                        120 to 126 -> 354 [0] lasti
+                        126 to 194 -> 308 [1] lasti
+                        194 to 216 -> 354 [0] lasti
+                        216 to 218 -> 304 [2] 
+                        218 to 282 -> 354 [0] lasti
+                        282 to 284 -> 350 [2] 
+                        284 to 298 -> 354 [0] lasti
+                        300 to 302 -> 354 [0] lasti
+                        304 to 306 -> 354 [0] lasti
+                        308 to 320 -> 344 [3] lasti
+                        320 to 322 -> 326 [6] 
+                        322 to 336 -> 344 [3] lasti
+                        336 to 352 -> 354 [0] lasti
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: remove_time
+                    Qualified Name: TimeManager.remove_time
+                    Arg Count: 3
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'max'
+                        'int'
+                        '_lock'
+                        '_remaining_seconds'
+                        'broadcast_state'
+                    [Locals+Names]
+                        'self'
+                        'seconds'
+                        'source'
+                        'remaining'
+                    [Constants]
+                        None
+                        0
+                        'remove'
+                        (
+                            'reason'
+                            'source'
+                            'seconds_removed'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_GLOBAL                     1: NULL + max
+                        16      LOAD_CONST                      1: 0
+                        18      LOAD_GLOBAL                     3: NULL + int
+                        28      LOAD_FAST                       1: seconds
+                        30      CALL                            1
+                        38      CALL                            2
+                        46      STORE_FAST                      1: seconds
+                        48      LOAD_FAST                       0: self
+                        50      LOAD_ATTR                       4: _lock
+                        70      BEFORE_ASYNC_WITH               
+                        72      GET_AWAITABLE                   1
+                        74      LOAD_CONST                      0: None
+                        76      SEND                            3 (to 84)
+                        80      YIELD_VALUE                     2
+                        82      RESUME                          3
+                        84      JUMP_BACKWARD_NO_INTERRUPT      5 (to 76)
+                        86      END_SEND                        
+                        88      POP_TOP                         
+                        90      LOAD_GLOBAL                     1: NULL + max
+                        100     LOAD_CONST                      1: 0
+                        102     LOAD_FAST                       0: self
+                        104     LOAD_ATTR                       6: _remaining_seconds
+                        124     LOAD_FAST                       1: seconds
+                        126     BINARY_OP                       10 (-)
+                        130     CALL                            2
+                        138     LOAD_FAST                       0: self
+                        140     STORE_ATTR                      3: _remaining_seconds
+                        150     LOAD_FAST                       0: self
+                        152     LOAD_ATTR                       6: _remaining_seconds
+                        172     STORE_FAST                      3: remaining
+                        174     LOAD_CONST                      0: None
+                        176     LOAD_CONST                      0: None
+                        178     LOAD_CONST                      0: None
+                        180     CALL                            2
+                        188     GET_AWAITABLE                   2
+                        190     LOAD_CONST                      0: None
+                        192     SEND                            3 (to 200)
+                        196     YIELD_VALUE                     2
+                        198     RESUME                          3
+                        200     JUMP_BACKWARD_NO_INTERRUPT      5 (to 192)
+                        202     END_SEND                        
+                        204     POP_TOP                         
+                        206     LOAD_FAST                       0: self
+                        208     LOAD_ATTR                       9: broadcast_state
+                        228     LOAD_CONST                      2: 'remove'
+                        230     LOAD_FAST                       2: source
+                        232     LOAD_FAST                       1: seconds
+                        234     KW_NAMES                        3: ('reason', 'source', 'seconds_removed')
+                        236     CALL                            3
+                        244     GET_AWAITABLE                   0
+                        246     LOAD_CONST                      0: None
+                        248     SEND                            3 (to 256)
+                        252     YIELD_VALUE                     2
+                        254     RESUME                          3
+                        256     JUMP_BACKWARD_NO_INTERRUPT      5 (to 248)
+                        258     END_SEND                        
+                        260     POP_TOP                         
+                        262     LOAD_FAST_CHECK                 3: remaining
+                        264     RETURN_VALUE                    
+                        266     CLEANUP_THROW                   
+                        268     JUMP_BACKWARD                   92 (to 86)
+                        270     CLEANUP_THROW                   
+                        272     JUMP_BACKWARD                   36 (to 202)
+                        274     PUSH_EXC_INFO                   
+                        276     WITH_EXCEPT_START               
+                        278     GET_AWAITABLE                   2
+                        280     LOAD_CONST                      0: None
+                        282     SEND                            4 (to 292)
+                        286     YIELD_VALUE                     3
+                        288     RESUME                          3
+                        290     JUMP_BACKWARD_NO_INTERRUPT      5 (to 282)
+                        292     CLEANUP_THROW                   
+                        294     END_SEND                        
+                        296     POP_JUMP_IF_TRUE                1 (to 300)
+                        298     RERAISE                         2
+                        300     POP_TOP                         
+                        302     POP_EXCEPT                      
+                        304     POP_TOP                         
+                        306     POP_TOP                         
+                        308     JUMP_BACKWARD                   52 (to 206)
+                        310     COPY                            3
+                        312     POP_EXCEPT                      
+                        314     RERAISE                         1
+                        316     CLEANUP_THROW                   
+                        318     JUMP_BACKWARD                   31 (to 258)
+                        320     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        322     RERAISE                         1
+                    [Exception Table]
+                        4 to 80 -> 320 [0] lasti
+                        80 to 82 -> 266 [3] 
+                        82 to 88 -> 320 [0] lasti
+                        88 to 174 -> 274 [1] lasti
+                        174 to 196 -> 320 [0] lasti
+                        196 to 198 -> 270 [2] 
+                        198 to 252 -> 320 [0] lasti
+                        252 to 254 -> 316 [2] 
+                        254 to 268 -> 320 [0] lasti
+                        270 to 272 -> 320 [0] lasti
+                        274 to 286 -> 310 [3] lasti
+                        286 to 288 -> 292 [6] 
+                        288 to 302 -> 310 [3] lasti
+                        302 to 318 -> 320 [0] lasti
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: set_time
+                    Qualified Name: TimeManager.set_time
+                    Arg Count: 3
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_lock'
+                        'max'
+                        'int'
+                        '_remaining_seconds'
+                        'broadcast_state'
+                    [Locals+Names]
+                        'self'
+                        'seconds'
+                        'source'
+                        'remaining'
+                    [Constants]
+                        None
+                        0
+                        'set'
+                        (
+                            'reason'
+                            'source'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _lock
+                        28      BEFORE_ASYNC_WITH               
+                        30      GET_AWAITABLE                   1
+                        32      LOAD_CONST                      0: None
+                        34      SEND                            3 (to 42)
+                        38      YIELD_VALUE                     2
+                        40      RESUME                          3
+                        42      JUMP_BACKWARD_NO_INTERRUPT      5 (to 34)
+                        44      END_SEND                        
+                        46      POP_TOP                         
+                        48      LOAD_GLOBAL                     3: NULL + max
+                        58      LOAD_CONST                      1: 0
+                        60      LOAD_GLOBAL                     5: NULL + int
+                        70      LOAD_FAST                       1: seconds
+                        72      CALL                            1
+                        80      CALL                            2
+                        88      LOAD_FAST                       0: self
+                        90      STORE_ATTR                      3: _remaining_seconds
+                        100     LOAD_FAST                       0: self
+                        102     LOAD_ATTR                       6: _remaining_seconds
+                        122     STORE_FAST                      3: remaining
+                        124     LOAD_CONST                      0: None
+                        126     LOAD_CONST                      0: None
+                        128     LOAD_CONST                      0: None
+                        130     CALL                            2
+                        138     GET_AWAITABLE                   2
+                        140     LOAD_CONST                      0: None
+                        142     SEND                            3 (to 150)
+                        146     YIELD_VALUE                     2
+                        148     RESUME                          3
+                        150     JUMP_BACKWARD_NO_INTERRUPT      5 (to 142)
+                        152     END_SEND                        
+                        154     POP_TOP                         
+                        156     LOAD_FAST                       0: self
+                        158     LOAD_ATTR                       9: broadcast_state
+                        178     LOAD_CONST                      2: 'set'
+                        180     LOAD_FAST                       2: source
+                        182     KW_NAMES                        3: ('reason', 'source')
+                        184     CALL                            2
+                        192     GET_AWAITABLE                   0
+                        194     LOAD_CONST                      0: None
+                        196     SEND                            3 (to 204)
+                        200     YIELD_VALUE                     2
+                        202     RESUME                          3
+                        204     JUMP_BACKWARD_NO_INTERRUPT      5 (to 196)
+                        206     END_SEND                        
+                        208     POP_TOP                         
+                        210     LOAD_FAST_CHECK                 3: remaining
+                        212     RETURN_VALUE                    
+                        214     CLEANUP_THROW                   
+                        216     JUMP_BACKWARD                   87 (to 44)
+                        218     CLEANUP_THROW                   
+                        220     JUMP_BACKWARD                   35 (to 152)
+                        222     PUSH_EXC_INFO                   
+                        224     WITH_EXCEPT_START               
+                        226     GET_AWAITABLE                   2
+                        228     LOAD_CONST                      0: None
+                        230     SEND                            4 (to 240)
+                        234     YIELD_VALUE                     3
+                        236     RESUME                          3
+                        238     JUMP_BACKWARD_NO_INTERRUPT      5 (to 230)
+                        240     CLEANUP_THROW                   
+                        242     END_SEND                        
+                        244     POP_JUMP_IF_TRUE                1 (to 248)
+                        246     RERAISE                         2
+                        248     POP_TOP                         
+                        250     POP_EXCEPT                      
+                        252     POP_TOP                         
+                        254     POP_TOP                         
+                        256     JUMP_BACKWARD                   51 (to 156)
+                        258     COPY                            3
+                        260     POP_EXCEPT                      
+                        262     RERAISE                         1
+                        264     CLEANUP_THROW                   
+                        266     JUMP_BACKWARD                   31 (to 206)
+                        268     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        270     RERAISE                         1
+                    [Exception Table]
+                        4 to 38 -> 268 [0] lasti
+                        38 to 40 -> 214 [3] 
+                        40 to 46 -> 268 [0] lasti
+                        46 to 124 -> 222 [1] lasti
+                        124 to 146 -> 268 [0] lasti
+                        146 to 148 -> 218 [2] 
+                        148 to 200 -> 268 [0] lasti
+                        200 to 202 -> 264 [2] 
+                        202 to 216 -> 268 [0] lasti
+                        218 to 220 -> 268 [0] lasti
+                        222 to 234 -> 258 [3] lasti
+                        234 to 236 -> 240 [6] 
+                        236 to 250 -> 258 [3] lasti
+                        250 to 266 -> 268 [0] lasti
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: pause
+                    Qualified Name: TimeManager.pause
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_lock'
+                        '_paused'
+                        'broadcast_state'
+                    [Locals+Names]
+                        'self'
+                        'source'
+                    [Constants]
+                        None
+                        True
+                        'pause'
+                        (
+                            'reason'
+                            'source'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _lock
+                        28      BEFORE_ASYNC_WITH               
+                        30      GET_AWAITABLE                   1
+                        32      LOAD_CONST                      0: None
+                        34      SEND                            3 (to 42)
+                        38      YIELD_VALUE                     2
+                        40      RESUME                          3
+                        42      JUMP_BACKWARD_NO_INTERRUPT      5 (to 34)
+                        44      END_SEND                        
+                        46      POP_TOP                         
+                        48      LOAD_CONST                      1: True
+                        50      LOAD_FAST                       0: self
+                        52      STORE_ATTR                      1: _paused
+                        62      LOAD_CONST                      0: None
+                        64      LOAD_CONST                      0: None
+                        66      LOAD_CONST                      0: None
+                        68      CALL                            2
+                        76      GET_AWAITABLE                   2
+                        78      LOAD_CONST                      0: None
+                        80      SEND                            3 (to 88)
+                        84      YIELD_VALUE                     2
+                        86      RESUME                          3
+                        88      JUMP_BACKWARD_NO_INTERRUPT      5 (to 80)
+                        90      END_SEND                        
+                        92      POP_TOP                         
+                        94      LOAD_FAST                       0: self
+                        96      LOAD_ATTR                       5: broadcast_state
+                        116     LOAD_CONST                      2: 'pause'
+                        118     LOAD_FAST                       1: source
+                        120     KW_NAMES                        3: ('reason', 'source')
+                        122     CALL                            2
+                        130     GET_AWAITABLE                   0
+                        132     LOAD_CONST                      0: None
+                        134     SEND                            3 (to 142)
+                        138     YIELD_VALUE                     2
+                        140     RESUME                          3
+                        142     JUMP_BACKWARD_NO_INTERRUPT      5 (to 134)
+                        144     END_SEND                        
+                        146     POP_TOP                         
+                        148     RETURN_CONST                    0: None
+                        150     CLEANUP_THROW                   
+                        152     JUMP_BACKWARD                   55 (to 44)
+                        154     CLEANUP_THROW                   
+                        156     JUMP_BACKWARD                   34 (to 90)
+                        158     PUSH_EXC_INFO                   
+                        160     WITH_EXCEPT_START               
+                        162     GET_AWAITABLE                   2
+                        164     LOAD_CONST                      0: None
+                        166     SEND                            4 (to 176)
+                        170     YIELD_VALUE                     3
+                        172     RESUME                          3
+                        174     JUMP_BACKWARD_NO_INTERRUPT      5 (to 166)
+                        176     CLEANUP_THROW                   
+                        178     END_SEND                        
+                        180     POP_JUMP_IF_TRUE                1 (to 184)
+                        182     RERAISE                         2
+                        184     POP_TOP                         
+                        186     POP_EXCEPT                      
+                        188     POP_TOP                         
+                        190     POP_TOP                         
+                        192     JUMP_BACKWARD                   50 (to 94)
+                        194     COPY                            3
+                        196     POP_EXCEPT                      
+                        198     RERAISE                         1
+                        200     CLEANUP_THROW                   
+                        202     JUMP_BACKWARD                   30 (to 144)
+                        204     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        206     RERAISE                         1
+                    [Exception Table]
+                        4 to 38 -> 204 [0] lasti
+                        38 to 40 -> 150 [3] 
+                        40 to 46 -> 204 [0] lasti
+                        46 to 62 -> 158 [1] lasti
+                        62 to 84 -> 204 [0] lasti
+                        84 to 86 -> 154 [2] 
+                        86 to 138 -> 204 [0] lasti
+                        138 to 140 -> 200 [2] 
+                        140 to 152 -> 204 [0] lasti
+                        154 to 156 -> 204 [0] lasti
+                        158 to 170 -> 194 [3] lasti
+                        170 to 172 -> 176 [6] 
+                        172 to 186 -> 194 [3] lasti
+                        186 to 202 -> 204 [0] lasti
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: resume
+                    Qualified Name: TimeManager.resume
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_lock'
+                        '_paused'
+                        'broadcast_state'
+                    [Locals+Names]
+                        'self'
+                        'source'
+                    [Constants]
+                        None
+                        False
+                        'resume'
+                        (
+                            'reason'
+                            'source'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _lock
+                        28      BEFORE_ASYNC_WITH               
+                        30      GET_AWAITABLE                   1
+                        32      LOAD_CONST                      0: None
+                        34      SEND                            3 (to 42)
+                        38      YIELD_VALUE                     2
+                        40      RESUME                          3
+                        42      JUMP_BACKWARD_NO_INTERRUPT      5 (to 34)
+                        44      END_SEND                        
+                        46      POP_TOP                         
+                        48      LOAD_CONST                      1: False
+                        50      LOAD_FAST                       0: self
+                        52      STORE_ATTR                      1: _paused
+                        62      LOAD_CONST                      0: None
+                        64      LOAD_CONST                      0: None
+                        66      LOAD_CONST                      0: None
+                        68      CALL                            2
+                        76      GET_AWAITABLE                   2
+                        78      LOAD_CONST                      0: None
+                        80      SEND                            3 (to 88)
+                        84      YIELD_VALUE                     2
+                        86      RESUME                          3
+                        88      JUMP_BACKWARD_NO_INTERRUPT      5 (to 80)
+                        90      END_SEND                        
+                        92      POP_TOP                         
+                        94      LOAD_FAST                       0: self
+                        96      LOAD_ATTR                       5: broadcast_state
+                        116     LOAD_CONST                      2: 'resume'
+                        118     LOAD_FAST                       1: source
+                        120     KW_NAMES                        3: ('reason', 'source')
+                        122     CALL                            2
+                        130     GET_AWAITABLE                   0
+                        132     LOAD_CONST                      0: None
+                        134     SEND                            3 (to 142)
+                        138     YIELD_VALUE                     2
+                        140     RESUME                          3
+                        142     JUMP_BACKWARD_NO_INTERRUPT      5 (to 134)
+                        144     END_SEND                        
+                        146     POP_TOP                         
+                        148     RETURN_CONST                    0: None
+                        150     CLEANUP_THROW                   
+                        152     JUMP_BACKWARD                   55 (to 44)
+                        154     CLEANUP_THROW                   
+                        156     JUMP_BACKWARD                   34 (to 90)
+                        158     PUSH_EXC_INFO                   
+                        160     WITH_EXCEPT_START               
+                        162     GET_AWAITABLE                   2
+                        164     LOAD_CONST                      0: None
+                        166     SEND                            4 (to 176)
+                        170     YIELD_VALUE                     3
+                        172     RESUME                          3
+                        174     JUMP_BACKWARD_NO_INTERRUPT      5 (to 166)
+                        176     CLEANUP_THROW                   
+                        178     END_SEND                        
+                        180     POP_JUMP_IF_TRUE                1 (to 184)
+                        182     RERAISE                         2
+                        184     POP_TOP                         
+                        186     POP_EXCEPT                      
+                        188     POP_TOP                         
+                        190     POP_TOP                         
+                        192     JUMP_BACKWARD                   50 (to 94)
+                        194     COPY                            3
+                        196     POP_EXCEPT                      
+                        198     RERAISE                         1
+                        200     CLEANUP_THROW                   
+                        202     JUMP_BACKWARD                   30 (to 144)
+                        204     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        206     RERAISE                         1
+                    [Exception Table]
+                        4 to 38 -> 204 [0] lasti
+                        38 to 40 -> 150 [3] 
+                        40 to 46 -> 204 [0] lasti
+                        46 to 62 -> 158 [1] lasti
+                        62 to 84 -> 204 [0] lasti
+                        84 to 86 -> 154 [2] 
+                        86 to 138 -> 204 [0] lasti
+                        138 to 140 -> 200 [2] 
+                        140 to 152 -> 204 [0] lasti
+                        154 to 156 -> 204 [0] lasti
+                        158 to 170 -> 194 [3] lasti
+                        170 to 172 -> 176 [6] 
+                        172 to 186 -> 194 [3] lasti
+                        186 to 202 -> 204 [0] lasti
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: snapshot
+                    Qualified Name: TimeManager.snapshot
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_lock'
+                        '_remaining_seconds'
+                        '_paused'
+                        'time'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'timer_state'
+                        (
+                            'type'
+                            'remaining_seconds'
+                            'paused'
+                            'server_time'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _lock
+                        28      BEFORE_ASYNC_WITH               
+                        30      GET_AWAITABLE                   1
+                        32      LOAD_CONST                      0: None
+                        34      SEND                            3 (to 42)
+                        38      YIELD_VALUE                     2
+                        40      RESUME                          3
+                        42      JUMP_BACKWARD_NO_INTERRUPT      5 (to 34)
+                        44      END_SEND                        
+                        46      POP_TOP                         
+                        48      LOAD_CONST                      1: 'timer_state'
+                        50      LOAD_FAST                       0: self
+                        52      LOAD_ATTR                       2: _remaining_seconds
+                        72      LOAD_FAST                       0: self
+                        74      LOAD_ATTR                       4: _paused
+                        94      LOAD_GLOBAL                     7: NULL + time
+                        104     LOAD_ATTR                       6: time
+                        124     CALL                            0
+                        132     LOAD_CONST                      2: ('type', 'remaining_seconds', 'paused', 'server_time')
+                        134     BUILD_CONST_KEY_MAP             4
+                        136     SWAP                            2
+                        138     LOAD_CONST                      0: None
+                        140     LOAD_CONST                      0: None
+                        142     LOAD_CONST                      0: None
+                        144     CALL                            2
+                        152     GET_AWAITABLE                   2
+                        154     LOAD_CONST                      0: None
+                        156     SEND                            3 (to 164)
+                        160     YIELD_VALUE                     2
+                        162     RESUME                          3
+                        164     JUMP_BACKWARD_NO_INTERRUPT      5 (to 156)
+                        166     END_SEND                        
+                        168     POP_TOP                         
+                        170     RETURN_VALUE                    
+                        172     CLEANUP_THROW                   
+                        174     JUMP_BACKWARD                   66 (to 44)
+                        176     CLEANUP_THROW                   
+                        178     JUMP_BACKWARD                   7 (to 166)
+                        180     PUSH_EXC_INFO                   
+                        182     WITH_EXCEPT_START               
+                        184     GET_AWAITABLE                   2
+                        186     LOAD_CONST                      0: None
+                        188     SEND                            4 (to 198)
+                        192     YIELD_VALUE                     3
+                        194     RESUME                          3
+                        196     JUMP_BACKWARD_NO_INTERRUPT      5 (to 188)
+                        198     CLEANUP_THROW                   
+                        200     END_SEND                        
+                        202     POP_JUMP_IF_TRUE                1 (to 206)
+                        204     RERAISE                         2
+                        206     POP_TOP                         
+                        208     POP_EXCEPT                      
+                        210     POP_TOP                         
+                        212     POP_TOP                         
+                        214     RETURN_CONST                    0: None
+                        216     COPY                            3
+                        218     POP_EXCEPT                      
+                        220     RERAISE                         1
+                        222     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        224     RERAISE                         1
+                    [Exception Table]
+                        4 to 38 -> 222 [0] lasti
+                        38 to 40 -> 172 [3] 
+                        40 to 46 -> 222 [0] lasti
+                        46 to 136 -> 180 [1] lasti
+                        136 to 160 -> 222 [0] lasti
+                        160 to 162 -> 176 [3] 
+                        162 to 174 -> 222 [0] lasti
+                        176 to 178 -> 222 [0] lasti
+                        180 to 192 -> 216 [3] lasti
+                        192 to 194 -> 198 [6] 
+                        194 to 208 -> 216 [3] lasti
+                        208 to 222 -> 222 [0] lasti
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: get_remaining_seconds
+                    Qualified Name: TimeManager.get_remaining_seconds
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_lock'
+                        '_remaining_seconds'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _lock
+                        28      BEFORE_ASYNC_WITH               
+                        30      GET_AWAITABLE                   1
+                        32      LOAD_CONST                      0: None
+                        34      SEND                            3 (to 42)
+                        38      YIELD_VALUE                     2
+                        40      RESUME                          3
+                        42      JUMP_BACKWARD_NO_INTERRUPT      5 (to 34)
+                        44      END_SEND                        
+                        46      POP_TOP                         
+                        48      LOAD_FAST                       0: self
+                        50      LOAD_ATTR                       2: _remaining_seconds
+                        70      SWAP                            2
+                        72      LOAD_CONST                      0: None
+                        74      LOAD_CONST                      0: None
+                        76      LOAD_CONST                      0: None
+                        78      CALL                            2
+                        86      GET_AWAITABLE                   2
+                        88      LOAD_CONST                      0: None
+                        90      SEND                            3 (to 98)
+                        94      YIELD_VALUE                     2
+                        96      RESUME                          3
+                        98      JUMP_BACKWARD_NO_INTERRUPT      5 (to 90)
+                        100     END_SEND                        
+                        102     POP_TOP                         
+                        104     RETURN_VALUE                    
+                        106     CLEANUP_THROW                   
+                        108     JUMP_BACKWARD                   33 (to 44)
+                        110     CLEANUP_THROW                   
+                        112     JUMP_BACKWARD                   7 (to 100)
+                        114     PUSH_EXC_INFO                   
+                        116     WITH_EXCEPT_START               
+                        118     GET_AWAITABLE                   2
+                        120     LOAD_CONST                      0: None
+                        122     SEND                            4 (to 132)
+                        126     YIELD_VALUE                     3
+                        128     RESUME                          3
+                        130     JUMP_BACKWARD_NO_INTERRUPT      5 (to 122)
+                        132     CLEANUP_THROW                   
+                        134     END_SEND                        
+                        136     POP_JUMP_IF_TRUE                1 (to 140)
+                        138     RERAISE                         2
+                        140     POP_TOP                         
+                        142     POP_EXCEPT                      
+                        144     POP_TOP                         
+                        146     POP_TOP                         
+                        148     RETURN_CONST                    0: None
+                        150     COPY                            3
+                        152     POP_EXCEPT                      
+                        154     RERAISE                         1
+                        156     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        158     RERAISE                         1
+                    [Exception Table]
+                        4 to 38 -> 156 [0] lasti
+                        38 to 40 -> 106 [3] 
+                        40 to 46 -> 156 [0] lasti
+                        46 to 70 -> 114 [1] lasti
+                        70 to 94 -> 156 [0] lasti
+                        94 to 96 -> 110 [3] 
+                        96 to 108 -> 156 [0] lasti
+                        110 to 112 -> 156 [0] lasti
+                        114 to 126 -> 150 [3] lasti
+                        126 to 128 -> 132 [6] 
+                        128 to 142 -> 150 [3] lasti
+                        142 to 156 -> 156 [0] lasti
+                [Code]
+                    File Name: backend\time_manager.py
+                    Object Name: broadcast_state
+                    Qualified Name: TimeManager.broadcast_state
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 3
+                    Flags: 0x0100008B (CO_OPTIMIZED | CO_NEWLOCALS | CO_VARKEYWORDS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'snapshot'
+                        'update'
+                        '_ws'
+                        'broadcast'
+                    [Locals+Names]
+                        'self'
+                        'extra'
+                        'payload'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       1: snapshot
+                        28      CALL                            0
+                        36      GET_AWAITABLE                   0
+                        38      LOAD_CONST                      0: None
+                        40      SEND                            3 (to 48)
+                        44      YIELD_VALUE                     2
+                        46      RESUME                          3
+                        48      JUMP_BACKWARD_NO_INTERRUPT      5 (to 40)
+                        50      END_SEND                        
+                        52      STORE_FAST                      2: payload
+                        54      LOAD_FAST                       2: payload
+                        56      LOAD_ATTR                       3: update
+                        76      LOAD_FAST                       1: extra
+                        78      CALL                            1
+                        86      POP_TOP                         
+                        88      LOAD_FAST                       0: self
+                        90      LOAD_ATTR                       4: _ws
+                        110     LOAD_ATTR                       7: broadcast
+                        130     LOAD_FAST                       2: payload
+                        132     CALL                            1
+                        140     GET_AWAITABLE                   0
+                        142     LOAD_CONST                      0: None
+                        144     SEND                            3 (to 152)
+                        148     YIELD_VALUE                     2
+                        150     RESUME                          3
+                        152     JUMP_BACKWARD_NO_INTERRUPT      5 (to 144)
+                        154     END_SEND                        
+                        156     POP_TOP                         
+                        158     RETURN_CONST                    0: None
+                        160     CLEANUP_THROW                   
+                        162     JUMP_BACKWARD                   57 (to 50)
+                        164     CLEANUP_THROW                   
+                        166     JUMP_BACKWARD                   7 (to 154)
+                        168     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        170     RERAISE                         1
+                    [Exception Table]
+                        4 to 44 -> 168 [0] lasti
+                        44 to 46 -> 160 [2] 
+                        46 to 148 -> 168 [0] lasti
+                        148 to 150 -> 164 [2] 
+                        150 to 162 -> 168 [0] lasti
+                        164 to 166 -> 168 [0] lasti
+                (
+                    0
+                )
+                (
+                    'websocket_manager'
+                    'WebSocketManager'
+                    'initial_seconds'
+                    'int'
+                    'return'
+                    'None'
+                )
+                (
+                    1
+                )
+                (
+                    'tick_interval'
+                    'float'
+                    'return'
+                    'None'
+                )
+                (
+                    'return'
+                    'None'
+                )
+                (
+                    None
+                )
+                (
+                    'seconds'
+                    'int'
+                    'source'
+                    'str'
+                    'meta'
+                    'dict[str, Any] | None'
+                    'return'
+                    'int'
+                )
+                (
+                    'manual'
+                )
+                (
+                    'seconds'
+                    'int'
+                    'source'
+                    'str'
+                    'return'
+                    'int'
+                )
+                (
+                    'source'
+                    'str'
+                    'return'
+                    'None'
+                )
+                (
+                    'return'
+                    'dict[str, Any]'
+                )
+                (
+                    'return'
+                    'int'
+                )
+                (
+                    'extra'
+                    'Any'
+                    'return'
+                    'None'
+                )
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_NAME                       0: __name__
+                4       STORE_NAME                      1: __module__
+                6       LOAD_CONST                      0: 'TimeManager'
+                8       STORE_NAME                      2: __qualname__
+                10      LOAD_CONST                      1: 'Zentraler Timer im RAM. Keine Maximalzeit-Begrenzung.'
+                12      STORE_NAME                      3: __doc__
+                14      LOAD_CONST                      15: (0,)
+                16      LOAD_CONST                      16: ('websocket_manager', 'WebSocketManager', 'initial_seconds', 'int', 'return', 'None')
+                18      LOAD_CONST                      2: <CODE> __init__
+                20      MAKE_FUNCTION                   5
+                22      STORE_NAME                      4: __init__
+                24      LOAD_CONST                      17: (1,)
+                26      LOAD_CONST                      18: ('tick_interval', 'float', 'return', 'None')
+                28      LOAD_CONST                      3: <CODE> start_ticker
+                30      MAKE_FUNCTION                   5
+                32      STORE_NAME                      5: start_ticker
+                34      LOAD_CONST                      19: ('return', 'None')
+                36      LOAD_CONST                      4: <CODE> stop_ticker
+                38      MAKE_FUNCTION                   4
+                40      STORE_NAME                      6: stop_ticker
+                42      LOAD_CONST                      19: ('return', 'None')
+                44      LOAD_CONST                      5: <CODE> _ticker_loop
+                46      MAKE_FUNCTION                   4
+                48      STORE_NAME                      7: _ticker_loop
+                50      LOAD_CONST                      20: (None,)
+                52      LOAD_CONST                      21: ('seconds', 'int', 'source', 'str', 'meta', 'dict[str, Any] | None', 'return', 'int')
+                54      LOAD_CONST                      7: <CODE> add_time
+                56      MAKE_FUNCTION                   5
+                58      STORE_NAME                      8: add_time
+                60      LOAD_CONST                      22: ('manual',)
+                62      LOAD_CONST                      23: ('seconds', 'int', 'source', 'str', 'return', 'int')
+                64      LOAD_CONST                      8: <CODE> remove_time
+                66      MAKE_FUNCTION                   5
+                68      STORE_NAME                      9: remove_time
+                70      LOAD_CONST                      22: ('manual',)
+                72      LOAD_CONST                      23: ('seconds', 'int', 'source', 'str', 'return', 'int')
+                74      LOAD_CONST                      9: <CODE> set_time
+                76      MAKE_FUNCTION                   5
+                78      STORE_NAME                      10: set_time
+                80      LOAD_CONST                      22: ('manual',)
+                82      LOAD_CONST                      24: ('source', 'str', 'return', 'None')
+                84      LOAD_CONST                      10: <CODE> pause
+                86      MAKE_FUNCTION                   5
+                88      STORE_NAME                      11: pause
+                90      LOAD_CONST                      22: ('manual',)
+                92      LOAD_CONST                      24: ('source', 'str', 'return', 'None')
+                94      LOAD_CONST                      11: <CODE> resume
+                96      MAKE_FUNCTION                   5
+                98      STORE_NAME                      12: resume
+                100     LOAD_CONST                      25: ('return', 'dict[str, Any]')
+                102     LOAD_CONST                      12: <CODE> snapshot
+                104     MAKE_FUNCTION                   4
+                106     STORE_NAME                      13: snapshot
+                108     LOAD_CONST                      26: ('return', 'int')
+                110     LOAD_CONST                      13: <CODE> get_remaining_seconds
+                112     MAKE_FUNCTION                   4
+                114     STORE_NAME                      14: get_remaining_seconds
+                116     LOAD_CONST                      27: ('extra', 'Any', 'return', 'None')
+                118     LOAD_CONST                      14: <CODE> broadcast_state
+                120     MAKE_FUNCTION                   4
+                122     STORE_NAME                      15: broadcast_state
+                124     RETURN_CONST                    6: None
+            [Exception Table]
+        'TimeManager'
+    [Disassembly]
+        0       RESUME                          0
+        2       LOAD_CONST                      0: 0
+        4       LOAD_CONST                      1: ('annotations',)
+        6       IMPORT_NAME                     0: __future__
+        8       IMPORT_FROM                     1: annotations
+        10      STORE_NAME                      1: annotations
+        12      POP_TOP                         
+        14      LOAD_CONST                      0: 0
+        16      LOAD_CONST                      2: None
+        18      IMPORT_NAME                     2: asyncio
+        20      STORE_NAME                      2: asyncio
+        22      LOAD_CONST                      0: 0
+        24      LOAD_CONST                      2: None
+        26      IMPORT_NAME                     3: logging
+        28      STORE_NAME                      3: logging
+        30      LOAD_CONST                      0: 0
+        32      LOAD_CONST                      2: None
+        34      IMPORT_NAME                     4: time
+        36      STORE_NAME                      4: time
+        38      LOAD_CONST                      0: 0
+        40      LOAD_CONST                      3: ('Any',)
+        42      IMPORT_NAME                     5: typing
+        44      IMPORT_FROM                     6: Any
+        46      STORE_NAME                      6: Any
+        48      POP_TOP                         
+        50      LOAD_CONST                      4: 1
+        52      LOAD_CONST                      5: ('WebSocketManager',)
+        54      IMPORT_NAME                     7: websocket_manager
+        56      IMPORT_FROM                     8: WebSocketManager
+        58      STORE_NAME                      8: WebSocketManager
+        60      POP_TOP                         
+        62      PUSH_NULL                       
+        64      LOAD_NAME                       3: logging
+        66      LOAD_ATTR                       18: getLogger
+        86      LOAD_NAME                       10: __name__
+        88      CALL                            1
+        96      STORE_NAME                      11: log
+        98      PUSH_NULL                       
+        100     LOAD_BUILD_CLASS                
+        102     LOAD_CONST                      6: <CODE> TimeManager
+        104     MAKE_FUNCTION                   0
+        106     LOAD_CONST                      7: 'TimeManager'
+        108     CALL                            2
+        116     STORE_NAME                      12: TimeManager
+        118     RETURN_CONST                    2: None
+    [Exception Table]

@@ -1,0 +1,3552 @@
+main.pyc (Python 3.12)
+[Code]
+    File Name: main.py
+    Object Name: <module>
+    Qualified Name: <module>
+    Arg Count: 0
+    Pos Only Arg Count: 0
+    KW Only Arg Count: 0
+    Stack Size: 12
+    Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+    [Names]
+        '__future__'
+        'annotations'
+        'logging'
+        'os'
+        'sys'
+        'contextlib'
+        'asynccontextmanager'
+        'pathlib'
+        'Path'
+        'typing'
+        'Any'
+        'uvicorn'
+        'fastapi'
+        'FastAPI'
+        'WebSocket'
+        'WebSocketDisconnect'
+        'fastapi.responses'
+        'FileResponse'
+        'JSONResponse'
+        'fastapi.staticfiles'
+        'StaticFiles'
+        'backend.config'
+        'Config'
+        'load_config'
+        'backend.discord_bot'
+        'DiscordEmergencyBot'
+        'backend.events'
+        'DonationEvent'
+        'EventDispatcher'
+        'SoundManager'
+        'backend.minecraft'
+        'MinecraftLogScanner'
+        'backend.time_manager'
+        'TimeManager'
+        'backend.twitch'
+        'TwitchEventSubClient'
+        'backend.websocket_manager'
+        'WebSocketManager'
+        'get_app_root'
+        'get_bundle_root'
+        'copy_missing_tree'
+        'copy_missing_file'
+        'ensure_runtime_files'
+        'ROOT'
+        'BUNDLE_ROOT'
+        'str'
+        'environ'
+        'FRONTEND_DIR'
+        'ASSETS_DIR'
+        'LOG_DIR'
+        'mkdir'
+        'FileHandler'
+        '_file_handler'
+        'setFormatter'
+        'Formatter'
+        'getLogger'
+        'addHandler'
+        'basicConfig'
+        'INFO'
+        'log'
+        '_SafeNullStream'
+        'ensure_stdio_for_noconsole'
+        'configure_ssl_certificates'
+        'env_bool'
+        'env_int'
+        'env_float'
+        'env_str'
+        'env_bool_auto'
+        'env_int_list'
+        'config'
+        '__annotations__'
+        'dict'
+        'multipliers'
+        'runtime_multipliers'
+        'items'
+        'env_name'
+        'key'
+        'getenv'
+        'float'
+        'get'
+        'raw'
+        'sound_cfg'
+        'bool'
+        'int'
+        'twitch'
+        'twitch_cfg'
+        'discord'
+        'discord_cfg'
+        'strip'
+        '_config_token'
+        '_env_token'
+        '_enabled_raw'
+        'lower'
+        'info'
+        'len'
+        'ws_manager'
+        'timer'
+        'time_manager'
+        'sound_manager'
+        'dispatcher'
+        'services'
+        'minecraft_scanner'
+        'lifespan'
+        'app'
+        'mount'
+        'index'
+        'timer_html'
+        'alert_html'
+        'sound_html'
+        'test_html'
+        'state'
+        'api_route'
+        'test_event'
+        'api_sound_play'
+        'websocket'
+        'websocket_endpoint'
+        'main'
+        '__name__'
+    [Locals+Names]
+        'x'
+    [Constants]
+        0
+        (
+            'annotations'
+        )
+        None
+        (
+            'asynccontextmanager'
+        )
+        (
+            'Path'
+        )
+        (
+            'Any'
+        )
+        (
+            'FastAPI'
+            'WebSocket'
+            'WebSocketDisconnect'
+        )
+        (
+            'FileResponse'
+            'JSONResponse'
+        )
+        (
+            'StaticFiles'
+        )
+        (
+            'Config'
+            'load_config'
+        )
+        (
+            'DiscordEmergencyBot'
+        )
+        (
+            'DonationEvent'
+            'EventDispatcher'
+            'SoundManager'
+        )
+        (
+            'MinecraftLogScanner'
+        )
+        (
+            'TimeManager'
+        )
+        (
+            'TwitchEventSubClient'
+        )
+        (
+            'WebSocketManager'
+        )
+        [Code]
+            File Name: main.py
+            Object Name: get_app_root
+            Qualified Name: get_app_root
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 5
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'getattr'
+                'sys'
+                'Path'
+                'executable'
+                'resolve'
+                'parent'
+                '__file__'
+            [Locals+Names]
+            [Constants]
+                None
+                'frozen'
+                False
+                'OverlaySystem_data'
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     1: NULL + getattr
+                12      LOAD_GLOBAL                     2: sys
+                22      LOAD_CONST                      1: 'frozen'
+                24      LOAD_CONST                      2: False
+                26      CALL                            3
+                34      POP_JUMP_IF_FALSE               52 (to 140)
+                36      LOAD_GLOBAL                     5: NULL + Path
+                46      LOAD_GLOBAL                     2: sys
+                56      LOAD_ATTR                       6: executable
+                76      CALL                            1
+                84      LOAD_ATTR                       9: resolve
+                104     CALL                            0
+                112     LOAD_ATTR                       10: parent
+                132     LOAD_CONST                      3: 'OverlaySystem_data'
+                134     BINARY_OP                       11 (/)
+                138     RETURN_VALUE                    
+                140     LOAD_GLOBAL                     5: NULL + Path
+                150     LOAD_GLOBAL                     12: __file__
+                160     CALL                            1
+                168     LOAD_ATTR                       9: resolve
+                188     CALL                            0
+                196     LOAD_ATTR                       10: parent
+                216     RETURN_VALUE                    
+            [Exception Table]
+        [Code]
+            File Name: main.py
+            Object Name: get_bundle_root
+            Qualified Name: get_bundle_root
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 5
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'getattr'
+                'sys'
+                'hasattr'
+                'Path'
+                '_MEIPASS'
+                'resolve'
+                '__file__'
+                'parent'
+            [Locals+Names]
+            [Constants]
+                None
+                'frozen'
+                False
+                '_MEIPASS'
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     1: NULL + getattr
+                12      LOAD_GLOBAL                     2: sys
+                22      LOAD_CONST                      1: 'frozen'
+                24      LOAD_CONST                      2: False
+                26      CALL                            3
+                34      POP_JUMP_IF_FALSE               55 (to 146)
+                36      LOAD_GLOBAL                     5: NULL + hasattr
+                46      LOAD_GLOBAL                     2: sys
+                56      LOAD_CONST                      3: '_MEIPASS'
+                58      CALL                            2
+                66      POP_JUMP_IF_FALSE               39 (to 146)
+                68      LOAD_GLOBAL                     7: NULL + Path
+                78      LOAD_GLOBAL                     2: sys
+                88      LOAD_ATTR                       8: _MEIPASS
+                108     CALL                            1
+                116     LOAD_ATTR                       11: resolve
+                136     CALL                            0
+                144     RETURN_VALUE                    
+                146     LOAD_GLOBAL                     7: NULL + Path
+                156     LOAD_GLOBAL                     12: __file__
+                166     CALL                            1
+                174     LOAD_ATTR                       11: resolve
+                194     CALL                            0
+                202     LOAD_ATTR                       14: parent
+                222     RETURN_VALUE                    
+            [Exception Table]
+        [Code]
+            File Name: main.py
+            Object Name: copy_missing_tree
+            Qualified Name: copy_missing_tree
+            Arg Count: 2
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 4
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'shutil'
+                'exists'
+                'copytree'
+            [Locals+Names]
+                'src'
+                'dst'
+                'shutil'
+            [Constants]
+                None
+                0
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_CONST                      1: 0
+                4       LOAD_CONST                      0: None
+                6       IMPORT_NAME                     0: shutil
+                8       STORE_FAST                      2: shutil
+                10      LOAD_FAST                       0: src
+                12      LOAD_ATTR                       3: exists
+                32      CALL                            0
+                40      POP_JUMP_IF_FALSE               16 (to 74)
+                42      LOAD_FAST                       1: dst
+                44      LOAD_ATTR                       3: exists
+                64      CALL                            0
+                72      POP_JUMP_IF_FALSE               1 (to 76)
+                74      RETURN_CONST                    0: None
+                76      LOAD_FAST                       2: shutil
+                78      LOAD_ATTR                       5: copytree
+                98      LOAD_FAST                       0: src
+                100     LOAD_FAST                       1: dst
+                102     CALL                            2
+                110     POP_TOP                         
+                112     RETURN_CONST                    0: None
+            [Exception Table]
+        [Code]
+            File Name: main.py
+            Object Name: copy_missing_file
+            Qualified Name: copy_missing_file
+            Arg Count: 2
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 4
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'shutil'
+                'exists'
+                'parent'
+                'mkdir'
+                'copy2'
+            [Locals+Names]
+                'src'
+                'dst'
+                'shutil'
+            [Constants]
+                None
+                0
+                True
+                (
+                    'parents'
+                    'exist_ok'
+                )
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_CONST                      1: 0
+                4       LOAD_CONST                      0: None
+                6       IMPORT_NAME                     0: shutil
+                8       STORE_FAST                      2: shutil
+                10      LOAD_FAST                       0: src
+                12      LOAD_ATTR                       3: exists
+                32      CALL                            0
+                40      POP_JUMP_IF_FALSE               65 (to 172)
+                42      LOAD_FAST                       1: dst
+                44      LOAD_ATTR                       3: exists
+                64      CALL                            0
+                72      POP_JUMP_IF_TRUE                48 (to 170)
+                74      LOAD_FAST                       1: dst
+                76      LOAD_ATTR                       4: parent
+                96      LOAD_ATTR                       7: mkdir
+                116     LOAD_CONST                      2: True
+                118     LOAD_CONST                      2: True
+                120     KW_NAMES                        3: ('parents', 'exist_ok')
+                122     CALL                            2
+                130     POP_TOP                         
+                132     LOAD_FAST                       2: shutil
+                134     LOAD_ATTR                       9: copy2
+                154     LOAD_FAST                       0: src
+                156     LOAD_FAST                       1: dst
+                158     CALL                            2
+                166     POP_TOP                         
+                168     RETURN_CONST                    0: None
+                170     RETURN_CONST                    0: None
+                172     RETURN_CONST                    0: None
+            [Exception Table]
+        [Code]
+            File Name: main.py
+            Object Name: ensure_runtime_files
+            Qualified Name: ensure_runtime_files
+            Arg Count: 2
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 5
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'mkdir'
+                'copy_missing_tree'
+                'copy_missing_file'
+                'getattr'
+                'sys'
+                'Path'
+                'executable'
+                'resolve'
+                'parent'
+                'exists'
+            [Locals+Names]
+                'root'
+                'bundle_root'
+                'exe_dir'
+            [Constants]
+                None
+                True
+                (
+                    'parents'
+                    'exist_ok'
+                )
+                'frontend'
+                'assets'
+                'config.json'
+                '.env.example'
+                'frozen'
+                False
+                '.env'
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_FAST                       0: root
+                4       LOAD_ATTR                       1: mkdir
+                24      LOAD_CONST                      1: True
+                26      LOAD_CONST                      1: True
+                28      KW_NAMES                        2: ('parents', 'exist_ok')
+                30      CALL                            2
+                38      POP_TOP                         
+                40      LOAD_GLOBAL                     3: NULL + copy_missing_tree
+                50      LOAD_FAST                       1: bundle_root
+                52      LOAD_CONST                      3: 'frontend'
+                54      BINARY_OP                       11 (/)
+                58      LOAD_FAST                       0: root
+                60      LOAD_CONST                      3: 'frontend'
+                62      BINARY_OP                       11 (/)
+                66      CALL                            2
+                74      POP_TOP                         
+                76      LOAD_GLOBAL                     3: NULL + copy_missing_tree
+                86      LOAD_FAST                       1: bundle_root
+                88      LOAD_CONST                      4: 'assets'
+                90      BINARY_OP                       11 (/)
+                94      LOAD_FAST                       0: root
+                96      LOAD_CONST                      4: 'assets'
+                98      BINARY_OP                       11 (/)
+                102     CALL                            2
+                110     POP_TOP                         
+                112     LOAD_GLOBAL                     5: NULL + copy_missing_file
+                122     LOAD_FAST                       1: bundle_root
+                124     LOAD_CONST                      5: 'config.json'
+                126     BINARY_OP                       11 (/)
+                130     LOAD_FAST                       0: root
+                132     LOAD_CONST                      5: 'config.json'
+                134     BINARY_OP                       11 (/)
+                138     CALL                            2
+                146     POP_TOP                         
+                148     LOAD_GLOBAL                     5: NULL + copy_missing_file
+                158     LOAD_FAST                       1: bundle_root
+                160     LOAD_CONST                      6: '.env.example'
+                162     BINARY_OP                       11 (/)
+                166     LOAD_FAST                       0: root
+                168     LOAD_CONST                      6: '.env.example'
+                170     BINARY_OP                       11 (/)
+                174     CALL                            2
+                182     POP_TOP                         
+                184     LOAD_GLOBAL                     7: NULL + getattr
+                194     LOAD_GLOBAL                     8: sys
+                204     LOAD_CONST                      7: 'frozen'
+                206     LOAD_CONST                      8: False
+                208     CALL                            3
+                216     POP_JUMP_IF_FALSE               49 (to 316)
+                218     LOAD_GLOBAL                     11: NULL + Path
+                228     LOAD_GLOBAL                     8: sys
+                238     LOAD_ATTR                       12: executable
+                258     CALL                            1
+                266     LOAD_ATTR                       15: resolve
+                286     CALL                            0
+                294     LOAD_ATTR                       16: parent
+                314     JUMP_FORWARD                    1 (to 318)
+                316     LOAD_FAST                       0: root
+                318     STORE_FAST                      2: exe_dir
+                320     LOAD_GLOBAL                     5: NULL + copy_missing_file
+                330     LOAD_FAST                       2: exe_dir
+                332     LOAD_CONST                      9: '.env'
+                334     BINARY_OP                       11 (/)
+                338     LOAD_FAST                       0: root
+                340     LOAD_CONST                      9: '.env'
+                342     BINARY_OP                       11 (/)
+                346     CALL                            2
+                354     POP_TOP                         
+                356     LOAD_GLOBAL                     5: NULL + copy_missing_file
+                366     LOAD_FAST                       2: exe_dir
+                368     LOAD_CONST                      5: 'config.json'
+                370     BINARY_OP                       11 (/)
+                374     LOAD_FAST                       0: root
+                376     LOAD_CONST                      5: 'config.json'
+                378     BINARY_OP                       11 (/)
+                382     CALL                            2
+                390     POP_TOP                         
+                392     LOAD_FAST                       0: root
+                394     LOAD_CONST                      9: '.env'
+                396     BINARY_OP                       11 (/)
+                400     LOAD_ATTR                       19: exists
+                420     CALL                            0
+                428     POP_JUMP_IF_TRUE                57 (to 544)
+                430     LOAD_FAST                       1: bundle_root
+                432     LOAD_CONST                      9: '.env'
+                434     BINARY_OP                       11 (/)
+                438     LOAD_ATTR                       19: exists
+                458     CALL                            0
+                466     POP_JUMP_IF_FALSE               19 (to 506)
+                468     LOAD_GLOBAL                     5: NULL + copy_missing_file
+                478     LOAD_FAST                       1: bundle_root
+                480     LOAD_CONST                      9: '.env'
+                482     BINARY_OP                       11 (/)
+                486     LOAD_FAST                       0: root
+                488     LOAD_CONST                      9: '.env'
+                490     BINARY_OP                       11 (/)
+                494     CALL                            2
+                502     POP_TOP                         
+                504     RETURN_CONST                    0: None
+                506     LOAD_GLOBAL                     5: NULL + copy_missing_file
+                516     LOAD_FAST                       1: bundle_root
+                518     LOAD_CONST                      6: '.env.example'
+                520     BINARY_OP                       11 (/)
+                524     LOAD_FAST                       0: root
+                526     LOAD_CONST                      9: '.env'
+                528     BINARY_OP                       11 (/)
+                532     CALL                            2
+                540     POP_TOP                         
+                542     RETURN_CONST                    0: None
+                544     RETURN_CONST                    0: None
+            [Exception Table]
+        'OVERLAY_RUNTIME_DIR'
+        'frontend'
+        'assets'
+        'logs'
+        True
+        (
+            'parents'
+            'exist_ok'
+        )
+        'overlay.log'
+        'utf-8'
+        (
+            'encoding'
+        )
+        '%(asctime)s | %(levelname)-8s | %(name)s | %(message)s'
+        (
+            'level'
+            'format'
+        )
+        'overlay'
+        [Code]
+            File Name: main.py
+            Object Name: _SafeNullStream
+            Qualified Name: _SafeNullStream
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 1
+            Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+            [Names]
+                '__name__'
+                '__module__'
+                '__qualname__'
+                'write'
+                'flush'
+                'isatty'
+            [Locals+Names]
+            [Constants]
+                '_SafeNullStream'
+                [Code]
+                    File Name: main.py
+                    Object Name: write
+                    Qualified Name: _SafeNullStream.write
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 0
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                    [Locals+Names]
+                        'self'
+                        '_data'
+                    [Constants]
+                        None
+                        0
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       RETURN_CONST                    1: 0
+                    [Exception Table]
+                [Code]
+                    File Name: main.py
+                    Object Name: flush
+                    Qualified Name: _SafeNullStream.flush
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 0
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       RETURN_CONST                    0: None
+                    [Exception Table]
+                [Code]
+                    File Name: main.py
+                    Object Name: isatty
+                    Qualified Name: _SafeNullStream.isatty
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 0
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        False
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       RETURN_CONST                    1: False
+                    [Exception Table]
+                None
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_NAME                       0: __name__
+                4       STORE_NAME                      1: __module__
+                6       LOAD_CONST                      0: '_SafeNullStream'
+                8       STORE_NAME                      2: __qualname__
+                10      LOAD_CONST                      1: <CODE> write
+                12      MAKE_FUNCTION                   0
+                14      STORE_NAME                      3: write
+                16      LOAD_CONST                      2: <CODE> flush
+                18      MAKE_FUNCTION                   0
+                20      STORE_NAME                      4: flush
+                22      LOAD_CONST                      3: <CODE> isatty
+                24      MAKE_FUNCTION                   0
+                26      STORE_NAME                      5: isatty
+                28      RETURN_CONST                    4: None
+            [Exception Table]
+        '_SafeNullStream'
+        [Code]
+            File Name: main.py
+            Object Name: ensure_stdio_for_noconsole
+            Qualified Name: ensure_stdio_for_noconsole
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 2
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'sys'
+                'stdout'
+                '_SafeNullStream'
+                'stderr'
+            [Locals+Names]
+            [Constants]
+                None
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     0: sys
+                12      LOAD_ATTR                       2: stdout
+                32      POP_JUMP_IF_NOT_NONE            19 (to 72)
+                34      LOAD_GLOBAL                     5: NULL + _SafeNullStream
+                44      CALL                            0
+                52      LOAD_GLOBAL                     0: sys
+                62      STORE_ATTR                      1: stdout
+                72      LOAD_GLOBAL                     0: sys
+                82      LOAD_ATTR                       6: stderr
+                102     POP_JUMP_IF_NOT_NONE            20 (to 144)
+                104     LOAD_GLOBAL                     5: NULL + _SafeNullStream
+                114     CALL                            0
+                122     LOAD_GLOBAL                     0: sys
+                132     STORE_ATTR                      3: stderr
+                142     RETURN_CONST                    0: None
+                144     RETURN_CONST                    0: None
+            [Exception Table]
+        [Code]
+            File Name: main.py
+            Object Name: configure_ssl_certificates
+            Qualified Name: configure_ssl_certificates
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 4
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'certifi'
+                'where'
+                'os'
+                'environ'
+                'setdefault'
+                'log'
+                'info'
+                'Exception'
+                'exception'
+            [Locals+Names]
+                'certifi'
+                'cafile'
+            [Constants]
+                'Fix fuer PyInstaller/Windows: aiohttp/discord/twitch brauchen ein CA Bundle.\n\n    Ohne das kommt in der EXE oft:\n    SSL: CERTIFICATE_VERIFY_FAILED unable to get local issuer certificate\n    Dann bleiben Twitch und Discord offline.\n    '
+                0
+                None
+                'SSL_CERT_FILE'
+                'REQUESTS_CA_BUNDLE'
+                'CURL_CA_BUNDLE'
+                'SSL CA Bundle gesetzt: %s'
+                'Konnte certifi CA Bundle nicht setzen'
+            [Disassembly]
+                0       RESUME                          0
+                2       NOP                             
+                4       LOAD_CONST                      1: 0
+                6       LOAD_CONST                      2: None
+                8       IMPORT_NAME                     0: certifi
+                10      STORE_FAST                      0: certifi
+                12      LOAD_FAST                       0: certifi
+                14      LOAD_ATTR                       3: where
+                34      CALL                            0
+                42      STORE_FAST                      1: cafile
+                44      LOAD_GLOBAL                     4: os
+                54      LOAD_ATTR                       6: environ
+                74      LOAD_ATTR                       9: setdefault
+                94      LOAD_CONST                      3: 'SSL_CERT_FILE'
+                96      LOAD_FAST                       1: cafile
+                98      CALL                            2
+                106     POP_TOP                         
+                108     LOAD_GLOBAL                     4: os
+                118     LOAD_ATTR                       6: environ
+                138     LOAD_ATTR                       9: setdefault
+                158     LOAD_CONST                      4: 'REQUESTS_CA_BUNDLE'
+                160     LOAD_FAST                       1: cafile
+                162     CALL                            2
+                170     POP_TOP                         
+                172     LOAD_GLOBAL                     4: os
+                182     LOAD_ATTR                       6: environ
+                202     LOAD_ATTR                       9: setdefault
+                222     LOAD_CONST                      5: 'CURL_CA_BUNDLE'
+                224     LOAD_FAST                       1: cafile
+                226     CALL                            2
+                234     POP_TOP                         
+                236     LOAD_GLOBAL                     10: log
+                246     LOAD_ATTR                       13: info
+                266     LOAD_CONST                      6: 'SSL CA Bundle gesetzt: %s'
+                268     LOAD_FAST                       1: cafile
+                270     CALL                            2
+                278     POP_TOP                         
+                280     RETURN_CONST                    2: None
+                282     PUSH_EXC_INFO                   
+                284     LOAD_GLOBAL                     14: Exception
+                294     CHECK_EXC_MATCH                 
+                296     POP_JUMP_IF_FALSE               24 (to 346)
+                298     POP_TOP                         
+                300     LOAD_GLOBAL                     10: log
+                310     LOAD_ATTR                       17: exception
+                330     LOAD_CONST                      7: 'Konnte certifi CA Bundle nicht setzen'
+                332     CALL                            1
+                340     POP_TOP                         
+                342     POP_EXCEPT                      
+                344     RETURN_CONST                    2: None
+                346     RERAISE                         0
+                348     COPY                            3
+                350     POP_EXCEPT                      
+                352     RERAISE                         1
+            [Exception Table]
+                4 to 280 -> 282 [0] 
+                282 to 342 -> 348 [1] lasti
+                346 to 348 -> 348 [1] lasti
+        [Code]
+            File Name: main.py
+            Object Name: env_bool
+            Qualified Name: env_bool
+            Arg Count: 2
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'os'
+                'getenv'
+                'strip'
+                'lower'
+            [Locals+Names]
+                'name'
+                'default'
+                'value'
+            [Constants]
+                None
+                ''
+                frozenset({
+                    '1'
+                    'y'
+                    'on'
+                    'yes'
+                    'true'
+                })
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     1: NULL + os
+                12      LOAD_ATTR                       2: getenv
+                32      LOAD_FAST                       0: name
+                34      CALL                            1
+                42      STORE_FAST                      2: value
+                44      LOAD_FAST                       2: value
+                46      POP_JUMP_IF_NONE                5 (to 58)
+                48      LOAD_FAST                       2: value
+                50      LOAD_CONST                      1: ''
+                52      COMPARE_OP                      40 (==)
+                56      POP_JUMP_IF_FALSE               2 (to 62)
+                58      LOAD_FAST                       1: default
+                60      RETURN_VALUE                    
+                62      LOAD_FAST                       2: value
+                64      LOAD_ATTR                       5: strip
+                84      CALL                            0
+                92      LOAD_ATTR                       7: lower
+                112     CALL                            0
+                120     LOAD_CONST                      2: frozenset({'1', 'y', 'on', 'yes', 'true'})
+                122     CONTAINS_OP                     0 (in)
+                124     RETURN_VALUE                    
+            [Exception Table]
+        [Code]
+            File Name: main.py
+            Object Name: env_int
+            Qualified Name: env_int
+            Arg Count: 2
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 4
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'os'
+                'getenv'
+                'int'
+                'strip'
+            [Locals+Names]
+                'name'
+                'default'
+                'value'
+            [Constants]
+                None
+                ''
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     1: NULL + os
+                12      LOAD_ATTR                       2: getenv
+                32      LOAD_FAST                       0: name
+                34      CALL                            1
+                42      STORE_FAST                      2: value
+                44      LOAD_FAST                       2: value
+                46      POP_JUMP_IF_NONE                5 (to 58)
+                48      LOAD_FAST                       2: value
+                50      LOAD_CONST                      1: ''
+                52      COMPARE_OP                      40 (==)
+                56      POP_JUMP_IF_FALSE               2 (to 62)
+                58      LOAD_FAST                       1: default
+                60      RETURN_VALUE                    
+                62      LOAD_GLOBAL                     5: NULL + int
+                72      LOAD_FAST                       2: value
+                74      LOAD_ATTR                       7: strip
+                94      CALL                            0
+                102     CALL                            1
+                110     RETURN_VALUE                    
+            [Exception Table]
+        [Code]
+            File Name: main.py
+            Object Name: env_float
+            Qualified Name: env_float
+            Arg Count: 2
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 6
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'os'
+                'getenv'
+                'float'
+                'strip'
+                'replace'
+            [Locals+Names]
+                'name'
+                'default'
+                'value'
+            [Constants]
+                None
+                ''
+                ','
+                '.'
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     1: NULL + os
+                12      LOAD_ATTR                       2: getenv
+                32      LOAD_FAST                       0: name
+                34      CALL                            1
+                42      STORE_FAST                      2: value
+                44      LOAD_FAST                       2: value
+                46      POP_JUMP_IF_NONE                5 (to 58)
+                48      LOAD_FAST                       2: value
+                50      LOAD_CONST                      1: ''
+                52      COMPARE_OP                      40 (==)
+                56      POP_JUMP_IF_FALSE               2 (to 62)
+                58      LOAD_FAST                       1: default
+                60      RETURN_VALUE                    
+                62      LOAD_GLOBAL                     5: NULL + float
+                72      LOAD_FAST                       2: value
+                74      LOAD_ATTR                       7: strip
+                94      CALL                            0
+                102     LOAD_ATTR                       9: replace
+                122     LOAD_CONST                      2: ','
+                124     LOAD_CONST                      3: '.'
+                126     CALL                            2
+                134     CALL                            1
+                142     RETURN_VALUE                    
+            [Exception Table]
+        ''
+        [Code]
+            File Name: main.py
+            Object Name: env_str
+            Qualified Name: env_str
+            Arg Count: 2
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'os'
+                'getenv'
+                'strip'
+            [Locals+Names]
+                'name'
+                'default'
+                'value'
+            [Constants]
+                None
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     1: NULL + os
+                12      LOAD_ATTR                       2: getenv
+                32      LOAD_FAST                       0: name
+                34      CALL                            1
+                42      STORE_FAST                      2: value
+                44      LOAD_FAST                       2: value
+                46      POP_JUMP_IF_NOT_NONE            2 (to 52)
+                48      LOAD_FAST                       1: default
+                50      RETURN_VALUE                    
+                52      LOAD_FAST                       2: value
+                54      LOAD_ATTR                       5: strip
+                74      CALL                            0
+                82      RETURN_VALUE                    
+            [Exception Table]
+        'auto'
+        [Code]
+            File Name: main.py
+            Object Name: env_bool_auto
+            Qualified Name: env_bool_auto
+            Arg Count: 2
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'os'
+                'getenv'
+                'strip'
+                'lower'
+            [Locals+Names]
+                'name'
+                'default'
+                'value'
+            [Constants]
+                None
+                ''
+                frozenset({
+                    '1'
+                    'y'
+                    'on'
+                    'yes'
+                    'true'
+                })
+                True
+                frozenset({
+                    '0'
+                    'n'
+                    'no'
+                    'off'
+                    'false'
+                    'disabled'
+                })
+                False
+                'auto'
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     1: NULL + os
+                12      LOAD_ATTR                       2: getenv
+                32      LOAD_FAST                       0: name
+                34      CALL                            1
+                42      STORE_FAST                      2: value
+                44      LOAD_FAST                       2: value
+                46      POP_JUMP_IF_NONE                19 (to 86)
+                48      LOAD_FAST                       2: value
+                50      LOAD_ATTR                       5: strip
+                70      CALL                            0
+                78      LOAD_CONST                      1: ''
+                80      COMPARE_OP                      40 (==)
+                84      POP_JUMP_IF_FALSE               2 (to 90)
+                86      LOAD_FAST                       1: default
+                88      RETURN_VALUE                    
+                90      LOAD_FAST                       2: value
+                92      LOAD_ATTR                       5: strip
+                112     CALL                            0
+                120     LOAD_ATTR                       7: lower
+                140     CALL                            0
+                148     STORE_FAST                      2: value
+                150     LOAD_FAST                       2: value
+                152     LOAD_CONST                      2: frozenset({'1', 'y', 'on', 'yes', 'true'})
+                154     CONTAINS_OP                     0 (in)
+                156     POP_JUMP_IF_FALSE               1 (to 160)
+                158     RETURN_CONST                    3: True
+                160     LOAD_FAST                       2: value
+                162     LOAD_CONST                      4: frozenset({'0', 'n', 'no', 'off', 'false', 'disabled'})
+                164     CONTAINS_OP                     0 (in)
+                166     POP_JUMP_IF_FALSE               1 (to 170)
+                168     RETURN_CONST                    5: False
+                170     RETURN_CONST                    6: 'auto'
+            [Exception Table]
+        [Code]
+            File Name: main.py
+            Object Name: env_int_list
+            Qualified Name: env_int_list
+            Arg Count: 2
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 6
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'os'
+                'getenv'
+                'replace'
+                'split'
+                'strip'
+                'append'
+                'int'
+            [Locals+Names]
+                'name'
+                'default'
+                'value'
+                'result'
+                'part'
+            [Constants]
+                None
+                ';'
+                ','
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     1: NULL + os
+                12      LOAD_ATTR                       2: getenv
+                32      LOAD_FAST                       0: name
+                34      CALL                            1
+                42      STORE_FAST                      2: value
+                44      LOAD_FAST                       2: value
+                46      POP_JUMP_IF_TRUE                6 (to 60)
+                48      LOAD_FAST                       1: default
+                50      COPY                            1
+                52      POP_JUMP_IF_TRUE                2 (to 58)
+                54      POP_TOP                         
+                56      BUILD_LIST                      0
+                58      RETURN_VALUE                    
+                60      BUILD_LIST                      0
+                62      STORE_FAST                      3: result
+                64      LOAD_FAST                       2: value
+                66      LOAD_ATTR                       5: replace
+                86      LOAD_CONST                      1: ';'
+                88      LOAD_CONST                      2: ','
+                90      CALL                            2
+                98      LOAD_ATTR                       7: split
+                118     LOAD_CONST                      2: ','
+                120     CALL                            1
+                128     GET_ITER                        
+                130     FOR_ITER                        47 (to 226)
+                134     STORE_FAST                      4: part
+                136     LOAD_FAST                       4: part
+                138     LOAD_ATTR                       9: strip
+                158     CALL                            0
+                166     STORE_FAST                      4: part
+                168     LOAD_FAST                       4: part
+                170     POP_JUMP_IF_TRUE                1 (to 174)
+                172     JUMP_BACKWARD                   22 (to 130)
+                174     LOAD_FAST                       3: result
+                176     LOAD_ATTR                       11: append
+                196     LOAD_GLOBAL                     13: NULL + int
+                206     LOAD_FAST                       4: part
+                208     CALL                            1
+                216     CALL                            1
+                224     POP_TOP                         
+                226     JUMP_BACKWARD                   49 (to 130)
+                228     END_FOR                         
+                230     LOAD_FAST                       3: result
+                232     RETURN_VALUE                    
+            [Exception Table]
+        'config.json'
+        'Config'
+        'config'
+        'seconds_per_follow'
+        'seconds_per_bit'
+        'seconds_per_sub'
+        'seconds_per_tier2_sub'
+        'seconds_per_tier3_sub'
+        'seconds_per_gift_sub'
+        'seconds_per_ingame_dollar'
+        (
+            'SECONDS_PER_FOLLOW'
+            'SECONDS_PER_BIT'
+            'SECONDS_PER_SUB'
+            'SECONDS_PER_TIER2_SUB'
+            'SECONDS_PER_TIER3_SUB'
+            'SECONDS_PER_GIFT_SUB'
+            'SECONDS_PER_INGAME_DOLLAR'
+        )
+        (
+            None
+            ''
+        )
+        'sound'
+        'SOUND_ENABLED'
+        'enabled'
+        'SOUND_MIN_BITS_FOR_YOUTUBE'
+        'min_bits_for_youtube'
+        10
+        'SOUND_MAX_DURATION_SECONDS'
+        'max_duration_seconds'
+        120
+        'SOUND_VOLUME'
+        'volume'
+        0.75
+        'SOUND_OUTPUT_DEVICE_ID'
+        'output_device_id'
+        'SOUND_PLAYBACK_MODE'
+        'playback_mode'
+        'python_audio_obs_video'
+        'MPV_PATH'
+        'mpv_path'
+        'mpv'
+        'YTDLP_PATH'
+        'ytdlp_path'
+        'SOUND_PLAYER'
+        'player'
+        'obs'
+        'FFPLAY_PATH'
+        'ffplay_path'
+        'ffplay'
+        'FFMPEG_PATH'
+        'ffmpeg_path'
+        'ffmpeg'
+        'SOUND_AUTO_INSTALL_TOOLS'
+        'auto_install_tools'
+        'SOUND_TOOLS_DIR'
+        'tools_dir'
+        'tools'
+        'TWITCH_ENABLED'
+        False
+        'TWITCH_CLIENT_ID'
+        'client_id_env'
+        'TWITCH_USER_TOKEN'
+        'user_token_env'
+        'TWITCH_BROADCASTER_ID'
+        'broadcaster_user_id'
+        'TWITCH_MODERATOR_ID'
+        'moderator_user_id'
+        'token'
+        'DISCORD_BOT_TOKEN'
+        'token_env'
+        'DISCORD_ENABLED'
+        'DISCORD_GUILD_ID'
+        'guild_id'
+        'DISCORD_ADMIN_USER_IDS'
+        'admin_user_ids'
+        'Discord Config: enabled=%s token_present=%s admin_count=%d guild_id=%s'
+        'global'
+        'TIMER_INITIAL_SECONDS'
+        'initial_seconds'
+        86400
+        (
+            'initial_seconds'
+        )
+        'list[Any]'
+        'services'
+        'MinecraftLogScanner | None'
+        'minecraft_scanner'
+        [Code]
+            File Name: main.py
+            Object Name: lifespan
+            Qualified Name: lifespan
+            Arg Count: 1
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 13
+            Flags: 0x01000203 (CO_OPTIMIZED | CO_NEWLOCALS | CO_ASYNC_GENERATOR | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'time_manager'
+                'start_ticker'
+                'float'
+                'config'
+                'timer'
+                'get'
+                'sound_manager'
+                'broadcast_settings'
+                'minecraft'
+                'MinecraftLogScanner'
+                'resolve_path'
+                'runtime_multipliers'
+                'dispatcher'
+                'bool'
+                'start'
+                'services'
+                'append'
+                'minecraft_scanner'
+                'twitch_cfg'
+                'TwitchEventSubClient'
+                'discord_cfg'
+                'DiscordEmergencyBot'
+                'server'
+                'log'
+                'info'
+                'reversed'
+                'getattr'
+                'stop_ticker'
+            [Locals+Names]
+                'app'
+                'regexes'
+                'minecraft'
+                'twitch'
+                'discord_bot'
+                'host'
+                'port'
+                'service'
+                'stop'
+            [Constants]
+                None
+                'tick_interval_seconds'
+                1
+                'enabled'
+                True
+                'money_regexes'
+                'money_regex'
+                '\\[(?P<player>.+?)\\s*->\\s*(?:Dir|You)\\]\\s*(?P<amount>[0-9]+(?:[.,][0-9]+)?)\\$\\s*erhalten'
+                'latest_log_path'
+                './latest.log'
+                'seconds_per_ingame_dollar'
+                0.015
+                'poll_interval_seconds'
+                1
+                'process_existing_lines_on_start'
+                False
+                (
+                    'log_path'
+                    'regex'
+                    'seconds_per_ingame_dollar'
+                    'dispatcher'
+                    'poll_interval'
+                    'process_existing_lines_on_start'
+                )
+                'host'
+                '127.0.0.1'
+                'port'
+                8000
+                'OBS Timer:  http://%s:%s/timer.html'
+                'OBS Alert:  http://%s:%s/alert.html'
+                'OBS Sound:  http://%s:%s/sound.html'
+                'Testseite:  http://%s:%s/test.html'
+                'stop'
+            [Disassembly]
+                0       RETURN_GENERATOR                
+                2       POP_TOP                         
+                4       RESUME                          0
+                6       LOAD_GLOBAL                     0: time_manager
+                16      LOAD_ATTR                       3: start_ticker
+                36      LOAD_GLOBAL                     5: NULL + float
+                46      LOAD_GLOBAL                     6: config
+                56      LOAD_ATTR                       8: timer
+                76      LOAD_ATTR                       11: get
+                96      LOAD_CONST                      1: 'tick_interval_seconds'
+                98      LOAD_CONST                      2: 1
+                100     CALL                            2
+                108     CALL                            1
+                116     CALL                            1
+                124     GET_AWAITABLE                   0
+                126     LOAD_CONST                      0: None
+                128     SEND                            3 (to 136)
+                132     YIELD_VALUE                     2
+                134     RESUME                          3
+                136     JUMP_BACKWARD_NO_INTERRUPT      5 (to 128)
+                138     END_SEND                        
+                140     POP_TOP                         
+                142     LOAD_GLOBAL                     12: sound_manager
+                152     POP_JUMP_IF_FALSE               28 (to 210)
+                154     LOAD_GLOBAL                     12: sound_manager
+                164     LOAD_ATTR                       15: broadcast_settings
+                184     CALL                            0
+                192     GET_AWAITABLE                   0
+                194     LOAD_CONST                      0: None
+                196     SEND                            3 (to 204)
+                200     YIELD_VALUE                     2
+                202     RESUME                          3
+                204     JUMP_BACKWARD_NO_INTERRUPT      5 (to 196)
+                206     END_SEND                        
+                208     POP_TOP                         
+                210     LOAD_GLOBAL                     6: config
+                220     LOAD_ATTR                       16: minecraft
+                240     LOAD_ATTR                       11: get
+                260     LOAD_CONST                      3: 'enabled'
+                262     LOAD_CONST                      4: True
+                264     CALL                            2
+                272     POP_JUMP_IF_FALSE               282 (to 840)
+                276     LOAD_GLOBAL                     6: config
+                286     LOAD_ATTR                       16: minecraft
+                306     LOAD_ATTR                       11: get
+                326     LOAD_CONST                      5: 'money_regexes'
+                328     CALL                            1
+                336     COPY                            1
+                338     POP_JUMP_IF_TRUE                33 (to 406)
+                340     POP_TOP                         
+                342     LOAD_GLOBAL                     6: config
+                352     LOAD_ATTR                       16: minecraft
+                372     LOAD_ATTR                       11: get
+                392     LOAD_CONST                      6: 'money_regex'
+                394     LOAD_CONST                      7: '\\[(?P<player>.+?)\\s*->\\s*(?:Dir|You)\\]\\s*(?P<amount>[0-9]+(?:[.,][0-9]+)?)\\$\\s*erhalten'
+                396     CALL                            2
+                404     BUILD_LIST                      1
+                406     STORE_FAST                      1: regexes
+                408     LOAD_GLOBAL                     19: NULL + MinecraftLogScanner
+                418     LOAD_GLOBAL                     6: config
+                428     LOAD_ATTR                       21: resolve_path
+                448     LOAD_GLOBAL                     6: config
+                458     LOAD_ATTR                       16: minecraft
+                478     LOAD_ATTR                       11: get
+                498     LOAD_CONST                      8: 'latest_log_path'
+                500     LOAD_CONST                      9: './latest.log'
+                502     CALL                            2
+                510     CALL                            1
+                518     LOAD_FAST                       1: regexes
+                520     LOAD_GLOBAL                     5: NULL + float
+                530     LOAD_GLOBAL                     22: runtime_multipliers
+                540     LOAD_ATTR                       11: get
+                560     LOAD_CONST                      10: 'seconds_per_ingame_dollar'
+                562     LOAD_CONST                      11: 0.015
+                564     CALL                            2
+                572     CALL                            1
+                580     LOAD_GLOBAL                     24: dispatcher
+                590     LOAD_GLOBAL                     5: NULL + float
+                600     LOAD_GLOBAL                     6: config
+                610     LOAD_ATTR                       16: minecraft
+                630     LOAD_ATTR                       11: get
+                650     LOAD_CONST                      12: 'poll_interval_seconds'
+                652     LOAD_CONST                      13: 1
+                654     CALL                            2
+                662     CALL                            1
+                670     LOAD_GLOBAL                     27: NULL + bool
+                680     LOAD_GLOBAL                     6: config
+                690     LOAD_ATTR                       16: minecraft
+                710     LOAD_ATTR                       11: get
+                730     LOAD_CONST                      14: 'process_existing_lines_on_start'
+                732     LOAD_CONST                      15: False
+                734     CALL                            2
+                742     CALL                            1
+                750     KW_NAMES                        16: ('log_path', 'regex', 'seconds_per_ingame_dollar', 'dispatcher', 'poll_interval', 'process_existing_lines_on_start')
+                752     CALL                            6
+                760     STORE_FAST                      2: minecraft
+                762     LOAD_FAST                       2: minecraft
+                764     LOAD_ATTR                       29: start
+                784     CALL                            0
+                792     POP_TOP                         
+                794     LOAD_GLOBAL                     30: services
+                804     LOAD_ATTR                       33: append
+                824     LOAD_FAST                       2: minecraft
+                826     CALL                            1
+                834     POP_TOP                         
+                836     LOAD_FAST                       2: minecraft
+                838     STORE_GLOBAL                    17: minecraft_scanner
+                840     LOAD_GLOBAL                     36: twitch_cfg
+                850     LOAD_ATTR                       11: get
+                870     LOAD_CONST                      3: 'enabled'
+                872     LOAD_CONST                      15: False
+                874     CALL                            2
+                882     POP_JUMP_IF_FALSE               62 (to 1008)
+                884     LOAD_GLOBAL                     39: NULL + TwitchEventSubClient
+                894     LOAD_GLOBAL                     24: dispatcher
+                904     LOAD_GLOBAL                     22: runtime_multipliers
+                914     LOAD_GLOBAL                     36: twitch_cfg
+                924     CALL                            3
+                932     STORE_FAST                      3: twitch
+                934     LOAD_FAST                       3: twitch
+                936     LOAD_ATTR                       29: start
+                956     CALL                            0
+                964     POP_TOP                         
+                966     LOAD_GLOBAL                     30: services
+                976     LOAD_ATTR                       33: append
+                996     LOAD_FAST                       3: twitch
+                998     CALL                            1
+                1006    POP_TOP                         
+                1008    LOAD_GLOBAL                     40: discord_cfg
+                1018    LOAD_ATTR                       11: get
+                1038    LOAD_CONST                      3: 'enabled'
+                1040    LOAD_CONST                      15: False
+                1042    CALL                            2
+                1050    POP_JUMP_IF_FALSE               67 (to 1186)
+                1052    LOAD_GLOBAL                     43: NULL + DiscordEmergencyBot
+                1062    LOAD_GLOBAL                     0: time_manager
+                1072    LOAD_GLOBAL                     40: discord_cfg
+                1082    LOAD_GLOBAL                     12: sound_manager
+                1092    LOAD_GLOBAL                     34: minecraft_scanner
+                1102    CALL                            4
+                1110    STORE_FAST                      4: discord_bot
+                1112    LOAD_FAST                       4: discord_bot
+                1114    LOAD_ATTR                       29: start
+                1134    CALL                            0
+                1142    POP_TOP                         
+                1144    LOAD_GLOBAL                     30: services
+                1154    LOAD_ATTR                       33: append
+                1174    LOAD_FAST                       4: discord_bot
+                1176    CALL                            1
+                1184    POP_TOP                         
+                1186    LOAD_GLOBAL                     6: config
+                1196    LOAD_ATTR                       44: server
+                1216    LOAD_ATTR                       11: get
+                1236    LOAD_CONST                      17: 'host'
+                1238    LOAD_CONST                      18: '127.0.0.1'
+                1240    CALL                            2
+                1248    LOAD_GLOBAL                     6: config
+                1258    LOAD_ATTR                       44: server
+                1278    LOAD_ATTR                       11: get
+                1298    LOAD_CONST                      19: 'port'
+                1300    LOAD_CONST                      20: 8000
+                1302    CALL                            2
+                1310    STORE_FAST                      6: port
+                1312    STORE_FAST                      5: host
+                1314    LOAD_GLOBAL                     46: log
+                1324    LOAD_ATTR                       49: info
+                1344    LOAD_CONST                      21: 'OBS Timer:  http://%s:%s/timer.html'
+                1346    LOAD_FAST                       5: host
+                1348    LOAD_FAST                       6: port
+                1350    CALL                            3
+                1358    POP_TOP                         
+                1360    LOAD_GLOBAL                     46: log
+                1370    LOAD_ATTR                       49: info
+                1390    LOAD_CONST                      22: 'OBS Alert:  http://%s:%s/alert.html'
+                1392    LOAD_FAST                       5: host
+                1394    LOAD_FAST                       6: port
+                1396    CALL                            3
+                1404    POP_TOP                         
+                1406    LOAD_GLOBAL                     46: log
+                1416    LOAD_ATTR                       49: info
+                1436    LOAD_CONST                      23: 'OBS Sound:  http://%s:%s/sound.html'
+                1438    LOAD_FAST                       5: host
+                1440    LOAD_FAST                       6: port
+                1442    CALL                            3
+                1450    POP_TOP                         
+                1452    LOAD_GLOBAL                     46: log
+                1462    LOAD_ATTR                       49: info
+                1482    LOAD_CONST                      24: 'Testseite:  http://%s:%s/test.html'
+                1484    LOAD_FAST                       5: host
+                1486    LOAD_FAST                       6: port
+                1488    CALL                            3
+                1496    POP_TOP                         
+                1498    NOP                             
+                1500    LOAD_CONST                      0: None
+                1502    CALL_INTRINSIC_1                4 (INTRINSIC_ASYNC_GEN_WRAP)
+                1504    YIELD_VALUE                     2
+                1506    RESUME                          1
+                1508    POP_TOP                         
+                1510    LOAD_GLOBAL                     51: NULL + reversed
+                1520    LOAD_GLOBAL                     30: services
+                1530    CALL                            1
+                1538    GET_ITER                        
+                1540    FOR_ITER                        33 (to 1608)
+                1544    STORE_FAST                      7: service
+                1546    LOAD_GLOBAL                     53: NULL + getattr
+                1556    LOAD_FAST                       7: service
+                1558    LOAD_CONST                      25: 'stop'
+                1560    LOAD_CONST                      0: None
+                1562    CALL                            3
+                1570    STORE_FAST                      8: stop
+                1572    LOAD_FAST                       8: stop
+                1574    POP_JUMP_IF_TRUE                1 (to 1578)
+                1576    JUMP_BACKWARD                   19 (to 1540)
+                1578    PUSH_NULL                       
+                1580    LOAD_FAST                       8: stop
+                1582    CALL                            0
+                1590    GET_AWAITABLE                   0
+                1592    LOAD_CONST                      0: None
+                1594    SEND                            3 (to 1602)
+                1598    YIELD_VALUE                     2
+                1600    RESUME                          3
+                1602    JUMP_BACKWARD_NO_INTERRUPT      5 (to 1594)
+                1604    END_SEND                        
+                1606    POP_TOP                         
+                1608    JUMP_BACKWARD                   35 (to 1540)
+                1610    END_FOR                         
+                1612    LOAD_GLOBAL                     0: time_manager
+                1622    LOAD_ATTR                       55: stop_ticker
+                1642    CALL                            0
+                1650    GET_AWAITABLE                   0
+                1652    LOAD_CONST                      0: None
+                1654    SEND                            3 (to 1662)
+                1658    YIELD_VALUE                     2
+                1660    RESUME                          3
+                1662    JUMP_BACKWARD_NO_INTERRUPT      5 (to 1654)
+                1664    END_SEND                        
+                1666    POP_TOP                         
+                1668    RETURN_CONST                    0: None
+                1670    CLEANUP_THROW                   
+                1672    JUMP_BACKWARD                   769 (to 138)
+                1676    CLEANUP_THROW                   
+                1678    JUMP_BACKWARD                   738 (to 206)
+                1682    CLEANUP_THROW                   
+                1684    JUMP_BACKWARD                   41 (to 1604)
+                1686    CLEANUP_THROW                   
+                1688    JUMP_BACKWARD                   13 (to 1664)
+                1690    PUSH_EXC_INFO                   
+                1692    LOAD_GLOBAL                     51: NULL + reversed
+                1702    LOAD_GLOBAL                     30: services
+                1712    CALL                            1
+                1720    GET_ITER                        
+                1722    FOR_ITER                        34 (to 1792)
+                1726    STORE_FAST                      7: service
+                1728    LOAD_GLOBAL                     53: NULL + getattr
+                1738    LOAD_FAST                       7: service
+                1740    LOAD_CONST                      25: 'stop'
+                1742    LOAD_CONST                      0: None
+                1744    CALL                            3
+                1752    STORE_FAST                      8: stop
+                1754    LOAD_FAST                       8: stop
+                1756    POP_JUMP_IF_TRUE                1 (to 1760)
+                1758    JUMP_BACKWARD                   19 (to 1722)
+                1760    PUSH_NULL                       
+                1762    LOAD_FAST                       8: stop
+                1764    CALL                            0
+                1772    GET_AWAITABLE                   0
+                1774    LOAD_CONST                      0: None
+                1776    SEND                            4 (to 1786)
+                1780    YIELD_VALUE                     3
+                1782    RESUME                          3
+                1784    JUMP_BACKWARD_NO_INTERRUPT      5 (to 1776)
+                1786    CLEANUP_THROW                   
+                1788    END_SEND                        
+                1790    POP_TOP                         
+                1792    JUMP_BACKWARD                   36 (to 1722)
+                1794    END_FOR                         
+                1796    LOAD_GLOBAL                     0: time_manager
+                1806    LOAD_ATTR                       55: stop_ticker
+                1826    CALL                            0
+                1834    GET_AWAITABLE                   0
+                1836    LOAD_CONST                      0: None
+                1838    SEND                            4 (to 1848)
+                1842    YIELD_VALUE                     3
+                1844    RESUME                          3
+                1846    JUMP_BACKWARD_NO_INTERRUPT      5 (to 1838)
+                1848    CLEANUP_THROW                   
+                1850    END_SEND                        
+                1852    POP_TOP                         
+                1854    RERAISE                         0
+                1856    COPY                            3
+                1858    POP_EXCEPT                      
+                1860    RERAISE                         1
+                1862    CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                1864    RERAISE                         1
+            [Exception Table]
+                4 to 132 -> 1862 [0] lasti
+                132 to 134 -> 1670 [2] 
+                134 to 200 -> 1862 [0] lasti
+                200 to 202 -> 1676 [2] 
+                202 to 1498 -> 1862 [0] lasti
+                1500 to 1510 -> 1690 [0] 
+                1510 to 1576 -> 1862 [0] lasti
+                1578 to 1598 -> 1862 [0] lasti
+                1598 to 1600 -> 1682 [3] 
+                1600 to 1658 -> 1862 [0] lasti
+                1658 to 1660 -> 1686 [2] 
+                1660 to 1672 -> 1862 [0] lasti
+                1676 to 1678 -> 1862 [0] lasti
+                1682 to 1684 -> 1862 [0] lasti
+                1686 to 1688 -> 1862 [0] lasti
+                1690 to 1758 -> 1856 [1] lasti
+                1760 to 1780 -> 1856 [1] lasti
+                1780 to 1782 -> 1786 [5] 
+                1782 to 1842 -> 1856 [1] lasti
+                1842 to 1844 -> 1848 [4] 
+                1844 to 1856 -> 1856 [1] lasti
+                1856 to 1862 -> 1862 [0] lasti
+        'Twitch/Minecraft Overlay Backend'
+        (
+            'title'
+            'lifespan'
+        )
+        '/assets'
+        (
+            'directory'
+        )
+        (
+            'name'
+        )
+        '/'
+        [Code]
+            File Name: main.py
+            Object Name: index
+            Qualified Name: index
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 7
+            Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+            [Names]
+            [Locals+Names]
+            [Constants]
+                None
+                'ok'
+                '/timer.html'
+                '/alert.html'
+                '/sound.html'
+                '/test.html'
+                '/ws'
+                (
+                    'status'
+                    'timer'
+                    'alert'
+                    'sound'
+                    'test'
+                    'websocket'
+                )
+            [Disassembly]
+                0       RETURN_GENERATOR                
+                2       POP_TOP                         
+                4       RESUME                          0
+                6       LOAD_CONST                      1: 'ok'
+                8       LOAD_CONST                      2: '/timer.html'
+                10      LOAD_CONST                      3: '/alert.html'
+                12      LOAD_CONST                      4: '/sound.html'
+                14      LOAD_CONST                      5: '/test.html'
+                16      LOAD_CONST                      6: '/ws'
+                18      LOAD_CONST                      7: ('status', 'timer', 'alert', 'sound', 'test', 'websocket')
+                20      BUILD_CONST_KEY_MAP             6
+                22      RETURN_VALUE                    
+                24      CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                26      RERAISE                         1
+            [Exception Table]
+                4 to 24 -> 24 [0] lasti
+        '/timer.html'
+        [Code]
+            File Name: main.py
+            Object Name: timer_html
+            Qualified Name: timer_html
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 4
+            Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'FileResponse'
+                'FRONTEND_DIR'
+            [Locals+Names]
+            [Constants]
+                None
+                'timer.html'
+            [Disassembly]
+                0       RETURN_GENERATOR                
+                2       POP_TOP                         
+                4       RESUME                          0
+                6       LOAD_GLOBAL                     1: NULL + FileResponse
+                16      LOAD_GLOBAL                     2: FRONTEND_DIR
+                26      LOAD_CONST                      1: 'timer.html'
+                28      BINARY_OP                       11 (/)
+                32      CALL                            1
+                40      RETURN_VALUE                    
+                42      CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                44      RERAISE                         1
+            [Exception Table]
+                4 to 42 -> 42 [0] lasti
+        '/alert.html'
+        [Code]
+            File Name: main.py
+            Object Name: alert_html
+            Qualified Name: alert_html
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 4
+            Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'FileResponse'
+                'FRONTEND_DIR'
+            [Locals+Names]
+            [Constants]
+                None
+                'alert.html'
+            [Disassembly]
+                0       RETURN_GENERATOR                
+                2       POP_TOP                         
+                4       RESUME                          0
+                6       LOAD_GLOBAL                     1: NULL + FileResponse
+                16      LOAD_GLOBAL                     2: FRONTEND_DIR
+                26      LOAD_CONST                      1: 'alert.html'
+                28      BINARY_OP                       11 (/)
+                32      CALL                            1
+                40      RETURN_VALUE                    
+                42      CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                44      RERAISE                         1
+            [Exception Table]
+                4 to 42 -> 42 [0] lasti
+        '/sound.html'
+        [Code]
+            File Name: main.py
+            Object Name: sound_html
+            Qualified Name: sound_html
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 4
+            Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'FileResponse'
+                'FRONTEND_DIR'
+            [Locals+Names]
+            [Constants]
+                None
+                'sound.html'
+            [Disassembly]
+                0       RETURN_GENERATOR                
+                2       POP_TOP                         
+                4       RESUME                          0
+                6       LOAD_GLOBAL                     1: NULL + FileResponse
+                16      LOAD_GLOBAL                     2: FRONTEND_DIR
+                26      LOAD_CONST                      1: 'sound.html'
+                28      BINARY_OP                       11 (/)
+                32      CALL                            1
+                40      RETURN_VALUE                    
+                42      CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                44      RERAISE                         1
+            [Exception Table]
+                4 to 42 -> 42 [0] lasti
+        '/test.html'
+        [Code]
+            File Name: main.py
+            Object Name: test_html
+            Qualified Name: test_html
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 4
+            Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'FileResponse'
+                'FRONTEND_DIR'
+            [Locals+Names]
+            [Constants]
+                None
+                'test.html'
+            [Disassembly]
+                0       RETURN_GENERATOR                
+                2       POP_TOP                         
+                4       RESUME                          0
+                6       LOAD_GLOBAL                     1: NULL + FileResponse
+                16      LOAD_GLOBAL                     2: FRONTEND_DIR
+                26      LOAD_CONST                      1: 'test.html'
+                28      BINARY_OP                       11 (/)
+                32      CALL                            1
+                40      RETURN_VALUE                    
+                42      CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                44      RERAISE                         1
+            [Exception Table]
+                4 to 42 -> 42 [0] lasti
+        '/api/state'
+        [Code]
+            File Name: main.py
+            Object Name: state
+            Qualified Name: state
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'time_manager'
+                'snapshot'
+            [Locals+Names]
+            [Constants]
+                None
+            [Disassembly]
+                0       RETURN_GENERATOR                
+                2       POP_TOP                         
+                4       RESUME                          0
+                6       LOAD_GLOBAL                     0: time_manager
+                16      LOAD_ATTR                       3: snapshot
+                36      CALL                            0
+                44      GET_AWAITABLE                   0
+                46      LOAD_CONST                      0: None
+                48      SEND                            3 (to 56)
+                52      YIELD_VALUE                     2
+                54      RESUME                          3
+                56      JUMP_BACKWARD_NO_INTERRUPT      5 (to 48)
+                58      END_SEND                        
+                60      RETURN_VALUE                    
+                62      CLEANUP_THROW                   
+                64      JUMP_BACKWARD                   4 (to 58)
+                66      CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                68      RERAISE                         1
+            [Exception Table]
+                4 to 52 -> 66 [0] lasti
+                52 to 54 -> 62 [2] 
+                54 to 64 -> 66 [0] lasti
+        '/api/test/{event_type}'
+        'GET'
+        'POST'
+        (
+            'methods'
+        )
+        [Code]
+            File Name: main.py
+            Object Name: test_event
+            Qualified Name: test_event
+            Arg Count: 4
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 10
+            Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'int'
+                'runtime_multipliers'
+                'get'
+                'DonationEvent'
+                'float'
+                'JSONResponse'
+                'dispatcher'
+                'handle_event'
+                'to_payload'
+                'time_manager'
+                'snapshot'
+            [Locals+Names]
+                'event_type'
+                'username'
+                'amount'
+                'message'
+                'seconds'
+                'event'
+                'key'
+                'tier'
+                'typ'
+            [Constants]
+                None
+                'follow'
+                'seconds_per_follow'
+                300
+                1
+                'Follow'
+                'test'
+                (
+                    'message'
+                )
+                'bits'
+                'seconds_per_bit'
+                10
+                'Bits'
+                frozenset({
+                    'sub'
+                    'tier2'
+                    'tier3'
+                    'gift_sub'
+                })
+                'tier2'
+                (
+                    'seconds_per_tier2_sub'
+                    '2000'
+                    'sub'
+                )
+                'tier3'
+                (
+                    'seconds_per_tier3_sub'
+                    '3000'
+                    'sub'
+                )
+                'gift_sub'
+                'seconds_per_gift_sub'
+                'seconds_per_sub'
+                '1000'
+                2400
+                'Subs'
+                (
+                    'message'
+                    'tier'
+                )
+                frozenset({
+                    'money'
+                    'spende'
+                })
+                'seconds_per_ingame_dollar'
+                0.015
+                'money'
+                '$'
+                'error'
+                'event_type muss follow, bits, sub, gift_sub, tier2, tier3 oder money sein'
+                400
+                (
+                    'status_code'
+                )
+                True
+                (
+                    'ok'
+                    'event'
+                    'timer'
+                )
+            [Disassembly]
+                0       RETURN_GENERATOR                
+                2       POP_TOP                         
+                4       RESUME                          0
+                6       LOAD_FAST                       0: event_type
+                8       LOAD_CONST                      1: 'follow'
+                10      COMPARE_OP                      40 (==)
+                14      POP_JUMP_IF_FALSE               50 (to 116)
+                16      LOAD_GLOBAL                     1: NULL + int
+                26      LOAD_GLOBAL                     2: runtime_multipliers
+                36      LOAD_ATTR                       5: get
+                56      LOAD_CONST                      2: 'seconds_per_follow'
+                58      LOAD_CONST                      3: 300
+                60      CALL                            2
+                68      CALL                            1
+                76      STORE_FAST                      4: seconds
+                78      LOAD_GLOBAL                     7: NULL + DonationEvent
+                88      LOAD_CONST                      1: 'follow'
+                90      LOAD_FAST                       1: username
+                92      LOAD_CONST                      4: 1
+                94      LOAD_CONST                      5: 'Follow'
+                96      LOAD_FAST                       4: seconds
+                98      LOAD_CONST                      6: 'test'
+                100     LOAD_FAST                       3: message
+                102     KW_NAMES                        7: ('message',)
+                104     CALL                            7
+                112     STORE_FAST                      5: event
+                114     JUMP_FORWARD                    252 (to 620)
+                116     LOAD_FAST                       0: event_type
+                118     LOAD_CONST                      8: 'bits'
+                120     COMPARE_OP                      40 (==)
+                124     POP_JUMP_IF_FALSE               62 (to 250)
+                126     LOAD_GLOBAL                     1: NULL + int
+                136     LOAD_FAST                       2: amount
+                138     LOAD_GLOBAL                     9: NULL + float
+                148     LOAD_GLOBAL                     2: runtime_multipliers
+                158     LOAD_ATTR                       5: get
+                178     LOAD_CONST                      9: 'seconds_per_bit'
+                180     LOAD_CONST                      10: 10
+                182     CALL                            2
+                190     CALL                            1
+                198     BINARY_OP                       5 (*)
+                202     CALL                            1
+                210     STORE_FAST                      4: seconds
+                212     LOAD_GLOBAL                     7: NULL + DonationEvent
+                222     LOAD_CONST                      8: 'bits'
+                224     LOAD_FAST                       1: username
+                226     LOAD_FAST                       2: amount
+                228     LOAD_CONST                      11: 'Bits'
+                230     LOAD_FAST                       4: seconds
+                232     LOAD_CONST                      6: 'test'
+                234     LOAD_FAST                       3: message
+                236     KW_NAMES                        7: ('message',)
+                238     CALL                            7
+                246     STORE_FAST                      5: event
+                248     JUMP_FORWARD                    185 (to 620)
+                250     LOAD_FAST                       0: event_type
+                252     LOAD_CONST                      12: frozenset({'sub', 'tier2', 'tier3', 'gift_sub'})
+                254     CONTAINS_OP                     0 (in)
+                256     POP_JUMP_IF_FALSE               100 (to 458)
+                258     LOAD_FAST                       0: event_type
+                260     LOAD_CONST                      13: 'tier2'
+                262     COMPARE_OP                      40 (==)
+                266     POP_JUMP_IF_FALSE               7 (to 282)
+                268     LOAD_CONST                      14: ('seconds_per_tier2_sub', '2000', 'sub')
+                270     UNPACK_SEQUENCE                 3
+                274     STORE_FAST                      6: key
+                276     STORE_FAST                      7: tier
+                278     STORE_FAST                      8: typ
+                280     JUMP_FORWARD                    25 (to 332)
+                282     LOAD_FAST                       0: event_type
+                284     LOAD_CONST                      15: 'tier3'
+                286     COMPARE_OP                      40 (==)
+                290     POP_JUMP_IF_FALSE               7 (to 306)
+                292     LOAD_CONST                      16: ('seconds_per_tier3_sub', '3000', 'sub')
+                294     UNPACK_SEQUENCE                 3
+                298     STORE_FAST                      6: key
+                300     STORE_FAST                      7: tier
+                302     STORE_FAST                      8: typ
+                304     JUMP_FORWARD                    13 (to 332)
+                306     LOAD_FAST                       0: event_type
+                308     LOAD_CONST                      17: 'gift_sub'
+                310     COMPARE_OP                      40 (==)
+                314     POP_JUMP_IF_FALSE               2 (to 320)
+                316     LOAD_CONST                      18: 'seconds_per_gift_sub'
+                318     JUMP_FORWARD                    1 (to 322)
+                320     LOAD_CONST                      19: 'seconds_per_sub'
+                322     LOAD_CONST                      20: '1000'
+                324     LOAD_FAST                       0: event_type
+                326     STORE_FAST                      8: typ
+                328     STORE_FAST                      7: tier
+                330     STORE_FAST                      6: key
+                332     LOAD_GLOBAL                     1: NULL + int
+                342     LOAD_FAST                       2: amount
+                344     LOAD_GLOBAL                     9: NULL + float
+                354     LOAD_GLOBAL                     2: runtime_multipliers
+                364     LOAD_ATTR                       5: get
+                384     LOAD_FAST                       6: key
+                386     LOAD_CONST                      21: 2400
+                388     CALL                            2
+                396     CALL                            1
+                404     BINARY_OP                       5 (*)
+                408     CALL                            1
+                416     STORE_FAST                      4: seconds
+                418     LOAD_GLOBAL                     7: NULL + DonationEvent
+                428     LOAD_FAST                       8: typ
+                430     LOAD_FAST                       1: username
+                432     LOAD_FAST                       2: amount
+                434     LOAD_CONST                      22: 'Subs'
+                436     LOAD_FAST                       4: seconds
+                438     LOAD_CONST                      6: 'test'
+                440     LOAD_FAST                       3: message
+                442     LOAD_FAST                       7: tier
+                444     KW_NAMES                        23: ('message', 'tier')
+                446     CALL                            8
+                454     STORE_FAST                      5: event
+                456     JUMP_FORWARD                    81 (to 620)
+                458     LOAD_FAST                       0: event_type
+                460     LOAD_CONST                      24: frozenset({'money', 'spende'})
+                462     CONTAINS_OP                     0 (in)
+                464     POP_JUMP_IF_FALSE               62 (to 590)
+                466     LOAD_GLOBAL                     1: NULL + int
+                476     LOAD_FAST                       2: amount
+                478     LOAD_GLOBAL                     9: NULL + float
+                488     LOAD_GLOBAL                     2: runtime_multipliers
+                498     LOAD_ATTR                       5: get
+                518     LOAD_CONST                      25: 'seconds_per_ingame_dollar'
+                520     LOAD_CONST                      26: 0.015
+                522     CALL                            2
+                530     CALL                            1
+                538     BINARY_OP                       5 (*)
+                542     CALL                            1
+                550     STORE_FAST                      4: seconds
+                552     LOAD_GLOBAL                     7: NULL + DonationEvent
+                562     LOAD_CONST                      27: 'money'
+                564     LOAD_FAST                       1: username
+                566     LOAD_FAST                       2: amount
+                568     LOAD_CONST                      28: '$'
+                570     LOAD_FAST                       4: seconds
+                572     LOAD_CONST                      6: 'test'
+                574     LOAD_FAST                       3: message
+                576     KW_NAMES                        7: ('message',)
+                578     CALL                            7
+                586     STORE_FAST                      5: event
+                588     JUMP_FORWARD                    15 (to 620)
+                590     LOAD_GLOBAL                     11: NULL + JSONResponse
+                600     LOAD_CONST                      29: 'error'
+                602     LOAD_CONST                      30: 'event_type muss follow, bits, sub, gift_sub, tier2, tier3 oder money sein'
+                604     BUILD_MAP                       1
+                606     LOAD_CONST                      31: 400
+                608     KW_NAMES                        32: ('status_code',)
+                610     CALL                            2
+                618     RETURN_VALUE                    
+                620     LOAD_GLOBAL                     12: dispatcher
+                630     LOAD_ATTR                       15: handle_event
+                650     LOAD_FAST                       5: event
+                652     CALL                            1
+                660     GET_AWAITABLE                   0
+                662     LOAD_CONST                      0: None
+                664     SEND                            3 (to 672)
+                668     YIELD_VALUE                     2
+                670     RESUME                          3
+                672     JUMP_BACKWARD_NO_INTERRUPT      5 (to 664)
+                674     END_SEND                        
+                676     POP_TOP                         
+                678     LOAD_CONST                      33: True
+                680     LOAD_FAST                       5: event
+                682     LOAD_ATTR                       17: to_payload
+                702     CALL                            0
+                710     LOAD_GLOBAL                     18: time_manager
+                720     LOAD_ATTR                       21: snapshot
+                740     CALL                            0
+                748     GET_AWAITABLE                   0
+                750     LOAD_CONST                      0: None
+                752     SEND                            3 (to 760)
+                756     YIELD_VALUE                     2
+                758     RESUME                          3
+                760     JUMP_BACKWARD_NO_INTERRUPT      5 (to 752)
+                762     END_SEND                        
+                764     LOAD_CONST                      34: ('ok', 'event', 'timer')
+                766     BUILD_CONST_KEY_MAP             3
+                768     RETURN_VALUE                    
+                770     CLEANUP_THROW                   
+                772     JUMP_BACKWARD                   50 (to 674)
+                774     CLEANUP_THROW                   
+                776     JUMP_BACKWARD                   8 (to 762)
+                778     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                780     RERAISE                         1
+            [Exception Table]
+                4 to 668 -> 778 [0] lasti
+                668 to 670 -> 770 [2] 
+                670 to 756 -> 778 [0] lasti
+                756 to 758 -> 774 [4] 
+                758 to 772 -> 778 [0] lasti
+                774 to 776 -> 778 [0] lasti
+        '/api/sound/play'
+        [Code]
+            File Name: main.py
+            Object Name: api_sound_play
+            Qualified Name: api_sound_play
+            Arg Count: 2
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 5
+            Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'sound_manager'
+                'JSONResponse'
+                'play'
+            [Locals+Names]
+                'url'
+                'username'
+            [Constants]
+                None
+                'error'
+                'sound disabled'
+                400
+                (
+                    'status_code'
+                )
+                'api'
+                (
+                    'requested_by'
+                    'source'
+                )
+                'ok'
+                True
+            [Disassembly]
+                0       RETURN_GENERATOR                
+                2       POP_TOP                         
+                4       RESUME                          0
+                6       LOAD_GLOBAL                     0: sound_manager
+                16      POP_JUMP_IF_TRUE                15 (to 48)
+                18      LOAD_GLOBAL                     3: NULL + JSONResponse
+                28      LOAD_CONST                      1: 'error'
+                30      LOAD_CONST                      2: 'sound disabled'
+                32      BUILD_MAP                       1
+                34      LOAD_CONST                      3: 400
+                36      KW_NAMES                        4: ('status_code',)
+                38      CALL                            2
+                46      RETURN_VALUE                    
+                48      LOAD_GLOBAL                     0: sound_manager
+                58      LOAD_ATTR                       5: play
+                78      LOAD_FAST                       0: url
+                80      LOAD_FAST                       1: username
+                82      LOAD_CONST                      5: 'api'
+                84      KW_NAMES                        6: ('requested_by', 'source')
+                86      CALL                            3
+                94      GET_AWAITABLE                   0
+                96      LOAD_CONST                      0: None
+                98      SEND                            3 (to 106)
+                102     YIELD_VALUE                     2
+                104     RESUME                          3
+                106     JUMP_BACKWARD_NO_INTERRUPT      5 (to 98)
+                108     END_SEND                        
+                110     POP_TOP                         
+                112     LOAD_CONST                      7: 'ok'
+                114     LOAD_CONST                      8: True
+                116     BUILD_MAP                       1
+                118     RETURN_VALUE                    
+                120     CLEANUP_THROW                   
+                122     JUMP_BACKWARD                   8 (to 108)
+                124     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                126     RERAISE                         1
+            [Exception Table]
+                4 to 102 -> 124 [0] lasti
+                102 to 104 -> 120 [2] 
+                104 to 122 -> 124 [0] lasti
+        '/ws'
+        [Code]
+            File Name: main.py
+            Object Name: websocket_endpoint
+            Qualified Name: websocket_endpoint
+            Arg Count: 1
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 7
+            Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'ws_manager'
+                'connect'
+                'send_json'
+                'time_manager'
+                'snapshot'
+                'sound_manager'
+                'volume'
+                'max_duration_seconds'
+                'output_device_id'
+                'receive_text'
+                'WebSocketDisconnect'
+                'Exception'
+                'log'
+                'debug'
+                'disconnect'
+            [Locals+Names]
+                'websocket'
+            [Constants]
+                None
+                'sound_settings'
+                (
+                    'type'
+                    'volume'
+                    'max_duration_seconds'
+                    'output_device_id'
+                )
+                True
+                'WebSocket beendet'
+                (
+                    'exc_info'
+                )
+            [Disassembly]
+                0       RETURN_GENERATOR                
+                2       POP_TOP                         
+                4       RESUME                          0
+                6       LOAD_GLOBAL                     0: ws_manager
+                16      LOAD_ATTR                       3: connect
+                36      LOAD_FAST                       0: websocket
+                38      CALL                            1
+                46      GET_AWAITABLE                   0
+                48      LOAD_CONST                      0: None
+                50      SEND                            3 (to 58)
+                54      YIELD_VALUE                     2
+                56      RESUME                          3
+                58      JUMP_BACKWARD_NO_INTERRUPT      5 (to 50)
+                60      END_SEND                        
+                62      POP_TOP                         
+                64      NOP                             
+                66      LOAD_FAST                       0: websocket
+                68      LOAD_ATTR                       5: send_json
+                88      LOAD_GLOBAL                     6: time_manager
+                98      LOAD_ATTR                       9: snapshot
+                118     CALL                            0
+                126     GET_AWAITABLE                   0
+                128     LOAD_CONST                      0: None
+                130     SEND                            3 (to 138)
+                134     YIELD_VALUE                     4
+                136     RESUME                          3
+                138     JUMP_BACKWARD_NO_INTERRUPT      5 (to 130)
+                140     END_SEND                        
+                142     CALL                            1
+                150     GET_AWAITABLE                   0
+                152     LOAD_CONST                      0: None
+                154     SEND                            3 (to 162)
+                158     YIELD_VALUE                     4
+                160     RESUME                          3
+                162     JUMP_BACKWARD_NO_INTERRUPT      5 (to 154)
+                164     END_SEND                        
+                166     POP_TOP                         
+                168     LOAD_GLOBAL                     10: sound_manager
+                178     POP_JUMP_IF_FALSE               72 (to 324)
+                180     LOAD_FAST                       0: websocket
+                182     LOAD_ATTR                       5: send_json
+                202     LOAD_CONST                      1: 'sound_settings'
+                204     LOAD_GLOBAL                     10: sound_manager
+                214     LOAD_ATTR                       12: volume
+                234     LOAD_GLOBAL                     10: sound_manager
+                244     LOAD_ATTR                       14: max_duration_seconds
+                264     LOAD_GLOBAL                     10: sound_manager
+                274     LOAD_ATTR                       16: output_device_id
+                294     LOAD_CONST                      2: ('type', 'volume', 'max_duration_seconds', 'output_device_id')
+                296     BUILD_CONST_KEY_MAP             4
+                298     CALL                            1
+                306     GET_AWAITABLE                   0
+                308     LOAD_CONST                      0: None
+                310     SEND                            3 (to 318)
+                314     YIELD_VALUE                     4
+                316     RESUME                          3
+                318     JUMP_BACKWARD_NO_INTERRUPT      5 (to 310)
+                320     END_SEND                        
+                322     POP_TOP                         
+                324     LOAD_FAST                       0: websocket
+                326     LOAD_ATTR                       19: receive_text
+                346     CALL                            0
+                354     GET_AWAITABLE                   0
+                356     LOAD_CONST                      0: None
+                358     SEND                            3 (to 366)
+                362     YIELD_VALUE                     4
+                364     RESUME                          3
+                366     JUMP_BACKWARD_NO_INTERRUPT      5 (to 358)
+                368     END_SEND                        
+                370     POP_TOP                         
+                372     JUMP_BACKWARD                   25 (to 324)
+                374     CLEANUP_THROW                   
+                376     JUMP_BACKWARD                   159 (to 60)
+                378     CLEANUP_THROW                   
+                380     JUMP_BACKWARD                   121 (to 140)
+                382     CLEANUP_THROW                   
+                384     JUMP_BACKWARD                   111 (to 164)
+                386     CLEANUP_THROW                   
+                388     JUMP_BACKWARD                   35 (to 320)
+                390     CLEANUP_THROW                   
+                392     JUMP_BACKWARD                   13 (to 368)
+                394     PUSH_EXC_INFO                   
+                396     LOAD_GLOBAL                     20: WebSocketDisconnect
+                406     CHECK_EXC_MATCH                 
+                408     POP_JUMP_IF_FALSE               3 (to 416)
+                410     POP_TOP                         
+                412     POP_EXCEPT                      
+                414     JUMP_FORWARD                    37 (to 490)
+                416     LOAD_GLOBAL                     22: Exception
+                426     CHECK_EXC_MATCH                 
+                428     POP_JUMP_IF_FALSE               26 (to 482)
+                430     POP_TOP                         
+                432     LOAD_GLOBAL                     24: log
+                442     LOAD_ATTR                       27: debug
+                462     LOAD_CONST                      4: 'WebSocket beendet'
+                464     LOAD_CONST                      3: True
+                466     KW_NAMES                        5: ('exc_info',)
+                468     CALL                            2
+                476     POP_TOP                         
+                478     POP_EXCEPT                      
+                480     JUMP_FORWARD                    4 (to 490)
+                482     RERAISE                         0
+                484     COPY                            3
+                486     POP_EXCEPT                      
+                488     RERAISE                         1
+                490     LOAD_GLOBAL                     0: ws_manager
+                500     LOAD_ATTR                       29: disconnect
+                520     LOAD_FAST                       0: websocket
+                522     CALL                            1
+                530     GET_AWAITABLE                   0
+                532     LOAD_CONST                      0: None
+                534     SEND                            4 (to 544)
+                538     YIELD_VALUE                     2
+                540     RESUME                          3
+                542     JUMP_BACKWARD_NO_INTERRUPT      5 (to 534)
+                544     CLEANUP_THROW                   
+                546     END_SEND                        
+                548     POP_TOP                         
+                550     RETURN_CONST                    0: None
+                552     PUSH_EXC_INFO                   
+                554     LOAD_GLOBAL                     0: ws_manager
+                564     LOAD_ATTR                       29: disconnect
+                584     LOAD_FAST                       0: websocket
+                586     CALL                            1
+                594     GET_AWAITABLE                   0
+                596     LOAD_CONST                      0: None
+                598     SEND                            4 (to 608)
+                602     YIELD_VALUE                     3
+                604     RESUME                          3
+                606     JUMP_BACKWARD_NO_INTERRUPT      5 (to 598)
+                608     CLEANUP_THROW                   
+                610     END_SEND                        
+                612     POP_TOP                         
+                614     RERAISE                         0
+                616     COPY                            3
+                618     POP_EXCEPT                      
+                620     RERAISE                         1
+                622     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                624     RERAISE                         1
+            [Exception Table]
+                4 to 54 -> 622 [0] lasti
+                54 to 56 -> 374 [2] 
+                56 to 64 -> 622 [0] lasti
+                66 to 134 -> 394 [0] 
+                134 to 136 -> 378 [4] 
+                136 to 158 -> 394 [0] 
+                158 to 160 -> 382 [2] 
+                160 to 314 -> 394 [0] 
+                314 to 316 -> 386 [2] 
+                316 to 362 -> 394 [0] 
+                362 to 364 -> 390 [2] 
+                364 to 374 -> 394 [0] 
+                374 to 376 -> 622 [0] lasti
+                378 to 380 -> 394 [0] 
+                382 to 384 -> 394 [0] 
+                386 to 388 -> 394 [0] 
+                390 to 392 -> 394 [0] 
+                394 to 412 -> 484 [1] lasti
+                412 to 416 -> 552 [0] 
+                416 to 478 -> 484 [1] lasti
+                478 to 482 -> 552 [0] 
+                482 to 484 -> 484 [1] lasti
+                484 to 490 -> 552 [0] 
+                490 to 538 -> 622 [0] lasti
+                538 to 540 -> 544 [2] 
+                540 to 552 -> 622 [0] lasti
+                552 to 602 -> 616 [1] lasti
+                602 to 604 -> 608 [4] 
+                604 to 616 -> 616 [1] lasti
+                616 to 622 -> 622 [0] lasti
+        [Code]
+            File Name: main.py
+            Object Name: main
+            Qualified Name: main
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 9
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'config'
+                'server'
+                'env_str'
+                'str'
+                'get'
+                'env_int'
+                'int'
+                'uvicorn'
+                'run'
+                'app'
+            [Locals+Names]
+                'server'
+                'host'
+                'port'
+                'log_level'
+            [Constants]
+                None
+                'SERVER_HOST'
+                'host'
+                '127.0.0.1'
+                'SERVER_PORT'
+                'port'
+                8000
+                'SERVER_LOG_LEVEL'
+                'log_level'
+                'info'
+                False
+                (
+                    'host'
+                    'port'
+                    'log_level'
+                    'reload'
+                    'log_config'
+                    'access_log'
+                )
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     0: config
+                12      LOAD_ATTR                       2: server
+                32      STORE_FAST                      0: server
+                34      LOAD_GLOBAL                     5: NULL + env_str
+                44      LOAD_CONST                      1: 'SERVER_HOST'
+                46      LOAD_GLOBAL                     7: NULL + str
+                56      LOAD_FAST                       0: server
+                58      LOAD_ATTR                       9: get
+                78      LOAD_CONST                      2: 'host'
+                80      LOAD_CONST                      3: '127.0.0.1'
+                82      CALL                            2
+                90      CALL                            1
+                98      CALL                            2
+                106     STORE_FAST                      1: host
+                108     LOAD_GLOBAL                     11: NULL + env_int
+                118     LOAD_CONST                      4: 'SERVER_PORT'
+                120     LOAD_GLOBAL                     13: NULL + int
+                130     LOAD_FAST                       0: server
+                132     LOAD_ATTR                       9: get
+                152     LOAD_CONST                      5: 'port'
+                154     LOAD_CONST                      6: 8000
+                156     CALL                            2
+                164     CALL                            1
+                172     CALL                            2
+                180     STORE_FAST                      2: port
+                182     LOAD_GLOBAL                     5: NULL + env_str
+                192     LOAD_CONST                      7: 'SERVER_LOG_LEVEL'
+                194     LOAD_GLOBAL                     7: NULL + str
+                204     LOAD_FAST                       0: server
+                206     LOAD_ATTR                       9: get
+                226     LOAD_CONST                      8: 'log_level'
+                228     LOAD_CONST                      9: 'info'
+                230     CALL                            2
+                238     CALL                            1
+                246     CALL                            2
+                254     STORE_FAST                      3: log_level
+                256     LOAD_GLOBAL                     15: NULL + uvicorn
+                266     LOAD_ATTR                       16: run
+                286     LOAD_GLOBAL                     18: app
+                296     LOAD_FAST                       1: host
+                298     LOAD_FAST                       2: port
+                300     LOAD_FAST                       3: log_level
+                302     LOAD_CONST                      10: False
+                304     LOAD_CONST                      0: None
+                306     LOAD_CONST                      10: False
+                308     KW_NAMES                        11: ('host', 'port', 'log_level', 'reload', 'log_config', 'access_log')
+                310     CALL                            7
+                318     POP_TOP                         
+                320     RETURN_CONST                    0: None
+            [Exception Table]
+        '__main__'
+        (
+            'return'
+            'Path'
+        )
+        (
+            'src'
+            'Path'
+            'dst'
+            'Path'
+            'return'
+            'None'
+        )
+        (
+            'root'
+            'Path'
+            'bundle_root'
+            'Path'
+            'return'
+            'None'
+        )
+        (
+            'return'
+            'None'
+        )
+        (
+            'name'
+            'str'
+            'default'
+            'bool'
+            'return'
+            'bool'
+        )
+        (
+            'name'
+            'str'
+            'default'
+            'int'
+            'return'
+            'int'
+        )
+        (
+            'name'
+            'str'
+            'default'
+            'float'
+            'return'
+            'float'
+        )
+        (
+            ''
+        )
+        (
+            'name'
+            'str'
+            'default'
+            'str'
+            'return'
+            'str'
+        )
+        (
+            'auto'
+        )
+        (
+            'name'
+            'str'
+            'default'
+            'bool | str'
+            'return'
+            'bool | str'
+        )
+        (
+            None
+        )
+        (
+            'name'
+            'str'
+            'default'
+            'list[int] | None'
+            'return'
+            'list[int]'
+        )
+        (
+            'app'
+            'FastAPI'
+        )
+        (
+            'TestUser'
+            10
+            ''
+        )
+        (
+            'event_type'
+            'str'
+            'username'
+            'str'
+            'amount'
+            'float'
+            'message'
+            'str'
+        )
+        (
+            'API'
+        )
+        (
+            'url'
+            'str'
+            'username'
+            'str'
+        )
+        (
+            'websocket'
+            'WebSocket'
+        )
+    [Disassembly]
+        0       RESUME                          0
+        2       SETUP_ANNOTATIONS               
+        4       LOAD_CONST                      0: 0
+        6       LOAD_CONST                      1: ('annotations',)
+        8       IMPORT_NAME                     0: __future__
+        10      IMPORT_FROM                     1: annotations
+        12      STORE_NAME                      1: annotations
+        14      POP_TOP                         
+        16      LOAD_CONST                      0: 0
+        18      LOAD_CONST                      2: None
+        20      IMPORT_NAME                     2: logging
+        22      STORE_NAME                      2: logging
+        24      LOAD_CONST                      0: 0
+        26      LOAD_CONST                      2: None
+        28      IMPORT_NAME                     3: os
+        30      STORE_NAME                      3: os
+        32      LOAD_CONST                      0: 0
+        34      LOAD_CONST                      2: None
+        36      IMPORT_NAME                     4: sys
+        38      STORE_NAME                      4: sys
+        40      LOAD_CONST                      0: 0
+        42      LOAD_CONST                      3: ('asynccontextmanager',)
+        44      IMPORT_NAME                     5: contextlib
+        46      IMPORT_FROM                     6: asynccontextmanager
+        48      STORE_NAME                      6: asynccontextmanager
+        50      POP_TOP                         
+        52      LOAD_CONST                      0: 0
+        54      LOAD_CONST                      4: ('Path',)
+        56      IMPORT_NAME                     7: pathlib
+        58      IMPORT_FROM                     8: Path
+        60      STORE_NAME                      8: Path
+        62      POP_TOP                         
+        64      LOAD_CONST                      0: 0
+        66      LOAD_CONST                      5: ('Any',)
+        68      IMPORT_NAME                     9: typing
+        70      IMPORT_FROM                     10: Any
+        72      STORE_NAME                      10: Any
+        74      POP_TOP                         
+        76      LOAD_CONST                      0: 0
+        78      LOAD_CONST                      2: None
+        80      IMPORT_NAME                     11: uvicorn
+        82      STORE_NAME                      11: uvicorn
+        84      LOAD_CONST                      0: 0
+        86      LOAD_CONST                      6: ('FastAPI', 'WebSocket', 'WebSocketDisconnect')
+        88      IMPORT_NAME                     12: fastapi
+        90      IMPORT_FROM                     13: FastAPI
+        92      STORE_NAME                      13: FastAPI
+        94      IMPORT_FROM                     14: WebSocket
+        96      STORE_NAME                      14: WebSocket
+        98      IMPORT_FROM                     15: WebSocketDisconnect
+        100     STORE_NAME                      15: WebSocketDisconnect
+        102     POP_TOP                         
+        104     LOAD_CONST                      0: 0
+        106     LOAD_CONST                      7: ('FileResponse', 'JSONResponse')
+        108     IMPORT_NAME                     16: fastapi.responses
+        110     IMPORT_FROM                     17: FileResponse
+        112     STORE_NAME                      17: FileResponse
+        114     IMPORT_FROM                     18: JSONResponse
+        116     STORE_NAME                      18: JSONResponse
+        118     POP_TOP                         
+        120     LOAD_CONST                      0: 0
+        122     LOAD_CONST                      8: ('StaticFiles',)
+        124     IMPORT_NAME                     19: fastapi.staticfiles
+        126     IMPORT_FROM                     20: StaticFiles
+        128     STORE_NAME                      20: StaticFiles
+        130     POP_TOP                         
+        132     LOAD_CONST                      0: 0
+        134     LOAD_CONST                      9: ('Config', 'load_config')
+        136     IMPORT_NAME                     21: backend.config
+        138     IMPORT_FROM                     22: Config
+        140     STORE_NAME                      22: Config
+        142     IMPORT_FROM                     23: load_config
+        144     STORE_NAME                      23: load_config
+        146     POP_TOP                         
+        148     LOAD_CONST                      0: 0
+        150     LOAD_CONST                      10: ('DiscordEmergencyBot',)
+        152     IMPORT_NAME                     24: backend.discord_bot
+        154     IMPORT_FROM                     25: DiscordEmergencyBot
+        156     STORE_NAME                      25: DiscordEmergencyBot
+        158     POP_TOP                         
+        160     LOAD_CONST                      0: 0
+        162     LOAD_CONST                      11: ('DonationEvent', 'EventDispatcher', 'SoundManager')
+        164     IMPORT_NAME                     26: backend.events
+        166     IMPORT_FROM                     27: DonationEvent
+        168     STORE_NAME                      27: DonationEvent
+        170     IMPORT_FROM                     28: EventDispatcher
+        172     STORE_NAME                      28: EventDispatcher
+        174     IMPORT_FROM                     29: SoundManager
+        176     STORE_NAME                      29: SoundManager
+        178     POP_TOP                         
+        180     LOAD_CONST                      0: 0
+        182     LOAD_CONST                      12: ('MinecraftLogScanner',)
+        184     IMPORT_NAME                     30: backend.minecraft
+        186     IMPORT_FROM                     31: MinecraftLogScanner
+        188     STORE_NAME                      31: MinecraftLogScanner
+        190     POP_TOP                         
+        192     LOAD_CONST                      0: 0
+        194     LOAD_CONST                      13: ('TimeManager',)
+        196     IMPORT_NAME                     32: backend.time_manager
+        198     IMPORT_FROM                     33: TimeManager
+        200     STORE_NAME                      33: TimeManager
+        202     POP_TOP                         
+        204     LOAD_CONST                      0: 0
+        206     LOAD_CONST                      14: ('TwitchEventSubClient',)
+        208     IMPORT_NAME                     34: backend.twitch
+        210     IMPORT_FROM                     35: TwitchEventSubClient
+        212     STORE_NAME                      35: TwitchEventSubClient
+        214     POP_TOP                         
+        216     LOAD_CONST                      0: 0
+        218     LOAD_CONST                      15: ('WebSocketManager',)
+        220     IMPORT_NAME                     36: backend.websocket_manager
+        222     IMPORT_FROM                     37: WebSocketManager
+        224     STORE_NAME                      37: WebSocketManager
+        226     POP_TOP                         
+        228     LOAD_CONST                      150: ('return', 'Path')
+        230     LOAD_CONST                      16: <CODE> get_app_root
+        232     MAKE_FUNCTION                   4
+        234     STORE_NAME                      38: get_app_root
+        236     LOAD_CONST                      150: ('return', 'Path')
+        238     LOAD_CONST                      17: <CODE> get_bundle_root
+        240     MAKE_FUNCTION                   4
+        242     STORE_NAME                      39: get_bundle_root
+        244     LOAD_CONST                      151: ('src', 'Path', 'dst', 'Path', 'return', 'None')
+        246     LOAD_CONST                      18: <CODE> copy_missing_tree
+        248     MAKE_FUNCTION                   4
+        250     STORE_NAME                      40: copy_missing_tree
+        252     LOAD_CONST                      151: ('src', 'Path', 'dst', 'Path', 'return', 'None')
+        254     LOAD_CONST                      19: <CODE> copy_missing_file
+        256     MAKE_FUNCTION                   4
+        258     STORE_NAME                      41: copy_missing_file
+        260     LOAD_CONST                      152: ('root', 'Path', 'bundle_root', 'Path', 'return', 'None')
+        262     LOAD_CONST                      20: <CODE> ensure_runtime_files
+        264     MAKE_FUNCTION                   4
+        266     STORE_NAME                      42: ensure_runtime_files
+        268     PUSH_NULL                       
+        270     LOAD_NAME                       38: get_app_root
+        272     CALL                            0
+        280     STORE_NAME                      43: ROOT
+        282     PUSH_NULL                       
+        284     LOAD_NAME                       39: get_bundle_root
+        286     CALL                            0
+        294     STORE_NAME                      44: BUNDLE_ROOT
+        296     PUSH_NULL                       
+        298     LOAD_NAME                       42: ensure_runtime_files
+        300     LOAD_NAME                       43: ROOT
+        302     LOAD_NAME                       44: BUNDLE_ROOT
+        304     CALL                            2
+        312     POP_TOP                         
+        314     PUSH_NULL                       
+        316     LOAD_NAME                       45: str
+        318     LOAD_NAME                       43: ROOT
+        320     CALL                            1
+        328     LOAD_NAME                       3: os
+        330     LOAD_ATTR                       92: environ
+        350     LOAD_CONST                      21: 'OVERLAY_RUNTIME_DIR'
+        352     STORE_SUBSCR                    
+        356     LOAD_NAME                       43: ROOT
+        358     LOAD_CONST                      22: 'frontend'
+        360     BINARY_OP                       11 (/)
+        364     STORE_NAME                      47: FRONTEND_DIR
+        366     LOAD_NAME                       43: ROOT
+        368     LOAD_CONST                      23: 'assets'
+        370     BINARY_OP                       11 (/)
+        374     STORE_NAME                      48: ASSETS_DIR
+        376     LOAD_NAME                       43: ROOT
+        378     LOAD_CONST                      24: 'logs'
+        380     BINARY_OP                       11 (/)
+        384     STORE_NAME                      49: LOG_DIR
+        386     LOAD_NAME                       49: LOG_DIR
+        388     LOAD_ATTR                       101: mkdir
+        408     LOAD_CONST                      25: True
+        410     LOAD_CONST                      25: True
+        412     KW_NAMES                        26: ('parents', 'exist_ok')
+        414     CALL                            2
+        422     POP_TOP                         
+        424     PUSH_NULL                       
+        426     LOAD_NAME                       2: logging
+        428     LOAD_ATTR                       102: FileHandler
+        448     LOAD_NAME                       49: LOG_DIR
+        450     LOAD_CONST                      27: 'overlay.log'
+        452     BINARY_OP                       11 (/)
+        456     LOAD_CONST                      28: 'utf-8'
+        458     KW_NAMES                        29: ('encoding',)
+        460     CALL                            2
+        468     STORE_NAME                      52: _file_handler
+        470     LOAD_NAME                       52: _file_handler
+        472     LOAD_ATTR                       107: setFormatter
+        492     PUSH_NULL                       
+        494     LOAD_NAME                       2: logging
+        496     LOAD_ATTR                       108: Formatter
+        516     LOAD_CONST                      30: '%(asctime)s | %(levelname)-8s | %(name)s | %(message)s'
+        518     CALL                            1
+        526     CALL                            1
+        534     POP_TOP                         
+        536     PUSH_NULL                       
+        538     LOAD_NAME                       2: logging
+        540     LOAD_ATTR                       110: getLogger
+        560     CALL                            0
+        568     LOAD_ATTR                       113: addHandler
+        588     LOAD_NAME                       52: _file_handler
+        590     CALL                            1
+        598     POP_TOP                         
+        600     PUSH_NULL                       
+        602     LOAD_NAME                       2: logging
+        604     LOAD_ATTR                       114: basicConfig
+        624     LOAD_NAME                       2: logging
+        626     LOAD_ATTR                       116: INFO
+        646     LOAD_CONST                      30: '%(asctime)s | %(levelname)-8s | %(name)s | %(message)s'
+        648     KW_NAMES                        31: ('level', 'format')
+        650     CALL                            2
+        658     POP_TOP                         
+        660     PUSH_NULL                       
+        662     LOAD_NAME                       2: logging
+        664     LOAD_ATTR                       110: getLogger
+        684     LOAD_CONST                      32: 'overlay'
+        686     CALL                            1
+        694     STORE_NAME                      59: log
+        696     PUSH_NULL                       
+        698     LOAD_BUILD_CLASS                
+        700     LOAD_CONST                      33: <CODE> _SafeNullStream
+        702     MAKE_FUNCTION                   0
+        704     LOAD_CONST                      34: '_SafeNullStream'
+        706     CALL                            2
+        714     STORE_NAME                      60: _SafeNullStream
+        716     LOAD_CONST                      153: ('return', 'None')
+        718     LOAD_CONST                      35: <CODE> ensure_stdio_for_noconsole
+        720     MAKE_FUNCTION                   4
+        722     STORE_NAME                      61: ensure_stdio_for_noconsole
+        724     PUSH_NULL                       
+        726     LOAD_NAME                       61: ensure_stdio_for_noconsole
+        728     CALL                            0
+        736     POP_TOP                         
+        738     LOAD_CONST                      153: ('return', 'None')
+        740     LOAD_CONST                      36: <CODE> configure_ssl_certificates
+        742     MAKE_FUNCTION                   4
+        744     STORE_NAME                      62: configure_ssl_certificates
+        746     PUSH_NULL                       
+        748     LOAD_NAME                       62: configure_ssl_certificates
+        750     CALL                            0
+        758     POP_TOP                         
+        760     LOAD_CONST                      154: ('name', 'str', 'default', 'bool', 'return', 'bool')
+        762     LOAD_CONST                      37: <CODE> env_bool
+        764     MAKE_FUNCTION                   4
+        766     STORE_NAME                      63: env_bool
+        768     LOAD_CONST                      155: ('name', 'str', 'default', 'int', 'return', 'int')
+        770     LOAD_CONST                      38: <CODE> env_int
+        772     MAKE_FUNCTION                   4
+        774     STORE_NAME                      64: env_int
+        776     LOAD_CONST                      156: ('name', 'str', 'default', 'float', 'return', 'float')
+        778     LOAD_CONST                      39: <CODE> env_float
+        780     MAKE_FUNCTION                   4
+        782     STORE_NAME                      65: env_float
+        784     LOAD_CONST                      157: ('',)
+        786     LOAD_CONST                      158: ('name', 'str', 'default', 'str', 'return', 'str')
+        788     LOAD_CONST                      41: <CODE> env_str
+        790     MAKE_FUNCTION                   5
+        792     STORE_NAME                      66: env_str
+        794     LOAD_CONST                      159: ('auto',)
+        796     LOAD_CONST                      160: ('name', 'str', 'default', 'bool | str', 'return', 'bool | str')
+        798     LOAD_CONST                      43: <CODE> env_bool_auto
+        800     MAKE_FUNCTION                   5
+        802     STORE_NAME                      67: env_bool_auto
+        804     LOAD_CONST                      161: (None,)
+        806     LOAD_CONST                      162: ('name', 'str', 'default', 'list[int] | None', 'return', 'list[int]')
+        808     LOAD_CONST                      44: <CODE> env_int_list
+        810     MAKE_FUNCTION                   5
+        812     STORE_NAME                      68: env_int_list
+        814     PUSH_NULL                       
+        816     LOAD_NAME                       23: load_config
+        818     LOAD_NAME                       43: ROOT
+        820     LOAD_CONST                      45: 'config.json'
+        822     BINARY_OP                       11 (/)
+        826     CALL                            1
+        834     STORE_NAME                      69: config
+        836     LOAD_CONST                      46: 'Config'
+        838     LOAD_NAME                       70: __annotations__
+        840     LOAD_CONST                      47: 'config'
+        842     STORE_SUBSCR                    
+        846     PUSH_NULL                       
+        848     LOAD_NAME                       71: dict
+        850     LOAD_NAME                       69: config
+        852     LOAD_ATTR                       144: multipliers
+        872     CALL                            1
+        880     STORE_NAME                      73: runtime_multipliers
+        882     LOAD_CONST                      48: 'seconds_per_follow'
+        884     LOAD_CONST                      49: 'seconds_per_bit'
+        886     LOAD_CONST                      50: 'seconds_per_sub'
+        888     LOAD_CONST                      51: 'seconds_per_tier2_sub'
+        890     LOAD_CONST                      52: 'seconds_per_tier3_sub'
+        892     LOAD_CONST                      53: 'seconds_per_gift_sub'
+        894     LOAD_CONST                      54: 'seconds_per_ingame_dollar'
+        896     LOAD_CONST                      55: ('SECONDS_PER_FOLLOW', 'SECONDS_PER_BIT', 'SECONDS_PER_SUB', 'SECONDS_PER_TIER2_SUB', 'SECONDS_PER_TIER3_SUB', 'SECONDS_PER_GIFT_SUB', 'SECONDS_PER_INGAME_DOLLAR')
+        898     BUILD_CONST_KEY_MAP             7
+        900     LOAD_ATTR                       149: items
+        920     CALL                            0
+        928     GET_ITER                        
+        930     FOR_ITER                        60 (to 1052)
+        934     UNPACK_SEQUENCE                 2
+        938     STORE_NAME                      75: env_name
+        940     STORE_NAME                      76: key
+        942     PUSH_NULL                       
+        944     LOAD_NAME                       3: os
+        946     LOAD_ATTR                       154: getenv
+        966     LOAD_NAME                       75: env_name
+        968     CALL                            1
+        976     LOAD_CONST                      56: (None, '')
+        978     CONTAINS_OP                     1 (not in)
+        980     POP_JUMP_IF_TRUE                1 (to 984)
+        982     JUMP_BACKWARD                   27 (to 930)
+        984     PUSH_NULL                       
+        986     LOAD_NAME                       65: env_float
+        988     LOAD_NAME                       75: env_name
+        990     PUSH_NULL                       
+        992     LOAD_NAME                       78: float
+        994     LOAD_NAME                       73: runtime_multipliers
+        996     LOAD_ATTR                       159: get
+        1016    LOAD_NAME                       76: key
+        1018    LOAD_CONST                      0: 0
+        1020    CALL                            2
+        1028    CALL                            1
+        1036    CALL                            2
+        1044    LOAD_NAME                       73: runtime_multipliers
+        1046    LOAD_NAME                       76: key
+        1048    STORE_SUBSCR                    
+        1052    JUMP_BACKWARD                   62 (to 930)
+        1054    END_FOR                         
+        1056    PUSH_NULL                       
+        1058    LOAD_NAME                       71: dict
+        1060    LOAD_NAME                       69: config
+        1062    LOAD_ATTR                       160: raw
+        1082    LOAD_ATTR                       159: get
+        1102    LOAD_CONST                      57: 'sound'
+        1104    BUILD_MAP                       0
+        1106    CALL                            2
+        1114    CALL                            1
+        1122    STORE_NAME                      81: sound_cfg
+        1124    PUSH_NULL                       
+        1126    LOAD_NAME                       63: env_bool
+        1128    LOAD_CONST                      58: 'SOUND_ENABLED'
+        1130    PUSH_NULL                       
+        1132    LOAD_NAME                       82: bool
+        1134    LOAD_NAME                       81: sound_cfg
+        1136    LOAD_ATTR                       159: get
+        1156    LOAD_CONST                      59: 'enabled'
+        1158    LOAD_CONST                      25: True
+        1160    CALL                            2
+        1168    CALL                            1
+        1176    CALL                            2
+        1184    LOAD_NAME                       81: sound_cfg
+        1186    LOAD_CONST                      59: 'enabled'
+        1188    STORE_SUBSCR                    
+        1192    PUSH_NULL                       
+        1194    LOAD_NAME                       64: env_int
+        1196    LOAD_CONST                      60: 'SOUND_MIN_BITS_FOR_YOUTUBE'
+        1198    PUSH_NULL                       
+        1200    LOAD_NAME                       83: int
+        1202    LOAD_NAME                       81: sound_cfg
+        1204    LOAD_ATTR                       159: get
+        1224    LOAD_CONST                      61: 'min_bits_for_youtube'
+        1226    LOAD_CONST                      62: 10
+        1228    CALL                            2
+        1236    CALL                            1
+        1244    CALL                            2
+        1252    LOAD_NAME                       81: sound_cfg
+        1254    LOAD_CONST                      61: 'min_bits_for_youtube'
+        1256    STORE_SUBSCR                    
+        1260    PUSH_NULL                       
+        1262    LOAD_NAME                       64: env_int
+        1264    LOAD_CONST                      63: 'SOUND_MAX_DURATION_SECONDS'
+        1266    PUSH_NULL                       
+        1268    LOAD_NAME                       83: int
+        1270    LOAD_NAME                       81: sound_cfg
+        1272    LOAD_ATTR                       159: get
+        1292    LOAD_CONST                      64: 'max_duration_seconds'
+        1294    LOAD_CONST                      65: 120
+        1296    CALL                            2
+        1304    CALL                            1
+        1312    CALL                            2
+        1320    LOAD_NAME                       81: sound_cfg
+        1322    LOAD_CONST                      64: 'max_duration_seconds'
+        1324    STORE_SUBSCR                    
+        1328    PUSH_NULL                       
+        1330    LOAD_NAME                       65: env_float
+        1332    LOAD_CONST                      66: 'SOUND_VOLUME'
+        1334    PUSH_NULL                       
+        1336    LOAD_NAME                       78: float
+        1338    LOAD_NAME                       81: sound_cfg
+        1340    LOAD_ATTR                       159: get
+        1360    LOAD_CONST                      67: 'volume'
+        1362    LOAD_CONST                      68: 0.75
+        1364    CALL                            2
+        1372    CALL                            1
+        1380    CALL                            2
+        1388    LOAD_NAME                       81: sound_cfg
+        1390    LOAD_CONST                      67: 'volume'
+        1392    STORE_SUBSCR                    
+        1396    PUSH_NULL                       
+        1398    LOAD_NAME                       66: env_str
+        1400    LOAD_CONST                      69: 'SOUND_OUTPUT_DEVICE_ID'
+        1402    PUSH_NULL                       
+        1404    LOAD_NAME                       45: str
+        1406    LOAD_NAME                       81: sound_cfg
+        1408    LOAD_ATTR                       159: get
+        1428    LOAD_CONST                      70: 'output_device_id'
+        1430    LOAD_CONST                      40: ''
+        1432    CALL                            2
+        1440    CALL                            1
+        1448    CALL                            2
+        1456    LOAD_NAME                       81: sound_cfg
+        1458    LOAD_CONST                      70: 'output_device_id'
+        1460    STORE_SUBSCR                    
+        1464    PUSH_NULL                       
+        1466    LOAD_NAME                       66: env_str
+        1468    LOAD_CONST                      71: 'SOUND_PLAYBACK_MODE'
+        1470    PUSH_NULL                       
+        1472    LOAD_NAME                       45: str
+        1474    LOAD_NAME                       81: sound_cfg
+        1476    LOAD_ATTR                       159: get
+        1496    LOAD_CONST                      72: 'playback_mode'
+        1498    LOAD_CONST                      73: 'python_audio_obs_video'
+        1500    CALL                            2
+        1508    CALL                            1
+        1516    CALL                            2
+        1524    LOAD_NAME                       81: sound_cfg
+        1526    LOAD_CONST                      72: 'playback_mode'
+        1528    STORE_SUBSCR                    
+        1532    PUSH_NULL                       
+        1534    LOAD_NAME                       66: env_str
+        1536    LOAD_CONST                      74: 'MPV_PATH'
+        1538    PUSH_NULL                       
+        1540    LOAD_NAME                       45: str
+        1542    LOAD_NAME                       81: sound_cfg
+        1544    LOAD_ATTR                       159: get
+        1564    LOAD_CONST                      75: 'mpv_path'
+        1566    LOAD_CONST                      76: 'mpv'
+        1568    CALL                            2
+        1576    CALL                            1
+        1584    CALL                            2
+        1592    LOAD_NAME                       81: sound_cfg
+        1594    LOAD_CONST                      75: 'mpv_path'
+        1596    STORE_SUBSCR                    
+        1600    PUSH_NULL                       
+        1602    LOAD_NAME                       66: env_str
+        1604    LOAD_CONST                      77: 'YTDLP_PATH'
+        1606    PUSH_NULL                       
+        1608    LOAD_NAME                       45: str
+        1610    LOAD_NAME                       81: sound_cfg
+        1612    LOAD_ATTR                       159: get
+        1632    LOAD_CONST                      78: 'ytdlp_path'
+        1634    LOAD_CONST                      40: ''
+        1636    CALL                            2
+        1644    CALL                            1
+        1652    CALL                            2
+        1660    LOAD_NAME                       81: sound_cfg
+        1662    LOAD_CONST                      78: 'ytdlp_path'
+        1664    STORE_SUBSCR                    
+        1668    PUSH_NULL                       
+        1670    LOAD_NAME                       66: env_str
+        1672    LOAD_CONST                      79: 'SOUND_PLAYER'
+        1674    PUSH_NULL                       
+        1676    LOAD_NAME                       45: str
+        1678    LOAD_NAME                       81: sound_cfg
+        1680    LOAD_ATTR                       159: get
+        1700    LOAD_CONST                      80: 'player'
+        1702    LOAD_CONST                      81: 'obs'
+        1704    CALL                            2
+        1712    CALL                            1
+        1720    CALL                            2
+        1728    LOAD_NAME                       81: sound_cfg
+        1730    LOAD_CONST                      80: 'player'
+        1732    STORE_SUBSCR                    
+        1736    PUSH_NULL                       
+        1738    LOAD_NAME                       66: env_str
+        1740    LOAD_CONST                      82: 'FFPLAY_PATH'
+        1742    PUSH_NULL                       
+        1744    LOAD_NAME                       45: str
+        1746    LOAD_NAME                       81: sound_cfg
+        1748    LOAD_ATTR                       159: get
+        1768    LOAD_CONST                      83: 'ffplay_path'
+        1770    LOAD_CONST                      84: 'ffplay'
+        1772    CALL                            2
+        1780    CALL                            1
+        1788    CALL                            2
+        1796    LOAD_NAME                       81: sound_cfg
+        1798    LOAD_CONST                      83: 'ffplay_path'
+        1800    STORE_SUBSCR                    
+        1804    PUSH_NULL                       
+        1806    LOAD_NAME                       66: env_str
+        1808    LOAD_CONST                      85: 'FFMPEG_PATH'
+        1810    PUSH_NULL                       
+        1812    LOAD_NAME                       45: str
+        1814    LOAD_NAME                       81: sound_cfg
+        1816    LOAD_ATTR                       159: get
+        1836    LOAD_CONST                      86: 'ffmpeg_path'
+        1838    LOAD_CONST                      87: 'ffmpeg'
+        1840    CALL                            2
+        1848    CALL                            1
+        1856    CALL                            2
+        1864    LOAD_NAME                       81: sound_cfg
+        1866    LOAD_CONST                      86: 'ffmpeg_path'
+        1868    STORE_SUBSCR                    
+        1872    PUSH_NULL                       
+        1874    LOAD_NAME                       63: env_bool
+        1876    LOAD_CONST                      88: 'SOUND_AUTO_INSTALL_TOOLS'
+        1878    PUSH_NULL                       
+        1880    LOAD_NAME                       82: bool
+        1882    LOAD_NAME                       81: sound_cfg
+        1884    LOAD_ATTR                       159: get
+        1904    LOAD_CONST                      89: 'auto_install_tools'
+        1906    LOAD_CONST                      25: True
+        1908    CALL                            2
+        1916    CALL                            1
+        1924    CALL                            2
+        1932    LOAD_NAME                       81: sound_cfg
+        1934    LOAD_CONST                      89: 'auto_install_tools'
+        1936    STORE_SUBSCR                    
+        1940    PUSH_NULL                       
+        1942    LOAD_NAME                       66: env_str
+        1944    LOAD_CONST                      90: 'SOUND_TOOLS_DIR'
+        1946    PUSH_NULL                       
+        1948    LOAD_NAME                       45: str
+        1950    LOAD_NAME                       81: sound_cfg
+        1952    LOAD_ATTR                       159: get
+        1972    LOAD_CONST                      91: 'tools_dir'
+        1974    LOAD_CONST                      92: 'tools'
+        1976    CALL                            2
+        1984    CALL                            1
+        1992    CALL                            2
+        2000    LOAD_NAME                       81: sound_cfg
+        2002    LOAD_CONST                      91: 'tools_dir'
+        2004    STORE_SUBSCR                    
+        2008    PUSH_NULL                       
+        2010    LOAD_NAME                       71: dict
+        2012    LOAD_NAME                       69: config
+        2014    LOAD_ATTR                       168: twitch
+        2034    CALL                            1
+        2042    STORE_NAME                      85: twitch_cfg
+        2044    PUSH_NULL                       
+        2046    LOAD_NAME                       63: env_bool
+        2048    LOAD_CONST                      93: 'TWITCH_ENABLED'
+        2050    PUSH_NULL                       
+        2052    LOAD_NAME                       82: bool
+        2054    LOAD_NAME                       85: twitch_cfg
+        2056    LOAD_ATTR                       159: get
+        2076    LOAD_CONST                      59: 'enabled'
+        2078    LOAD_CONST                      94: False
+        2080    CALL                            2
+        2088    CALL                            1
+        2096    CALL                            2
+        2104    LOAD_NAME                       85: twitch_cfg
+        2106    LOAD_CONST                      59: 'enabled'
+        2108    STORE_SUBSCR                    
+        2112    LOAD_CONST                      95: 'TWITCH_CLIENT_ID'
+        2114    LOAD_NAME                       85: twitch_cfg
+        2116    LOAD_CONST                      96: 'client_id_env'
+        2118    STORE_SUBSCR                    
+        2122    LOAD_CONST                      97: 'TWITCH_USER_TOKEN'
+        2124    LOAD_NAME                       85: twitch_cfg
+        2126    LOAD_CONST                      98: 'user_token_env'
+        2128    STORE_SUBSCR                    
+        2132    PUSH_NULL                       
+        2134    LOAD_NAME                       66: env_str
+        2136    LOAD_CONST                      99: 'TWITCH_BROADCASTER_ID'
+        2138    PUSH_NULL                       
+        2140    LOAD_NAME                       45: str
+        2142    LOAD_NAME                       85: twitch_cfg
+        2144    LOAD_ATTR                       159: get
+        2164    LOAD_CONST                      100: 'broadcaster_user_id'
+        2166    LOAD_CONST                      40: ''
+        2168    CALL                            2
+        2176    CALL                            1
+        2184    CALL                            2
+        2192    LOAD_NAME                       85: twitch_cfg
+        2194    LOAD_CONST                      100: 'broadcaster_user_id'
+        2196    STORE_SUBSCR                    
+        2200    PUSH_NULL                       
+        2202    LOAD_NAME                       66: env_str
+        2204    LOAD_CONST                      101: 'TWITCH_MODERATOR_ID'
+        2206    PUSH_NULL                       
+        2208    LOAD_NAME                       45: str
+        2210    LOAD_NAME                       85: twitch_cfg
+        2212    LOAD_ATTR                       159: get
+        2232    LOAD_CONST                      102: 'moderator_user_id'
+        2234    LOAD_CONST                      40: ''
+        2236    CALL                            2
+        2244    CALL                            1
+        2252    CALL                            2
+        2260    COPY                            1
+        2262    POP_JUMP_IF_TRUE                5 (to 2274)
+        2264    POP_TOP                         
+        2266    LOAD_NAME                       85: twitch_cfg
+        2268    LOAD_CONST                      100: 'broadcaster_user_id'
+        2270    BINARY_SUBSCR                   
+        2274    LOAD_NAME                       85: twitch_cfg
+        2276    LOAD_CONST                      102: 'moderator_user_id'
+        2278    STORE_SUBSCR                    
+        2282    PUSH_NULL                       
+        2284    LOAD_NAME                       71: dict
+        2286    LOAD_NAME                       69: config
+        2288    LOAD_ATTR                       172: discord
+        2308    CALL                            1
+        2316    STORE_NAME                      87: discord_cfg
+        2318    PUSH_NULL                       
+        2320    LOAD_NAME                       45: str
+        2322    LOAD_NAME                       87: discord_cfg
+        2324    LOAD_ATTR                       159: get
+        2344    LOAD_CONST                      103: 'token'
+        2346    CALL                            1
+        2354    COPY                            1
+        2356    POP_JUMP_IF_TRUE                2 (to 2362)
+        2358    POP_TOP                         
+        2360    LOAD_CONST                      40: ''
+        2362    CALL                            1
+        2370    LOAD_ATTR                       177: strip
+        2390    CALL                            0
+        2398    STORE_NAME                      89: _config_token
+        2400    PUSH_NULL                       
+        2402    LOAD_NAME                       66: env_str
+        2404    LOAD_CONST                      104: 'DISCORD_BOT_TOKEN'
+        2406    LOAD_CONST                      40: ''
+        2408    CALL                            2
+        2416    STORE_NAME                      90: _env_token
+        2418    LOAD_NAME                       89: _config_token
+        2420    COPY                            1
+        2422    POP_JUMP_IF_TRUE                2 (to 2428)
+        2424    POP_TOP                         
+        2426    LOAD_NAME                       90: _env_token
+        2428    LOAD_NAME                       87: discord_cfg
+        2430    LOAD_CONST                      103: 'token'
+        2432    STORE_SUBSCR                    
+        2436    LOAD_CONST                      104: 'DISCORD_BOT_TOKEN'
+        2438    LOAD_NAME                       87: discord_cfg
+        2440    LOAD_CONST                      105: 'token_env'
+        2442    STORE_SUBSCR                    
+        2446    PUSH_NULL                       
+        2448    LOAD_NAME                       67: env_bool_auto
+        2450    LOAD_CONST                      106: 'DISCORD_ENABLED'
+        2452    LOAD_NAME                       87: discord_cfg
+        2454    LOAD_ATTR                       159: get
+        2474    LOAD_CONST                      59: 'enabled'
+        2476    LOAD_CONST                      42: 'auto'
+        2478    CALL                            2
+        2486    CALL                            2
+        2494    STORE_NAME                      91: _enabled_raw
+        2496    LOAD_NAME                       91: _enabled_raw
+        2498    LOAD_CONST                      42: 'auto'
+        2500    COMPARE_OP                      40 (==)
+        2504    POP_JUMP_IF_TRUE                39 (to 2584)
+        2506    PUSH_NULL                       
+        2508    LOAD_NAME                       45: str
+        2510    LOAD_NAME                       91: _enabled_raw
+        2512    CALL                            1
+        2520    LOAD_ATTR                       177: strip
+        2540    CALL                            0
+        2548    LOAD_ATTR                       185: lower
+        2568    CALL                            0
+        2576    LOAD_CONST                      42: 'auto'
+        2578    COMPARE_OP                      40 (==)
+        2582    POP_JUMP_IF_FALSE               27 (to 2638)
+        2584    PUSH_NULL                       
+        2586    LOAD_NAME                       82: bool
+        2588    LOAD_NAME                       87: discord_cfg
+        2590    LOAD_ATTR                       159: get
+        2610    LOAD_CONST                      103: 'token'
+        2612    CALL                            1
+        2620    CALL                            1
+        2628    LOAD_NAME                       87: discord_cfg
+        2630    LOAD_CONST                      59: 'enabled'
+        2632    STORE_SUBSCR                    
+        2636    JUMP_FORWARD                    11 (to 2660)
+        2638    PUSH_NULL                       
+        2640    LOAD_NAME                       82: bool
+        2642    LOAD_NAME                       91: _enabled_raw
+        2644    CALL                            1
+        2652    LOAD_NAME                       87: discord_cfg
+        2654    LOAD_CONST                      59: 'enabled'
+        2656    STORE_SUBSCR                    
+        2660    PUSH_NULL                       
+        2662    LOAD_NAME                       66: env_str
+        2664    LOAD_CONST                      107: 'DISCORD_GUILD_ID'
+        2666    PUSH_NULL                       
+        2668    LOAD_NAME                       45: str
+        2670    LOAD_NAME                       87: discord_cfg
+        2672    LOAD_ATTR                       159: get
+        2692    LOAD_CONST                      108: 'guild_id'
+        2694    CALL                            1
+        2702    COPY                            1
+        2704    POP_JUMP_IF_TRUE                2 (to 2710)
+        2706    POP_TOP                         
+        2708    LOAD_CONST                      40: ''
+        2710    CALL                            1
+        2718    CALL                            2
+        2726    COPY                            1
+        2728    POP_JUMP_IF_TRUE                2 (to 2734)
+        2730    POP_TOP                         
+        2732    LOAD_CONST                      2: None
+        2734    LOAD_NAME                       87: discord_cfg
+        2736    LOAD_CONST                      108: 'guild_id'
+        2738    STORE_SUBSCR                    
+        2742    PUSH_NULL                       
+        2744    LOAD_NAME                       68: env_int_list
+        2746    LOAD_CONST                      109: 'DISCORD_ADMIN_USER_IDS'
+        2748    LOAD_NAME                       87: discord_cfg
+        2750    LOAD_ATTR                       159: get
+        2770    LOAD_CONST                      110: 'admin_user_ids'
+        2772    BUILD_LIST                      0
+        2774    CALL                            2
+        2782    GET_ITER                        
+        2784    LOAD_FAST_AND_CLEAR             0: x
+        2786    SWAP                            2
+        2788    BUILD_LIST                      0
+        2790    SWAP                            2
+        2792    FOR_ITER                        10 (to 2814)
+        2796    STORE_FAST                      0: x
+        2798    PUSH_NULL                       
+        2800    LOAD_NAME                       83: int
+        2802    LOAD_FAST                       0: x
+        2804    CALL                            1
+        2812    LIST_APPEND                     2
+        2814    JUMP_BACKWARD                   12 (to 2792)
+        2816    END_FOR                         
+        2818    SWAP                            2
+        2820    STORE_FAST                      0: x
+        2822    CALL                            2
+        2830    LOAD_NAME                       87: discord_cfg
+        2832    LOAD_CONST                      110: 'admin_user_ids'
+        2834    STORE_SUBSCR                    
+        2838    LOAD_NAME                       59: log
+        2840    LOAD_ATTR                       187: info
+        2860    LOAD_CONST                      111: 'Discord Config: enabled=%s token_present=%s admin_count=%d guild_id=%s'
+        2862    LOAD_NAME                       87: discord_cfg
+        2864    LOAD_CONST                      59: 'enabled'
+        2866    BINARY_SUBSCR                   
+        2870    PUSH_NULL                       
+        2872    LOAD_NAME                       82: bool
+        2874    LOAD_NAME                       87: discord_cfg
+        2876    LOAD_ATTR                       159: get
+        2896    LOAD_CONST                      103: 'token'
+        2898    CALL                            1
+        2906    CALL                            1
+        2914    PUSH_NULL                       
+        2916    LOAD_NAME                       94: len
+        2918    LOAD_NAME                       87: discord_cfg
+        2920    LOAD_CONST                      110: 'admin_user_ids'
+        2922    BINARY_SUBSCR                   
+        2926    CALL                            1
+        2934    LOAD_NAME                       87: discord_cfg
+        2936    LOAD_ATTR                       159: get
+        2956    LOAD_CONST                      108: 'guild_id'
+        2958    CALL                            1
+        2966    COPY                            1
+        2968    POP_JUMP_IF_TRUE                2 (to 2974)
+        2970    POP_TOP                         
+        2972    LOAD_CONST                      112: 'global'
+        2974    CALL                            5
+        2982    POP_TOP                         
+        2984    PUSH_NULL                       
+        2986    LOAD_NAME                       37: WebSocketManager
+        2988    CALL                            0
+        2996    STORE_NAME                      95: ws_manager
+        2998    PUSH_NULL                       
+        3000    LOAD_NAME                       33: TimeManager
+        3002    LOAD_NAME                       95: ws_manager
+        3004    PUSH_NULL                       
+        3006    LOAD_NAME                       64: env_int
+        3008    LOAD_CONST                      113: 'TIMER_INITIAL_SECONDS'
+        3010    PUSH_NULL                       
+        3012    LOAD_NAME                       83: int
+        3014    LOAD_NAME                       69: config
+        3016    LOAD_ATTR                       192: timer
+        3036    LOAD_ATTR                       159: get
+        3056    LOAD_CONST                      114: 'initial_seconds'
+        3058    LOAD_CONST                      115: 86400
+        3060    CALL                            2
+        3068    CALL                            1
+        3076    CALL                            2
+        3084    KW_NAMES                        116: ('initial_seconds',)
+        3086    CALL                            2
+        3094    STORE_NAME                      97: time_manager
+        3096    LOAD_NAME                       81: sound_cfg
+        3098    LOAD_ATTR                       159: get
+        3118    LOAD_CONST                      59: 'enabled'
+        3120    LOAD_CONST                      25: True
+        3122    CALL                            2
+        3130    POP_JUMP_IF_FALSE               9 (to 3150)
+        3132    PUSH_NULL                       
+        3134    LOAD_NAME                       29: SoundManager
+        3136    LOAD_NAME                       95: ws_manager
+        3138    LOAD_NAME                       81: sound_cfg
+        3140    CALL                            2
+        3148    JUMP_FORWARD                    1 (to 3152)
+        3150    LOAD_CONST                      2: None
+        3152    STORE_NAME                      98: sound_manager
+        3154    PUSH_NULL                       
+        3156    LOAD_NAME                       28: EventDispatcher
+        3158    LOAD_NAME                       97: time_manager
+        3160    LOAD_NAME                       95: ws_manager
+        3162    LOAD_NAME                       98: sound_manager
+        3164    CALL                            3
+        3172    STORE_NAME                      99: dispatcher
+        3174    BUILD_LIST                      0
+        3176    STORE_NAME                      100: services
+        3178    LOAD_CONST                      117: 'list[Any]'
+        3180    LOAD_NAME                       70: __annotations__
+        3182    LOAD_CONST                      118: 'services'
+        3184    STORE_SUBSCR                    
+        3188    LOAD_CONST                      2: None
+        3190    STORE_GLOBAL                    101: minecraft_scanner
+        3192    LOAD_CONST                      119: 'MinecraftLogScanner | None'
+        3194    LOAD_NAME                       70: __annotations__
+        3196    LOAD_CONST                      120: 'minecraft_scanner'
+        3198    STORE_SUBSCR                    
+        3202    LOAD_NAME                       6: asynccontextmanager
+        3204    LOAD_CONST                      163: ('app', 'FastAPI')
+        3206    LOAD_CONST                      121: <CODE> lifespan
+        3208    MAKE_FUNCTION                   4
+        3210    CALL                            0
+        3218    STORE_NAME                      102: lifespan
+        3220    PUSH_NULL                       
+        3222    LOAD_NAME                       13: FastAPI
+        3224    LOAD_CONST                      122: 'Twitch/Minecraft Overlay Backend'
+        3226    LOAD_NAME                       102: lifespan
+        3228    KW_NAMES                        123: ('title', 'lifespan')
+        3230    CALL                            2
+        3238    STORE_NAME                      103: app
+        3240    LOAD_NAME                       103: app
+        3242    LOAD_ATTR                       209: mount
+        3262    LOAD_CONST                      124: '/assets'
+        3264    PUSH_NULL                       
+        3266    LOAD_NAME                       20: StaticFiles
+        3268    LOAD_NAME                       48: ASSETS_DIR
+        3270    KW_NAMES                        125: ('directory',)
+        3272    CALL                            1
+        3280    LOAD_CONST                      23: 'assets'
+        3282    KW_NAMES                        126: ('name',)
+        3284    CALL                            3
+        3292    POP_TOP                         
+        3294    LOAD_NAME                       103: app
+        3296    LOAD_ATTR                       159: get
+        3316    LOAD_CONST                      127: '/'
+        3318    CALL                            1
+        3326    LOAD_CONST                      128: <CODE> index
+        3328    MAKE_FUNCTION                   0
+        3330    CALL                            0
+        3338    STORE_NAME                      105: index
+        3340    LOAD_NAME                       103: app
+        3342    LOAD_ATTR                       159: get
+        3362    LOAD_CONST                      129: '/timer.html'
+        3364    CALL                            1
+        3372    LOAD_CONST                      130: <CODE> timer_html
+        3374    MAKE_FUNCTION                   0
+        3376    CALL                            0
+        3384    STORE_NAME                      106: timer_html
+        3386    LOAD_NAME                       103: app
+        3388    LOAD_ATTR                       159: get
+        3408    LOAD_CONST                      131: '/alert.html'
+        3410    CALL                            1
+        3418    LOAD_CONST                      132: <CODE> alert_html
+        3420    MAKE_FUNCTION                   0
+        3422    CALL                            0
+        3430    STORE_NAME                      107: alert_html
+        3432    LOAD_NAME                       103: app
+        3434    LOAD_ATTR                       159: get
+        3454    LOAD_CONST                      133: '/sound.html'
+        3456    CALL                            1
+        3464    LOAD_CONST                      134: <CODE> sound_html
+        3466    MAKE_FUNCTION                   0
+        3468    CALL                            0
+        3476    STORE_NAME                      108: sound_html
+        3478    LOAD_NAME                       103: app
+        3480    LOAD_ATTR                       159: get
+        3500    LOAD_CONST                      135: '/test.html'
+        3502    CALL                            1
+        3510    LOAD_CONST                      136: <CODE> test_html
+        3512    MAKE_FUNCTION                   0
+        3514    CALL                            0
+        3522    STORE_NAME                      109: test_html
+        3524    LOAD_NAME                       103: app
+        3526    LOAD_ATTR                       159: get
+        3546    LOAD_CONST                      137: '/api/state'
+        3548    CALL                            1
+        3556    LOAD_CONST                      138: <CODE> state
+        3558    MAKE_FUNCTION                   0
+        3560    CALL                            0
+        3568    STORE_NAME                      110: state
+        3570    LOAD_NAME                       103: app
+        3572    LOAD_ATTR                       223: api_route
+        3592    LOAD_CONST                      139: '/api/test/{event_type}'
+        3594    LOAD_CONST                      140: 'GET'
+        3596    LOAD_CONST                      141: 'POST'
+        3598    BUILD_LIST                      2
+        3600    KW_NAMES                        142: ('methods',)
+        3602    CALL                            2
+        3610    LOAD_CONST                      164: ('TestUser', 10, '')
+        3612    LOAD_CONST                      165: ('event_type', 'str', 'username', 'str', 'amount', 'float', 'message', 'str')
+        3614    LOAD_CONST                      143: <CODE> test_event
+        3616    MAKE_FUNCTION                   5
+        3618    CALL                            0
+        3626    STORE_NAME                      112: test_event
+        3628    LOAD_NAME                       103: app
+        3630    LOAD_ATTR                       223: api_route
+        3650    LOAD_CONST                      144: '/api/sound/play'
+        3652    LOAD_CONST                      140: 'GET'
+        3654    LOAD_CONST                      141: 'POST'
+        3656    BUILD_LIST                      2
+        3658    KW_NAMES                        142: ('methods',)
+        3660    CALL                            2
+        3668    LOAD_CONST                      166: ('API',)
+        3670    LOAD_CONST                      167: ('url', 'str', 'username', 'str')
+        3672    LOAD_CONST                      145: <CODE> api_sound_play
+        3674    MAKE_FUNCTION                   5
+        3676    CALL                            0
+        3684    STORE_NAME                      113: api_sound_play
+        3686    LOAD_NAME                       103: app
+        3688    LOAD_ATTR                       229: websocket
+        3708    LOAD_CONST                      146: '/ws'
+        3710    CALL                            1
+        3718    LOAD_CONST                      168: ('websocket', 'WebSocket')
+        3720    LOAD_CONST                      147: <CODE> websocket_endpoint
+        3722    MAKE_FUNCTION                   4
+        3724    CALL                            0
+        3732    STORE_NAME                      115: websocket_endpoint
+        3734    LOAD_CONST                      153: ('return', 'None')
+        3736    LOAD_CONST                      148: <CODE> main
+        3738    MAKE_FUNCTION                   4
+        3740    STORE_NAME                      116: main
+        3742    LOAD_NAME                       117: __name__
+        3744    LOAD_CONST                      149: '__main__'
+        3746    COMPARE_OP                      40 (==)
+        3750    POP_JUMP_IF_FALSE               8 (to 3768)
+        3752    PUSH_NULL                       
+        3754    LOAD_NAME                       116: main
+        3756    CALL                            0
+        3764    POP_TOP                         
+        3766    RETURN_CONST                    2: None
+        3768    RETURN_CONST                    2: None
+        3770    SWAP                            2
+        3772    POP_TOP                         
+        3774    SWAP                            2
+        3776    STORE_FAST                      0: x
+        3778    RERAISE                         0
+    [Exception Table]
+        2788 to 2818 -> 3770 [5] 

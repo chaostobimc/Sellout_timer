@@ -1,0 +1,2422 @@
+events.pyc (Python 3.12)
+[Code]
+    File Name: backend\events.py
+    Object Name: <module>
+    Qualified Name: <module>
+    Arg Count: 0
+    Pos Only Arg Count: 0
+    KW Only Arg Count: 0
+    Stack Size: 5
+    Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+    [Names]
+        '__future__'
+        'annotations'
+        'asyncio'
+        'logging'
+        'os'
+        'platform'
+        're'
+        'shutil'
+        'subprocess'
+        'time'
+        'urllib.request'
+        'urllib'
+        'dataclasses'
+        'dataclass'
+        'pathlib'
+        'Path'
+        'typing'
+        'Any'
+        'Literal'
+        'time_manager'
+        'TimeManager'
+        'websocket_manager'
+        'WebSocketManager'
+        'getLogger'
+        '__name__'
+        'log'
+        'EventType'
+        'compile'
+        'I'
+        'YOUTUBE_RE'
+        'extract_first_youtube_url'
+        'DonationEvent'
+        'SoundManager'
+        'EventDispatcher'
+    [Locals+Names]
+    [Constants]
+        0
+        (
+            'annotations'
+        )
+        None
+        (
+            'dataclass'
+        )
+        (
+            'Path'
+        )
+        (
+            'Any'
+            'Literal'
+        )
+        1
+        (
+            'TimeManager'
+        )
+        (
+            'WebSocketManager'
+        )
+        (
+            'follow'
+            'bits'
+            'sub'
+            'gift_sub'
+            'money'
+        )
+        'https?://(?:www\\.)?(?:youtube\\.com/watch\\?[^\\s]+|youtu\\.be/[^\\s]+|youtube\\.com/shorts/[^\\s]+)'
+        [Code]
+            File Name: backend\events.py
+            Object Name: extract_first_youtube_url
+            Qualified Name: extract_first_youtube_url
+            Arg Count: 1
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'YOUTUBE_RE'
+                'search'
+                'group'
+                'rstrip'
+            [Locals+Names]
+                'text'
+                'm'
+            [Constants]
+                None
+                0
+                ').,;!?'
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_FAST                       0: text
+                4       POP_JUMP_IF_TRUE                1 (to 8)
+                6       RETURN_CONST                    0: None
+                8       LOAD_GLOBAL                     0: YOUTUBE_RE
+                18      LOAD_ATTR                       3: search
+                38      LOAD_FAST                       0: text
+                40      CALL                            1
+                48      STORE_FAST                      1: m
+                50      LOAD_FAST                       1: m
+                52      POP_JUMP_IF_TRUE                1 (to 56)
+                54      RETURN_CONST                    0: None
+                56      LOAD_FAST                       1: m
+                58      LOAD_ATTR                       5: group
+                78      LOAD_CONST                      1: 0
+                80      CALL                            1
+                88      LOAD_ATTR                       7: rstrip
+                108     LOAD_CONST                      2: ').,;!?'
+                110     CALL                            1
+                118     RETURN_VALUE                    
+            [Exception Table]
+        True
+        (
+            'frozen'
+        )
+        [Code]
+            File Name: backend\events.py
+            Object Name: DonationEvent
+            Qualified Name: DonationEvent
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+            [Names]
+                '__name__'
+                '__module__'
+                '__qualname__'
+                '__annotations__'
+                'message'
+                'tier'
+                'sound_url'
+                'to_payload'
+            [Locals+Names]
+            [Constants]
+                'DonationEvent'
+                'EventType'
+                'event_type'
+                'str'
+                'username'
+                'float'
+                'amount'
+                'unit'
+                'int'
+                'seconds_added'
+                'source'
+                ''
+                'message'
+                None
+                'str | None'
+                'tier'
+                'sound_url'
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: to_payload
+                    Qualified Name: DonationEvent.to_payload
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 10
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'event_type'
+                        'username'
+                        'amount'
+                        'unit'
+                        'seconds_added'
+                        'source'
+                        'message'
+                        'tier'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'alert'
+                        (
+                            'type'
+                            'event_type'
+                            'username'
+                            'amount'
+                            'unit'
+                            'seconds_added'
+                            'source'
+                            'message'
+                            'tier'
+                        )
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_CONST                      1: 'alert'
+                        4       LOAD_FAST                       0: self
+                        6       LOAD_ATTR                       0: event_type
+                        26      LOAD_FAST                       0: self
+                        28      LOAD_ATTR                       2: username
+                        48      LOAD_FAST                       0: self
+                        50      LOAD_ATTR                       4: amount
+                        70      LOAD_FAST                       0: self
+                        72      LOAD_ATTR                       6: unit
+                        92      LOAD_FAST                       0: self
+                        94      LOAD_ATTR                       8: seconds_added
+                        114     LOAD_FAST                       0: self
+                        116     LOAD_ATTR                       10: source
+                        136     LOAD_FAST                       0: self
+                        138     LOAD_ATTR                       12: message
+                        158     LOAD_FAST                       0: self
+                        160     LOAD_ATTR                       14: tier
+                        180     LOAD_CONST                      2: ('type', 'event_type', 'username', 'amount', 'unit', 'seconds_added', 'source', 'message', 'tier')
+                        182     BUILD_CONST_KEY_MAP             9
+                        184     RETURN_VALUE                    
+                    [Exception Table]
+                (
+                    'return'
+                    'dict[str, Any]'
+                )
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_NAME                       0: __name__
+                4       STORE_NAME                      1: __module__
+                6       LOAD_CONST                      0: 'DonationEvent'
+                8       STORE_NAME                      2: __qualname__
+                10      SETUP_ANNOTATIONS               
+                12      LOAD_CONST                      1: 'EventType'
+                14      LOAD_NAME                       3: __annotations__
+                16      LOAD_CONST                      2: 'event_type'
+                18      STORE_SUBSCR                    
+                22      LOAD_CONST                      3: 'str'
+                24      LOAD_NAME                       3: __annotations__
+                26      LOAD_CONST                      4: 'username'
+                28      STORE_SUBSCR                    
+                32      LOAD_CONST                      5: 'float'
+                34      LOAD_NAME                       3: __annotations__
+                36      LOAD_CONST                      6: 'amount'
+                38      STORE_SUBSCR                    
+                42      LOAD_CONST                      3: 'str'
+                44      LOAD_NAME                       3: __annotations__
+                46      LOAD_CONST                      7: 'unit'
+                48      STORE_SUBSCR                    
+                52      LOAD_CONST                      8: 'int'
+                54      LOAD_NAME                       3: __annotations__
+                56      LOAD_CONST                      9: 'seconds_added'
+                58      STORE_SUBSCR                    
+                62      LOAD_CONST                      3: 'str'
+                64      LOAD_NAME                       3: __annotations__
+                66      LOAD_CONST                      10: 'source'
+                68      STORE_SUBSCR                    
+                72      LOAD_CONST                      11: ''
+                74      STORE_NAME                      4: message
+                76      LOAD_CONST                      3: 'str'
+                78      LOAD_NAME                       3: __annotations__
+                80      LOAD_CONST                      12: 'message'
+                82      STORE_SUBSCR                    
+                86      LOAD_CONST                      13: None
+                88      STORE_NAME                      5: tier
+                90      LOAD_CONST                      14: 'str | None'
+                92      LOAD_NAME                       3: __annotations__
+                94      LOAD_CONST                      15: 'tier'
+                96      STORE_SUBSCR                    
+                100     LOAD_CONST                      13: None
+                102     STORE_NAME                      6: sound_url
+                104     LOAD_CONST                      14: 'str | None'
+                106     LOAD_NAME                       3: __annotations__
+                108     LOAD_CONST                      16: 'sound_url'
+                110     STORE_SUBSCR                    
+                114     LOAD_CONST                      18: ('return', 'dict[str, Any]')
+                116     LOAD_CONST                      17: <CODE> to_payload
+                118     MAKE_FUNCTION                   4
+                120     STORE_NAME                      7: to_payload
+                122     RETURN_CONST                    13: None
+            [Exception Table]
+        'DonationEvent'
+        [Code]
+            File Name: backend\events.py
+            Object Name: SoundManager
+            Qualified Name: SoundManager
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+            [Names]
+                '__name__'
+                '__module__'
+                '__qualname__'
+                '__doc__'
+                '__init__'
+                'broadcast_settings'
+                'set_volume'
+                'set_output_device'
+                'list_audio_devices'
+                'ensure_external_tools'
+                'play'
+                'stop'
+                '_is_youtube_url'
+                '_find_ytdlp'
+                '_resolve_youtube_direct_url'
+                '_tool_env'
+                '_download_file'
+                '_write_env_values'
+            [Locals+Names]
+            [Constants]
+                'SoundManager'
+                '\n    OBS Sound Manager mit YouTube Direct-URL Resolve:\n    - Python verwaltet nur Queue/Settings.\n    - Bei YouTube versucht Python vorher mit yt-dlp eine direkte Media-URL zu holen.\n    - sound.html spielt Video UND Ton über OBS ab.\n    - Falls direct_media_url fehlschlägt, fallback auf YouTube iframe.\n    '
+                None
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: __init__
+                    Qualified Name: SoundManager.__init__
+                    Arg Count: 3
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 9
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_ws'
+                        'float'
+                        'get'
+                        'volume'
+                        'min'
+                        'int'
+                        'max_duration_seconds'
+                        'min_bits_for_youtube'
+                        'str'
+                        'output_device_id'
+                        'playback_mode'
+                        'ytdlp_path'
+                        'bool'
+                        'auto_install_tools'
+                        'Path'
+                        'expanduser'
+                        'tools_dir'
+                        'is_absolute'
+                        'os'
+                        'getenv'
+                        'cwd'
+                    [Locals+Names]
+                        'self'
+                        'websocket_manager'
+                        'config'
+                        'cfg'
+                        'runtime'
+                    [Constants]
+                        None
+                        'volume'
+                        0.75
+                        120
+                        'max_duration_seconds'
+                        'min_bits_for_youtube'
+                        10
+                        'output_device_id'
+                        ''
+                        'obs_audio_video'
+                        'ytdlp_path'
+                        'auto_install_tools'
+                        True
+                        'tools_dir'
+                        'tools'
+                        'OVERLAY_RUNTIME_DIR'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       2: config
+                        4       COPY                            1
+                        6       POP_JUMP_IF_TRUE                2 (to 12)
+                        8       POP_TOP                         
+                        10      BUILD_MAP                       0
+                        12      STORE_FAST                      3: cfg
+                        14      LOAD_FAST                       1: websocket_manager
+                        16      LOAD_FAST                       0: self
+                        18      STORE_ATTR                      0: _ws
+                        28      LOAD_GLOBAL                     3: NULL + float
+                        38      LOAD_FAST                       3: cfg
+                        40      LOAD_ATTR                       5: get
+                        60      LOAD_CONST                      1: 'volume'
+                        62      LOAD_CONST                      2: 0.75
+                        64      CALL                            2
+                        72      CALL                            1
+                        80      LOAD_FAST                       0: self
+                        82      STORE_ATTR                      3: volume
+                        92      LOAD_GLOBAL                     9: NULL + min
+                        102     LOAD_CONST                      3: 120
+                        104     LOAD_GLOBAL                     11: NULL + int
+                        114     LOAD_FAST                       3: cfg
+                        116     LOAD_ATTR                       5: get
+                        136     LOAD_CONST                      4: 'max_duration_seconds'
+                        138     LOAD_CONST                      3: 120
+                        140     CALL                            2
+                        148     CALL                            1
+                        156     CALL                            2
+                        164     LOAD_FAST                       0: self
+                        166     STORE_ATTR                      6: max_duration_seconds
+                        176     LOAD_GLOBAL                     11: NULL + int
+                        186     LOAD_FAST                       3: cfg
+                        188     LOAD_ATTR                       5: get
+                        208     LOAD_CONST                      5: 'min_bits_for_youtube'
+                        210     LOAD_CONST                      6: 10
+                        212     CALL                            2
+                        220     CALL                            1
+                        228     LOAD_FAST                       0: self
+                        230     STORE_ATTR                      7: min_bits_for_youtube
+                        240     LOAD_GLOBAL                     17: NULL + str
+                        250     LOAD_FAST                       3: cfg
+                        252     LOAD_ATTR                       5: get
+                        272     LOAD_CONST                      7: 'output_device_id'
+                        274     LOAD_CONST                      8: ''
+                        276     CALL                            2
+                        284     CALL                            1
+                        292     LOAD_FAST                       0: self
+                        294     STORE_ATTR                      9: output_device_id
+                        304     LOAD_CONST                      9: 'obs_audio_video'
+                        306     LOAD_FAST                       0: self
+                        308     STORE_ATTR                      10: playback_mode
+                        318     LOAD_GLOBAL                     17: NULL + str
+                        328     LOAD_FAST                       3: cfg
+                        330     LOAD_ATTR                       5: get
+                        350     LOAD_CONST                      10: 'ytdlp_path'
+                        352     LOAD_CONST                      8: ''
+                        354     CALL                            2
+                        362     COPY                            1
+                        364     POP_JUMP_IF_TRUE                2 (to 370)
+                        366     POP_TOP                         
+                        368     LOAD_CONST                      8: ''
+                        370     CALL                            1
+                        378     LOAD_FAST                       0: self
+                        380     STORE_ATTR                      11: ytdlp_path
+                        390     LOAD_GLOBAL                     25: NULL + bool
+                        400     LOAD_FAST                       3: cfg
+                        402     LOAD_ATTR                       5: get
+                        422     LOAD_CONST                      11: 'auto_install_tools'
+                        424     LOAD_CONST                      12: True
+                        426     CALL                            2
+                        434     CALL                            1
+                        442     LOAD_FAST                       0: self
+                        444     STORE_ATTR                      13: auto_install_tools
+                        454     LOAD_GLOBAL                     29: NULL + Path
+                        464     LOAD_GLOBAL                     17: NULL + str
+                        474     LOAD_FAST                       3: cfg
+                        476     LOAD_ATTR                       5: get
+                        496     LOAD_CONST                      13: 'tools_dir'
+                        498     LOAD_CONST                      14: 'tools'
+                        500     CALL                            2
+                        508     CALL                            1
+                        516     CALL                            1
+                        524     LOAD_ATTR                       31: expanduser
+                        544     CALL                            0
+                        552     LOAD_FAST                       0: self
+                        554     STORE_ATTR                      16: tools_dir
+                        564     LOAD_FAST                       0: self
+                        566     LOAD_ATTR                       32: tools_dir
+                        586     LOAD_ATTR                       35: is_absolute
+                        606     CALL                            0
+                        614     POP_JUMP_IF_TRUE                70 (to 756)
+                        616     LOAD_GLOBAL                     29: NULL + Path
+                        626     LOAD_GLOBAL                     37: NULL + os
+                        636     LOAD_ATTR                       38: getenv
+                        656     LOAD_CONST                      15: 'OVERLAY_RUNTIME_DIR'
+                        658     LOAD_GLOBAL                     29: NULL + Path
+                        668     LOAD_ATTR                       40: cwd
+                        688     CALL                            0
+                        696     CALL                            2
+                        704     CALL                            1
+                        712     STORE_FAST                      4: runtime
+                        714     LOAD_FAST                       4: runtime
+                        716     LOAD_FAST                       0: self
+                        718     LOAD_ATTR                       32: tools_dir
+                        738     BINARY_OP                       11 (/)
+                        742     LOAD_FAST                       0: self
+                        744     STORE_ATTR                      16: tools_dir
+                        754     RETURN_CONST                    0: None
+                        756     RETURN_CONST                    0: None
+                    [Exception Table]
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: broadcast_settings
+                    Qualified Name: SoundManager.broadcast_settings
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 10
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_ws'
+                        'broadcast'
+                        'volume'
+                        'max_duration_seconds'
+                        'output_device_id'
+                        'playback_mode'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'sound_settings'
+                        'obs_browser'
+                        'yt-dlp direct_media_url first, iframe fallback'
+                        (
+                            'type'
+                            'volume'
+                            'max_duration_seconds'
+                            'output_device_id'
+                            'playback_mode'
+                            'audio_backend'
+                            'youtube_resolve'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _ws
+                        28      LOAD_ATTR                       3: broadcast
+                        48      LOAD_CONST                      1: 'sound_settings'
+                        50      LOAD_FAST                       0: self
+                        52      LOAD_ATTR                       4: volume
+                        72      LOAD_FAST                       0: self
+                        74      LOAD_ATTR                       6: max_duration_seconds
+                        94      LOAD_FAST                       0: self
+                        96      LOAD_ATTR                       8: output_device_id
+                        116     LOAD_FAST                       0: self
+                        118     LOAD_ATTR                       10: playback_mode
+                        138     LOAD_CONST                      2: 'obs_browser'
+                        140     LOAD_CONST                      3: 'yt-dlp direct_media_url first, iframe fallback'
+                        142     LOAD_CONST                      4: ('type', 'volume', 'max_duration_seconds', 'output_device_id', 'playback_mode', 'audio_backend', 'youtube_resolve')
+                        144     BUILD_CONST_KEY_MAP             7
+                        146     CALL                            1
+                        154     GET_AWAITABLE                   0
+                        156     LOAD_CONST                      0: None
+                        158     SEND                            3 (to 166)
+                        162     YIELD_VALUE                     2
+                        164     RESUME                          3
+                        166     JUMP_BACKWARD_NO_INTERRUPT      5 (to 158)
+                        168     END_SEND                        
+                        170     POP_TOP                         
+                        172     RETURN_CONST                    0: None
+                        174     CLEANUP_THROW                   
+                        176     JUMP_BACKWARD                   5 (to 168)
+                        178     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        180     RERAISE                         1
+                    [Exception Table]
+                        4 to 162 -> 178 [0] lasti
+                        162 to 164 -> 174 [2] 
+                        164 to 176 -> 178 [0] lasti
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: set_volume
+                    Qualified Name: SoundManager.set_volume
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 9
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'max'
+                        'min'
+                        'float'
+                        'volume'
+                        'broadcast_settings'
+                    [Locals+Names]
+                        'self'
+                        'volume'
+                    [Constants]
+                        None
+                        0
+                        1
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_GLOBAL                     1: NULL + max
+                        16      LOAD_CONST                      1: 0
+                        18      LOAD_GLOBAL                     3: NULL + min
+                        28      LOAD_CONST                      2: 1
+                        30      LOAD_GLOBAL                     5: NULL + float
+                        40      LOAD_FAST                       1: volume
+                        42      CALL                            1
+                        50      CALL                            2
+                        58      CALL                            2
+                        66      LOAD_FAST                       0: self
+                        68      STORE_ATTR                      3: volume
+                        78      LOAD_FAST                       0: self
+                        80      LOAD_ATTR                       9: broadcast_settings
+                        100     CALL                            0
+                        108     GET_AWAITABLE                   0
+                        110     LOAD_CONST                      0: None
+                        112     SEND                            3 (to 120)
+                        116     YIELD_VALUE                     2
+                        118     RESUME                          3
+                        120     JUMP_BACKWARD_NO_INTERRUPT      5 (to 112)
+                        122     END_SEND                        
+                        124     POP_TOP                         
+                        126     RETURN_CONST                    0: None
+                        128     CLEANUP_THROW                   
+                        130     JUMP_BACKWARD                   5 (to 122)
+                        132     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        134     RERAISE                         1
+                    [Exception Table]
+                        4 to 116 -> 132 [0] lasti
+                        116 to 118 -> 128 [2] 
+                        118 to 130 -> 132 [0] lasti
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: set_output_device
+                    Qualified Name: SoundManager.set_output_device
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 3
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'strip'
+                        'output_device_id'
+                        'broadcast_settings'
+                    [Locals+Names]
+                        'self'
+                        'device_id'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       1: device_id
+                        8       LOAD_ATTR                       1: strip
+                        28      CALL                            0
+                        36      LOAD_FAST                       0: self
+                        38      STORE_ATTR                      1: output_device_id
+                        48      LOAD_FAST                       0: self
+                        50      LOAD_ATTR                       5: broadcast_settings
+                        70      CALL                            0
+                        78      GET_AWAITABLE                   0
+                        80      LOAD_CONST                      0: None
+                        82      SEND                            3 (to 90)
+                        86      YIELD_VALUE                     2
+                        88      RESUME                          3
+                        90      JUMP_BACKWARD_NO_INTERRUPT      5 (to 82)
+                        92      END_SEND                        
+                        94      POP_TOP                         
+                        96      RETURN_CONST                    0: None
+                        98      CLEANUP_THROW                   
+                        100     JUMP_BACKWARD                   5 (to 92)
+                        102     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        104     RERAISE                         1
+                    [Exception Table]
+                        4 to 86 -> 102 [0] lasti
+                        86 to 88 -> 98 [2] 
+                        88 to 100 -> 102 [0] lasti
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: list_audio_devices
+                    Qualified Name: SoundManager.list_audio_devices
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 3
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'ytdlp_path'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'Sound läuft über OBS Browserquelle sound.html.\nOutput Device bitte in OBS/Windows steuern.\n\nYouTube wird per yt-dlp zu direct_media_url resolved, damit Autoplay besser funktioniert.\nYTDLP_PATH='
+                        'yt-dlp aus PATH / auto tools'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_CONST                      1: 'Sound läuft über OBS Browserquelle sound.html.\nOutput Device bitte in OBS/Windows steuern.\n\nYouTube wird per yt-dlp zu direct_media_url resolved, damit Autoplay besser funktioniert.\nYTDLP_PATH='
+                        8       LOAD_FAST                       0: self
+                        10      LOAD_ATTR                       0: ytdlp_path
+                        30      COPY                            1
+                        32      POP_JUMP_IF_TRUE                2 (to 38)
+                        34      POP_TOP                         
+                        36      LOAD_CONST                      2: 'yt-dlp aus PATH / auto tools'
+                        38      FORMAT_VALUE                    0 (FVC_NONE)
+                        40      BUILD_STRING                    2
+                        42      RETURN_VALUE                    
+                        44      CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        46      RERAISE                         1
+                    [Exception Table]
+                        4 to 44 -> 44 [0] lasti
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: ensure_external_tools
+                    Qualified Name: SoundManager.ensure_external_tools
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 5
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_find_ytdlp'
+                        'auto_install_tools'
+                        'os'
+                        'name'
+                        'tools_dir'
+                        'mkdir'
+                        'asyncio'
+                        'to_thread'
+                        '_download_file'
+                        'str'
+                        'ytdlp_path'
+                        '_write_env_values'
+                        'Exception'
+                    [Locals+Names]
+                        'self'
+                        'target'
+                        'exc'
+                    [Constants]
+                        None
+                        'yt-dlp vorhanden: '
+                        'yt-dlp nicht gefunden und Auto-Install ist deaktiviert.'
+                        'nt'
+                        'yt-dlp nicht gefunden. Auto-Install ist aktuell nur fuer Windows eingebaut.'
+                        True
+                        (
+                            'parents'
+                            'exist_ok'
+                        )
+                        'yt-dlp.exe'
+                        'https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe'
+                        'YTDLP_PATH'
+                        'yt-dlp installiert: '
+                        'yt-dlp Auto-Download fehlgeschlagen: '
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       1: _find_ytdlp
+                        28      CALL                            0
+                        36      POP_JUMP_IF_FALSE               19 (to 76)
+                        38      LOAD_CONST                      1: 'yt-dlp vorhanden: '
+                        40      LOAD_FAST                       0: self
+                        42      LOAD_ATTR                       1: _find_ytdlp
+                        62      CALL                            0
+                        70      FORMAT_VALUE                    0 (FVC_NONE)
+                        72      BUILD_STRING                    2
+                        74      RETURN_VALUE                    
+                        76      LOAD_FAST                       0: self
+                        78      LOAD_ATTR                       2: auto_install_tools
+                        98      POP_JUMP_IF_TRUE                1 (to 102)
+                        100     RETURN_CONST                    2: 'yt-dlp nicht gefunden und Auto-Install ist deaktiviert.'
+                        102     LOAD_GLOBAL                     4: os
+                        112     LOAD_ATTR                       6: name
+                        132     LOAD_CONST                      3: 'nt'
+                        134     COMPARE_OP                      55 (!=)
+                        138     POP_JUMP_IF_FALSE               1 (to 142)
+                        140     RETURN_CONST                    4: 'yt-dlp nicht gefunden. Auto-Install ist aktuell nur fuer Windows eingebaut.'
+                        142     NOP                             
+                        144     LOAD_FAST                       0: self
+                        146     LOAD_ATTR                       8: tools_dir
+                        166     LOAD_ATTR                       11: mkdir
+                        186     LOAD_CONST                      5: True
+                        188     LOAD_CONST                      5: True
+                        190     KW_NAMES                        6: ('parents', 'exist_ok')
+                        192     CALL                            2
+                        200     POP_TOP                         
+                        202     LOAD_FAST                       0: self
+                        204     LOAD_ATTR                       8: tools_dir
+                        224     LOAD_CONST                      7: 'yt-dlp.exe'
+                        226     BINARY_OP                       11 (/)
+                        230     STORE_FAST                      1: target
+                        232     LOAD_GLOBAL                     13: NULL + asyncio
+                        242     LOAD_ATTR                       14: to_thread
+                        262     LOAD_FAST                       0: self
+                        264     LOAD_ATTR                       16: _download_file
+                        284     LOAD_CONST                      8: 'https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe'
+                        286     LOAD_FAST                       1: target
+                        288     CALL                            3
+                        296     GET_AWAITABLE                   0
+                        298     LOAD_CONST                      0: None
+                        300     SEND                            3 (to 308)
+                        304     YIELD_VALUE                     3
+                        306     RESUME                          3
+                        308     JUMP_BACKWARD_NO_INTERRUPT      5 (to 300)
+                        310     END_SEND                        
+                        312     POP_TOP                         
+                        314     LOAD_GLOBAL                     19: NULL + str
+                        324     LOAD_FAST                       1: target
+                        326     CALL                            1
+                        334     LOAD_FAST                       0: self
+                        336     STORE_ATTR                      10: ytdlp_path
+                        346     LOAD_FAST                       0: self
+                        348     LOAD_ATTR                       23: _write_env_values
+                        368     LOAD_CONST                      9: 'YTDLP_PATH'
+                        370     LOAD_FAST                       0: self
+                        372     LOAD_ATTR                       20: ytdlp_path
+                        392     BUILD_MAP                       1
+                        394     CALL                            1
+                        402     POP_TOP                         
+                        404     LOAD_CONST                      10: 'yt-dlp installiert: '
+                        406     LOAD_FAST                       1: target
+                        408     FORMAT_VALUE                    0 (FVC_NONE)
+                        410     BUILD_STRING                    2
+                        412     RETURN_VALUE                    
+                        414     CLEANUP_THROW                   
+                        416     JUMP_BACKWARD                   54 (to 310)
+                        418     PUSH_EXC_INFO                   
+                        420     LOAD_GLOBAL                     24: Exception
+                        430     CHECK_EXC_MATCH                 
+                        432     POP_JUMP_IF_FALSE               15 (to 464)
+                        434     STORE_FAST                      2: exc
+                        436     LOAD_CONST                      11: 'yt-dlp Auto-Download fehlgeschlagen: '
+                        438     LOAD_FAST                       2: exc
+                        440     FORMAT_VALUE                    2 (FVC_REPR)
+                        442     BUILD_STRING                    2
+                        444     SWAP                            2
+                        446     POP_EXCEPT                      
+                        448     LOAD_CONST                      0: None
+                        450     STORE_FAST                      2: exc
+                        452     DELETE_FAST                     2: exc
+                        454     RETURN_VALUE                    
+                        456     LOAD_CONST                      0: None
+                        458     STORE_FAST                      2: exc
+                        460     DELETE_FAST                     2: exc
+                        462     RERAISE                         1
+                        464     RERAISE                         0
+                        466     COPY                            3
+                        468     POP_EXCEPT                      
+                        470     RERAISE                         1
+                        472     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        474     RERAISE                         1
+                    [Exception Table]
+                        4 to 142 -> 472 [0] lasti
+                        144 to 304 -> 418 [0] 
+                        304 to 306 -> 414 [2] 
+                        306 to 412 -> 418 [0] 
+                        412 to 414 -> 472 [0] lasti
+                        414 to 416 -> 418 [0] 
+                        418 to 436 -> 466 [1] lasti
+                        436 to 444 -> 456 [1] lasti
+                        444 to 446 -> 466 [1] lasti
+                        446 to 456 -> 472 [0] lasti
+                        456 to 466 -> 466 [1] lasti
+                        466 to 472 -> 472 [0] lasti
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: play
+                    Qualified Name: SoundManager.play
+                    Arg Count: 4
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 15
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'strip'
+                        '_is_youtube_url'
+                        'ensure_external_tools'
+                        '_resolve_youtube_direct_url'
+                        '_ws'
+                        'broadcast'
+                        'int'
+                        'time'
+                        'volume'
+                        'max_duration_seconds'
+                    [Locals+Names]
+                        'self'
+                        'url'
+                        'requested_by'
+                        'source'
+                        'direct_media_url'
+                        'direct_kind'
+                    [Constants]
+                        None
+                        ''
+                        'sound'
+                        1000
+                        '-'
+                        False
+                        'obs_browser'
+                        (
+                            'id'
+                            'url'
+                            'direct_media_url'
+                            'direct_media_kind'
+                            'requested_by'
+                            'source'
+                            'volume'
+                            'max_duration_seconds'
+                            'muted'
+                            'visual_only'
+                            'audio_backend'
+                        )
+                        (
+                            'type'
+                            'sound'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       1: url
+                        8       LOAD_ATTR                       1: strip
+                        28      CALL                            0
+                        36      STORE_FAST                      1: url
+                        38      LOAD_FAST                       1: url
+                        40      POP_JUMP_IF_TRUE                1 (to 44)
+                        42      RETURN_CONST                    0: None
+                        44      LOAD_CONST                      1: ''
+                        46      STORE_FAST                      4: direct_media_url
+                        48      LOAD_CONST                      1: ''
+                        50      STORE_FAST                      5: direct_kind
+                        52      LOAD_FAST                       0: self
+                        54      LOAD_ATTR                       3: _is_youtube_url
+                        74      LOAD_FAST                       1: url
+                        76      CALL                            1
+                        84      POP_JUMP_IF_FALSE               52 (to 190)
+                        86      LOAD_FAST                       0: self
+                        88      LOAD_ATTR                       5: ensure_external_tools
+                        108     CALL                            0
+                        116     GET_AWAITABLE                   0
+                        118     LOAD_CONST                      0: None
+                        120     SEND                            3 (to 128)
+                        124     YIELD_VALUE                     2
+                        126     RESUME                          3
+                        128     JUMP_BACKWARD_NO_INTERRUPT      5 (to 120)
+                        130     END_SEND                        
+                        132     POP_TOP                         
+                        134     LOAD_FAST                       0: self
+                        136     LOAD_ATTR                       7: _resolve_youtube_direct_url
+                        156     LOAD_FAST                       1: url
+                        158     CALL                            1
+                        166     GET_AWAITABLE                   0
+                        168     LOAD_CONST                      0: None
+                        170     SEND                            3 (to 178)
+                        174     YIELD_VALUE                     2
+                        176     RESUME                          3
+                        178     JUMP_BACKWARD_NO_INTERRUPT      5 (to 170)
+                        180     END_SEND                        
+                        182     UNPACK_SEQUENCE                 2
+                        186     STORE_FAST                      4: direct_media_url
+                        188     STORE_FAST                      5: direct_kind
+                        190     LOAD_FAST                       0: self
+                        192     LOAD_ATTR                       8: _ws
+                        212     LOAD_ATTR                       11: broadcast
+                        232     LOAD_CONST                      2: 'sound'
+                        234     LOAD_GLOBAL                     13: NULL + int
+                        244     LOAD_GLOBAL                     15: NULL + time
+                        254     LOAD_ATTR                       14: time
+                        274     CALL                            0
+                        282     LOAD_CONST                      3: 1000
+                        284     BINARY_OP                       5 (*)
+                        288     CALL                            1
+                        296     FORMAT_VALUE                    0 (FVC_NONE)
+                        298     LOAD_CONST                      4: '-'
+                        300     LOAD_FAST                       2: requested_by
+                        302     FORMAT_VALUE                    0 (FVC_NONE)
+                        304     BUILD_STRING                    3
+                        306     LOAD_FAST                       1: url
+                        308     LOAD_FAST                       4: direct_media_url
+                        310     LOAD_FAST                       5: direct_kind
+                        312     LOAD_FAST                       2: requested_by
+                        314     LOAD_FAST                       3: source
+                        316     LOAD_FAST                       0: self
+                        318     LOAD_ATTR                       16: volume
+                        338     LOAD_FAST                       0: self
+                        340     LOAD_ATTR                       18: max_duration_seconds
+                        360     LOAD_CONST                      5: False
+                        362     LOAD_CONST                      5: False
+                        364     LOAD_CONST                      6: 'obs_browser'
+                        366     LOAD_CONST                      7: ('id', 'url', 'direct_media_url', 'direct_media_kind', 'requested_by', 'source', 'volume', 'max_duration_seconds', 'muted', 'visual_only', 'audio_backend')
+                        368     BUILD_CONST_KEY_MAP             11
+                        370     LOAD_CONST                      8: ('type', 'sound')
+                        372     BUILD_CONST_KEY_MAP             2
+                        374     CALL                            1
+                        382     GET_AWAITABLE                   0
+                        384     LOAD_CONST                      0: None
+                        386     SEND                            3 (to 394)
+                        390     YIELD_VALUE                     2
+                        392     RESUME                          3
+                        394     JUMP_BACKWARD_NO_INTERRUPT      5 (to 386)
+                        396     END_SEND                        
+                        398     POP_TOP                         
+                        400     RETURN_CONST                    0: None
+                        402     CLEANUP_THROW                   
+                        404     JUMP_BACKWARD                   138 (to 130)
+                        406     CLEANUP_THROW                   
+                        408     JUMP_BACKWARD                   115 (to 180)
+                        410     CLEANUP_THROW                   
+                        412     JUMP_BACKWARD                   9 (to 396)
+                        414     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        416     RERAISE                         1
+                    [Exception Table]
+                        4 to 124 -> 414 [0] lasti
+                        124 to 126 -> 402 [2] 
+                        126 to 174 -> 414 [0] lasti
+                        174 to 176 -> 406 [2] 
+                        176 to 390 -> 414 [0] lasti
+                        390 to 392 -> 410 [2] 
+                        392 to 404 -> 414 [0] lasti
+                        406 to 408 -> 414 [0] lasti
+                        410 to 412 -> 414 [0] lasti
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: stop
+                    Qualified Name: SoundManager.stop
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 5
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_ws'
+                        'broadcast'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'sound_control'
+                        'stop'
+                        (
+                            'type'
+                            'action'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _ws
+                        28      LOAD_ATTR                       3: broadcast
+                        48      LOAD_CONST                      1: 'sound_control'
+                        50      LOAD_CONST                      2: 'stop'
+                        52      LOAD_CONST                      3: ('type', 'action')
+                        54      BUILD_CONST_KEY_MAP             2
+                        56      CALL                            1
+                        64      GET_AWAITABLE                   0
+                        66      LOAD_CONST                      0: None
+                        68      SEND                            3 (to 76)
+                        72      YIELD_VALUE                     2
+                        74      RESUME                          3
+                        76      JUMP_BACKWARD_NO_INTERRUPT      5 (to 68)
+                        78      END_SEND                        
+                        80      POP_TOP                         
+                        82      RETURN_CONST                    0: None
+                        84      CLEANUP_THROW                   
+                        86      JUMP_BACKWARD                   5 (to 78)
+                        88      CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        90      RERAISE                         1
+                    [Exception Table]
+                        4 to 72 -> 88 [0] lasti
+                        72 to 74 -> 84 [2] 
+                        74 to 86 -> 88 [0] lasti
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: _is_youtube_url
+                    Qualified Name: SoundManager._is_youtube_url
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 2
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'lower'
+                    [Locals+Names]
+                        'self'
+                        'url'
+                        'low'
+                    [Constants]
+                        None
+                        'youtube.com'
+                        'youtu.be'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       1: url
+                        4       LOAD_ATTR                       1: lower
+                        24      CALL                            0
+                        32      STORE_FAST                      2: low
+                        34      LOAD_CONST                      1: 'youtube.com'
+                        36      LOAD_FAST                       2: low
+                        38      CONTAINS_OP                     0 (in)
+                        40      COPY                            1
+                        42      POP_JUMP_IF_TRUE                4 (to 52)
+                        44      POP_TOP                         
+                        46      LOAD_CONST                      2: 'youtu.be'
+                        48      LOAD_FAST                       2: low
+                        50      CONTAINS_OP                     0 (in)
+                        52      RETURN_VALUE                    
+                    [Exception Table]
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: _find_ytdlp
+                    Qualified Name: SoundManager._find_ytdlp
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 3
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'ytdlp_path'
+                        'Path'
+                        'expanduser'
+                        'exists'
+                        'shutil'
+                        'which'
+                    [Locals+Names]
+                        'self'
+                        'found'
+                    [Constants]
+                        None
+                        'yt-dlp'
+                        'yt-dlp.exe'
+                        ''
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       0: self
+                        4       LOAD_ATTR                       0: ytdlp_path
+                        24      POP_JUMP_IF_FALSE               61 (to 148)
+                        26      LOAD_GLOBAL                     3: NULL + Path
+                        36      LOAD_FAST                       0: self
+                        38      LOAD_ATTR                       0: ytdlp_path
+                        58      CALL                            1
+                        66      LOAD_ATTR                       5: expanduser
+                        86      CALL                            0
+                        94      LOAD_ATTR                       7: exists
+                        114     CALL                            0
+                        122     POP_JUMP_IF_FALSE               12 (to 148)
+                        124     LOAD_FAST                       0: self
+                        126     LOAD_ATTR                       0: ytdlp_path
+                        146     RETURN_VALUE                    
+                        148     LOAD_GLOBAL                     9: NULL + shutil
+                        158     LOAD_ATTR                       10: which
+                        178     LOAD_CONST                      1: 'yt-dlp'
+                        180     CALL                            1
+                        188     COPY                            1
+                        190     POP_JUMP_IF_TRUE                21 (to 234)
+                        192     POP_TOP                         
+                        194     LOAD_GLOBAL                     9: NULL + shutil
+                        204     LOAD_ATTR                       10: which
+                        224     LOAD_CONST                      2: 'yt-dlp.exe'
+                        226     CALL                            1
+                        234     STORE_FAST                      1: found
+                        236     LOAD_FAST                       1: found
+                        238     COPY                            1
+                        240     POP_JUMP_IF_TRUE                2 (to 246)
+                        242     POP_TOP                         
+                        244     LOAD_CONST                      3: ''
+                        246     RETURN_VALUE                    
+                    [Exception Table]
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: _resolve_youtube_direct_url
+                    Qualified Name: SoundManager._resolve_youtube_direct_url
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_find_ytdlp'
+                        'asyncio'
+                        'create_subprocess_exec'
+                        'subprocess'
+                        'PIPE'
+                        '_tool_env'
+                        'wait_for'
+                        'communicate'
+                        'decode'
+                        'strip'
+                        'splitlines'
+                        'startswith'
+                        'log'
+                        'info'
+                        'warning'
+                        'Exception'
+                        'exception'
+                    [Locals+Names]
+                        'self'
+                        'url'
+                        'ytdlp'
+                        'cmd'
+                        'proc'
+                        'out'
+                        'err'
+                        'stdout'
+                        'stderr'
+                        'line'
+                        'lines'
+                    [Constants]
+                        None
+                        (
+                            ''
+                            ''
+                        )
+                        '--no-playlist'
+                        '--no-warnings'
+                        '-f'
+                        'b[ext=mp4]/best[ext=mp4]/b/best'
+                        '-g'
+                        (
+                            'stdout'
+                            'stderr'
+                            'env'
+                        )
+                        25
+                        (
+                            'timeout'
+                        )
+                        'utf-8'
+                        'replace'
+                        (
+                            'errors'
+                        )
+                        'http'
+                        'YouTube direct_media_url resolved via yt-dlp'
+                        0
+                        'video'
+                        'yt-dlp lieferte keine direct URL. stderr=%s'
+                        -300
+                        'yt-dlp YouTube direct URL resolve fehlgeschlagen'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       1: _find_ytdlp
+                        28      CALL                            0
+                        36      STORE_FAST                      2: ytdlp
+                        38      LOAD_FAST                       2: ytdlp
+                        40      POP_JUMP_IF_TRUE                1 (to 44)
+                        42      RETURN_CONST                    1: ('', '')
+                        44      LOAD_FAST                       2: ytdlp
+                        46      LOAD_CONST                      2: '--no-playlist'
+                        48      LOAD_CONST                      3: '--no-warnings'
+                        50      LOAD_CONST                      4: '-f'
+                        52      LOAD_CONST                      5: 'b[ext=mp4]/best[ext=mp4]/b/best'
+                        54      LOAD_CONST                      6: '-g'
+                        56      LOAD_FAST                       1: url
+                        58      BUILD_LIST                      7
+                        60      STORE_FAST                      3: cmd
+                        62      NOP                             
+                        64      LOAD_GLOBAL                     3: NULL + asyncio
+                        74      LOAD_ATTR                       4: create_subprocess_exec
+                        94      LOAD_FAST                       3: cmd
+                        96      LOAD_GLOBAL                     2: asyncio
+                        106     LOAD_ATTR                       6: subprocess
+                        126     LOAD_ATTR                       8: PIPE
+                        146     LOAD_GLOBAL                     2: asyncio
+                        156     LOAD_ATTR                       6: subprocess
+                        176     LOAD_ATTR                       8: PIPE
+                        196     LOAD_FAST                       0: self
+                        198     LOAD_ATTR                       11: _tool_env
+                        218     CALL                            0
+                        226     LOAD_CONST                      7: ('stdout', 'stderr', 'env')
+                        228     BUILD_CONST_KEY_MAP             3
+                        230     CALL_FUNCTION_EX                1
+                        232     GET_AWAITABLE                   0
+                        234     LOAD_CONST                      0: None
+                        236     SEND                            3 (to 244)
+                        240     YIELD_VALUE                     3
+                        242     RESUME                          3
+                        244     JUMP_BACKWARD_NO_INTERRUPT      5 (to 236)
+                        246     END_SEND                        
+                        248     STORE_FAST                      4: proc
+                        250     LOAD_GLOBAL                     3: NULL + asyncio
+                        260     LOAD_ATTR                       12: wait_for
+                        280     LOAD_FAST                       4: proc
+                        282     LOAD_ATTR                       15: communicate
+                        302     CALL                            0
+                        310     LOAD_CONST                      8: 25
+                        312     KW_NAMES                        9: ('timeout',)
+                        314     CALL                            2
+                        322     GET_AWAITABLE                   0
+                        324     LOAD_CONST                      0: None
+                        326     SEND                            3 (to 334)
+                        330     YIELD_VALUE                     3
+                        332     RESUME                          3
+                        334     JUMP_BACKWARD_NO_INTERRUPT      5 (to 326)
+                        336     END_SEND                        
+                        338     UNPACK_SEQUENCE                 2
+                        342     STORE_FAST                      5: out
+                        344     STORE_FAST                      6: err
+                        346     LOAD_FAST                       5: out
+                        348     LOAD_ATTR                       17: decode
+                        368     LOAD_CONST                      10: 'utf-8'
+                        370     LOAD_CONST                      11: 'replace'
+                        372     KW_NAMES                        12: ('errors',)
+                        374     CALL                            2
+                        382     LOAD_ATTR                       19: strip
+                        402     CALL                            0
+                        410     STORE_FAST                      7: stdout
+                        412     LOAD_FAST                       6: err
+                        414     LOAD_ATTR                       17: decode
+                        434     LOAD_CONST                      10: 'utf-8'
+                        436     LOAD_CONST                      11: 'replace'
+                        438     KW_NAMES                        12: ('errors',)
+                        440     CALL                            2
+                        448     LOAD_ATTR                       19: strip
+                        468     CALL                            0
+                        476     STORE_FAST                      8: stderr
+                        478     LOAD_FAST                       7: stdout
+                        480     LOAD_ATTR                       21: splitlines
+                        500     CALL                            0
+                        508     GET_ITER                        
+                        510     LOAD_FAST_AND_CLEAR             9: line
+                        512     SWAP                            2
+                        514     BUILD_LIST                      0
+                        516     SWAP                            2
+                        518     FOR_ITER                        50 (to 620)
+                        522     STORE_FAST                      9: line
+                        524     LOAD_FAST                       9: line
+                        526     LOAD_ATTR                       19: strip
+                        546     CALL                            0
+                        554     LOAD_ATTR                       23: startswith
+                        574     LOAD_CONST                      13: 'http'
+                        576     CALL                            1
+                        584     POP_JUMP_IF_TRUE                1 (to 588)
+                        586     JUMP_BACKWARD                   35 (to 518)
+                        588     LOAD_FAST                       9: line
+                        590     LOAD_ATTR                       19: strip
+                        610     CALL                            0
+                        618     LIST_APPEND                     2
+                        620     JUMP_BACKWARD                   52 (to 518)
+                        622     END_FOR                         
+                        624     STORE_FAST                      10: lines
+                        626     STORE_FAST                      9: line
+                        628     LOAD_FAST                       10: lines
+                        630     POP_JUMP_IF_FALSE               28 (to 688)
+                        632     LOAD_GLOBAL                     24: log
+                        642     LOAD_ATTR                       27: info
+                        662     LOAD_CONST                      14: 'YouTube direct_media_url resolved via yt-dlp'
+                        664     CALL                            1
+                        672     POP_TOP                         
+                        674     LOAD_FAST                       10: lines
+                        676     LOAD_CONST                      15: 0
+                        678     BINARY_SUBSCR                   
+                        682     LOAD_CONST                      16: 'video'
+                        684     BUILD_TUPLE                     2
+                        686     RETURN_VALUE                    
+                        688     LOAD_GLOBAL                     24: log
+                        698     LOAD_ATTR                       29: warning
+                        718     LOAD_CONST                      17: 'yt-dlp lieferte keine direct URL. stderr=%s'
+                        720     LOAD_FAST                       8: stderr
+                        722     LOAD_CONST                      18: -300
+                        724     LOAD_CONST                      0: None
+                        726     BINARY_SLICE                    
+                        728     CALL                            2
+                        736     POP_TOP                         
+                        738     RETURN_CONST                    1: ('', '')
+                        740     CLEANUP_THROW                   
+                        742     JUMP_BACKWARD                   249 (to 246)
+                        744     CLEANUP_THROW                   
+                        746     JUMP_BACKWARD                   206 (to 336)
+                        748     SWAP                            2
+                        750     POP_TOP                         
+                        752     SWAP                            2
+                        754     STORE_FAST                      9: line
+                        756     RERAISE                         0
+                        758     PUSH_EXC_INFO                   
+                        760     LOAD_GLOBAL                     30: Exception
+                        770     CHECK_EXC_MATCH                 
+                        772     POP_JUMP_IF_FALSE               24 (to 822)
+                        774     POP_TOP                         
+                        776     LOAD_GLOBAL                     24: log
+                        786     LOAD_ATTR                       33: exception
+                        806     LOAD_CONST                      19: 'yt-dlp YouTube direct URL resolve fehlgeschlagen'
+                        808     CALL                            1
+                        816     POP_TOP                         
+                        818     POP_EXCEPT                      
+                        820     RETURN_CONST                    1: ('', '')
+                        822     RERAISE                         0
+                        824     COPY                            3
+                        826     POP_EXCEPT                      
+                        828     RERAISE                         1
+                        830     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        832     RERAISE                         1
+                    [Exception Table]
+                        4 to 62 -> 830 [0] lasti
+                        64 to 240 -> 758 [0] 
+                        240 to 242 -> 740 [2] 
+                        242 to 330 -> 758 [0] 
+                        330 to 332 -> 744 [2] 
+                        332 to 514 -> 758 [0] 
+                        514 to 586 -> 748 [2] 
+                        588 to 624 -> 748 [2] 
+                        624 to 686 -> 758 [0] 
+                        686 to 688 -> 830 [0] lasti
+                        688 to 738 -> 758 [0] 
+                        738 to 740 -> 830 [0] lasti
+                        740 to 742 -> 758 [0] 
+                        744 to 746 -> 758 [0] 
+                        748 to 758 -> 758 [0] 
+                        758 to 818 -> 824 [1] lasti
+                        818 to 822 -> 830 [0] lasti
+                        822 to 824 -> 824 [1] lasti
+                        824 to 830 -> 830 [0] lasti
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: _tool_env
+                    Qualified Name: SoundManager._tool_env
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 5
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'os'
+                        'environ'
+                        'copy'
+                        'ytdlp_path'
+                        'str'
+                        'Path'
+                        'expanduser'
+                        'resolve'
+                        'parent'
+                        'pathsep'
+                        'get'
+                        'Exception'
+                    [Locals+Names]
+                        'self'
+                        'env'
+                        'parent'
+                    [Constants]
+                        None
+                        'PATH'
+                        ''
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_GLOBAL                     0: os
+                        12      LOAD_ATTR                       2: environ
+                        32      LOAD_ATTR                       5: copy
+                        52      CALL                            0
+                        60      STORE_FAST                      1: env
+                        62      LOAD_FAST                       0: self
+                        64      LOAD_ATTR                       6: ytdlp_path
+                        84      POP_JUMP_IF_FALSE               112 (to 310)
+                        86      NOP                             
+                        88      LOAD_GLOBAL                     9: NULL + str
+                        98      LOAD_GLOBAL                     11: NULL + Path
+                        108     LOAD_FAST                       0: self
+                        110     LOAD_ATTR                       6: ytdlp_path
+                        130     CALL                            1
+                        138     LOAD_ATTR                       13: expanduser
+                        158     CALL                            0
+                        166     LOAD_ATTR                       15: resolve
+                        186     CALL                            0
+                        194     LOAD_ATTR                       16: parent
+                        214     CALL                            1
+                        222     STORE_FAST                      2: parent
+                        224     LOAD_FAST                       2: parent
+                        226     LOAD_GLOBAL                     0: os
+                        236     LOAD_ATTR                       18: pathsep
+                        256     BINARY_OP                       0 (+)
+                        260     LOAD_FAST                       1: env
+                        262     LOAD_ATTR                       21: get
+                        282     LOAD_CONST                      1: 'PATH'
+                        284     LOAD_CONST                      2: ''
+                        286     CALL                            2
+                        294     BINARY_OP                       0 (+)
+                        298     LOAD_FAST                       1: env
+                        300     LOAD_CONST                      1: 'PATH'
+                        302     STORE_SUBSCR                    
+                        306     LOAD_FAST                       1: env
+                        308     RETURN_VALUE                    
+                        310     LOAD_FAST                       1: env
+                        312     RETURN_VALUE                    
+                        314     PUSH_EXC_INFO                   
+                        316     LOAD_GLOBAL                     22: Exception
+                        326     CHECK_EXC_MATCH                 
+                        328     POP_JUMP_IF_FALSE               4 (to 338)
+                        330     POP_TOP                         
+                        332     POP_EXCEPT                      
+                        334     LOAD_FAST                       1: env
+                        336     RETURN_VALUE                    
+                        338     RERAISE                         0
+                        340     COPY                            3
+                        342     POP_EXCEPT                      
+                        344     RERAISE                         1
+                    [Exception Table]
+                        88 to 306 -> 314 [0] 
+                        314 to 332 -> 340 [1] lasti
+                        338 to 340 -> 340 [1] lasti
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: _download_file
+                    Qualified Name: SoundManager._download_file
+                    Arg Count: 3
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 6
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'urllib.request'
+                        'parent'
+                        'mkdir'
+                        'request'
+                        'Request'
+                        'urlopen'
+                        'write_bytes'
+                        'read'
+                    [Locals+Names]
+                        'self'
+                        'url'
+                        'target'
+                        'urllib'
+                        'req'
+                        'response'
+                    [Constants]
+                        None
+                        0
+                        True
+                        (
+                            'parents'
+                            'exist_ok'
+                        )
+                        'User-Agent'
+                        'overlay-system/1.0'
+                        (
+                            'headers'
+                        )
+                        120
+                        (
+                            'timeout'
+                        )
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_CONST                      1: 0
+                        4       LOAD_CONST                      0: None
+                        6       IMPORT_NAME                     0: urllib.request
+                        8       STORE_FAST                      3: urllib
+                        10      LOAD_FAST                       2: target
+                        12      LOAD_ATTR                       2: parent
+                        32      LOAD_ATTR                       5: mkdir
+                        52      LOAD_CONST                      2: True
+                        54      LOAD_CONST                      2: True
+                        56      KW_NAMES                        3: ('parents', 'exist_ok')
+                        58      CALL                            2
+                        66      POP_TOP                         
+                        68      LOAD_FAST                       3: urllib
+                        70      LOAD_ATTR                       6: request
+                        90      LOAD_ATTR                       9: Request
+                        110     LOAD_FAST                       1: url
+                        112     LOAD_CONST                      4: 'User-Agent'
+                        114     LOAD_CONST                      5: 'overlay-system/1.0'
+                        116     BUILD_MAP                       1
+                        118     KW_NAMES                        6: ('headers',)
+                        120     CALL                            2
+                        128     STORE_FAST                      4: req
+                        130     LOAD_FAST                       3: urllib
+                        132     LOAD_ATTR                       6: request
+                        152     LOAD_ATTR                       11: urlopen
+                        172     LOAD_FAST                       4: req
+                        174     LOAD_CONST                      7: 120
+                        176     KW_NAMES                        8: ('timeout',)
+                        178     CALL                            2
+                        186     BEFORE_WITH                     
+                        188     STORE_FAST                      5: response
+                        190     LOAD_FAST                       2: target
+                        192     LOAD_ATTR                       13: write_bytes
+                        212     LOAD_FAST                       5: response
+                        214     LOAD_ATTR                       15: read
+                        234     CALL                            0
+                        242     CALL                            1
+                        250     POP_TOP                         
+                        252     LOAD_CONST                      0: None
+                        254     LOAD_CONST                      0: None
+                        256     LOAD_CONST                      0: None
+                        258     CALL                            2
+                        266     POP_TOP                         
+                        268     RETURN_CONST                    0: None
+                        270     PUSH_EXC_INFO                   
+                        272     WITH_EXCEPT_START               
+                        274     POP_JUMP_IF_TRUE                1 (to 278)
+                        276     RERAISE                         2
+                        278     POP_TOP                         
+                        280     POP_EXCEPT                      
+                        282     POP_TOP                         
+                        284     POP_TOP                         
+                        286     RETURN_CONST                    0: None
+                        288     COPY                            3
+                        290     POP_EXCEPT                      
+                        292     RERAISE                         1
+                    [Exception Table]
+                        188 to 252 -> 270 [1] lasti
+                        270 to 280 -> 288 [3] lasti
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: _write_env_values
+                    Qualified Name: SoundManager._write_env_values
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'Path'
+                        'os'
+                        'getenv'
+                        'cwd'
+                        'exists'
+                        'read_text'
+                        'splitlines'
+                        'set'
+                        'lstrip'
+                        'startswith'
+                        'split'
+                        'strip'
+                        'str'
+                        'replace'
+                        'append'
+                        'add'
+                        'parent'
+                        'mkdir'
+                        'write_text'
+                        'join'
+                        'rstrip'
+                        'Exception'
+                        'log'
+                        'exception'
+                    [Locals+Names]
+                        'self'
+                        'values'
+                        'env_path'
+                        'existing'
+                        'lines'
+                        'keys'
+                        'found'
+                        'new_lines'
+                        'line'
+                        'key'
+                        'val'
+                        'k'
+                        'missing'
+                    [Constants]
+                        None
+                        'OVERLAY_RUNTIME_DIR'
+                        '.env'
+                        'utf-8'
+                        (
+                            'encoding'
+                        )
+                        ''
+                        '='
+                        '#'
+                        1
+                        0
+                        '\\'
+                        '/'
+                        '# --- Auto-written yt-dlp path ---'
+                        True
+                        (
+                            'parents'
+                            'exist_ok'
+                        )
+                        '\n'
+                        'Konnte .env YTDLP_PATH nicht aktualisieren'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_GLOBAL                     1: NULL + Path
+                        12      LOAD_GLOBAL                     3: NULL + os
+                        22      LOAD_ATTR                       4: getenv
+                        42      LOAD_CONST                      1: 'OVERLAY_RUNTIME_DIR'
+                        44      LOAD_GLOBAL                     1: NULL + Path
+                        54      LOAD_ATTR                       6: cwd
+                        74      CALL                            0
+                        82      CALL                            2
+                        90      CALL                            1
+                        98      LOAD_CONST                      2: '.env'
+                        100     BINARY_OP                       11 (/)
+                        104     STORE_FAST                      2: env_path
+                        106     NOP                             
+                        108     LOAD_FAST                       2: env_path
+                        110     LOAD_ATTR                       9: exists
+                        130     CALL                            0
+                        138     POP_JUMP_IF_FALSE               18 (to 176)
+                        140     LOAD_FAST                       2: env_path
+                        142     LOAD_ATTR                       11: read_text
+                        162     LOAD_CONST                      3: 'utf-8'
+                        164     KW_NAMES                        4: ('encoding',)
+                        166     CALL                            1
+                        174     JUMP_FORWARD                    1 (to 178)
+                        176     LOAD_CONST                      5: ''
+                        178     STORE_FAST                      3: existing
+                        180     LOAD_FAST                       3: existing
+                        182     LOAD_ATTR                       13: splitlines
+                        202     CALL                            0
+                        210     STORE_FAST                      4: lines
+                        212     LOAD_GLOBAL                     15: NULL + set
+                        222     LOAD_FAST                       1: values
+                        224     CALL                            1
+                        232     STORE_FAST                      5: keys
+                        234     LOAD_GLOBAL                     15: NULL + set
+                        244     CALL                            0
+                        252     STORE_FAST                      6: found
+                        254     BUILD_LIST                      0
+                        256     STORE_FAST                      7: new_lines
+                        258     LOAD_FAST                       4: lines
+                        260     GET_ITER                        
+                        262     FOR_ITER                        185 (to 634)
+                        266     STORE_FAST                      8: line
+                        268     LOAD_CONST                      6: '='
+                        270     LOAD_FAST                       8: line
+                        272     CONTAINS_OP                     0 (in)
+                        274     POP_JUMP_IF_FALSE               162 (to 600)
+                        276     LOAD_FAST                       8: line
+                        278     LOAD_ATTR                       17: lstrip
+                        298     CALL                            0
+                        306     LOAD_ATTR                       19: startswith
+                        326     LOAD_CONST                      7: '#'
+                        328     CALL                            1
+                        336     POP_JUMP_IF_TRUE                131 (to 600)
+                        338     LOAD_FAST                       8: line
+                        340     LOAD_ATTR                       21: split
+                        360     LOAD_CONST                      6: '='
+                        362     LOAD_CONST                      8: 1
+                        364     CALL                            2
+                        372     LOAD_CONST                      9: 0
+                        374     BINARY_SUBSCR                   
+                        378     LOAD_ATTR                       23: strip
+                        398     CALL                            0
+                        406     STORE_FAST                      9: key
+                        408     LOAD_FAST                       9: key
+                        410     LOAD_FAST                       5: keys
+                        412     CONTAINS_OP                     0 (in)
+                        414     POP_JUMP_IF_FALSE               74 (to 564)
+                        416     LOAD_GLOBAL                     25: NULL + str
+                        426     LOAD_FAST                       1: values
+                        428     LOAD_FAST                       9: key
+                        430     BINARY_SUBSCR                   
+                        434     COPY                            1
+                        436     POP_JUMP_IF_TRUE                2 (to 442)
+                        438     POP_TOP                         
+                        440     LOAD_CONST                      5: ''
+                        442     CALL                            1
+                        450     LOAD_ATTR                       27: replace
+                        470     LOAD_CONST                      10: '\\'
+                        472     LOAD_CONST                      11: '/'
+                        474     CALL                            2
+                        482     STORE_FAST                      10: val
+                        484     LOAD_FAST                       7: new_lines
+                        486     LOAD_ATTR                       29: append
+                        506     LOAD_FAST                       9: key
+                        508     FORMAT_VALUE                    0 (FVC_NONE)
+                        510     LOAD_CONST                      6: '='
+                        512     LOAD_FAST                       10: val
+                        514     FORMAT_VALUE                    0 (FVC_NONE)
+                        516     BUILD_STRING                    3
+                        518     CALL                            1
+                        526     POP_TOP                         
+                        528     LOAD_FAST                       6: found
+                        530     LOAD_ATTR                       31: add
+                        550     LOAD_FAST                       9: key
+                        552     CALL                            1
+                        560     POP_TOP                         
+                        562     JUMP_BACKWARD                   151 (to 262)
+                        564     LOAD_FAST                       7: new_lines
+                        566     LOAD_ATTR                       29: append
+                        586     LOAD_FAST                       8: line
+                        588     CALL                            1
+                        596     POP_TOP                         
+                        598     JUMP_BACKWARD                   169 (to 262)
+                        600     LOAD_FAST                       7: new_lines
+                        602     LOAD_ATTR                       29: append
+                        622     LOAD_FAST                       8: line
+                        624     CALL                            1
+                        632     POP_TOP                         
+                        634     JUMP_BACKWARD                   187 (to 262)
+                        636     END_FOR                         
+                        638     LOAD_FAST                       1: values
+                        640     GET_ITER                        
+                        642     LOAD_FAST_AND_CLEAR             11: k
+                        644     SWAP                            2
+                        646     BUILD_LIST                      0
+                        648     SWAP                            2
+                        650     FOR_ITER                        9 (to 670)
+                        654     STORE_FAST                      11: k
+                        656     LOAD_FAST                       11: k
+                        658     LOAD_FAST                       6: found
+                        660     CONTAINS_OP                     1 (not in)
+                        662     POP_JUMP_IF_TRUE                1 (to 666)
+                        664     JUMP_BACKWARD                   8 (to 650)
+                        666     LOAD_FAST                       11: k
+                        668     LIST_APPEND                     2
+                        670     JUMP_BACKWARD                   11 (to 650)
+                        672     END_FOR                         
+                        674     STORE_FAST                      12: missing
+                        676     STORE_FAST                      11: k
+                        678     LOAD_FAST                       12: missing
+                        680     POP_JUMP_IF_FALSE               97 (to 876)
+                        682     LOAD_FAST                       7: new_lines
+                        684     LOAD_ATTR                       29: append
+                        704     LOAD_CONST                      5: ''
+                        706     CALL                            1
+                        714     POP_TOP                         
+                        716     LOAD_FAST                       7: new_lines
+                        718     LOAD_ATTR                       29: append
+                        738     LOAD_CONST                      12: '# --- Auto-written yt-dlp path ---'
+                        740     CALL                            1
+                        748     POP_TOP                         
+                        750     LOAD_FAST                       12: missing
+                        752     GET_ITER                        
+                        754     FOR_ITER                        58 (to 872)
+                        758     STORE_FAST                      11: k
+                        760     LOAD_GLOBAL                     25: NULL + str
+                        770     LOAD_FAST                       1: values
+                        772     LOAD_FAST                       11: k
+                        774     BINARY_SUBSCR                   
+                        778     COPY                            1
+                        780     POP_JUMP_IF_TRUE                2 (to 786)
+                        782     POP_TOP                         
+                        784     LOAD_CONST                      5: ''
+                        786     CALL                            1
+                        794     LOAD_ATTR                       27: replace
+                        814     LOAD_CONST                      10: '\\'
+                        816     LOAD_CONST                      11: '/'
+                        818     CALL                            2
+                        826     STORE_FAST                      10: val
+                        828     LOAD_FAST                       7: new_lines
+                        830     LOAD_ATTR                       29: append
+                        850     LOAD_FAST                       11: k
+                        852     FORMAT_VALUE                    0 (FVC_NONE)
+                        854     LOAD_CONST                      6: '='
+                        856     LOAD_FAST                       10: val
+                        858     FORMAT_VALUE                    0 (FVC_NONE)
+                        860     BUILD_STRING                    3
+                        862     CALL                            1
+                        870     POP_TOP                         
+                        872     JUMP_BACKWARD                   60 (to 754)
+                        874     END_FOR                         
+                        876     LOAD_FAST                       2: env_path
+                        878     LOAD_ATTR                       32: parent
+                        898     LOAD_ATTR                       35: mkdir
+                        918     LOAD_CONST                      13: True
+                        920     LOAD_CONST                      13: True
+                        922     KW_NAMES                        14: ('parents', 'exist_ok')
+                        924     CALL                            2
+                        932     POP_TOP                         
+                        934     LOAD_FAST                       2: env_path
+                        936     LOAD_ATTR                       37: write_text
+                        956     LOAD_CONST                      15: '\n'
+                        958     LOAD_ATTR                       39: join
+                        978     LOAD_FAST                       7: new_lines
+                        980     CALL                            1
+                        988     LOAD_ATTR                       41: rstrip
+                        1008    CALL                            0
+                        1016    LOAD_CONST                      15: '\n'
+                        1018    BINARY_OP                       0 (+)
+                        1022    LOAD_CONST                      3: 'utf-8'
+                        1024    KW_NAMES                        4: ('encoding',)
+                        1026    CALL                            2
+                        1034    POP_TOP                         
+                        1036    RETURN_CONST                    0: None
+                        1038    SWAP                            2
+                        1040    POP_TOP                         
+                        1042    SWAP                            2
+                        1044    STORE_FAST                      11: k
+                        1046    RERAISE                         0
+                        1048    PUSH_EXC_INFO                   
+                        1050    LOAD_GLOBAL                     42: Exception
+                        1060    CHECK_EXC_MATCH                 
+                        1062    POP_JUMP_IF_FALSE               24 (to 1112)
+                        1064    POP_TOP                         
+                        1066    LOAD_GLOBAL                     44: log
+                        1076    LOAD_ATTR                       47: exception
+                        1096    LOAD_CONST                      16: 'Konnte .env YTDLP_PATH nicht aktualisieren'
+                        1098    CALL                            1
+                        1106    POP_TOP                         
+                        1108    POP_EXCEPT                      
+                        1110    RETURN_CONST                    0: None
+                        1112    RERAISE                         0
+                        1114    COPY                            3
+                        1116    POP_EXCEPT                      
+                        1118    RERAISE                         1
+                    [Exception Table]
+                        108 to 646 -> 1048 [0] 
+                        646 to 664 -> 1038 [2] 
+                        666 to 674 -> 1038 [2] 
+                        674 to 1036 -> 1048 [0] 
+                        1038 to 1048 -> 1048 [0] 
+                        1048 to 1108 -> 1114 [1] lasti
+                        1112 to 1114 -> 1114 [1] lasti
+                (
+                    None
+                )
+                (
+                    'websocket_manager'
+                    'WebSocketManager'
+                    'config'
+                    'dict[str, Any] | None'
+                    'return'
+                    'None'
+                )
+                (
+                    'return'
+                    'None'
+                )
+                (
+                    'volume'
+                    'float'
+                    'return'
+                    'None'
+                )
+                (
+                    'device_id'
+                    'str'
+                    'return'
+                    'None'
+                )
+                (
+                    'return'
+                    'str'
+                )
+                (
+                    'system'
+                    'manual'
+                )
+                (
+                    'url'
+                    'str'
+                    'requested_by'
+                    'str'
+                    'source'
+                    'str'
+                    'return'
+                    'None'
+                )
+                (
+                    'url'
+                    'str'
+                    'return'
+                    'bool'
+                )
+                (
+                    'url'
+                    'str'
+                    'return'
+                    'tuple[str, str]'
+                )
+                (
+                    'return'
+                    'dict[str, str]'
+                )
+                (
+                    'url'
+                    'str'
+                    'target'
+                    'Path'
+                    'return'
+                    'None'
+                )
+                (
+                    'values'
+                    'dict[str, str]'
+                    'return'
+                    'None'
+                )
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_NAME                       0: __name__
+                4       STORE_NAME                      1: __module__
+                6       LOAD_CONST                      0: 'SoundManager'
+                8       STORE_NAME                      2: __qualname__
+                10      LOAD_CONST                      1: '\n    OBS Sound Manager mit YouTube Direct-URL Resolve:\n    - Python verwaltet nur Queue/Settings.\n    - Bei YouTube versucht Python vorher mit yt-dlp eine direkte Media-URL zu holen.\n    - sound.html spielt Video UND Ton über OBS ab.\n    - Falls direct_media_url fehlschlägt, fallback auf YouTube iframe.\n    '
+                12      STORE_NAME                      3: __doc__
+                14      LOAD_CONST                      17: (None,)
+                16      LOAD_CONST                      18: ('websocket_manager', 'WebSocketManager', 'config', 'dict[str, Any] | None', 'return', 'None')
+                18      LOAD_CONST                      3: <CODE> __init__
+                20      MAKE_FUNCTION                   5
+                22      STORE_NAME                      4: __init__
+                24      LOAD_CONST                      19: ('return', 'None')
+                26      LOAD_CONST                      4: <CODE> broadcast_settings
+                28      MAKE_FUNCTION                   4
+                30      STORE_NAME                      5: broadcast_settings
+                32      LOAD_CONST                      20: ('volume', 'float', 'return', 'None')
+                34      LOAD_CONST                      5: <CODE> set_volume
+                36      MAKE_FUNCTION                   4
+                38      STORE_NAME                      6: set_volume
+                40      LOAD_CONST                      21: ('device_id', 'str', 'return', 'None')
+                42      LOAD_CONST                      6: <CODE> set_output_device
+                44      MAKE_FUNCTION                   4
+                46      STORE_NAME                      7: set_output_device
+                48      LOAD_CONST                      22: ('return', 'str')
+                50      LOAD_CONST                      7: <CODE> list_audio_devices
+                52      MAKE_FUNCTION                   4
+                54      STORE_NAME                      8: list_audio_devices
+                56      LOAD_CONST                      22: ('return', 'str')
+                58      LOAD_CONST                      8: <CODE> ensure_external_tools
+                60      MAKE_FUNCTION                   4
+                62      STORE_NAME                      9: ensure_external_tools
+                64      LOAD_CONST                      23: ('system', 'manual')
+                66      LOAD_CONST                      24: ('url', 'str', 'requested_by', 'str', 'source', 'str', 'return', 'None')
+                68      LOAD_CONST                      9: <CODE> play
+                70      MAKE_FUNCTION                   5
+                72      STORE_NAME                      10: play
+                74      LOAD_CONST                      19: ('return', 'None')
+                76      LOAD_CONST                      10: <CODE> stop
+                78      MAKE_FUNCTION                   4
+                80      STORE_NAME                      11: stop
+                82      LOAD_CONST                      25: ('url', 'str', 'return', 'bool')
+                84      LOAD_CONST                      11: <CODE> _is_youtube_url
+                86      MAKE_FUNCTION                   4
+                88      STORE_NAME                      12: _is_youtube_url
+                90      LOAD_CONST                      22: ('return', 'str')
+                92      LOAD_CONST                      12: <CODE> _find_ytdlp
+                94      MAKE_FUNCTION                   4
+                96      STORE_NAME                      13: _find_ytdlp
+                98      LOAD_CONST                      26: ('url', 'str', 'return', 'tuple[str, str]')
+                100     LOAD_CONST                      13: <CODE> _resolve_youtube_direct_url
+                102     MAKE_FUNCTION                   4
+                104     STORE_NAME                      14: _resolve_youtube_direct_url
+                106     LOAD_CONST                      27: ('return', 'dict[str, str]')
+                108     LOAD_CONST                      14: <CODE> _tool_env
+                110     MAKE_FUNCTION                   4
+                112     STORE_NAME                      15: _tool_env
+                114     LOAD_CONST                      28: ('url', 'str', 'target', 'Path', 'return', 'None')
+                116     LOAD_CONST                      15: <CODE> _download_file
+                118     MAKE_FUNCTION                   4
+                120     STORE_NAME                      16: _download_file
+                122     LOAD_CONST                      29: ('values', 'dict[str, str]', 'return', 'None')
+                124     LOAD_CONST                      16: <CODE> _write_env_values
+                126     MAKE_FUNCTION                   4
+                128     STORE_NAME                      17: _write_env_values
+                130     RETURN_CONST                    2: None
+            [Exception Table]
+        'SoundManager'
+        [Code]
+            File Name: backend\events.py
+            Object Name: EventDispatcher
+            Qualified Name: EventDispatcher
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+            [Names]
+                '__name__'
+                '__module__'
+                '__qualname__'
+                '__init__'
+                'handle_event'
+            [Locals+Names]
+            [Constants]
+                'EventDispatcher'
+                None
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: __init__
+                    Qualified Name: EventDispatcher.__init__
+                    Arg Count: 4
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 2
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_time'
+                        '_ws'
+                        '_sound'
+                    [Locals+Names]
+                        'self'
+                        'time_manager'
+                        'websocket_manager'
+                        'sound_manager'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       1: time_manager
+                        4       LOAD_FAST                       0: self
+                        6       STORE_ATTR                      0: _time
+                        16      LOAD_FAST                       2: websocket_manager
+                        18      LOAD_FAST                       0: self
+                        20      STORE_ATTR                      1: _ws
+                        30      LOAD_FAST                       3: sound_manager
+                        32      LOAD_FAST                       0: self
+                        34      STORE_ATTR                      2: _sound
+                        44      RETURN_CONST                    0: None
+                    [Exception Table]
+                [Code]
+                    File Name: backend\events.py
+                    Object Name: handle_event
+                    Qualified Name: EventDispatcher.handle_event
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 9
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'log'
+                        'info'
+                        'event_type'
+                        'username'
+                        'amount'
+                        'unit'
+                        'seconds_added'
+                        'source'
+                        '_time'
+                        'add_time'
+                        'to_payload'
+                        '_ws'
+                        'broadcast'
+                        '_sound'
+                        'sound_url'
+                        'min_bits_for_youtube'
+                        'play'
+                    [Locals+Names]
+                        'self'
+                        'event'
+                    [Constants]
+                        None
+                        'Event: %s von %s amount=%s%s seconds=%s source=%s'
+                        (
+                            'source'
+                            'meta'
+                        )
+                        'bits'
+                        'Sound-Dono ignoriert: %s Bits < Minimum %s'
+                        frozenset({
+                            'sub'
+                            'bits'
+                            'gift_sub'
+                        })
+                        (
+                            'requested_by'
+                            'source'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_GLOBAL                     0: log
+                        16      LOAD_ATTR                       3: info
+                        36      LOAD_CONST                      1: 'Event: %s von %s amount=%s%s seconds=%s source=%s'
+                        38      LOAD_FAST                       1: event
+                        40      LOAD_ATTR                       4: event_type
+                        60      LOAD_FAST                       1: event
+                        62      LOAD_ATTR                       6: username
+                        82      LOAD_FAST                       1: event
+                        84      LOAD_ATTR                       8: amount
+                        104     LOAD_FAST                       1: event
+                        106     LOAD_ATTR                       10: unit
+                        126     LOAD_FAST                       1: event
+                        128     LOAD_ATTR                       12: seconds_added
+                        148     LOAD_FAST                       1: event
+                        150     LOAD_ATTR                       14: source
+                        170     CALL                            7
+                        178     POP_TOP                         
+                        180     LOAD_FAST                       0: self
+                        182     LOAD_ATTR                       16: _time
+                        202     LOAD_ATTR                       19: add_time
+                        222     LOAD_FAST                       1: event
+                        224     LOAD_ATTR                       12: seconds_added
+                        244     LOAD_FAST                       1: event
+                        246     LOAD_ATTR                       14: source
+                        266     LOAD_FAST                       1: event
+                        268     LOAD_ATTR                       21: to_payload
+                        288     CALL                            0
+                        296     KW_NAMES                        2: ('source', 'meta')
+                        298     CALL                            3
+                        306     GET_AWAITABLE                   0
+                        308     LOAD_CONST                      0: None
+                        310     SEND                            3 (to 318)
+                        314     YIELD_VALUE                     2
+                        316     RESUME                          3
+                        318     JUMP_BACKWARD_NO_INTERRUPT      5 (to 310)
+                        320     END_SEND                        
+                        322     POP_TOP                         
+                        324     LOAD_FAST                       0: self
+                        326     LOAD_ATTR                       22: _ws
+                        346     LOAD_ATTR                       25: broadcast
+                        366     LOAD_FAST                       1: event
+                        368     LOAD_ATTR                       21: to_payload
+                        388     CALL                            0
+                        396     CALL                            1
+                        404     GET_AWAITABLE                   0
+                        406     LOAD_CONST                      0: None
+                        408     SEND                            3 (to 416)
+                        412     YIELD_VALUE                     2
+                        414     RESUME                          3
+                        416     JUMP_BACKWARD_NO_INTERRUPT      5 (to 408)
+                        418     END_SEND                        
+                        420     POP_TOP                         
+                        422     LOAD_FAST                       0: self
+                        424     LOAD_ATTR                       26: _sound
+                        444     POP_JUMP_IF_FALSE               201 (to 848)
+                        446     LOAD_FAST                       1: event
+                        448     LOAD_ATTR                       28: sound_url
+                        468     POP_JUMP_IF_FALSE               188 (to 846)
+                        470     LOAD_FAST                       1: event
+                        472     LOAD_ATTR                       4: event_type
+                        492     LOAD_CONST                      3: 'bits'
+                        494     COMPARE_OP                      40 (==)
+                        498     POP_JUMP_IF_FALSE               89 (to 678)
+                        500     LOAD_FAST                       1: event
+                        502     LOAD_ATTR                       8: amount
+                        522     LOAD_FAST                       0: self
+                        524     LOAD_ATTR                       26: _sound
+                        544     LOAD_ATTR                       30: min_bits_for_youtube
+                        564     COMPARE_OP                      2 (<)
+                        568     POP_JUMP_IF_FALSE               54 (to 678)
+                        570     LOAD_GLOBAL                     0: log
+                        580     LOAD_ATTR                       3: info
+                        600     LOAD_CONST                      4: 'Sound-Dono ignoriert: %s Bits < Minimum %s'
+                        602     LOAD_FAST                       1: event
+                        604     LOAD_ATTR                       8: amount
+                        624     LOAD_FAST                       0: self
+                        626     LOAD_ATTR                       26: _sound
+                        646     LOAD_ATTR                       30: min_bits_for_youtube
+                        666     CALL                            3
+                        674     POP_TOP                         
+                        676     RETURN_CONST                    0: None
+                        678     LOAD_FAST                       1: event
+                        680     LOAD_ATTR                       4: event_type
+                        700     LOAD_CONST                      5: frozenset({'sub', 'bits', 'gift_sub'})
+                        702     CONTAINS_OP                     0 (in)
+                        704     POP_JUMP_IF_FALSE               69 (to 844)
+                        706     LOAD_FAST                       0: self
+                        708     LOAD_ATTR                       26: _sound
+                        728     LOAD_ATTR                       33: play
+                        748     LOAD_FAST                       1: event
+                        750     LOAD_ATTR                       28: sound_url
+                        770     LOAD_FAST                       1: event
+                        772     LOAD_ATTR                       6: username
+                        792     LOAD_FAST                       1: event
+                        794     LOAD_ATTR                       14: source
+                        814     KW_NAMES                        6: ('requested_by', 'source')
+                        816     CALL                            3
+                        824     GET_AWAITABLE                   0
+                        826     LOAD_CONST                      0: None
+                        828     SEND                            3 (to 836)
+                        832     YIELD_VALUE                     2
+                        834     RESUME                          3
+                        836     JUMP_BACKWARD_NO_INTERRUPT      5 (to 828)
+                        838     END_SEND                        
+                        840     POP_TOP                         
+                        842     RETURN_CONST                    0: None
+                        844     RETURN_CONST                    0: None
+                        846     RETURN_CONST                    0: None
+                        848     RETURN_CONST                    0: None
+                        850     CLEANUP_THROW                   
+                        852     JUMP_BACKWARD                   268 (to 320)
+                        856     CLEANUP_THROW                   
+                        858     JUMP_BACKWARD                   221 (to 418)
+                        860     CLEANUP_THROW                   
+                        862     JUMP_BACKWARD                   13 (to 838)
+                        864     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        866     RERAISE                         1
+                    [Exception Table]
+                        4 to 314 -> 864 [0] lasti
+                        314 to 316 -> 850 [2] 
+                        316 to 412 -> 864 [0] lasti
+                        412 to 414 -> 856 [2] 
+                        414 to 832 -> 864 [0] lasti
+                        832 to 834 -> 860 [2] 
+                        834 to 852 -> 864 [0] lasti
+                        856 to 858 -> 864 [0] lasti
+                        860 to 862 -> 864 [0] lasti
+                (
+                    None
+                )
+                (
+                    'time_manager'
+                    'TimeManager'
+                    'websocket_manager'
+                    'WebSocketManager'
+                    'sound_manager'
+                    'SoundManager | None'
+                    'return'
+                    'None'
+                )
+                (
+                    'event'
+                    'DonationEvent'
+                    'return'
+                    'None'
+                )
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_NAME                       0: __name__
+                4       STORE_NAME                      1: __module__
+                6       LOAD_CONST                      0: 'EventDispatcher'
+                8       STORE_NAME                      2: __qualname__
+                10      LOAD_CONST                      4: (None,)
+                12      LOAD_CONST                      5: ('time_manager', 'TimeManager', 'websocket_manager', 'WebSocketManager', 'sound_manager', 'SoundManager | None', 'return', 'None')
+                14      LOAD_CONST                      2: <CODE> __init__
+                16      MAKE_FUNCTION                   5
+                18      STORE_NAME                      3: __init__
+                20      LOAD_CONST                      6: ('event', 'DonationEvent', 'return', 'None')
+                22      LOAD_CONST                      3: <CODE> handle_event
+                24      MAKE_FUNCTION                   4
+                26      STORE_NAME                      4: handle_event
+                28      RETURN_CONST                    1: None
+            [Exception Table]
+        'EventDispatcher'
+        (
+            'text'
+            'str | None'
+            'return'
+            'str | None'
+        )
+    [Disassembly]
+        0       RESUME                          0
+        2       LOAD_CONST                      0: 0
+        4       LOAD_CONST                      1: ('annotations',)
+        6       IMPORT_NAME                     0: __future__
+        8       IMPORT_FROM                     1: annotations
+        10      STORE_NAME                      1: annotations
+        12      POP_TOP                         
+        14      LOAD_CONST                      0: 0
+        16      LOAD_CONST                      2: None
+        18      IMPORT_NAME                     2: asyncio
+        20      STORE_NAME                      2: asyncio
+        22      LOAD_CONST                      0: 0
+        24      LOAD_CONST                      2: None
+        26      IMPORT_NAME                     3: logging
+        28      STORE_NAME                      3: logging
+        30      LOAD_CONST                      0: 0
+        32      LOAD_CONST                      2: None
+        34      IMPORT_NAME                     4: os
+        36      STORE_NAME                      4: os
+        38      LOAD_CONST                      0: 0
+        40      LOAD_CONST                      2: None
+        42      IMPORT_NAME                     5: platform
+        44      STORE_NAME                      5: platform
+        46      LOAD_CONST                      0: 0
+        48      LOAD_CONST                      2: None
+        50      IMPORT_NAME                     6: re
+        52      STORE_NAME                      6: re
+        54      LOAD_CONST                      0: 0
+        56      LOAD_CONST                      2: None
+        58      IMPORT_NAME                     7: shutil
+        60      STORE_NAME                      7: shutil
+        62      LOAD_CONST                      0: 0
+        64      LOAD_CONST                      2: None
+        66      IMPORT_NAME                     8: subprocess
+        68      STORE_NAME                      8: subprocess
+        70      LOAD_CONST                      0: 0
+        72      LOAD_CONST                      2: None
+        74      IMPORT_NAME                     9: time
+        76      STORE_NAME                      9: time
+        78      LOAD_CONST                      0: 0
+        80      LOAD_CONST                      2: None
+        82      IMPORT_NAME                     10: urllib.request
+        84      STORE_NAME                      11: urllib
+        86      LOAD_CONST                      0: 0
+        88      LOAD_CONST                      3: ('dataclass',)
+        90      IMPORT_NAME                     12: dataclasses
+        92      IMPORT_FROM                     13: dataclass
+        94      STORE_NAME                      13: dataclass
+        96      POP_TOP                         
+        98      LOAD_CONST                      0: 0
+        100     LOAD_CONST                      4: ('Path',)
+        102     IMPORT_NAME                     14: pathlib
+        104     IMPORT_FROM                     15: Path
+        106     STORE_NAME                      15: Path
+        108     POP_TOP                         
+        110     LOAD_CONST                      0: 0
+        112     LOAD_CONST                      5: ('Any', 'Literal')
+        114     IMPORT_NAME                     16: typing
+        116     IMPORT_FROM                     17: Any
+        118     STORE_NAME                      17: Any
+        120     IMPORT_FROM                     18: Literal
+        122     STORE_NAME                      18: Literal
+        124     POP_TOP                         
+        126     LOAD_CONST                      6: 1
+        128     LOAD_CONST                      7: ('TimeManager',)
+        130     IMPORT_NAME                     19: time_manager
+        132     IMPORT_FROM                     20: TimeManager
+        134     STORE_NAME                      20: TimeManager
+        136     POP_TOP                         
+        138     LOAD_CONST                      6: 1
+        140     LOAD_CONST                      8: ('WebSocketManager',)
+        142     IMPORT_NAME                     21: websocket_manager
+        144     IMPORT_FROM                     22: WebSocketManager
+        146     STORE_NAME                      22: WebSocketManager
+        148     POP_TOP                         
+        150     PUSH_NULL                       
+        152     LOAD_NAME                       3: logging
+        154     LOAD_ATTR                       46: getLogger
+        174     LOAD_NAME                       24: __name__
+        176     CALL                            1
+        184     STORE_NAME                      25: log
+        186     LOAD_NAME                       18: Literal
+        188     LOAD_CONST                      9: ('follow', 'bits', 'sub', 'gift_sub', 'money')
+        190     BINARY_SUBSCR                   
+        194     STORE_NAME                      26: EventType
+        196     PUSH_NULL                       
+        198     LOAD_NAME                       6: re
+        200     LOAD_ATTR                       54: compile
+        220     LOAD_CONST                      10: 'https?://(?:www\\.)?(?:youtube\\.com/watch\\?[^\\s]+|youtu\\.be/[^\\s]+|youtube\\.com/shorts/[^\\s]+)'
+        222     LOAD_NAME                       6: re
+        224     LOAD_ATTR                       56: I
+        244     CALL                            2
+        252     STORE_NAME                      29: YOUTUBE_RE
+        254     LOAD_CONST                      20: ('text', 'str | None', 'return', 'str | None')
+        256     LOAD_CONST                      11: <CODE> extract_first_youtube_url
+        258     MAKE_FUNCTION                   4
+        260     STORE_NAME                      30: extract_first_youtube_url
+        262     PUSH_NULL                       
+        264     LOAD_NAME                       13: dataclass
+        266     LOAD_CONST                      12: True
+        268     KW_NAMES                        13: ('frozen',)
+        270     CALL                            1
+        278     PUSH_NULL                       
+        280     LOAD_BUILD_CLASS                
+        282     LOAD_CONST                      14: <CODE> DonationEvent
+        284     MAKE_FUNCTION                   0
+        286     LOAD_CONST                      15: 'DonationEvent'
+        288     CALL                            2
+        296     CALL                            0
+        304     STORE_NAME                      31: DonationEvent
+        306     PUSH_NULL                       
+        308     LOAD_BUILD_CLASS                
+        310     LOAD_CONST                      16: <CODE> SoundManager
+        312     MAKE_FUNCTION                   0
+        314     LOAD_CONST                      17: 'SoundManager'
+        316     CALL                            2
+        324     STORE_NAME                      32: SoundManager
+        326     PUSH_NULL                       
+        328     LOAD_BUILD_CLASS                
+        330     LOAD_CONST                      18: <CODE> EventDispatcher
+        332     MAKE_FUNCTION                   0
+        334     LOAD_CONST                      19: 'EventDispatcher'
+        336     CALL                            2
+        344     STORE_NAME                      33: EventDispatcher
+        346     RETURN_CONST                    2: None
+    [Exception Table]

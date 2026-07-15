@@ -1,0 +1,823 @@
+websocket_manager.pyc (Python 3.12)
+[Code]
+    File Name: backend\websocket_manager.py
+    Object Name: <module>
+    Qualified Name: <module>
+    Arg Count: 0
+    Pos Only Arg Count: 0
+    KW Only Arg Count: 0
+    Stack Size: 4
+    Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+    [Names]
+        '__future__'
+        'annotations'
+        'asyncio'
+        'json'
+        'logging'
+        'typing'
+        'Any'
+        'fastapi'
+        'WebSocket'
+        'starlette.websockets'
+        'WebSocketDisconnect'
+        'getLogger'
+        '__name__'
+        'log'
+        'WebSocketManager'
+    [Locals+Names]
+    [Constants]
+        0
+        (
+            'annotations'
+        )
+        None
+        (
+            'Any'
+        )
+        (
+            'WebSocket'
+        )
+        (
+            'WebSocketDisconnect'
+        )
+        [Code]
+            File Name: backend\websocket_manager.py
+            Object Name: WebSocketManager
+            Qualified Name: WebSocketManager
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 2
+            Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+            [Names]
+                '__name__'
+                '__module__'
+                '__qualname__'
+                '__doc__'
+                '__init__'
+                'connect'
+                'disconnect'
+                'broadcast'
+                '_safe_send'
+            [Locals+Names]
+            [Constants]
+                'WebSocketManager'
+                'Verwaltet alle OBS-Browserquellen und pusht JSON-Events.'
+                [Code]
+                    File Name: backend\websocket_manager.py
+                    Object Name: __init__
+                    Qualified Name: WebSocketManager.__init__
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 2
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'set'
+                        '_clients'
+                        'asyncio'
+                        'Lock'
+                        '_lock'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_GLOBAL                     1: NULL + set
+                        12      CALL                            0
+                        20      LOAD_FAST                       0: self
+                        22      STORE_ATTR                      1: _clients
+                        32      LOAD_GLOBAL                     5: NULL + asyncio
+                        42      LOAD_ATTR                       6: Lock
+                        62      CALL                            0
+                        70      LOAD_FAST                       0: self
+                        72      STORE_ATTR                      4: _lock
+                        82      RETURN_CONST                    0: None
+                    [Exception Table]
+                [Code]
+                    File Name: backend\websocket_manager.py
+                    Object Name: connect
+                    Qualified Name: WebSocketManager.connect
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'accept'
+                        '_lock'
+                        '_clients'
+                        'add'
+                        'log'
+                        'info'
+                        'len'
+                    [Locals+Names]
+                        'self'
+                        'websocket'
+                    [Constants]
+                        None
+                        'WebSocket verbunden. Clients: %d'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       1: websocket
+                        8       LOAD_ATTR                       1: accept
+                        28      CALL                            0
+                        36      GET_AWAITABLE                   0
+                        38      LOAD_CONST                      0: None
+                        40      SEND                            3 (to 48)
+                        44      YIELD_VALUE                     2
+                        46      RESUME                          3
+                        48      JUMP_BACKWARD_NO_INTERRUPT      5 (to 40)
+                        50      END_SEND                        
+                        52      POP_TOP                         
+                        54      LOAD_FAST                       0: self
+                        56      LOAD_ATTR                       2: _lock
+                        76      BEFORE_ASYNC_WITH               
+                        78      GET_AWAITABLE                   1
+                        80      LOAD_CONST                      0: None
+                        82      SEND                            3 (to 90)
+                        86      YIELD_VALUE                     2
+                        88      RESUME                          3
+                        90      JUMP_BACKWARD_NO_INTERRUPT      5 (to 82)
+                        92      END_SEND                        
+                        94      POP_TOP                         
+                        96      LOAD_FAST                       0: self
+                        98      LOAD_ATTR                       4: _clients
+                        118     LOAD_ATTR                       7: add
+                        138     LOAD_FAST                       1: websocket
+                        140     CALL                            1
+                        148     POP_TOP                         
+                        150     LOAD_CONST                      0: None
+                        152     LOAD_CONST                      0: None
+                        154     LOAD_CONST                      0: None
+                        156     CALL                            2
+                        164     GET_AWAITABLE                   2
+                        166     LOAD_CONST                      0: None
+                        168     SEND                            3 (to 176)
+                        172     YIELD_VALUE                     2
+                        174     RESUME                          3
+                        176     JUMP_BACKWARD_NO_INTERRUPT      5 (to 168)
+                        178     END_SEND                        
+                        180     POP_TOP                         
+                        182     LOAD_GLOBAL                     8: log
+                        192     LOAD_ATTR                       11: info
+                        212     LOAD_CONST                      1: 'WebSocket verbunden. Clients: %d'
+                        214     LOAD_GLOBAL                     13: NULL + len
+                        224     LOAD_FAST                       0: self
+                        226     LOAD_ATTR                       4: _clients
+                        246     CALL                            1
+                        254     CALL                            2
+                        262     POP_TOP                         
+                        264     RETURN_CONST                    0: None
+                        266     CLEANUP_THROW                   
+                        268     JUMP_BACKWARD                   110 (to 50)
+                        270     CLEANUP_THROW                   
+                        272     JUMP_BACKWARD                   91 (to 92)
+                        274     CLEANUP_THROW                   
+                        276     JUMP_BACKWARD                   50 (to 178)
+                        278     PUSH_EXC_INFO                   
+                        280     WITH_EXCEPT_START               
+                        282     GET_AWAITABLE                   2
+                        284     LOAD_CONST                      0: None
+                        286     SEND                            4 (to 296)
+                        290     YIELD_VALUE                     3
+                        292     RESUME                          3
+                        294     JUMP_BACKWARD_NO_INTERRUPT      5 (to 286)
+                        296     CLEANUP_THROW                   
+                        298     END_SEND                        
+                        300     POP_JUMP_IF_TRUE                1 (to 304)
+                        302     RERAISE                         2
+                        304     POP_TOP                         
+                        306     POP_EXCEPT                      
+                        308     POP_TOP                         
+                        310     POP_TOP                         
+                        312     JUMP_BACKWARD                   66 (to 182)
+                        314     COPY                            3
+                        316     POP_EXCEPT                      
+                        318     RERAISE                         1
+                        320     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        322     RERAISE                         1
+                    [Exception Table]
+                        4 to 44 -> 320 [0] lasti
+                        44 to 46 -> 266 [2] 
+                        46 to 86 -> 320 [0] lasti
+                        86 to 88 -> 270 [3] 
+                        88 to 94 -> 320 [0] lasti
+                        94 to 150 -> 278 [1] lasti
+                        150 to 172 -> 320 [0] lasti
+                        172 to 174 -> 274 [2] 
+                        174 to 268 -> 320 [0] lasti
+                        270 to 272 -> 320 [0] lasti
+                        274 to 276 -> 320 [0] lasti
+                        278 to 290 -> 314 [3] lasti
+                        290 to 292 -> 296 [6] 
+                        292 to 306 -> 314 [3] lasti
+                        306 to 320 -> 320 [0] lasti
+                [Code]
+                    File Name: backend\websocket_manager.py
+                    Object Name: disconnect
+                    Qualified Name: WebSocketManager.disconnect
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_lock'
+                        '_clients'
+                        'discard'
+                        'log'
+                        'info'
+                        'len'
+                    [Locals+Names]
+                        'self'
+                        'websocket'
+                    [Constants]
+                        None
+                        'WebSocket getrennt. Clients: %d'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _lock
+                        28      BEFORE_ASYNC_WITH               
+                        30      GET_AWAITABLE                   1
+                        32      LOAD_CONST                      0: None
+                        34      SEND                            3 (to 42)
+                        38      YIELD_VALUE                     2
+                        40      RESUME                          3
+                        42      JUMP_BACKWARD_NO_INTERRUPT      5 (to 34)
+                        44      END_SEND                        
+                        46      POP_TOP                         
+                        48      LOAD_FAST                       0: self
+                        50      LOAD_ATTR                       2: _clients
+                        70      LOAD_ATTR                       5: discard
+                        90      LOAD_FAST                       1: websocket
+                        92      CALL                            1
+                        100     POP_TOP                         
+                        102     LOAD_CONST                      0: None
+                        104     LOAD_CONST                      0: None
+                        106     LOAD_CONST                      0: None
+                        108     CALL                            2
+                        116     GET_AWAITABLE                   2
+                        118     LOAD_CONST                      0: None
+                        120     SEND                            3 (to 128)
+                        124     YIELD_VALUE                     2
+                        126     RESUME                          3
+                        128     JUMP_BACKWARD_NO_INTERRUPT      5 (to 120)
+                        130     END_SEND                        
+                        132     POP_TOP                         
+                        134     LOAD_GLOBAL                     6: log
+                        144     LOAD_ATTR                       9: info
+                        164     LOAD_CONST                      1: 'WebSocket getrennt. Clients: %d'
+                        166     LOAD_GLOBAL                     11: NULL + len
+                        176     LOAD_FAST                       0: self
+                        178     LOAD_ATTR                       2: _clients
+                        198     CALL                            1
+                        206     CALL                            2
+                        214     POP_TOP                         
+                        216     RETURN_CONST                    0: None
+                        218     CLEANUP_THROW                   
+                        220     JUMP_BACKWARD                   89 (to 44)
+                        222     CLEANUP_THROW                   
+                        224     JUMP_BACKWARD                   48 (to 130)
+                        226     PUSH_EXC_INFO                   
+                        228     WITH_EXCEPT_START               
+                        230     GET_AWAITABLE                   2
+                        232     LOAD_CONST                      0: None
+                        234     SEND                            4 (to 244)
+                        238     YIELD_VALUE                     3
+                        240     RESUME                          3
+                        242     JUMP_BACKWARD_NO_INTERRUPT      5 (to 234)
+                        244     CLEANUP_THROW                   
+                        246     END_SEND                        
+                        248     POP_JUMP_IF_TRUE                1 (to 252)
+                        250     RERAISE                         2
+                        252     POP_TOP                         
+                        254     POP_EXCEPT                      
+                        256     POP_TOP                         
+                        258     POP_TOP                         
+                        260     JUMP_BACKWARD                   64 (to 134)
+                        262     COPY                            3
+                        264     POP_EXCEPT                      
+                        266     RERAISE                         1
+                        268     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        270     RERAISE                         1
+                    [Exception Table]
+                        4 to 38 -> 268 [0] lasti
+                        38 to 40 -> 218 [3] 
+                        40 to 46 -> 268 [0] lasti
+                        46 to 102 -> 226 [1] lasti
+                        102 to 124 -> 268 [0] lasti
+                        124 to 126 -> 222 [2] 
+                        126 to 220 -> 268 [0] lasti
+                        222 to 224 -> 268 [0] lasti
+                        226 to 238 -> 262 [3] lasti
+                        238 to 240 -> 244 [6] 
+                        240 to 254 -> 262 [3] lasti
+                        254 to 268 -> 268 [0] lasti
+                [Code]
+                    File Name: backend\websocket_manager.py
+                    Object Name: broadcast
+                    Qualified Name: WebSocketManager.broadcast
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'json'
+                        'dumps'
+                        '_lock'
+                        'list'
+                        '_clients'
+                        'asyncio'
+                        'gather'
+                        'zip'
+                        'isinstance'
+                        'Exception'
+                        'append'
+                        'discard'
+                        'log'
+                        'warning'
+                        'len'
+                    [Locals+Names]
+                        'self'
+                        'payload'
+                        'clients'
+                        'failed'
+                        'results'
+                        'client'
+                        'result'
+                        'message'
+                    [Constants]
+                        None
+                        False
+                        (
+                            'ensure_ascii'
+                        )
+                        [Code]
+                            File Name: backend\websocket_manager.py
+                            Object Name: <genexpr>
+                            Qualified Name: WebSocketManager.broadcast.<locals>.<genexpr>
+                            Arg Count: 1
+                            Pos Only Arg Count: 0
+                            KW Only Arg Count: 0
+                            Stack Size: 5
+                            Flags: 0x01000033 (CO_OPTIMIZED | CO_NEWLOCALS | CO_NESTED | CO_GENERATOR | CO_FUTURE_ANNOTATIONS)
+                            [Names]
+                                '_safe_send'
+                            [Locals+Names]
+                                '.0'
+                                'client'
+                                'message'
+                                'self'
+                            [Constants]
+                                None
+                            [Disassembly]
+                                0       COPY_FREE_VARS                  2
+                                2       RETURN_GENERATOR                
+                                4       POP_TOP                         
+                                6       RESUME                          0
+                                8       LOAD_FAST                       0: .0
+                                10      FOR_ITER                        22 (to 56)
+                                14      STORE_FAST                      1: client
+                                16      LOAD_DEREF                      3: self
+                                18      LOAD_ATTR                       1: _safe_send
+                                38      LOAD_FAST                       1: client
+                                40      LOAD_DEREF                      2: message
+                                42      CALL                            2
+                                50      YIELD_VALUE                     1
+                                52      RESUME                          1
+                                54      POP_TOP                         
+                                56      JUMP_BACKWARD                   24 (to 10)
+                                58      END_FOR                         
+                                60      RETURN_CONST                    0: None
+                                62      CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                                64      RERAISE                         1
+                            [Exception Table]
+                                6 to 62 -> 62 [0] lasti
+                        'return_exceptions'
+                        True
+                        '%d defekte WebSocket-Verbindungen entfernt'
+                    [Disassembly]
+                        0       MAKE_CELL                       0: self
+                        2       MAKE_CELL                       7: message
+                        4       RETURN_GENERATOR                
+                        6       POP_TOP                         
+                        8       RESUME                          0
+                        10      LOAD_GLOBAL                     1: NULL + json
+                        20      LOAD_ATTR                       2: dumps
+                        40      LOAD_FAST                       1: payload
+                        42      LOAD_CONST                      1: False
+                        44      KW_NAMES                        2: ('ensure_ascii',)
+                        46      CALL                            2
+                        54      STORE_DEREF                     7: message
+                        56      LOAD_DEREF                      0: self
+                        58      LOAD_ATTR                       4: _lock
+                        78      BEFORE_ASYNC_WITH               
+                        80      GET_AWAITABLE                   1
+                        82      LOAD_CONST                      0: None
+                        84      SEND                            3 (to 92)
+                        88      YIELD_VALUE                     2
+                        90      RESUME                          3
+                        92      JUMP_BACKWARD_NO_INTERRUPT      5 (to 84)
+                        94      END_SEND                        
+                        96      POP_TOP                         
+                        98      LOAD_GLOBAL                     7: NULL + list
+                        108     LOAD_DEREF                      0: self
+                        110     LOAD_ATTR                       8: _clients
+                        130     CALL                            1
+                        138     STORE_FAST                      2: clients
+                        140     LOAD_CONST                      0: None
+                        142     LOAD_CONST                      0: None
+                        144     LOAD_CONST                      0: None
+                        146     CALL                            2
+                        154     GET_AWAITABLE                   2
+                        156     LOAD_CONST                      0: None
+                        158     SEND                            3 (to 166)
+                        162     YIELD_VALUE                     2
+                        164     RESUME                          3
+                        166     JUMP_BACKWARD_NO_INTERRUPT      5 (to 158)
+                        168     END_SEND                        
+                        170     POP_TOP                         
+                        172     LOAD_FAST_CHECK                 2: clients
+                        174     POP_JUMP_IF_TRUE                1 (to 178)
+                        176     RETURN_CONST                    0: None
+                        178     BUILD_LIST                      0
+                        180     STORE_FAST                      3: failed
+                        182     LOAD_GLOBAL                     11: NULL + asyncio
+                        192     LOAD_ATTR                       12: gather
+                        212     LOAD_CLOSURE                    7: message
+                        214     LOAD_CLOSURE                    0: self
+                        216     BUILD_TUPLE                     2
+                        218     LOAD_CONST                      3: <CODE> <genexpr>
+                        220     MAKE_FUNCTION                   8
+                        222     LOAD_FAST                       2: clients
+                        224     GET_ITER                        
+                        226     CALL                            0
+                        234     LOAD_CONST                      4: 'return_exceptions'
+                        236     LOAD_CONST                      5: True
+                        238     BUILD_MAP                       1
+                        240     CALL_FUNCTION_EX                1
+                        242     GET_AWAITABLE                   0
+                        244     LOAD_CONST                      0: None
+                        246     SEND                            3 (to 254)
+                        250     YIELD_VALUE                     2
+                        252     RESUME                          3
+                        254     JUMP_BACKWARD_NO_INTERRUPT      5 (to 246)
+                        256     END_SEND                        
+                        258     STORE_FAST                      4: results
+                        260     LOAD_GLOBAL                     15: NULL + zip
+                        270     LOAD_FAST                       2: clients
+                        272     LOAD_FAST                       4: results
+                        274     CALL                            2
+                        282     GET_ITER                        
+                        284     FOR_ITER                        43 (to 372)
+                        288     UNPACK_SEQUENCE                 2
+                        292     STORE_FAST                      5: client
+                        294     STORE_FAST                      6: result
+                        296     LOAD_FAST                       6: result
+                        298     LOAD_CONST                      1: False
+                        300     IS_OP                           0 (is)
+                        302     POP_JUMP_IF_TRUE                17 (to 338)
+                        304     LOAD_GLOBAL                     17: NULL + isinstance
+                        314     LOAD_FAST                       6: result
+                        316     LOAD_GLOBAL                     18: Exception
+                        326     CALL                            2
+                        334     POP_JUMP_IF_TRUE                1 (to 338)
+                        336     JUMP_BACKWARD                   27 (to 284)
+                        338     LOAD_FAST                       3: failed
+                        340     LOAD_ATTR                       21: append
+                        360     LOAD_FAST                       5: client
+                        362     CALL                            1
+                        370     POP_TOP                         
+                        372     JUMP_BACKWARD                   45 (to 284)
+                        374     END_FOR                         
+                        376     LOAD_FAST                       3: failed
+                        378     POP_JUMP_IF_FALSE               103 (to 586)
+                        380     LOAD_DEREF                      0: self
+                        382     LOAD_ATTR                       4: _lock
+                        402     BEFORE_ASYNC_WITH               
+                        404     GET_AWAITABLE                   1
+                        406     LOAD_CONST                      0: None
+                        408     SEND                            3 (to 416)
+                        412     YIELD_VALUE                     2
+                        414     RESUME                          3
+                        416     JUMP_BACKWARD_NO_INTERRUPT      5 (to 408)
+                        418     END_SEND                        
+                        420     POP_TOP                         
+                        422     LOAD_FAST                       3: failed
+                        424     GET_ITER                        
+                        426     FOR_ITER                        29 (to 486)
+                        430     STORE_FAST                      5: client
+                        432     LOAD_DEREF                      0: self
+                        434     LOAD_ATTR                       8: _clients
+                        454     LOAD_ATTR                       23: discard
+                        474     LOAD_FAST                       5: client
+                        476     CALL                            1
+                        484     POP_TOP                         
+                        486     JUMP_BACKWARD                   31 (to 426)
+                        488     END_FOR                         
+                        490     LOAD_CONST                      0: None
+                        492     LOAD_CONST                      0: None
+                        494     LOAD_CONST                      0: None
+                        496     CALL                            2
+                        504     GET_AWAITABLE                   2
+                        506     LOAD_CONST                      0: None
+                        508     SEND                            3 (to 516)
+                        512     YIELD_VALUE                     2
+                        514     RESUME                          3
+                        516     JUMP_BACKWARD_NO_INTERRUPT      5 (to 508)
+                        518     END_SEND                        
+                        520     POP_TOP                         
+                        522     LOAD_GLOBAL                     24: log
+                        532     LOAD_ATTR                       27: warning
+                        552     LOAD_CONST                      6: '%d defekte WebSocket-Verbindungen entfernt'
+                        554     LOAD_GLOBAL                     29: NULL + len
+                        564     LOAD_FAST                       3: failed
+                        566     CALL                            1
+                        574     CALL                            2
+                        582     POP_TOP                         
+                        584     RETURN_CONST                    0: None
+                        586     RETURN_CONST                    0: None
+                        588     CLEANUP_THROW                   
+                        590     JUMP_BACKWARD                   249 (to 94)
+                        592     CLEANUP_THROW                   
+                        594     JUMP_BACKWARD                   214 (to 168)
+                        596     PUSH_EXC_INFO                   
+                        598     WITH_EXCEPT_START               
+                        600     GET_AWAITABLE                   2
+                        602     LOAD_CONST                      0: None
+                        604     SEND                            4 (to 614)
+                        608     YIELD_VALUE                     3
+                        610     RESUME                          3
+                        612     JUMP_BACKWARD_NO_INTERRUPT      5 (to 604)
+                        614     CLEANUP_THROW                   
+                        616     END_SEND                        
+                        618     POP_JUMP_IF_TRUE                1 (to 622)
+                        620     RERAISE                         2
+                        622     POP_TOP                         
+                        624     POP_EXCEPT                      
+                        626     POP_TOP                         
+                        628     POP_TOP                         
+                        630     JUMP_BACKWARD                   230 (to 172)
+                        632     COPY                            3
+                        634     POP_EXCEPT                      
+                        636     RERAISE                         1
+                        638     CLEANUP_THROW                   
+                        640     JUMP_BACKWARD                   193 (to 256)
+                        642     CLEANUP_THROW                   
+                        644     JUMP_BACKWARD                   114 (to 418)
+                        646     CLEANUP_THROW                   
+                        648     JUMP_BACKWARD                   66 (to 518)
+                        650     PUSH_EXC_INFO                   
+                        652     WITH_EXCEPT_START               
+                        654     GET_AWAITABLE                   2
+                        656     LOAD_CONST                      0: None
+                        658     SEND                            4 (to 668)
+                        662     YIELD_VALUE                     3
+                        664     RESUME                          3
+                        666     JUMP_BACKWARD_NO_INTERRUPT      5 (to 658)
+                        668     CLEANUP_THROW                   
+                        670     END_SEND                        
+                        672     POP_JUMP_IF_TRUE                1 (to 676)
+                        674     RERAISE                         2
+                        676     POP_TOP                         
+                        678     POP_EXCEPT                      
+                        680     POP_TOP                         
+                        682     POP_TOP                         
+                        684     JUMP_BACKWARD                   82 (to 522)
+                        686     COPY                            3
+                        688     POP_EXCEPT                      
+                        690     RERAISE                         1
+                        692     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        694     RERAISE                         1
+                    [Exception Table]
+                        8 to 88 -> 692 [0] lasti
+                        88 to 90 -> 588 [3] 
+                        90 to 96 -> 692 [0] lasti
+                        96 to 140 -> 596 [1] lasti
+                        140 to 162 -> 692 [0] lasti
+                        162 to 164 -> 592 [2] 
+                        164 to 250 -> 692 [0] lasti
+                        250 to 252 -> 638 [2] 
+                        252 to 336 -> 692 [0] lasti
+                        338 to 412 -> 692 [0] lasti
+                        412 to 414 -> 642 [3] 
+                        414 to 420 -> 692 [0] lasti
+                        420 to 490 -> 650 [1] lasti
+                        490 to 512 -> 692 [0] lasti
+                        512 to 514 -> 646 [2] 
+                        514 to 590 -> 692 [0] lasti
+                        592 to 594 -> 692 [0] lasti
+                        596 to 608 -> 632 [3] lasti
+                        608 to 610 -> 614 [6] 
+                        610 to 624 -> 632 [3] lasti
+                        624 to 640 -> 692 [0] lasti
+                        642 to 644 -> 692 [0] lasti
+                        646 to 648 -> 692 [0] lasti
+                        650 to 662 -> 686 [3] lasti
+                        662 to 664 -> 668 [6] 
+                        664 to 678 -> 686 [3] lasti
+                        678 to 692 -> 692 [0] lasti
+                [Code]
+                    File Name: backend\websocket_manager.py
+                    Object Name: _safe_send
+                    Qualified Name: WebSocketManager._safe_send
+                    Arg Count: 3
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 5
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'send_text'
+                        'RuntimeError'
+                        'WebSocketDisconnect'
+                        'Exception'
+                        'log'
+                        'debug'
+                    [Locals+Names]
+                        'self'
+                        'websocket'
+                        'message'
+                        'exc'
+                    [Constants]
+                        None
+                        True
+                        'WebSocket send fehlgeschlagen: %r'
+                        False
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       NOP                             
+                        8       LOAD_FAST                       1: websocket
+                        10      LOAD_ATTR                       1: send_text
+                        30      LOAD_FAST                       2: message
+                        32      CALL                            1
+                        40      GET_AWAITABLE                   0
+                        42      LOAD_CONST                      0: None
+                        44      SEND                            3 (to 52)
+                        48      YIELD_VALUE                     3
+                        50      RESUME                          3
+                        52      JUMP_BACKWARD_NO_INTERRUPT      5 (to 44)
+                        54      END_SEND                        
+                        56      POP_TOP                         
+                        58      RETURN_CONST                    1: True
+                        60      CLEANUP_THROW                   
+                        62      JUMP_BACKWARD                   5 (to 54)
+                        64      PUSH_EXC_INFO                   
+                        66      LOAD_GLOBAL                     2: RuntimeError
+                        76      LOAD_GLOBAL                     4: WebSocketDisconnect
+                        86      LOAD_GLOBAL                     6: Exception
+                        96      BUILD_TUPLE                     3
+                        98      CHECK_EXC_MATCH                 
+                        100     POP_JUMP_IF_FALSE               32 (to 166)
+                        102     STORE_FAST                      3: exc
+                        104     LOAD_GLOBAL                     8: log
+                        114     LOAD_ATTR                       11: debug
+                        134     LOAD_CONST                      2: 'WebSocket send fehlgeschlagen: %r'
+                        136     LOAD_FAST                       3: exc
+                        138     CALL                            2
+                        146     POP_TOP                         
+                        148     POP_EXCEPT                      
+                        150     LOAD_CONST                      0: None
+                        152     STORE_FAST                      3: exc
+                        154     DELETE_FAST                     3: exc
+                        156     RETURN_CONST                    3: False
+                        158     LOAD_CONST                      0: None
+                        160     STORE_FAST                      3: exc
+                        162     DELETE_FAST                     3: exc
+                        164     RERAISE                         1
+                        166     RERAISE                         0
+                        168     COPY                            3
+                        170     POP_EXCEPT                      
+                        172     RERAISE                         1
+                        174     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        176     RERAISE                         1
+                    [Exception Table]
+                        4 to 6 -> 174 [0] lasti
+                        8 to 48 -> 64 [0] 
+                        48 to 50 -> 60 [2] 
+                        50 to 58 -> 64 [0] 
+                        58 to 60 -> 174 [0] lasti
+                        60 to 62 -> 64 [0] 
+                        64 to 104 -> 168 [1] lasti
+                        104 to 148 -> 158 [1] lasti
+                        148 to 158 -> 174 [0] lasti
+                        158 to 168 -> 168 [1] lasti
+                        168 to 174 -> 174 [0] lasti
+                None
+                (
+                    'return'
+                    'None'
+                )
+                (
+                    'websocket'
+                    'WebSocket'
+                    'return'
+                    'None'
+                )
+                (
+                    'payload'
+                    'dict[str, Any]'
+                    'return'
+                    'None'
+                )
+                (
+                    'websocket'
+                    'WebSocket'
+                    'message'
+                    'str'
+                    'return'
+                    'bool'
+                )
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_NAME                       0: __name__
+                4       STORE_NAME                      1: __module__
+                6       LOAD_CONST                      0: 'WebSocketManager'
+                8       STORE_NAME                      2: __qualname__
+                10      LOAD_CONST                      1: 'Verwaltet alle OBS-Browserquellen und pusht JSON-Events.'
+                12      STORE_NAME                      3: __doc__
+                14      LOAD_CONST                      8: ('return', 'None')
+                16      LOAD_CONST                      2: <CODE> __init__
+                18      MAKE_FUNCTION                   4
+                20      STORE_NAME                      4: __init__
+                22      LOAD_CONST                      9: ('websocket', 'WebSocket', 'return', 'None')
+                24      LOAD_CONST                      3: <CODE> connect
+                26      MAKE_FUNCTION                   4
+                28      STORE_NAME                      5: connect
+                30      LOAD_CONST                      9: ('websocket', 'WebSocket', 'return', 'None')
+                32      LOAD_CONST                      4: <CODE> disconnect
+                34      MAKE_FUNCTION                   4
+                36      STORE_NAME                      6: disconnect
+                38      LOAD_CONST                      10: ('payload', 'dict[str, Any]', 'return', 'None')
+                40      LOAD_CONST                      5: <CODE> broadcast
+                42      MAKE_FUNCTION                   4
+                44      STORE_NAME                      7: broadcast
+                46      LOAD_CONST                      11: ('websocket', 'WebSocket', 'message', 'str', 'return', 'bool')
+                48      LOAD_CONST                      6: <CODE> _safe_send
+                50      MAKE_FUNCTION                   4
+                52      STORE_NAME                      8: _safe_send
+                54      RETURN_CONST                    7: None
+            [Exception Table]
+        'WebSocketManager'
+    [Disassembly]
+        0       RESUME                          0
+        2       LOAD_CONST                      0: 0
+        4       LOAD_CONST                      1: ('annotations',)
+        6       IMPORT_NAME                     0: __future__
+        8       IMPORT_FROM                     1: annotations
+        10      STORE_NAME                      1: annotations
+        12      POP_TOP                         
+        14      LOAD_CONST                      0: 0
+        16      LOAD_CONST                      2: None
+        18      IMPORT_NAME                     2: asyncio
+        20      STORE_NAME                      2: asyncio
+        22      LOAD_CONST                      0: 0
+        24      LOAD_CONST                      2: None
+        26      IMPORT_NAME                     3: json
+        28      STORE_NAME                      3: json
+        30      LOAD_CONST                      0: 0
+        32      LOAD_CONST                      2: None
+        34      IMPORT_NAME                     4: logging
+        36      STORE_NAME                      4: logging
+        38      LOAD_CONST                      0: 0
+        40      LOAD_CONST                      3: ('Any',)
+        42      IMPORT_NAME                     5: typing
+        44      IMPORT_FROM                     6: Any
+        46      STORE_NAME                      6: Any
+        48      POP_TOP                         
+        50      LOAD_CONST                      0: 0
+        52      LOAD_CONST                      4: ('WebSocket',)
+        54      IMPORT_NAME                     7: fastapi
+        56      IMPORT_FROM                     8: WebSocket
+        58      STORE_NAME                      8: WebSocket
+        60      POP_TOP                         
+        62      LOAD_CONST                      0: 0
+        64      LOAD_CONST                      5: ('WebSocketDisconnect',)
+        66      IMPORT_NAME                     9: starlette.websockets
+        68      IMPORT_FROM                     10: WebSocketDisconnect
+        70      STORE_NAME                      10: WebSocketDisconnect
+        72      POP_TOP                         
+        74      PUSH_NULL                       
+        76      LOAD_NAME                       4: logging
+        78      LOAD_ATTR                       22: getLogger
+        98      LOAD_NAME                       12: __name__
+        100     CALL                            1
+        108     STORE_NAME                      13: log
+        110     PUSH_NULL                       
+        112     LOAD_BUILD_CLASS                
+        114     LOAD_CONST                      6: <CODE> WebSocketManager
+        116     MAKE_FUNCTION                   0
+        118     LOAD_CONST                      7: 'WebSocketManager'
+        120     CALL                            2
+        128     STORE_NAME                      14: WebSocketManager
+        130     RETURN_CONST                    2: None
+    [Exception Table]

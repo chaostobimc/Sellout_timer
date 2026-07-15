@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Overlay Test</title>
+  <style>
+    body { margin: 0; min-height: 100vh; background: #0f172a; color: #e5e7eb; font-family: system-ui, -apple-system, Segoe UI, sans-serif; display: grid; place-items: center; }
+    .card { width: min(760px, calc(100vw - 32px)); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 24px; padding: 28px; box-shadow: 0 24px 80px rgba(0,0,0,.35); }
+    h1 { margin: 0 0 8px; }
+    p { color: #cbd5e1; line-height: 1.5; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 20px; }
+    button, a.btn { border: 0; border-radius: 14px; padding: 14px 16px; font-weight: 800; cursor: pointer; text-decoration: none; text-align: center; background: #38bdf8; color: #082f49; }
+    button.sub { background: #f59e0b; color: #451a03; }
+    button.money { background: #4ade80; color: #052e16; }
+    a.btn { background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.16); }
+    code { background: rgba(0,0,0,.3); padding: 2px 6px; border-radius: 6px; }
+    #out { margin-top: 16px; color: #a7f3d0; font-family: ui-monospace, monospace; min-height: 22px; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Overlay-Test</h1>
+    <p>Öffne <code>alert.html?debug=1</code> in einem zweiten Fenster/OBS und löse hier Events aus. Die normale Alert-Seite ist ohne Event absichtlich leer/transparent.</p>
+    <div class="grid">
+      <a class="btn" href="/timer.html" target="_blank">Timer öffnen</a>
+      <a class="btn" href="/alert.html?debug=1" target="_blank">Alert Debug öffnen</a>
+      <a class="btn" href="/alert.html?preview=1&type=sub" target="_blank">Sub Preview</a>
+      <button onclick="send('bits','BitUser',1)">1 Bit = +1 Min</button>
+      <button class="sub" onclick="send('sub','SubUser',1)">1 Sub = +20 Min</button>
+      <button class="money" onclick="send('money','Steve',5000)">5000$ = +1 Min</button>
+    </div>
+    <div id="out"></div>
+  </main>
+  <script>
+    async function send(type, username, amount) {
+      const out = document.getElementById('out');
+      try {
+        const r = await fetch(`/api/test/${type}?username=${encodeURIComponent(username)}&amount=${amount}`, { method: 'POST' });
+        const data = await r.json();
+        out.textContent = data.ok ? `Gesendet: ${type}, +${data.event.seconds_added}s` : JSON.stringify(data);
+      } catch (e) {
+        out.textContent = 'Fehler: ' + e.message;
+      }
+    }
+  </script>
+</body>
+</html>

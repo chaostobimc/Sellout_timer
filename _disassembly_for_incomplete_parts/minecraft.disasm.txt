@@ -1,0 +1,1807 @@
+minecraft.pyc (Python 3.12)
+[Code]
+    File Name: backend\minecraft.py
+    Object Name: <module>
+    Qualified Name: <module>
+    Arg Count: 0
+    Pos Only Arg Count: 0
+    KW Only Arg Count: 0
+    Stack Size: 4
+    Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+    [Names]
+        '__future__'
+        'annotations'
+        'asyncio'
+        'logging'
+        'os'
+        're'
+        'pathlib'
+        'Path'
+        'typing'
+        'Pattern'
+        'events'
+        'DonationEvent'
+        'EventDispatcher'
+        'getLogger'
+        '__name__'
+        'log'
+        'parse_amount'
+        'MinecraftLogScanner'
+    [Locals+Names]
+    [Constants]
+        0
+        (
+            'annotations'
+        )
+        None
+        (
+            'Path'
+        )
+        (
+            'Pattern'
+        )
+        1
+        (
+            'DonationEvent'
+            'EventDispatcher'
+        )
+        [Code]
+            File Name: backend\minecraft.py
+            Object Name: parse_amount
+            Qualified Name: parse_amount
+            Arg Count: 1
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 6
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'float'
+                'count'
+                'replace'
+            [Locals+Names]
+                'value'
+            [Constants]
+                None
+                ','
+                1
+                '.'
+                ''
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     1: NULL + float
+                12      LOAD_FAST                       0: value
+                14      LOAD_ATTR                       3: count
+                34      LOAD_CONST                      1: ','
+                36      CALL                            1
+                44      LOAD_CONST                      2: 1
+                46      COMPARE_OP                      40 (==)
+                50      POP_JUMP_IF_FALSE               38 (to 128)
+                52      LOAD_FAST                       0: value
+                54      LOAD_ATTR                       5: replace
+                74      LOAD_CONST                      3: '.'
+                76      LOAD_CONST                      4: ''
+                78      CALL                            2
+                86      LOAD_ATTR                       5: replace
+                106     LOAD_CONST                      1: ','
+                108     LOAD_CONST                      3: '.'
+                110     CALL                            2
+                118     CALL                            1
+                126     RETURN_VALUE                    
+                128     LOAD_FAST                       0: value
+                130     LOAD_ATTR                       5: replace
+                150     LOAD_CONST                      1: ','
+                152     LOAD_CONST                      4: ''
+                154     CALL                            2
+                162     CALL                            1
+                170     RETURN_VALUE                    
+            [Exception Table]
+        [Code]
+            File Name: backend\minecraft.py
+            Object Name: MinecraftLogScanner
+            Qualified Name: MinecraftLogScanner
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+            [Names]
+                '__name__'
+                '__module__'
+                '__qualname__'
+                '__doc__'
+                '__init__'
+                '_compile_patterns'
+                'start'
+                'stop'
+                'set_log_path'
+                'add_regex'
+                'remove_regex'
+                'list_regexes'
+                'snapshot'
+                '_run'
+                '_read_new_lines'
+                '_handle_line'
+            [Locals+Names]
+            [Constants]
+                'MinecraftLogScanner'
+                'Plattformunabhängiger Tail-Scanner für latest.log mit Runtime-Konfiguration.'
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: __init__
+                    Qualified Name: MinecraftLogScanner.__init__
+                    Arg Count: 7
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 6
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'Path'
+                        'log_path'
+                        'isinstance'
+                        'list'
+                        '_regex_strings'
+                        '_patterns'
+                        '_compile_patterns'
+                        'float'
+                        'seconds_per_ingame_dollar'
+                        'dispatcher'
+                        'max'
+                        'poll_interval'
+                        'bool'
+                        'process_existing'
+                        '_task'
+                        'asyncio'
+                        'Event'
+                        '_stop'
+                        'Lock'
+                        '_lock'
+                        '_reset_position'
+                    [Locals+Names]
+                        'self'
+                        'log_path'
+                        'regex'
+                        'seconds_per_ingame_dollar'
+                        'dispatcher'
+                        'poll_interval'
+                        'process_existing_lines_on_start'
+                    [Constants]
+                        None
+                        0.2
+                        False
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_GLOBAL                     1: NULL + Path
+                        12      LOAD_FAST                       1: log_path
+                        14      CALL                            1
+                        22      LOAD_FAST                       0: self
+                        24      STORE_ATTR                      1: log_path
+                        34      LOAD_GLOBAL                     5: NULL + isinstance
+                        44      LOAD_FAST                       2: regex
+                        46      LOAD_GLOBAL                     6: list
+                        56      CALL                            2
+                        64      POP_JUMP_IF_FALSE               2 (to 70)
+                        66      LOAD_FAST                       2: regex
+                        68      JUMP_FORWARD                    2 (to 74)
+                        70      LOAD_FAST                       2: regex
+                        72      BUILD_LIST                      1
+                        74      LOAD_FAST                       0: self
+                        76      STORE_ATTR                      4: _regex_strings
+                        86      BUILD_LIST                      0
+                        88      LOAD_FAST                       0: self
+                        90      STORE_ATTR                      5: _patterns
+                        100     LOAD_FAST                       0: self
+                        102     LOAD_ATTR                       13: _compile_patterns
+                        122     CALL                            0
+                        130     POP_TOP                         
+                        132     LOAD_GLOBAL                     15: NULL + float
+                        142     LOAD_FAST                       3: seconds_per_ingame_dollar
+                        144     CALL                            1
+                        152     LOAD_FAST                       0: self
+                        154     STORE_ATTR                      8: seconds_per_ingame_dollar
+                        164     LOAD_FAST                       4: dispatcher
+                        166     LOAD_FAST                       0: self
+                        168     STORE_ATTR                      9: dispatcher
+                        178     LOAD_GLOBAL                     21: NULL + max
+                        188     LOAD_CONST                      1: 0.2
+                        190     LOAD_GLOBAL                     15: NULL + float
+                        200     LOAD_FAST                       5: poll_interval
+                        202     CALL                            1
+                        210     CALL                            2
+                        218     LOAD_FAST                       0: self
+                        220     STORE_ATTR                      11: poll_interval
+                        230     LOAD_GLOBAL                     25: NULL + bool
+                        240     LOAD_FAST                       6: process_existing_lines_on_start
+                        242     CALL                            1
+                        250     LOAD_FAST                       0: self
+                        252     STORE_ATTR                      13: process_existing
+                        262     LOAD_CONST                      0: None
+                        264     LOAD_FAST                       0: self
+                        266     STORE_ATTR                      14: _task
+                        276     LOAD_GLOBAL                     31: NULL + asyncio
+                        286     LOAD_ATTR                       32: Event
+                        306     CALL                            0
+                        314     LOAD_FAST                       0: self
+                        316     STORE_ATTR                      17: _stop
+                        326     LOAD_GLOBAL                     31: NULL + asyncio
+                        336     LOAD_ATTR                       36: Lock
+                        356     CALL                            0
+                        364     LOAD_FAST                       0: self
+                        366     STORE_ATTR                      19: _lock
+                        376     LOAD_CONST                      2: False
+                        378     LOAD_FAST                       0: self
+                        380     STORE_ATTR                      20: _reset_position
+                        390     RETURN_CONST                    0: None
+                    [Exception Table]
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: _compile_patterns
+                    Qualified Name: MinecraftLogScanner._compile_patterns
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 6
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_regex_strings'
+                        'append'
+                        're'
+                        'compile'
+                        '_patterns'
+                    [Locals+Names]
+                        'self'
+                        'patterns'
+                        'regex'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       BUILD_LIST                      0
+                        4       STORE_FAST                      1: patterns
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _regex_strings
+                        28      GET_ITER                        
+                        30      FOR_ITER                        38 (to 108)
+                        34      STORE_FAST                      2: regex
+                        36      LOAD_FAST                       1: patterns
+                        38      LOAD_ATTR                       3: append
+                        58      LOAD_GLOBAL                     5: NULL + re
+                        68      LOAD_ATTR                       6: compile
+                        88      LOAD_FAST                       2: regex
+                        90      CALL                            1
+                        98      CALL                            1
+                        106     POP_TOP                         
+                        108     JUMP_BACKWARD                   40 (to 30)
+                        110     END_FOR                         
+                        112     LOAD_FAST                       1: patterns
+                        114     LOAD_FAST                       0: self
+                        116     STORE_ATTR                      4: _patterns
+                        126     RETURN_CONST                    0: None
+                    [Exception Table]
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: start
+                    Qualified Name: MinecraftLogScanner.start
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_task'
+                        'done'
+                        'asyncio'
+                        'create_task'
+                        '_run'
+                        'log'
+                        'info'
+                        'log_path'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'minecraft-log-scanner'
+                        (
+                            'name'
+                        )
+                        'Minecraft Log-Scanner gestartet: %s'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       0: self
+                        4       LOAD_ATTR                       0: _task
+                        24      POP_JUMP_IF_NONE                26 (to 78)
+                        26      LOAD_FAST                       0: self
+                        28      LOAD_ATTR                       0: _task
+                        48      LOAD_ATTR                       3: done
+                        68      CALL                            0
+                        76      POP_JUMP_IF_FALSE               75 (to 228)
+                        78      LOAD_GLOBAL                     5: NULL + asyncio
+                        88      LOAD_ATTR                       6: create_task
+                        108     LOAD_FAST                       0: self
+                        110     LOAD_ATTR                       9: _run
+                        130     CALL                            0
+                        138     LOAD_CONST                      1: 'minecraft-log-scanner'
+                        140     KW_NAMES                        2: ('name',)
+                        142     CALL                            2
+                        150     LOAD_FAST                       0: self
+                        152     STORE_ATTR                      0: _task
+                        162     LOAD_GLOBAL                     10: log
+                        172     LOAD_ATTR                       13: info
+                        192     LOAD_CONST                      3: 'Minecraft Log-Scanner gestartet: %s'
+                        194     LOAD_FAST                       0: self
+                        196     LOAD_ATTR                       14: log_path
+                        216     CALL                            2
+                        224     POP_TOP                         
+                        226     RETURN_CONST                    0: None
+                        228     RETURN_CONST                    0: None
+                    [Exception Table]
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: stop
+                    Qualified Name: MinecraftLogScanner.stop
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_stop'
+                        'set'
+                        '_task'
+                        'done'
+                        'cancel'
+                        'asyncio'
+                        'CancelledError'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _stop
+                        28      LOAD_ATTR                       3: set
+                        48      CALL                            0
+                        56      POP_TOP                         
+                        58      LOAD_FAST                       0: self
+                        60      LOAD_ATTR                       4: _task
+                        80      POP_JUMP_IF_FALSE               75 (to 232)
+                        82      LOAD_FAST                       0: self
+                        84      LOAD_ATTR                       4: _task
+                        104     LOAD_ATTR                       7: done
+                        124     CALL                            0
+                        132     POP_JUMP_IF_TRUE                48 (to 230)
+                        134     LOAD_FAST                       0: self
+                        136     LOAD_ATTR                       4: _task
+                        156     LOAD_ATTR                       9: cancel
+                        176     CALL                            0
+                        184     POP_TOP                         
+                        186     NOP                             
+                        188     LOAD_FAST                       0: self
+                        190     LOAD_ATTR                       4: _task
+                        210     GET_AWAITABLE                   0
+                        212     LOAD_CONST                      0: None
+                        214     SEND                            3 (to 222)
+                        218     YIELD_VALUE                     3
+                        220     RESUME                          3
+                        222     JUMP_BACKWARD_NO_INTERRUPT      5 (to 214)
+                        224     END_SEND                        
+                        226     POP_TOP                         
+                        228     RETURN_CONST                    0: None
+                        230     RETURN_CONST                    0: None
+                        232     RETURN_CONST                    0: None
+                        234     CLEANUP_THROW                   
+                        236     JUMP_BACKWARD                   7 (to 224)
+                        238     PUSH_EXC_INFO                   
+                        240     LOAD_GLOBAL                     10: asyncio
+                        250     LOAD_ATTR                       12: CancelledError
+                        270     CHECK_EXC_MATCH                 
+                        272     POP_JUMP_IF_FALSE               3 (to 280)
+                        274     POP_TOP                         
+                        276     POP_EXCEPT                      
+                        278     RETURN_CONST                    0: None
+                        280     RERAISE                         0
+                        282     COPY                            3
+                        284     POP_EXCEPT                      
+                        286     RERAISE                         1
+                        288     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        290     RERAISE                         1
+                    [Exception Table]
+                        4 to 186 -> 288 [0] lasti
+                        188 to 218 -> 238 [0] 
+                        218 to 220 -> 234 [2] 
+                        220 to 228 -> 238 [0] 
+                        228 to 234 -> 288 [0] lasti
+                        234 to 236 -> 238 [0] 
+                        238 to 276 -> 282 [1] lasti
+                        276 to 280 -> 288 [0] lasti
+                        280 to 282 -> 282 [1] lasti
+                        282 to 288 -> 288 [0] lasti
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: set_log_path
+                    Qualified Name: MinecraftLogScanner.set_log_path
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_lock'
+                        'Path'
+                        'expanduser'
+                        'log_path'
+                        '_reset_position'
+                        'log'
+                        'info'
+                    [Locals+Names]
+                        'self'
+                        'path'
+                    [Constants]
+                        None
+                        True
+                        'Minecraft latest.log Pfad gesetzt: %s'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _lock
+                        28      BEFORE_ASYNC_WITH               
+                        30      GET_AWAITABLE                   1
+                        32      LOAD_CONST                      0: None
+                        34      SEND                            3 (to 42)
+                        38      YIELD_VALUE                     2
+                        40      RESUME                          3
+                        42      JUMP_BACKWARD_NO_INTERRUPT      5 (to 34)
+                        44      END_SEND                        
+                        46      POP_TOP                         
+                        48      LOAD_GLOBAL                     3: NULL + Path
+                        58      LOAD_FAST                       1: path
+                        60      CALL                            1
+                        68      LOAD_ATTR                       5: expanduser
+                        88      CALL                            0
+                        96      LOAD_FAST                       0: self
+                        98      STORE_ATTR                      3: log_path
+                        108     LOAD_CONST                      1: True
+                        110     LOAD_FAST                       0: self
+                        112     STORE_ATTR                      4: _reset_position
+                        122     LOAD_CONST                      0: None
+                        124     LOAD_CONST                      0: None
+                        126     LOAD_CONST                      0: None
+                        128     CALL                            2
+                        136     GET_AWAITABLE                   2
+                        138     LOAD_CONST                      0: None
+                        140     SEND                            3 (to 148)
+                        144     YIELD_VALUE                     2
+                        146     RESUME                          3
+                        148     JUMP_BACKWARD_NO_INTERRUPT      5 (to 140)
+                        150     END_SEND                        
+                        152     POP_TOP                         
+                        154     LOAD_GLOBAL                     10: log
+                        164     LOAD_ATTR                       13: info
+                        184     LOAD_CONST                      2: 'Minecraft latest.log Pfad gesetzt: %s'
+                        186     LOAD_FAST                       0: self
+                        188     LOAD_ATTR                       6: log_path
+                        208     CALL                            2
+                        216     POP_TOP                         
+                        218     RETURN_CONST                    0: None
+                        220     CLEANUP_THROW                   
+                        222     JUMP_BACKWARD                   90 (to 44)
+                        224     CLEANUP_THROW                   
+                        226     JUMP_BACKWARD                   39 (to 150)
+                        228     PUSH_EXC_INFO                   
+                        230     WITH_EXCEPT_START               
+                        232     GET_AWAITABLE                   2
+                        234     LOAD_CONST                      0: None
+                        236     SEND                            4 (to 246)
+                        240     YIELD_VALUE                     3
+                        242     RESUME                          3
+                        244     JUMP_BACKWARD_NO_INTERRUPT      5 (to 236)
+                        246     CLEANUP_THROW                   
+                        248     END_SEND                        
+                        250     POP_JUMP_IF_TRUE                1 (to 254)
+                        252     RERAISE                         2
+                        254     POP_TOP                         
+                        256     POP_EXCEPT                      
+                        258     POP_TOP                         
+                        260     POP_TOP                         
+                        262     JUMP_BACKWARD                   55 (to 154)
+                        264     COPY                            3
+                        266     POP_EXCEPT                      
+                        268     RERAISE                         1
+                        270     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        272     RERAISE                         1
+                    [Exception Table]
+                        4 to 38 -> 270 [0] lasti
+                        38 to 40 -> 220 [3] 
+                        40 to 46 -> 270 [0] lasti
+                        46 to 122 -> 228 [1] lasti
+                        122 to 144 -> 270 [0] lasti
+                        144 to 146 -> 224 [2] 
+                        146 to 222 -> 270 [0] lasti
+                        224 to 226 -> 270 [0] lasti
+                        228 to 240 -> 264 [3] lasti
+                        240 to 242 -> 246 [6] 
+                        242 to 256 -> 264 [3] lasti
+                        256 to 270 -> 270 [0] lasti
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: add_regex
+                    Qualified Name: MinecraftLogScanner.add_regex
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        're'
+                        'compile'
+                        '_lock'
+                        '_regex_strings'
+                        'append'
+                        '_compile_patterns'
+                        'log'
+                        'info'
+                        'len'
+                    [Locals+Names]
+                        'self'
+                        'regex'
+                    [Constants]
+                        None
+                        'Minecraft Regex hinzugefügt. Anzahl: %d'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_GLOBAL                     1: NULL + re
+                        16      LOAD_ATTR                       2: compile
+                        36      LOAD_FAST                       1: regex
+                        38      CALL                            1
+                        46      POP_TOP                         
+                        48      LOAD_FAST                       0: self
+                        50      LOAD_ATTR                       4: _lock
+                        70      BEFORE_ASYNC_WITH               
+                        72      GET_AWAITABLE                   1
+                        74      LOAD_CONST                      0: None
+                        76      SEND                            3 (to 84)
+                        80      YIELD_VALUE                     2
+                        82      RESUME                          3
+                        84      JUMP_BACKWARD_NO_INTERRUPT      5 (to 76)
+                        86      END_SEND                        
+                        88      POP_TOP                         
+                        90      LOAD_FAST                       0: self
+                        92      LOAD_ATTR                       6: _regex_strings
+                        112     LOAD_ATTR                       9: append
+                        132     LOAD_FAST                       1: regex
+                        134     CALL                            1
+                        142     POP_TOP                         
+                        144     LOAD_FAST                       0: self
+                        146     LOAD_ATTR                       11: _compile_patterns
+                        166     CALL                            0
+                        174     POP_TOP                         
+                        176     LOAD_CONST                      0: None
+                        178     LOAD_CONST                      0: None
+                        180     LOAD_CONST                      0: None
+                        182     CALL                            2
+                        190     GET_AWAITABLE                   2
+                        192     LOAD_CONST                      0: None
+                        194     SEND                            3 (to 202)
+                        198     YIELD_VALUE                     2
+                        200     RESUME                          3
+                        202     JUMP_BACKWARD_NO_INTERRUPT      5 (to 194)
+                        204     END_SEND                        
+                        206     POP_TOP                         
+                        208     LOAD_GLOBAL                     12: log
+                        218     LOAD_ATTR                       15: info
+                        238     LOAD_CONST                      1: 'Minecraft Regex hinzugefügt. Anzahl: %d'
+                        240     LOAD_GLOBAL                     17: NULL + len
+                        250     LOAD_FAST                       0: self
+                        252     LOAD_ATTR                       6: _regex_strings
+                        272     CALL                            1
+                        280     CALL                            2
+                        288     POP_TOP                         
+                        290     RETURN_CONST                    0: None
+                        292     CLEANUP_THROW                   
+                        294     JUMP_BACKWARD                   105 (to 86)
+                        296     CLEANUP_THROW                   
+                        298     JUMP_BACKWARD                   48 (to 204)
+                        300     PUSH_EXC_INFO                   
+                        302     WITH_EXCEPT_START               
+                        304     GET_AWAITABLE                   2
+                        306     LOAD_CONST                      0: None
+                        308     SEND                            4 (to 318)
+                        312     YIELD_VALUE                     3
+                        314     RESUME                          3
+                        316     JUMP_BACKWARD_NO_INTERRUPT      5 (to 308)
+                        318     CLEANUP_THROW                   
+                        320     END_SEND                        
+                        322     POP_JUMP_IF_TRUE                1 (to 326)
+                        324     RERAISE                         2
+                        326     POP_TOP                         
+                        328     POP_EXCEPT                      
+                        330     POP_TOP                         
+                        332     POP_TOP                         
+                        334     JUMP_BACKWARD                   64 (to 208)
+                        336     COPY                            3
+                        338     POP_EXCEPT                      
+                        340     RERAISE                         1
+                        342     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        344     RERAISE                         1
+                    [Exception Table]
+                        4 to 80 -> 342 [0] lasti
+                        80 to 82 -> 292 [3] 
+                        82 to 88 -> 342 [0] lasti
+                        88 to 176 -> 300 [1] lasti
+                        176 to 198 -> 342 [0] lasti
+                        198 to 200 -> 296 [2] 
+                        200 to 294 -> 342 [0] lasti
+                        296 to 298 -> 342 [0] lasti
+                        300 to 312 -> 336 [3] lasti
+                        312 to 314 -> 318 [6] 
+                        314 to 328 -> 336 [3] lasti
+                        328 to 342 -> 342 [0] lasti
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: remove_regex
+                    Qualified Name: MinecraftLogScanner.remove_regex
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_lock'
+                        'len'
+                        '_regex_strings'
+                        'IndexError'
+                        'pop'
+                        '_compile_patterns'
+                        'log'
+                        'info'
+                    [Locals+Names]
+                        'self'
+                        'index'
+                        'removed'
+                    [Constants]
+                        None
+                        0
+                        'Regex-Index existiert nicht'
+                        'Minecraft Regex entfernt. Anzahl: %d'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _lock
+                        28      BEFORE_ASYNC_WITH               
+                        30      GET_AWAITABLE                   1
+                        32      LOAD_CONST                      0: None
+                        34      SEND                            3 (to 42)
+                        38      YIELD_VALUE                     2
+                        40      RESUME                          3
+                        42      JUMP_BACKWARD_NO_INTERRUPT      5 (to 34)
+                        44      END_SEND                        
+                        46      POP_TOP                         
+                        48      LOAD_FAST                       1: index
+                        50      LOAD_CONST                      1: 0
+                        52      COMPARE_OP                      2 (<)
+                        56      POP_JUMP_IF_TRUE                24 (to 106)
+                        58      LOAD_FAST                       1: index
+                        60      LOAD_GLOBAL                     3: NULL + len
+                        70      LOAD_FAST                       0: self
+                        72      LOAD_ATTR                       4: _regex_strings
+                        92      CALL                            1
+                        100     COMPARE_OP                      92 (>=)
+                        104     POP_JUMP_IF_FALSE               11 (to 128)
+                        106     LOAD_GLOBAL                     7: NULL + IndexError
+                        116     LOAD_CONST                      2: 'Regex-Index existiert nicht'
+                        118     CALL                            1
+                        126     RAISE_VARARGS                   1
+                        128     LOAD_FAST                       0: self
+                        130     LOAD_ATTR                       4: _regex_strings
+                        150     LOAD_ATTR                       9: pop
+                        170     LOAD_FAST                       1: index
+                        172     CALL                            1
+                        180     STORE_FAST                      2: removed
+                        182     LOAD_FAST                       0: self
+                        184     LOAD_ATTR                       11: _compile_patterns
+                        204     CALL                            0
+                        212     POP_TOP                         
+                        214     LOAD_CONST                      0: None
+                        216     LOAD_CONST                      0: None
+                        218     LOAD_CONST                      0: None
+                        220     CALL                            2
+                        228     GET_AWAITABLE                   2
+                        230     LOAD_CONST                      0: None
+                        232     SEND                            3 (to 240)
+                        236     YIELD_VALUE                     2
+                        238     RESUME                          3
+                        240     JUMP_BACKWARD_NO_INTERRUPT      5 (to 232)
+                        242     END_SEND                        
+                        244     POP_TOP                         
+                        246     LOAD_GLOBAL                     12: log
+                        256     LOAD_ATTR                       15: info
+                        276     LOAD_CONST                      3: 'Minecraft Regex entfernt. Anzahl: %d'
+                        278     LOAD_GLOBAL                     3: NULL + len
+                        288     LOAD_FAST                       0: self
+                        290     LOAD_ATTR                       4: _regex_strings
+                        310     CALL                            1
+                        318     CALL                            2
+                        326     POP_TOP                         
+                        328     LOAD_FAST_CHECK                 2: removed
+                        330     RETURN_VALUE                    
+                        332     CLEANUP_THROW                   
+                        334     JUMP_BACKWARD                   146 (to 44)
+                        336     CLEANUP_THROW                   
+                        338     JUMP_BACKWARD                   49 (to 242)
+                        340     PUSH_EXC_INFO                   
+                        342     WITH_EXCEPT_START               
+                        344     GET_AWAITABLE                   2
+                        346     LOAD_CONST                      0: None
+                        348     SEND                            4 (to 358)
+                        352     YIELD_VALUE                     3
+                        354     RESUME                          3
+                        356     JUMP_BACKWARD_NO_INTERRUPT      5 (to 348)
+                        358     CLEANUP_THROW                   
+                        360     END_SEND                        
+                        362     POP_JUMP_IF_TRUE                1 (to 366)
+                        364     RERAISE                         2
+                        366     POP_TOP                         
+                        368     POP_EXCEPT                      
+                        370     POP_TOP                         
+                        372     POP_TOP                         
+                        374     JUMP_BACKWARD                   65 (to 246)
+                        376     COPY                            3
+                        378     POP_EXCEPT                      
+                        380     RERAISE                         1
+                        382     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        384     RERAISE                         1
+                    [Exception Table]
+                        4 to 38 -> 382 [0] lasti
+                        38 to 40 -> 332 [3] 
+                        40 to 46 -> 382 [0] lasti
+                        46 to 214 -> 340 [1] lasti
+                        214 to 236 -> 382 [0] lasti
+                        236 to 238 -> 336 [2] 
+                        238 to 334 -> 382 [0] lasti
+                        336 to 338 -> 382 [0] lasti
+                        340 to 352 -> 376 [3] lasti
+                        352 to 354 -> 358 [6] 
+                        354 to 368 -> 376 [3] lasti
+                        368 to 382 -> 382 [0] lasti
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: list_regexes
+                    Qualified Name: MinecraftLogScanner.list_regexes
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_lock'
+                        'list'
+                        '_regex_strings'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _lock
+                        28      BEFORE_ASYNC_WITH               
+                        30      GET_AWAITABLE                   1
+                        32      LOAD_CONST                      0: None
+                        34      SEND                            3 (to 42)
+                        38      YIELD_VALUE                     2
+                        40      RESUME                          3
+                        42      JUMP_BACKWARD_NO_INTERRUPT      5 (to 34)
+                        44      END_SEND                        
+                        46      POP_TOP                         
+                        48      LOAD_GLOBAL                     3: NULL + list
+                        58      LOAD_FAST                       0: self
+                        60      LOAD_ATTR                       4: _regex_strings
+                        80      CALL                            1
+                        88      SWAP                            2
+                        90      LOAD_CONST                      0: None
+                        92      LOAD_CONST                      0: None
+                        94      LOAD_CONST                      0: None
+                        96      CALL                            2
+                        104     GET_AWAITABLE                   2
+                        106     LOAD_CONST                      0: None
+                        108     SEND                            3 (to 116)
+                        112     YIELD_VALUE                     2
+                        114     RESUME                          3
+                        116     JUMP_BACKWARD_NO_INTERRUPT      5 (to 108)
+                        118     END_SEND                        
+                        120     POP_TOP                         
+                        122     RETURN_VALUE                    
+                        124     CLEANUP_THROW                   
+                        126     JUMP_BACKWARD                   42 (to 44)
+                        128     CLEANUP_THROW                   
+                        130     JUMP_BACKWARD                   7 (to 118)
+                        132     PUSH_EXC_INFO                   
+                        134     WITH_EXCEPT_START               
+                        136     GET_AWAITABLE                   2
+                        138     LOAD_CONST                      0: None
+                        140     SEND                            4 (to 150)
+                        144     YIELD_VALUE                     3
+                        146     RESUME                          3
+                        148     JUMP_BACKWARD_NO_INTERRUPT      5 (to 140)
+                        150     CLEANUP_THROW                   
+                        152     END_SEND                        
+                        154     POP_JUMP_IF_TRUE                1 (to 158)
+                        156     RERAISE                         2
+                        158     POP_TOP                         
+                        160     POP_EXCEPT                      
+                        162     POP_TOP                         
+                        164     POP_TOP                         
+                        166     RETURN_CONST                    0: None
+                        168     COPY                            3
+                        170     POP_EXCEPT                      
+                        172     RERAISE                         1
+                        174     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        176     RERAISE                         1
+                    [Exception Table]
+                        4 to 38 -> 174 [0] lasti
+                        38 to 40 -> 124 [3] 
+                        40 to 46 -> 174 [0] lasti
+                        46 to 88 -> 132 [1] lasti
+                        88 to 112 -> 174 [0] lasti
+                        112 to 114 -> 128 [3] 
+                        114 to 126 -> 174 [0] lasti
+                        128 to 130 -> 174 [0] lasti
+                        132 to 144 -> 168 [3] lasti
+                        144 to 146 -> 150 [6] 
+                        146 to 160 -> 168 [3] lasti
+                        160 to 174 -> 174 [0] lasti
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: snapshot
+                    Qualified Name: MinecraftLogScanner.snapshot
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_lock'
+                        'str'
+                        'log_path'
+                        'list'
+                        '_regex_strings'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        (
+                            'log_path'
+                            'regexes'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _lock
+                        28      BEFORE_ASYNC_WITH               
+                        30      GET_AWAITABLE                   1
+                        32      LOAD_CONST                      0: None
+                        34      SEND                            3 (to 42)
+                        38      YIELD_VALUE                     2
+                        40      RESUME                          3
+                        42      JUMP_BACKWARD_NO_INTERRUPT      5 (to 34)
+                        44      END_SEND                        
+                        46      POP_TOP                         
+                        48      LOAD_GLOBAL                     3: NULL + str
+                        58      LOAD_FAST                       0: self
+                        60      LOAD_ATTR                       4: log_path
+                        80      CALL                            1
+                        88      LOAD_GLOBAL                     7: NULL + list
+                        98      LOAD_FAST                       0: self
+                        100     LOAD_ATTR                       8: _regex_strings
+                        120     CALL                            1
+                        128     LOAD_CONST                      1: ('log_path', 'regexes')
+                        130     BUILD_CONST_KEY_MAP             2
+                        132     SWAP                            2
+                        134     LOAD_CONST                      0: None
+                        136     LOAD_CONST                      0: None
+                        138     LOAD_CONST                      0: None
+                        140     CALL                            2
+                        148     GET_AWAITABLE                   2
+                        150     LOAD_CONST                      0: None
+                        152     SEND                            3 (to 160)
+                        156     YIELD_VALUE                     2
+                        158     RESUME                          3
+                        160     JUMP_BACKWARD_NO_INTERRUPT      5 (to 152)
+                        162     END_SEND                        
+                        164     POP_TOP                         
+                        166     RETURN_VALUE                    
+                        168     CLEANUP_THROW                   
+                        170     JUMP_BACKWARD                   64 (to 44)
+                        172     CLEANUP_THROW                   
+                        174     JUMP_BACKWARD                   7 (to 162)
+                        176     PUSH_EXC_INFO                   
+                        178     WITH_EXCEPT_START               
+                        180     GET_AWAITABLE                   2
+                        182     LOAD_CONST                      0: None
+                        184     SEND                            4 (to 194)
+                        188     YIELD_VALUE                     3
+                        190     RESUME                          3
+                        192     JUMP_BACKWARD_NO_INTERRUPT      5 (to 184)
+                        194     CLEANUP_THROW                   
+                        196     END_SEND                        
+                        198     POP_JUMP_IF_TRUE                1 (to 202)
+                        200     RERAISE                         2
+                        202     POP_TOP                         
+                        204     POP_EXCEPT                      
+                        206     POP_TOP                         
+                        208     POP_TOP                         
+                        210     RETURN_CONST                    0: None
+                        212     COPY                            3
+                        214     POP_EXCEPT                      
+                        216     RERAISE                         1
+                        218     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        220     RERAISE                         1
+                    [Exception Table]
+                        4 to 38 -> 218 [0] lasti
+                        38 to 40 -> 168 [3] 
+                        40 to 46 -> 218 [0] lasti
+                        46 to 132 -> 176 [1] lasti
+                        132 to 156 -> 218 [0] lasti
+                        156 to 158 -> 172 [3] 
+                        158 to 170 -> 218 [0] lasti
+                        172 to 174 -> 218 [0] lasti
+                        176 to 188 -> 212 [3] lasti
+                        188 to 190 -> 194 [6] 
+                        190 to 204 -> 212 [3] lasti
+                        204 to 218 -> 218 [0] lasti
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: _run
+                    Qualified Name: MinecraftLogScanner._run
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_stop'
+                        'is_set'
+                        '_lock'
+                        'log_path'
+                        '_reset_position'
+                        'os'
+                        'path'
+                        'exists'
+                        'log'
+                        'warning'
+                        'asyncio'
+                        'sleep'
+                        'poll_interval'
+                        'to_thread'
+                        'stat'
+                        'process_existing'
+                        'st_size'
+                        'info'
+                        '_read_new_lines'
+                        '_handle_line'
+                        'CancelledError'
+                        'Exception'
+                        'exception'
+                    [Locals+Names]
+                        'self'
+                        'position'
+                        'current_path'
+                        'log_path'
+                        'reset'
+                        'stat'
+                        'lines'
+                        'line'
+                    [Constants]
+                        None
+                        0
+                        False
+                        'Minecraft latest.log existiert noch nicht: %s'
+                        'Minecraft Log wurde rotiert/gekürzt; Scanner setzt Position zurück'
+                        'Fehler im Minecraft Log-Scanner'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_CONST                      1: 0
+                        8       STORE_FAST                      1: position
+                        10      LOAD_CONST                      0: None
+                        12      STORE_FAST                      2: current_path
+                        14      LOAD_FAST                       0: self
+                        16      LOAD_ATTR                       0: _stop
+                        36      LOAD_ATTR                       3: is_set
+                        56      CALL                            0
+                        64      POP_JUMP_IF_TRUE                428 (to 924)
+                        68      NOP                             
+                        70      LOAD_FAST                       0: self
+                        72      LOAD_ATTR                       4: _lock
+                        92      BEFORE_ASYNC_WITH               
+                        94      GET_AWAITABLE                   1
+                        96      LOAD_CONST                      0: None
+                        98      SEND                            3 (to 106)
+                        102     YIELD_VALUE                     3
+                        104     RESUME                          3
+                        106     JUMP_BACKWARD_NO_INTERRUPT      5 (to 98)
+                        108     END_SEND                        
+                        110     POP_TOP                         
+                        112     LOAD_FAST                       0: self
+                        114     LOAD_ATTR                       6: log_path
+                        134     STORE_FAST                      3: log_path
+                        136     LOAD_FAST                       0: self
+                        138     LOAD_ATTR                       8: _reset_position
+                        158     COPY                            1
+                        160     POP_JUMP_IF_TRUE                5 (to 172)
+                        162     POP_TOP                         
+                        164     LOAD_FAST                       2: current_path
+                        166     LOAD_FAST                       3: log_path
+                        168     COMPARE_OP                      55 (!=)
+                        172     STORE_FAST                      4: reset
+                        174     LOAD_FAST                       4: reset
+                        176     POP_JUMP_IF_FALSE               11 (to 200)
+                        178     LOAD_CONST                      2: False
+                        180     LOAD_FAST                       0: self
+                        182     STORE_ATTR                      4: _reset_position
+                        192     LOAD_FAST                       3: log_path
+                        194     STORE_FAST                      2: current_path
+                        196     LOAD_CONST                      1: 0
+                        198     STORE_FAST                      1: position
+                        200     LOAD_CONST                      0: None
+                        202     LOAD_CONST                      0: None
+                        204     LOAD_CONST                      0: None
+                        206     CALL                            2
+                        214     GET_AWAITABLE                   2
+                        216     LOAD_CONST                      0: None
+                        218     SEND                            3 (to 226)
+                        222     YIELD_VALUE                     3
+                        224     RESUME                          3
+                        226     JUMP_BACKWARD_NO_INTERRUPT      5 (to 218)
+                        228     END_SEND                        
+                        230     POP_TOP                         
+                        232     LOAD_GLOBAL                     10: os
+                        242     LOAD_ATTR                       12: path
+                        262     LOAD_ATTR                       15: exists
+                        282     LOAD_FAST_CHECK                 3: log_path
+                        284     CALL                            1
+                        292     POP_JUMP_IF_TRUE                62 (to 418)
+                        294     LOAD_GLOBAL                     16: log
+                        304     LOAD_ATTR                       19: warning
+                        324     LOAD_CONST                      3: 'Minecraft latest.log existiert noch nicht: %s'
+                        326     LOAD_FAST                       3: log_path
+                        328     CALL                            2
+                        336     POP_TOP                         
+                        338     LOAD_GLOBAL                     21: NULL + asyncio
+                        348     LOAD_ATTR                       22: sleep
+                        368     LOAD_FAST                       0: self
+                        370     LOAD_ATTR                       24: poll_interval
+                        390     CALL                            1
+                        398     GET_AWAITABLE                   0
+                        400     LOAD_CONST                      0: None
+                        402     SEND                            3 (to 410)
+                        406     YIELD_VALUE                     3
+                        408     RESUME                          3
+                        410     JUMP_BACKWARD_NO_INTERRUPT      5 (to 402)
+                        412     END_SEND                        
+                        414     POP_TOP                         
+                        416     JUMP_BACKWARD                   202 (to 14)
+                        418     LOAD_GLOBAL                     21: NULL + asyncio
+                        428     LOAD_ATTR                       26: to_thread
+                        448     LOAD_GLOBAL                     10: os
+                        458     LOAD_ATTR                       28: stat
+                        478     LOAD_FAST                       3: log_path
+                        480     CALL                            2
+                        488     GET_AWAITABLE                   0
+                        490     LOAD_CONST                      0: None
+                        492     SEND                            3 (to 500)
+                        496     YIELD_VALUE                     3
+                        498     RESUME                          3
+                        500     JUMP_BACKWARD_NO_INTERRUPT      5 (to 492)
+                        502     END_SEND                        
+                        504     STORE_FAST                      5: stat
+                        506     LOAD_FAST_CHECK                 4: reset
+                        508     POP_JUMP_IF_FALSE               24 (to 558)
+                        510     LOAD_FAST                       0: self
+                        512     LOAD_ATTR                       30: process_existing
+                        532     POP_JUMP_IF_TRUE                12 (to 558)
+                        534     LOAD_FAST                       5: stat
+                        536     LOAD_ATTR                       32: st_size
+                        556     STORE_FAST                      1: position
+                        558     LOAD_FAST                       5: stat
+                        560     LOAD_ATTR                       32: st_size
+                        580     LOAD_FAST                       1: position
+                        582     COMPARE_OP                      2 (<)
+                        586     POP_JUMP_IF_FALSE               23 (to 634)
+                        588     LOAD_GLOBAL                     16: log
+                        598     LOAD_ATTR                       35: info
+                        618     LOAD_CONST                      4: 'Minecraft Log wurde rotiert/gekürzt; Scanner setzt Position zurück'
+                        620     CALL                            1
+                        628     POP_TOP                         
+                        630     LOAD_CONST                      1: 0
+                        632     STORE_FAST                      1: position
+                        634     LOAD_GLOBAL                     21: NULL + asyncio
+                        644     LOAD_ATTR                       26: to_thread
+                        664     LOAD_FAST                       0: self
+                        666     LOAD_ATTR                       36: _read_new_lines
+                        686     LOAD_FAST                       3: log_path
+                        688     LOAD_FAST                       1: position
+                        690     CALL                            3
+                        698     GET_AWAITABLE                   0
+                        700     LOAD_CONST                      0: None
+                        702     SEND                            3 (to 710)
+                        706     YIELD_VALUE                     3
+                        708     RESUME                          3
+                        710     JUMP_BACKWARD_NO_INTERRUPT      5 (to 702)
+                        712     END_SEND                        
+                        714     UNPACK_SEQUENCE                 2
+                        718     STORE_FAST                      6: lines
+                        720     STORE_FAST                      1: position
+                        722     LOAD_FAST                       6: lines
+                        724     GET_ITER                        
+                        726     FOR_ITER                        27 (to 782)
+                        730     STORE_FAST                      7: line
+                        732     LOAD_FAST                       0: self
+                        734     LOAD_ATTR                       39: _handle_line
+                        754     LOAD_FAST                       7: line
+                        756     CALL                            1
+                        764     GET_AWAITABLE                   0
+                        766     LOAD_CONST                      0: None
+                        768     SEND                            3 (to 776)
+                        772     YIELD_VALUE                     3
+                        774     RESUME                          3
+                        776     JUMP_BACKWARD_NO_INTERRUPT      5 (to 768)
+                        778     END_SEND                        
+                        780     POP_TOP                         
+                        782     JUMP_BACKWARD                   29 (to 726)
+                        784     END_FOR                         
+                        786     NOP                             
+                        788     LOAD_GLOBAL                     21: NULL + asyncio
+                        798     LOAD_ATTR                       22: sleep
+                        818     LOAD_FAST                       0: self
+                        820     LOAD_ATTR                       24: poll_interval
+                        840     CALL                            1
+                        848     GET_AWAITABLE                   0
+                        850     LOAD_CONST                      0: None
+                        852     SEND                            3 (to 860)
+                        856     YIELD_VALUE                     2
+                        858     RESUME                          3
+                        860     JUMP_BACKWARD_NO_INTERRUPT      5 (to 852)
+                        862     END_SEND                        
+                        864     POP_TOP                         
+                        866     LOAD_FAST                       0: self
+                        868     LOAD_ATTR                       0: _stop
+                        888     LOAD_ATTR                       3: is_set
+                        908     CALL                            0
+                        916     POP_JUMP_IF_TRUE                2 (to 922)
+                        918     JUMP_BACKWARD                   427 (to 68)
+                        922     RETURN_CONST                    0: None
+                        924     RETURN_CONST                    0: None
+                        926     CLEANUP_THROW                   
+                        928     JUMP_BACKWARD                   412 (to 108)
+                        932     CLEANUP_THROW                   
+                        934     JUMP_BACKWARD                   355 (to 228)
+                        938     PUSH_EXC_INFO                   
+                        940     WITH_EXCEPT_START               
+                        942     GET_AWAITABLE                   2
+                        944     LOAD_CONST                      0: None
+                        946     SEND                            4 (to 956)
+                        950     YIELD_VALUE                     4
+                        952     RESUME                          3
+                        954     JUMP_BACKWARD_NO_INTERRUPT      5 (to 946)
+                        956     CLEANUP_THROW                   
+                        958     END_SEND                        
+                        960     POP_JUMP_IF_TRUE                1 (to 964)
+                        962     RERAISE                         2
+                        964     POP_TOP                         
+                        966     POP_EXCEPT                      
+                        968     POP_TOP                         
+                        970     POP_TOP                         
+                        972     JUMP_BACKWARD                   372 (to 232)
+                        976     COPY                            3
+                        978     POP_EXCEPT                      
+                        980     RERAISE                         1
+                        982     CLEANUP_THROW                   
+                        984     JUMP_BACKWARD                   288 (to 412)
+                        988     CLEANUP_THROW                   
+                        990     JUMP_BACKWARD                   245 (to 502)
+                        992     CLEANUP_THROW                   
+                        994     JUMP_BACKWARD                   142 (to 712)
+                        996     CLEANUP_THROW                   
+                        998     JUMP_BACKWARD                   111 (to 778)
+                        1000    PUSH_EXC_INFO                   
+                        1002    LOAD_GLOBAL                     20: asyncio
+                        1012    LOAD_ATTR                       40: CancelledError
+                        1032    CHECK_EXC_MATCH                 
+                        1034    POP_JUMP_IF_FALSE               2 (to 1040)
+                        1036    POP_TOP                         
+                        1038    RAISE_VARARGS                   0
+                        1040    LOAD_GLOBAL                     42: Exception
+                        1050    CHECK_EXC_MATCH                 
+                        1052    POP_JUMP_IF_FALSE               24 (to 1102)
+                        1054    POP_TOP                         
+                        1056    LOAD_GLOBAL                     16: log
+                        1066    LOAD_ATTR                       45: exception
+                        1086    LOAD_CONST                      5: 'Fehler im Minecraft Log-Scanner'
+                        1088    CALL                            1
+                        1096    POP_TOP                         
+                        1098    POP_EXCEPT                      
+                        1100    JUMP_BACKWARD                   157 (to 788)
+                        1102    RERAISE                         0
+                        1104    COPY                            3
+                        1106    POP_EXCEPT                      
+                        1108    RERAISE                         1
+                        1110    CLEANUP_THROW                   
+                        1112    JUMP_BACKWARD                   126 (to 862)
+                        1114    CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        1116    RERAISE                         1
+                    [Exception Table]
+                        4 to 68 -> 1114 [0] lasti
+                        70 to 102 -> 1000 [0] 
+                        102 to 104 -> 926 [3] 
+                        104 to 110 -> 1000 [0] 
+                        110 to 200 -> 938 [1] lasti
+                        200 to 222 -> 1000 [0] 
+                        222 to 224 -> 932 [2] 
+                        224 to 406 -> 1000 [0] 
+                        406 to 408 -> 982 [2] 
+                        408 to 416 -> 1000 [0] 
+                        416 to 418 -> 1114 [0] lasti
+                        418 to 496 -> 1000 [0] 
+                        496 to 498 -> 988 [2] 
+                        498 to 706 -> 1000 [0] 
+                        706 to 708 -> 992 [2] 
+                        708 to 772 -> 1000 [0] 
+                        772 to 774 -> 996 [3] 
+                        774 to 786 -> 1000 [0] 
+                        786 to 856 -> 1114 [0] lasti
+                        856 to 858 -> 1110 [2] 
+                        858 to 918 -> 1114 [0] lasti
+                        922 to 926 -> 1114 [0] lasti
+                        926 to 928 -> 1000 [0] 
+                        932 to 934 -> 1000 [0] 
+                        938 to 950 -> 976 [3] lasti
+                        950 to 952 -> 956 [6] 
+                        952 to 966 -> 976 [3] lasti
+                        966 to 984 -> 1000 [0] 
+                        988 to 990 -> 1000 [0] 
+                        992 to 994 -> 1000 [0] 
+                        996 to 998 -> 1000 [0] 
+                        1000 to 1098 -> 1104 [1] lasti
+                        1098 to 1102 -> 1114 [0] lasti
+                        1102 to 1104 -> 1104 [1] lasti
+                        1104 to 1112 -> 1114 [0] lasti
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: _read_new_lines
+                    Qualified Name: MinecraftLogScanner._read_new_lines
+                    Arg Count: 3
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 6
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'open'
+                        'seek'
+                        'read'
+                        'tell'
+                        'splitlines'
+                    [Locals+Names]
+                        'self'
+                        'log_path'
+                        'position'
+                        'f'
+                        'data'
+                        'new_position'
+                    [Constants]
+                        None
+                        'r'
+                        'utf-8'
+                        'ignore'
+                        (
+                            'encoding'
+                            'errors'
+                        )
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_GLOBAL                     1: NULL + open
+                        12      LOAD_FAST                       1: log_path
+                        14      LOAD_CONST                      1: 'r'
+                        16      LOAD_CONST                      2: 'utf-8'
+                        18      LOAD_CONST                      3: 'ignore'
+                        20      KW_NAMES                        4: ('encoding', 'errors')
+                        22      CALL                            4
+                        30      BEFORE_WITH                     
+                        32      STORE_FAST                      3: f
+                        34      LOAD_FAST                       3: f
+                        36      LOAD_ATTR                       3: seek
+                        56      LOAD_FAST                       2: position
+                        58      CALL                            1
+                        66      POP_TOP                         
+                        68      LOAD_FAST                       3: f
+                        70      LOAD_ATTR                       5: read
+                        90      CALL                            0
+                        98      STORE_FAST                      4: data
+                        100     LOAD_FAST                       3: f
+                        102     LOAD_ATTR                       7: tell
+                        122     CALL                            0
+                        130     STORE_FAST                      5: new_position
+                        132     LOAD_CONST                      0: None
+                        134     LOAD_CONST                      0: None
+                        136     LOAD_CONST                      0: None
+                        138     CALL                            2
+                        146     POP_TOP                         
+                        148     LOAD_FAST_CHECK                 4: data
+                        150     LOAD_ATTR                       9: splitlines
+                        170     CALL                            0
+                        178     LOAD_FAST_CHECK                 5: new_position
+                        180     BUILD_TUPLE                     2
+                        182     RETURN_VALUE                    
+                        184     PUSH_EXC_INFO                   
+                        186     WITH_EXCEPT_START               
+                        188     POP_JUMP_IF_TRUE                1 (to 192)
+                        190     RERAISE                         2
+                        192     POP_TOP                         
+                        194     POP_EXCEPT                      
+                        196     POP_TOP                         
+                        198     POP_TOP                         
+                        200     JUMP_BACKWARD                   27 (to 148)
+                        202     COPY                            3
+                        204     POP_EXCEPT                      
+                        206     RERAISE                         1
+                    [Exception Table]
+                        32 to 132 -> 184 [1] lasti
+                        184 to 194 -> 202 [3] lasti
+                [Code]
+                    File Name: backend\minecraft.py
+                    Object Name: _handle_line
+                    Qualified Name: MinecraftLogScanner._handle_line
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 10
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_lock'
+                        'list'
+                        '_patterns'
+                        'search'
+                        'groupdict'
+                        'get'
+                        'strip'
+                        'parse_amount'
+                        'ValueError'
+                        'log'
+                        'warning'
+                        'max'
+                        'int'
+                        'round'
+                        'seconds_per_ingame_dollar'
+                        'dispatcher'
+                        'handle_event'
+                        'DonationEvent'
+                    [Locals+Names]
+                        'self'
+                        'line'
+                        'patterns'
+                        'match'
+                        'pattern'
+                        'player'
+                        'raw_amount'
+                        'amount'
+                        'seconds'
+                    [Constants]
+                        None
+                        'player'
+                        'Minecraft'
+                        'amount'
+                        '0'
+                        'Konnte Minecraft-Betrag nicht parsen: %r in %r'
+                        0
+                        'money'
+                        '$'
+                        'minecraft'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _lock
+                        28      BEFORE_ASYNC_WITH               
+                        30      GET_AWAITABLE                   1
+                        32      LOAD_CONST                      0: None
+                        34      SEND                            3 (to 42)
+                        38      YIELD_VALUE                     2
+                        40      RESUME                          3
+                        42      JUMP_BACKWARD_NO_INTERRUPT      5 (to 34)
+                        44      END_SEND                        
+                        46      POP_TOP                         
+                        48      LOAD_GLOBAL                     3: NULL + list
+                        58      LOAD_FAST                       0: self
+                        60      LOAD_ATTR                       4: _patterns
+                        80      CALL                            1
+                        88      STORE_FAST                      2: patterns
+                        90      LOAD_CONST                      0: None
+                        92      LOAD_CONST                      0: None
+                        94      LOAD_CONST                      0: None
+                        96      CALL                            2
+                        104     GET_AWAITABLE                   2
+                        106     LOAD_CONST                      0: None
+                        108     SEND                            3 (to 116)
+                        112     YIELD_VALUE                     2
+                        114     RESUME                          3
+                        116     JUMP_BACKWARD_NO_INTERRUPT      5 (to 108)
+                        118     END_SEND                        
+                        120     POP_TOP                         
+                        122     LOAD_CONST                      0: None
+                        124     STORE_FAST                      3: match
+                        126     LOAD_FAST_CHECK                 2: patterns
+                        128     GET_ITER                        
+                        130     FOR_ITER                        23 (to 178)
+                        134     STORE_FAST                      4: pattern
+                        136     LOAD_FAST                       4: pattern
+                        138     LOAD_ATTR                       7: search
+                        158     LOAD_FAST                       1: line
+                        160     CALL                            1
+                        168     STORE_FAST                      3: match
+                        170     LOAD_FAST                       3: match
+                        172     POP_JUMP_IF_TRUE                1 (to 176)
+                        174     JUMP_BACKWARD                   23 (to 130)
+                        176     POP_TOP                         
+                        178     JUMP_FORWARD                    1 (to 182)
+                        180     END_FOR                         
+                        182     LOAD_FAST                       3: match
+                        184     POP_JUMP_IF_TRUE                1 (to 188)
+                        186     RETURN_CONST                    0: None
+                        188     LOAD_FAST                       3: match
+                        190     LOAD_ATTR                       9: groupdict
+                        210     CALL                            0
+                        218     LOAD_ATTR                       11: get
+                        238     LOAD_CONST                      1: 'player'
+                        240     CALL                            1
+                        248     COPY                            1
+                        250     POP_JUMP_IF_TRUE                2 (to 256)
+                        252     POP_TOP                         
+                        254     LOAD_CONST                      2: 'Minecraft'
+                        256     LOAD_ATTR                       13: strip
+                        276     CALL                            0
+                        284     STORE_FAST                      5: player
+                        286     LOAD_FAST                       3: match
+                        288     LOAD_ATTR                       9: groupdict
+                        308     CALL                            0
+                        316     LOAD_ATTR                       11: get
+                        336     LOAD_CONST                      3: 'amount'
+                        338     CALL                            1
+                        346     COPY                            1
+                        348     POP_JUMP_IF_TRUE                2 (to 354)
+                        350     POP_TOP                         
+                        352     LOAD_CONST                      4: '0'
+                        354     STORE_FAST                      6: raw_amount
+                        356     NOP                             
+                        358     LOAD_GLOBAL                     15: NULL + parse_amount
+                        368     LOAD_FAST                       6: raw_amount
+                        370     CALL                            1
+                        378     STORE_FAST                      7: amount
+                        380     LOAD_GLOBAL                     23: NULL + max
+                        390     LOAD_CONST                      6: 0
+                        392     LOAD_GLOBAL                     25: NULL + int
+                        402     LOAD_GLOBAL                     27: NULL + round
+                        412     LOAD_FAST                       7: amount
+                        414     LOAD_FAST                       0: self
+                        416     LOAD_ATTR                       28: seconds_per_ingame_dollar
+                        436     BINARY_OP                       5 (*)
+                        440     CALL                            1
+                        448     CALL                            1
+                        456     CALL                            2
+                        464     STORE_FAST                      8: seconds
+                        466     LOAD_FAST                       8: seconds
+                        468     LOAD_CONST                      6: 0
+                        470     COMPARE_OP                      26 (<=)
+                        474     POP_JUMP_IF_FALSE               1 (to 478)
+                        476     RETURN_CONST                    0: None
+                        478     LOAD_FAST                       0: self
+                        480     LOAD_ATTR                       30: dispatcher
+                        500     LOAD_ATTR                       33: handle_event
+                        520     LOAD_GLOBAL                     35: NULL + DonationEvent
+                        530     LOAD_CONST                      7: 'money'
+                        532     LOAD_FAST                       5: player
+                        534     LOAD_FAST                       7: amount
+                        536     LOAD_CONST                      8: '$'
+                        538     LOAD_FAST                       8: seconds
+                        540     LOAD_CONST                      9: 'minecraft'
+                        542     CALL                            6
+                        550     CALL                            1
+                        558     GET_AWAITABLE                   0
+                        560     LOAD_CONST                      0: None
+                        562     SEND                            3 (to 570)
+                        566     YIELD_VALUE                     2
+                        568     RESUME                          3
+                        570     JUMP_BACKWARD_NO_INTERRUPT      5 (to 562)
+                        572     END_SEND                        
+                        574     POP_TOP                         
+                        576     RETURN_CONST                    0: None
+                        578     CLEANUP_THROW                   
+                        580     JUMP_BACKWARD                   270 (to 44)
+                        584     CLEANUP_THROW                   
+                        586     JUMP_BACKWARD                   235 (to 118)
+                        588     PUSH_EXC_INFO                   
+                        590     WITH_EXCEPT_START               
+                        592     GET_AWAITABLE                   2
+                        594     LOAD_CONST                      0: None
+                        596     SEND                            4 (to 606)
+                        600     YIELD_VALUE                     3
+                        602     RESUME                          3
+                        604     JUMP_BACKWARD_NO_INTERRUPT      5 (to 596)
+                        606     CLEANUP_THROW                   
+                        608     END_SEND                        
+                        610     POP_JUMP_IF_TRUE                1 (to 614)
+                        612     RERAISE                         2
+                        614     POP_TOP                         
+                        616     POP_EXCEPT                      
+                        618     POP_TOP                         
+                        620     POP_TOP                         
+                        622     JUMP_BACKWARD                   251 (to 122)
+                        624     COPY                            3
+                        626     POP_EXCEPT                      
+                        628     RERAISE                         1
+                        630     PUSH_EXC_INFO                   
+                        632     LOAD_GLOBAL                     16: ValueError
+                        642     CHECK_EXC_MATCH                 
+                        644     POP_JUMP_IF_FALSE               26 (to 698)
+                        646     POP_TOP                         
+                        648     LOAD_GLOBAL                     18: log
+                        658     LOAD_ATTR                       21: warning
+                        678     LOAD_CONST                      5: 'Konnte Minecraft-Betrag nicht parsen: %r in %r'
+                        680     LOAD_FAST                       6: raw_amount
+                        682     LOAD_FAST                       1: line
+                        684     CALL                            3
+                        692     POP_TOP                         
+                        694     POP_EXCEPT                      
+                        696     RETURN_CONST                    0: None
+                        698     RERAISE                         0
+                        700     COPY                            3
+                        702     POP_EXCEPT                      
+                        704     RERAISE                         1
+                        706     CLEANUP_THROW                   
+                        708     JUMP_BACKWARD                   69 (to 572)
+                        710     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        712     RERAISE                         1
+                    [Exception Table]
+                        4 to 38 -> 710 [0] lasti
+                        38 to 40 -> 578 [3] 
+                        40 to 46 -> 710 [0] lasti
+                        46 to 90 -> 588 [1] lasti
+                        90 to 112 -> 710 [0] lasti
+                        112 to 114 -> 584 [2] 
+                        114 to 174 -> 710 [0] lasti
+                        176 to 356 -> 710 [0] lasti
+                        358 to 380 -> 630 [0] 
+                        380 to 566 -> 710 [0] lasti
+                        566 to 568 -> 706 [2] 
+                        568 to 580 -> 710 [0] lasti
+                        584 to 586 -> 710 [0] lasti
+                        588 to 600 -> 624 [3] lasti
+                        600 to 602 -> 606 [6] 
+                        602 to 616 -> 624 [3] lasti
+                        616 to 630 -> 710 [0] lasti
+                        630 to 694 -> 700 [1] lasti
+                        694 to 698 -> 710 [0] lasti
+                        698 to 700 -> 700 [1] lasti
+                        700 to 708 -> 710 [0] lasti
+                None
+                (
+                    1
+                    False
+                )
+                (
+                    'log_path'
+                    'Path'
+                    'regex'
+                    'str | list[str]'
+                    'seconds_per_ingame_dollar'
+                    'float'
+                    'dispatcher'
+                    'EventDispatcher'
+                    'poll_interval'
+                    'float'
+                    'process_existing_lines_on_start'
+                    'bool'
+                    'return'
+                    'None'
+                )
+                (
+                    'return'
+                    'None'
+                )
+                (
+                    'path'
+                    'str | Path'
+                    'return'
+                    'None'
+                )
+                (
+                    'regex'
+                    'str'
+                    'return'
+                    'None'
+                )
+                (
+                    'index'
+                    'int'
+                    'return'
+                    'str'
+                )
+                (
+                    'return'
+                    'list[str]'
+                )
+                (
+                    'return'
+                    'dict'
+                )
+                (
+                    'log_path'
+                    'Path'
+                    'position'
+                    'int'
+                    'return'
+                    'tuple[list[str], int]'
+                )
+                (
+                    'line'
+                    'str'
+                    'return'
+                    'None'
+                )
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_NAME                       0: __name__
+                4       STORE_NAME                      1: __module__
+                6       LOAD_CONST                      0: 'MinecraftLogScanner'
+                8       STORE_NAME                      2: __qualname__
+                10      LOAD_CONST                      1: 'Plattformunabhängiger Tail-Scanner für latest.log mit Runtime-Konfiguration.'
+                12      STORE_NAME                      3: __doc__
+                14      NOP                             
+                16      NOP                             
+                18      LOAD_CONST                      15: (1, False)
+                20      NOP                             
+                22      NOP                             
+                24      NOP                             
+                26      NOP                             
+                28      NOP                             
+                30      NOP                             
+                32      NOP                             
+                34      NOP                             
+                36      NOP                             
+                38      NOP                             
+                40      NOP                             
+                42      NOP                             
+                44      NOP                             
+                46      LOAD_CONST                      16: ('log_path', 'Path', 'regex', 'str | list[str]', 'seconds_per_ingame_dollar', 'float', 'dispatcher', 'EventDispatcher', 'poll_interval', 'float', 'process_existing_lines_on_start', 'bool', 'return', 'None')
+                48      LOAD_CONST                      2: <CODE> __init__
+                50      MAKE_FUNCTION                   5
+                52      STORE_NAME                      4: __init__
+                54      LOAD_CONST                      17: ('return', 'None')
+                56      LOAD_CONST                      3: <CODE> _compile_patterns
+                58      MAKE_FUNCTION                   4
+                60      STORE_NAME                      5: _compile_patterns
+                62      LOAD_CONST                      17: ('return', 'None')
+                64      LOAD_CONST                      4: <CODE> start
+                66      MAKE_FUNCTION                   4
+                68      STORE_NAME                      6: start
+                70      LOAD_CONST                      17: ('return', 'None')
+                72      LOAD_CONST                      5: <CODE> stop
+                74      MAKE_FUNCTION                   4
+                76      STORE_NAME                      7: stop
+                78      LOAD_CONST                      18: ('path', 'str | Path', 'return', 'None')
+                80      LOAD_CONST                      6: <CODE> set_log_path
+                82      MAKE_FUNCTION                   4
+                84      STORE_NAME                      8: set_log_path
+                86      LOAD_CONST                      19: ('regex', 'str', 'return', 'None')
+                88      LOAD_CONST                      7: <CODE> add_regex
+                90      MAKE_FUNCTION                   4
+                92      STORE_NAME                      9: add_regex
+                94      LOAD_CONST                      20: ('index', 'int', 'return', 'str')
+                96      LOAD_CONST                      8: <CODE> remove_regex
+                98      MAKE_FUNCTION                   4
+                100     STORE_NAME                      10: remove_regex
+                102     LOAD_CONST                      21: ('return', 'list[str]')
+                104     LOAD_CONST                      9: <CODE> list_regexes
+                106     MAKE_FUNCTION                   4
+                108     STORE_NAME                      11: list_regexes
+                110     LOAD_CONST                      22: ('return', 'dict')
+                112     LOAD_CONST                      10: <CODE> snapshot
+                114     MAKE_FUNCTION                   4
+                116     STORE_NAME                      12: snapshot
+                118     LOAD_CONST                      17: ('return', 'None')
+                120     LOAD_CONST                      11: <CODE> _run
+                122     MAKE_FUNCTION                   4
+                124     STORE_NAME                      13: _run
+                126     LOAD_CONST                      23: ('log_path', 'Path', 'position', 'int', 'return', 'tuple[list[str], int]')
+                128     LOAD_CONST                      12: <CODE> _read_new_lines
+                130     MAKE_FUNCTION                   4
+                132     STORE_NAME                      14: _read_new_lines
+                134     LOAD_CONST                      24: ('line', 'str', 'return', 'None')
+                136     LOAD_CONST                      13: <CODE> _handle_line
+                138     MAKE_FUNCTION                   4
+                140     STORE_NAME                      15: _handle_line
+                142     RETURN_CONST                    14: None
+            [Exception Table]
+        'MinecraftLogScanner'
+        (
+            'value'
+            'str'
+            'return'
+            'float'
+        )
+    [Disassembly]
+        0       RESUME                          0
+        2       LOAD_CONST                      0: 0
+        4       LOAD_CONST                      1: ('annotations',)
+        6       IMPORT_NAME                     0: __future__
+        8       IMPORT_FROM                     1: annotations
+        10      STORE_NAME                      1: annotations
+        12      POP_TOP                         
+        14      LOAD_CONST                      0: 0
+        16      LOAD_CONST                      2: None
+        18      IMPORT_NAME                     2: asyncio
+        20      STORE_NAME                      2: asyncio
+        22      LOAD_CONST                      0: 0
+        24      LOAD_CONST                      2: None
+        26      IMPORT_NAME                     3: logging
+        28      STORE_NAME                      3: logging
+        30      LOAD_CONST                      0: 0
+        32      LOAD_CONST                      2: None
+        34      IMPORT_NAME                     4: os
+        36      STORE_NAME                      4: os
+        38      LOAD_CONST                      0: 0
+        40      LOAD_CONST                      2: None
+        42      IMPORT_NAME                     5: re
+        44      STORE_NAME                      5: re
+        46      LOAD_CONST                      0: 0
+        48      LOAD_CONST                      3: ('Path',)
+        50      IMPORT_NAME                     6: pathlib
+        52      IMPORT_FROM                     7: Path
+        54      STORE_NAME                      7: Path
+        56      POP_TOP                         
+        58      LOAD_CONST                      0: 0
+        60      LOAD_CONST                      4: ('Pattern',)
+        62      IMPORT_NAME                     8: typing
+        64      IMPORT_FROM                     9: Pattern
+        66      STORE_NAME                      9: Pattern
+        68      POP_TOP                         
+        70      LOAD_CONST                      5: 1
+        72      LOAD_CONST                      6: ('DonationEvent', 'EventDispatcher')
+        74      IMPORT_NAME                     10: events
+        76      IMPORT_FROM                     11: DonationEvent
+        78      STORE_NAME                      11: DonationEvent
+        80      IMPORT_FROM                     12: EventDispatcher
+        82      STORE_NAME                      12: EventDispatcher
+        84      POP_TOP                         
+        86      PUSH_NULL                       
+        88      LOAD_NAME                       3: logging
+        90      LOAD_ATTR                       26: getLogger
+        110     LOAD_NAME                       14: __name__
+        112     CALL                            1
+        120     STORE_NAME                      15: log
+        122     LOAD_CONST                      10: ('value', 'str', 'return', 'float')
+        124     LOAD_CONST                      7: <CODE> parse_amount
+        126     MAKE_FUNCTION                   4
+        128     STORE_NAME                      16: parse_amount
+        130     PUSH_NULL                       
+        132     LOAD_BUILD_CLASS                
+        134     LOAD_CONST                      8: <CODE> MinecraftLogScanner
+        136     MAKE_FUNCTION                   0
+        138     LOAD_CONST                      9: 'MinecraftLogScanner'
+        140     CALL                            2
+        148     STORE_NAME                      17: MinecraftLogScanner
+        150     RETURN_CONST                    2: None
+    [Exception Table]

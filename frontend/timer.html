@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stream Timer</title>
+  <style>
+    :root { --timer-color: #fff; --timer-shadow: rgba(0,0,0,.82); --timer-glow: rgba(139,233,253,.18); }
+    * { box-sizing: border-box; }
+    html, body { margin:0; width:100%; height:100%; background:transparent; overflow:hidden; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .wrap { width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; padding:8px; background:transparent; }
+    #time { color:var(--timer-color); font-size:clamp(54px, 12vw, 142px); font-weight:950; line-height:1; letter-spacing:.015em; white-space:nowrap; font-variant-numeric:tabular-nums; text-shadow:0 4px 12px var(--timer-shadow),0 0 30px var(--timer-glow); }
+  </style>
+</head>
+<body>
+  <main class="wrap" aria-label="Stream Timer"><div id="time">00:00:00</div></main>
+<script>
+const timeEl = document.getElementById('time');
+let serverRemaining = 0;
+let serverPaused = false;
+let lastServerSyncMs = Date.now();
+let displayed = 0;
+let hasFirstSync = false;
+let anim = null;
+let ws = null;
+let retryMs = 500;
+
+function pad(n){ return String(Math.floor(n)).padStart(2,'0'); }
+function formatDuration(sec){
+  sec = Math.max(0, Math.floor(sec));
+  const d = Math.floor(sec / 86400);
+  const h = Math.floor((sec % 86400) / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  if (d > 0) return `${pad(d)}:${pad(h)}:${pad(m)}:${pad(s)}`;
+  if (h > 0) return `${pad(h)}:${pad(m)}:${pad(s)}`;
+  if (m > 0) return `${pad(m)}:${pad(s)}`;
+  return `${pad(s)}`;
+}
+function authoritativeNow(){
+  if (serverPaused) return serverRemaining;
+  const elapsed = Math.floor((Date.now() - lastServerSyncMs) / 1000);
+  return Math.max(0, serverRemaining - elapsed);
+}
+function render(sec){
+  displayed = Math.max(0, Math.floor(sec));
+  const text = formatDuration(displayed);
+  if (timeEl.textContent !== text) timeEl.textContent = text;
+}
+function stopAnim(){
+  if (anim && anim.raf) cancelAnimationFrame(anim.raf);
+  anim = null;
+}
+function easeOut(t){ return 1 - Math.pow(1 - t, 3); }
+function animateTo(target){
+  const from = displayed;
+  target = Math.max(0, Math.floor(target));
+  if (target <= from) { render(target); return; }
+  stopAnim();
+  const diff = target - from;
+  const duration = Math.min(1500, Math.max(300, diff * 8));
+  const start = performance.now();
+  anim = { raf: null, target };
+  const step = (now) => {
+    if (!anim) return;
+    const p = Math.min(1, (now - start) / duration);
+    render(Math.round(from + (target - from) * easeOut(p)));
+    if (p < 1) {
+      anim.raf = requestAnimationFrame(step);
+    } else {
+      anim = null;
+      // Nach dem Count-Up NICHT wieder runter springen: ab jetzt sauber vom letzten Backendstand weiterzählen.
+      render(authoritativeNow());
+    }
+  };
+  anim.raf = requestAnimationFrame(step);
+}
+function syncTimer(data){
+  if (typeof data.remaining_seconds !== 'number') return;
+  const reason = data.reason || 'sync';
+  const oldVisual = anim ? displayed : authoritativeNow();
+
+  serverRemaining = Math.max(0, Math.floor(data.remaining_seconds));
+  serverPaused = Boolean(data.paused);
+  lastServerSyncMs = Date.now();
+
+  if (!hasFirstSync) {
+    hasFirstSync = true;
+    stopAnim();
+    render(serverRemaining);
+    return;
+  }
+
+  // Nur echte Add/Set Events animieren. Tick-Events niemals, sonst Loop.
+  if ((reason === 'add' || reason === 'set') && serverRemaining > oldVisual + 1) {
+    animateTo(serverRemaining);
+    return;
+  }
+
+  if (!anim) render(authoritativeNow());
+}
+function connect(){
+  const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+  ws = new WebSocket(`${proto}//${location.host}/ws`);
+  ws.addEventListener('open', () => { retryMs = 500; try { ws.send('hello'); } catch(_){} });
+  ws.addEventListener('message', ev => { try { const d = JSON.parse(ev.data); if (d.type === 'timer_state') syncTimer(d); } catch(e){ console.error(e); } });
+  ws.addEventListener('close', () => { setTimeout(connect, retryMs); retryMs = Math.min(10000, Math.floor(retryMs * 1.7)); });
+  ws.addEventListener('error', () => { try { ws.close(); } catch(_){} });
+}
+setInterval(() => { if (!anim) render(authoritativeNow()); }, 200);
+connect();
+</script>
+</body>
+</html>

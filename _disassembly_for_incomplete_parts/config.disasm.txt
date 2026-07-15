@@ -1,0 +1,590 @@
+config.pyc (Python 3.12)
+[Code]
+    File Name: backend\config.py
+    Object Name: <module>
+    Qualified Name: <module>
+    Arg Count: 0
+    Pos Only Arg Count: 0
+    KW Only Arg Count: 0
+    Stack Size: 5
+    Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+    [Names]
+        '__future__'
+        'annotations'
+        'json'
+        'logging'
+        'os'
+        'dataclasses'
+        'dataclass'
+        'pathlib'
+        'Path'
+        'typing'
+        'Any'
+        'getLogger'
+        '__name__'
+        'log'
+        'Config'
+        'load_config'
+    [Locals+Names]
+    [Constants]
+        0
+        (
+            'annotations'
+        )
+        None
+        (
+            'dataclass'
+        )
+        (
+            'Path'
+        )
+        (
+            'Any'
+        )
+        True
+        (
+            'frozen'
+        )
+        [Code]
+            File Name: backend\config.py
+            Object Name: Config
+            Qualified Name: Config
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+            [Names]
+                '__name__'
+                '__module__'
+                '__qualname__'
+                '__annotations__'
+                'property'
+                'server'
+                'multipliers'
+                'minecraft'
+                'twitch'
+                'discord'
+                'timer'
+                'resolve_path'
+            [Locals+Names]
+            [Constants]
+                'Config'
+                'dict[str, Any]'
+                'raw'
+                'Path'
+                'base_dir'
+                [Code]
+                    File Name: backend\config.py
+                    Object Name: server
+                    Qualified Name: Config.server
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'raw'
+                        'get'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'server'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       0: self
+                        4       LOAD_ATTR                       0: raw
+                        24      LOAD_ATTR                       3: get
+                        44      LOAD_CONST                      1: 'server'
+                        46      BUILD_MAP                       0
+                        48      CALL                            2
+                        56      RETURN_VALUE                    
+                    [Exception Table]
+                [Code]
+                    File Name: backend\config.py
+                    Object Name: multipliers
+                    Qualified Name: Config.multipliers
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'raw'
+                        'get'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'multipliers'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       0: self
+                        4       LOAD_ATTR                       0: raw
+                        24      LOAD_ATTR                       3: get
+                        44      LOAD_CONST                      1: 'multipliers'
+                        46      BUILD_MAP                       0
+                        48      CALL                            2
+                        56      RETURN_VALUE                    
+                    [Exception Table]
+                [Code]
+                    File Name: backend\config.py
+                    Object Name: minecraft
+                    Qualified Name: Config.minecraft
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'raw'
+                        'get'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'minecraft'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       0: self
+                        4       LOAD_ATTR                       0: raw
+                        24      LOAD_ATTR                       3: get
+                        44      LOAD_CONST                      1: 'minecraft'
+                        46      BUILD_MAP                       0
+                        48      CALL                            2
+                        56      RETURN_VALUE                    
+                    [Exception Table]
+                [Code]
+                    File Name: backend\config.py
+                    Object Name: twitch
+                    Qualified Name: Config.twitch
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'raw'
+                        'get'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'twitch'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       0: self
+                        4       LOAD_ATTR                       0: raw
+                        24      LOAD_ATTR                       3: get
+                        44      LOAD_CONST                      1: 'twitch'
+                        46      BUILD_MAP                       0
+                        48      CALL                            2
+                        56      RETURN_VALUE                    
+                    [Exception Table]
+                [Code]
+                    File Name: backend\config.py
+                    Object Name: discord
+                    Qualified Name: Config.discord
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'raw'
+                        'get'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'discord'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       0: self
+                        4       LOAD_ATTR                       0: raw
+                        24      LOAD_ATTR                       3: get
+                        44      LOAD_CONST                      1: 'discord'
+                        46      BUILD_MAP                       0
+                        48      CALL                            2
+                        56      RETURN_VALUE                    
+                    [Exception Table]
+                [Code]
+                    File Name: backend\config.py
+                    Object Name: timer
+                    Qualified Name: Config.timer
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'raw'
+                        'get'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'timer'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       0: self
+                        4       LOAD_ATTR                       0: raw
+                        24      LOAD_ATTR                       3: get
+                        44      LOAD_CONST                      1: 'timer'
+                        46      BUILD_MAP                       0
+                        48      CALL                            2
+                        56      RETURN_VALUE                    
+                    [Exception Table]
+                [Code]
+                    File Name: backend\config.py
+                    Object Name: resolve_path
+                    Qualified Name: Config.resolve_path
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 3
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'Path'
+                        'expanduser'
+                        'is_absolute'
+                        'base_dir'
+                    [Locals+Names]
+                        'self'
+                        'value'
+                        'path'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_GLOBAL                     1: NULL + Path
+                        12      LOAD_FAST                       1: value
+                        14      CALL                            1
+                        22      LOAD_ATTR                       3: expanduser
+                        42      CALL                            0
+                        50      STORE_FAST                      2: path
+                        52      LOAD_FAST                       2: path
+                        54      LOAD_ATTR                       5: is_absolute
+                        74      CALL                            0
+                        82      POP_JUMP_IF_TRUE                15 (to 114)
+                        84      LOAD_FAST                       0: self
+                        86      LOAD_ATTR                       6: base_dir
+                        106     LOAD_FAST                       2: path
+                        108     BINARY_OP                       11 (/)
+                        112     STORE_FAST                      2: path
+                        114     LOAD_FAST                       2: path
+                        116     RETURN_VALUE                    
+                    [Exception Table]
+                None
+                (
+                    'return'
+                    'dict[str, Any]'
+                )
+                (
+                    'return'
+                    'dict[str, float]'
+                )
+                (
+                    'value'
+                    'str | os.PathLike[str]'
+                    'return'
+                    'Path'
+                )
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_NAME                       0: __name__
+                4       STORE_NAME                      1: __module__
+                6       LOAD_CONST                      0: 'Config'
+                8       STORE_NAME                      2: __qualname__
+                10      SETUP_ANNOTATIONS               
+                12      LOAD_CONST                      1: 'dict[str, Any]'
+                14      LOAD_NAME                       3: __annotations__
+                16      LOAD_CONST                      2: 'raw'
+                18      STORE_SUBSCR                    
+                22      LOAD_CONST                      3: 'Path'
+                24      LOAD_NAME                       3: __annotations__
+                26      LOAD_CONST                      4: 'base_dir'
+                28      STORE_SUBSCR                    
+                32      LOAD_NAME                       4: property
+                34      LOAD_CONST                      13: ('return', 'dict[str, Any]')
+                36      LOAD_CONST                      5: <CODE> server
+                38      MAKE_FUNCTION                   4
+                40      CALL                            0
+                48      STORE_NAME                      5: server
+                50      LOAD_NAME                       4: property
+                52      LOAD_CONST                      14: ('return', 'dict[str, float]')
+                54      LOAD_CONST                      6: <CODE> multipliers
+                56      MAKE_FUNCTION                   4
+                58      CALL                            0
+                66      STORE_NAME                      6: multipliers
+                68      LOAD_NAME                       4: property
+                70      LOAD_CONST                      13: ('return', 'dict[str, Any]')
+                72      LOAD_CONST                      7: <CODE> minecraft
+                74      MAKE_FUNCTION                   4
+                76      CALL                            0
+                84      STORE_NAME                      7: minecraft
+                86      LOAD_NAME                       4: property
+                88      LOAD_CONST                      13: ('return', 'dict[str, Any]')
+                90      LOAD_CONST                      8: <CODE> twitch
+                92      MAKE_FUNCTION                   4
+                94      CALL                            0
+                102     STORE_NAME                      8: twitch
+                104     LOAD_NAME                       4: property
+                106     LOAD_CONST                      13: ('return', 'dict[str, Any]')
+                108     LOAD_CONST                      9: <CODE> discord
+                110     MAKE_FUNCTION                   4
+                112     CALL                            0
+                120     STORE_NAME                      9: discord
+                122     LOAD_NAME                       4: property
+                124     LOAD_CONST                      13: ('return', 'dict[str, Any]')
+                126     LOAD_CONST                      10: <CODE> timer
+                128     MAKE_FUNCTION                   4
+                130     CALL                            0
+                138     STORE_NAME                      10: timer
+                140     LOAD_CONST                      15: ('value', 'str | os.PathLike[str]', 'return', 'Path')
+                142     LOAD_CONST                      11: <CODE> resolve_path
+                144     MAKE_FUNCTION                   4
+                146     STORE_NAME                      11: resolve_path
+                148     RETURN_CONST                    12: None
+            [Exception Table]
+        'Config'
+        [Code]
+            File Name: backend\config.py
+            Object Name: load_config
+            Qualified Name: load_config
+            Arg Count: 1
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 6
+            Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+            [Names]
+                'Path'
+                'expanduser'
+                'resolve'
+                'parent'
+                'dotenv'
+                'load_dotenv'
+                'exists'
+                'log'
+                'info'
+                'ImportError'
+                'warning'
+                'open'
+                'json'
+                'load'
+                'Config'
+            [Locals+Names]
+                'path'
+                'config_path'
+                'env_path'
+                'load_dotenv'
+                'f'
+                'raw'
+            [Constants]
+                None
+                '.env'
+                0
+                (
+                    'load_dotenv'
+                )
+                True
+                (
+                    'override'
+                )
+                '.env geladen: %s'
+                'python-dotenv nicht installiert; .env wird ignoriert. Installiere: pip install python-dotenv'
+                'r'
+                'utf-8'
+                (
+                    'encoding'
+                )
+                'Config geladen: %s'
+                (
+                    'raw'
+                    'base_dir'
+                )
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_GLOBAL                     1: NULL + Path
+                12      LOAD_FAST                       0: path
+                14      CALL                            1
+                22      LOAD_ATTR                       3: expanduser
+                42      CALL                            0
+                50      LOAD_ATTR                       5: resolve
+                70      CALL                            0
+                78      STORE_FAST                      1: config_path
+                80      LOAD_FAST                       1: config_path
+                82      LOAD_ATTR                       6: parent
+                102     LOAD_CONST                      1: '.env'
+                104     BINARY_OP                       11 (/)
+                108     STORE_FAST                      2: env_path
+                110     NOP                             
+                112     LOAD_CONST                      2: 0
+                114     LOAD_CONST                      3: ('load_dotenv',)
+                116     IMPORT_NAME                     4: dotenv
+                118     IMPORT_FROM                     5: load_dotenv
+                120     STORE_FAST                      3: load_dotenv
+                122     POP_TOP                         
+                124     LOAD_FAST                       2: env_path
+                126     LOAD_ATTR                       13: exists
+                146     CALL                            0
+                154     POP_JUMP_IF_FALSE               33 (to 222)
+                156     PUSH_NULL                       
+                158     LOAD_FAST                       3: load_dotenv
+                160     LOAD_FAST                       2: env_path
+                162     LOAD_CONST                      4: True
+                164     KW_NAMES                        5: ('override',)
+                166     CALL                            2
+                174     POP_TOP                         
+                176     LOAD_GLOBAL                     14: log
+                186     LOAD_ATTR                       17: info
+                206     LOAD_CONST                      6: '.env geladen: %s'
+                208     LOAD_FAST                       2: env_path
+                210     CALL                            2
+                218     POP_TOP                         
+                220     JUMP_FORWARD                    9 (to 240)
+                222     PUSH_NULL                       
+                224     LOAD_FAST                       3: load_dotenv
+                226     LOAD_CONST                      4: True
+                228     KW_NAMES                        5: ('override',)
+                230     CALL                            1
+                238     POP_TOP                         
+                240     LOAD_FAST                       1: config_path
+                242     LOAD_ATTR                       23: open
+                262     LOAD_CONST                      8: 'r'
+                264     LOAD_CONST                      9: 'utf-8'
+                266     KW_NAMES                        10: ('encoding',)
+                268     CALL                            2
+                276     BEFORE_WITH                     
+                278     STORE_FAST                      4: f
+                280     LOAD_GLOBAL                     25: NULL + json
+                290     LOAD_ATTR                       26: load
+                310     LOAD_FAST                       4: f
+                312     CALL                            1
+                320     STORE_FAST                      5: raw
+                322     LOAD_CONST                      0: None
+                324     LOAD_CONST                      0: None
+                326     LOAD_CONST                      0: None
+                328     CALL                            2
+                336     POP_TOP                         
+                338     LOAD_GLOBAL                     14: log
+                348     LOAD_ATTR                       17: info
+                368     LOAD_CONST                      11: 'Config geladen: %s'
+                370     LOAD_FAST                       1: config_path
+                372     CALL                            2
+                380     POP_TOP                         
+                382     LOAD_GLOBAL                     29: NULL + Config
+                392     LOAD_FAST_CHECK                 5: raw
+                394     LOAD_FAST                       1: config_path
+                396     LOAD_ATTR                       6: parent
+                416     KW_NAMES                        12: ('raw', 'base_dir')
+                418     CALL                            2
+                426     RETURN_VALUE                    
+                428     PUSH_EXC_INFO                   
+                430     LOAD_GLOBAL                     18: ImportError
+                440     CHECK_EXC_MATCH                 
+                442     POP_JUMP_IF_FALSE               24 (to 492)
+                444     POP_TOP                         
+                446     LOAD_GLOBAL                     14: log
+                456     LOAD_ATTR                       21: warning
+                476     LOAD_CONST                      7: 'python-dotenv nicht installiert; .env wird ignoriert. Installiere: pip install python-dotenv'
+                478     CALL                            1
+                486     POP_TOP                         
+                488     POP_EXCEPT                      
+                490     JUMP_BACKWARD                   126 (to 240)
+                492     RERAISE                         0
+                494     COPY                            3
+                496     POP_EXCEPT                      
+                498     RERAISE                         1
+                500     PUSH_EXC_INFO                   
+                502     WITH_EXCEPT_START               
+                504     POP_JUMP_IF_TRUE                1 (to 508)
+                506     RERAISE                         2
+                508     POP_TOP                         
+                510     POP_EXCEPT                      
+                512     POP_TOP                         
+                514     POP_TOP                         
+                516     JUMP_BACKWARD                   90 (to 338)
+                518     COPY                            3
+                520     POP_EXCEPT                      
+                522     RERAISE                         1
+            [Exception Table]
+                112 to 240 -> 428 [0] 
+                278 to 322 -> 500 [1] lasti
+                428 to 488 -> 494 [1] lasti
+                492 to 494 -> 494 [1] lasti
+                500 to 510 -> 518 [3] lasti
+        (
+            'config.json'
+        )
+        (
+            'path'
+            'str | os.PathLike[str]'
+            'return'
+            'Config'
+        )
+    [Disassembly]
+        0       RESUME                          0
+        2       LOAD_CONST                      0: 0
+        4       LOAD_CONST                      1: ('annotations',)
+        6       IMPORT_NAME                     0: __future__
+        8       IMPORT_FROM                     1: annotations
+        10      STORE_NAME                      1: annotations
+        12      POP_TOP                         
+        14      LOAD_CONST                      0: 0
+        16      LOAD_CONST                      2: None
+        18      IMPORT_NAME                     2: json
+        20      STORE_NAME                      2: json
+        22      LOAD_CONST                      0: 0
+        24      LOAD_CONST                      2: None
+        26      IMPORT_NAME                     3: logging
+        28      STORE_NAME                      3: logging
+        30      LOAD_CONST                      0: 0
+        32      LOAD_CONST                      2: None
+        34      IMPORT_NAME                     4: os
+        36      STORE_NAME                      4: os
+        38      LOAD_CONST                      0: 0
+        40      LOAD_CONST                      3: ('dataclass',)
+        42      IMPORT_NAME                     5: dataclasses
+        44      IMPORT_FROM                     6: dataclass
+        46      STORE_NAME                      6: dataclass
+        48      POP_TOP                         
+        50      LOAD_CONST                      0: 0
+        52      LOAD_CONST                      4: ('Path',)
+        54      IMPORT_NAME                     7: pathlib
+        56      IMPORT_FROM                     8: Path
+        58      STORE_NAME                      8: Path
+        60      POP_TOP                         
+        62      LOAD_CONST                      0: 0
+        64      LOAD_CONST                      5: ('Any',)
+        66      IMPORT_NAME                     9: typing
+        68      IMPORT_FROM                     10: Any
+        70      STORE_NAME                      10: Any
+        72      POP_TOP                         
+        74      PUSH_NULL                       
+        76      LOAD_NAME                       3: logging
+        78      LOAD_ATTR                       22: getLogger
+        98      LOAD_NAME                       12: __name__
+        100     CALL                            1
+        108     STORE_NAME                      13: log
+        110     PUSH_NULL                       
+        112     LOAD_NAME                       6: dataclass
+        114     LOAD_CONST                      6: True
+        116     KW_NAMES                        7: ('frozen',)
+        118     CALL                            1
+        126     PUSH_NULL                       
+        128     LOAD_BUILD_CLASS                
+        130     LOAD_CONST                      8: <CODE> Config
+        132     MAKE_FUNCTION                   0
+        134     LOAD_CONST                      9: 'Config'
+        136     CALL                            2
+        144     CALL                            0
+        152     STORE_NAME                      14: Config
+        154     LOAD_CONST                      11: ('config.json',)
+        156     LOAD_CONST                      12: ('path', 'str | os.PathLike[str]', 'return', 'Config')
+        158     LOAD_CONST                      10: <CODE> load_config
+        160     MAKE_FUNCTION                   5
+        162     STORE_NAME                      15: load_config
+        164     RETURN_CONST                    2: None
+    [Exception Table]

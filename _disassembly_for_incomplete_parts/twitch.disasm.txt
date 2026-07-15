@@ -1,0 +1,1772 @@
+twitch.pyc (Python 3.12)
+[Code]
+    File Name: backend\twitch.py
+    Object Name: <module>
+    Qualified Name: <module>
+    Arg Count: 0
+    Pos Only Arg Count: 0
+    KW Only Arg Count: 0
+    Stack Size: 4
+    Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+    [Names]
+        '__future__'
+        'annotations'
+        'asyncio'
+        'json'
+        'logging'
+        'os'
+        'ssl'
+        'typing'
+        'Any'
+        'aiohttp'
+        'certifi'
+        'events'
+        'DonationEvent'
+        'EventDispatcher'
+        'extract_first_youtube_url'
+        'getLogger'
+        '__name__'
+        'log'
+        'EVENTSUB_WS_URL'
+        'HELIX_EVENTSUB'
+        'TwitchEventSubClient'
+    [Locals+Names]
+    [Constants]
+        0
+        (
+            'annotations'
+        )
+        None
+        (
+            'Any'
+        )
+        1
+        (
+            'DonationEvent'
+            'EventDispatcher'
+            'extract_first_youtube_url'
+        )
+        'wss://eventsub.wss.twitch.tv/ws'
+        'https://api.twitch.tv/helix/eventsub/subscriptions'
+        [Code]
+            File Name: backend\twitch.py
+            Object Name: TwitchEventSubClient
+            Qualified Name: TwitchEventSubClient
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 3
+            Flags: 0x01000000 (CO_FUTURE_ANNOTATIONS)
+            [Names]
+                '__name__'
+                '__module__'
+                '__qualname__'
+                '__doc__'
+                '__init__'
+                'start'
+                'stop'
+                '_run_forever'
+                '_connect_once'
+                '_handle_ws_message'
+                '_subscribe_all'
+                '_tier_multiplier_key'
+                '_handle_notification'
+            [Locals+Names]
+            [Constants]
+                'TwitchEventSubClient'
+                'Twitch EventSub WebSocket Client fuer Follow, Bits, Subs, Gift-Subs und Resub-Messages.'
+                None
+                [Code]
+                    File Name: backend\twitch.py
+                    Object Name: __init__
+                    Qualified Name: TwitchEventSubClient.__init__
+                    Arg Count: 4
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 7
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'dispatcher'
+                        'multipliers'
+                        'config'
+                        'os'
+                        'getenv'
+                        'get'
+                        'client_id'
+                        'user_token'
+                        'str'
+                        'broadcaster_user_id'
+                        'moderator_user_id'
+                        '_task'
+                        'asyncio'
+                        'Event'
+                        '_stop'
+                    [Locals+Names]
+                        'self'
+                        'dispatcher'
+                        'multipliers'
+                        'config'
+                    [Constants]
+                        None
+                        'client_id_env'
+                        'TWITCH_CLIENT_ID'
+                        'client_id'
+                        ''
+                        'user_token_env'
+                        'TWITCH_USER_TOKEN'
+                        'user_token'
+                        'broadcaster_user_id'
+                        'TWITCH_BROADCASTER_ID'
+                        'moderator_user_id'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       1: dispatcher
+                        4       LOAD_FAST                       0: self
+                        6       STORE_ATTR                      0: dispatcher
+                        16      LOAD_FAST                       2: multipliers
+                        18      LOAD_FAST                       0: self
+                        20      STORE_ATTR                      1: multipliers
+                        30      LOAD_FAST                       3: config
+                        32      COPY                            1
+                        34      POP_JUMP_IF_TRUE                2 (to 40)
+                        36      POP_TOP                         
+                        38      BUILD_MAP                       0
+                        40      LOAD_FAST                       0: self
+                        42      STORE_ATTR                      2: config
+                        52      LOAD_GLOBAL                     7: NULL + os
+                        62      LOAD_ATTR                       8: getenv
+                        82      LOAD_FAST                       0: self
+                        84      LOAD_ATTR                       4: config
+                        104     LOAD_ATTR                       11: get
+                        124     LOAD_CONST                      1: 'client_id_env'
+                        126     LOAD_CONST                      2: 'TWITCH_CLIENT_ID'
+                        128     CALL                            2
+                        136     LOAD_FAST                       0: self
+                        138     LOAD_ATTR                       4: config
+                        158     LOAD_ATTR                       11: get
+                        178     LOAD_CONST                      3: 'client_id'
+                        180     LOAD_CONST                      4: ''
+                        182     CALL                            2
+                        190     CALL                            2
+                        198     LOAD_FAST                       0: self
+                        200     STORE_ATTR                      6: client_id
+                        210     LOAD_GLOBAL                     7: NULL + os
+                        220     LOAD_ATTR                       8: getenv
+                        240     LOAD_FAST                       0: self
+                        242     LOAD_ATTR                       4: config
+                        262     LOAD_ATTR                       11: get
+                        282     LOAD_CONST                      5: 'user_token_env'
+                        284     LOAD_CONST                      6: 'TWITCH_USER_TOKEN'
+                        286     CALL                            2
+                        294     LOAD_FAST                       0: self
+                        296     LOAD_ATTR                       4: config
+                        316     LOAD_ATTR                       11: get
+                        336     LOAD_CONST                      7: 'user_token'
+                        338     LOAD_CONST                      4: ''
+                        340     CALL                            2
+                        348     CALL                            2
+                        356     LOAD_FAST                       0: self
+                        358     STORE_ATTR                      7: user_token
+                        368     LOAD_GLOBAL                     17: NULL + str
+                        378     LOAD_FAST                       0: self
+                        380     LOAD_ATTR                       4: config
+                        400     LOAD_ATTR                       11: get
+                        420     LOAD_CONST                      8: 'broadcaster_user_id'
+                        422     LOAD_CONST                      4: ''
+                        424     CALL                            2
+                        432     COPY                            1
+                        434     POP_JUMP_IF_TRUE                22 (to 480)
+                        436     POP_TOP                         
+                        438     LOAD_GLOBAL                     7: NULL + os
+                        448     LOAD_ATTR                       8: getenv
+                        468     LOAD_CONST                      9: 'TWITCH_BROADCASTER_ID'
+                        470     LOAD_CONST                      4: ''
+                        472     CALL                            2
+                        480     CALL                            1
+                        488     LOAD_FAST                       0: self
+                        490     STORE_ATTR                      9: broadcaster_user_id
+                        500     LOAD_GLOBAL                     17: NULL + str
+                        510     LOAD_FAST                       0: self
+                        512     LOAD_ATTR                       4: config
+                        532     LOAD_ATTR                       11: get
+                        552     LOAD_CONST                      10: 'moderator_user_id'
+                        554     LOAD_CONST                      4: ''
+                        556     CALL                            2
+                        564     COPY                            1
+                        566     POP_JUMP_IF_TRUE                12 (to 592)
+                        568     POP_TOP                         
+                        570     LOAD_FAST                       0: self
+                        572     LOAD_ATTR                       18: broadcaster_user_id
+                        592     CALL                            1
+                        600     LOAD_FAST                       0: self
+                        602     STORE_ATTR                      10: moderator_user_id
+                        612     LOAD_CONST                      0: None
+                        614     LOAD_FAST                       0: self
+                        616     STORE_ATTR                      11: _task
+                        626     LOAD_GLOBAL                     25: NULL + asyncio
+                        636     LOAD_ATTR                       26: Event
+                        656     CALL                            0
+                        664     LOAD_FAST                       0: self
+                        666     STORE_ATTR                      14: _stop
+                        676     RETURN_CONST                    0: None
+                    [Exception Table]
+                [Code]
+                    File Name: backend\twitch.py
+                    Object Name: start
+                    Qualified Name: TwitchEventSubClient.start
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'client_id'
+                        'user_token'
+                        'broadcaster_user_id'
+                        'log'
+                        'error'
+                        '_task'
+                        'done'
+                        'asyncio'
+                        'create_task'
+                        '_run_forever'
+                        'info'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                        'Twitch aktiviert, aber Credentials fehlen. Benötigt: TWITCH_CLIENT_ID, TWITCH_USER_TOKEN, broadcaster_user_id in config.json'
+                        'twitch-eventsub'
+                        (
+                            'name'
+                        )
+                        'Twitch EventSub Client gestartet'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       0: self
+                        4       LOAD_ATTR                       0: client_id
+                        24      POP_JUMP_IF_FALSE               24 (to 74)
+                        26      LOAD_FAST                       0: self
+                        28      LOAD_ATTR                       2: user_token
+                        48      POP_JUMP_IF_FALSE               12 (to 74)
+                        50      LOAD_FAST                       0: self
+                        52      LOAD_ATTR                       4: broadcaster_user_id
+                        72      POP_JUMP_IF_TRUE                22 (to 118)
+                        74      LOAD_GLOBAL                     6: log
+                        84      LOAD_ATTR                       9: error
+                        104     LOAD_CONST                      1: 'Twitch aktiviert, aber Credentials fehlen. Benötigt: TWITCH_CLIENT_ID, TWITCH_USER_TOKEN, broadcaster_user_id in config.json'
+                        106     CALL                            1
+                        114     POP_TOP                         
+                        116     RETURN_CONST                    0: None
+                        118     LOAD_FAST                       0: self
+                        120     LOAD_ATTR                       10: _task
+                        140     POP_JUMP_IF_NONE                26 (to 194)
+                        142     LOAD_FAST                       0: self
+                        144     LOAD_ATTR                       10: _task
+                        164     LOAD_ATTR                       13: done
+                        184     CALL                            0
+                        192     POP_JUMP_IF_FALSE               64 (to 322)
+                        194     LOAD_GLOBAL                     15: NULL + asyncio
+                        204     LOAD_ATTR                       16: create_task
+                        224     LOAD_FAST                       0: self
+                        226     LOAD_ATTR                       19: _run_forever
+                        246     CALL                            0
+                        254     LOAD_CONST                      2: 'twitch-eventsub'
+                        256     KW_NAMES                        3: ('name',)
+                        258     CALL                            2
+                        266     LOAD_FAST                       0: self
+                        268     STORE_ATTR                      5: _task
+                        278     LOAD_GLOBAL                     6: log
+                        288     LOAD_ATTR                       21: info
+                        308     LOAD_CONST                      4: 'Twitch EventSub Client gestartet'
+                        310     CALL                            1
+                        318     POP_TOP                         
+                        320     RETURN_CONST                    0: None
+                        322     RETURN_CONST                    0: None
+                    [Exception Table]
+                [Code]
+                    File Name: backend\twitch.py
+                    Object Name: stop
+                    Qualified Name: TwitchEventSubClient.stop
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_stop'
+                        'set'
+                        '_task'
+                        'done'
+                        'cancel'
+                        'asyncio'
+                        'CancelledError'
+                    [Locals+Names]
+                        'self'
+                    [Constants]
+                        None
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       0: self
+                        8       LOAD_ATTR                       0: _stop
+                        28      LOAD_ATTR                       3: set
+                        48      CALL                            0
+                        56      POP_TOP                         
+                        58      LOAD_FAST                       0: self
+                        60      LOAD_ATTR                       4: _task
+                        80      POP_JUMP_IF_FALSE               75 (to 232)
+                        82      LOAD_FAST                       0: self
+                        84      LOAD_ATTR                       4: _task
+                        104     LOAD_ATTR                       7: done
+                        124     CALL                            0
+                        132     POP_JUMP_IF_TRUE                48 (to 230)
+                        134     LOAD_FAST                       0: self
+                        136     LOAD_ATTR                       4: _task
+                        156     LOAD_ATTR                       9: cancel
+                        176     CALL                            0
+                        184     POP_TOP                         
+                        186     NOP                             
+                        188     LOAD_FAST                       0: self
+                        190     LOAD_ATTR                       4: _task
+                        210     GET_AWAITABLE                   0
+                        212     LOAD_CONST                      0: None
+                        214     SEND                            3 (to 222)
+                        218     YIELD_VALUE                     3
+                        220     RESUME                          3
+                        222     JUMP_BACKWARD_NO_INTERRUPT      5 (to 214)
+                        224     END_SEND                        
+                        226     POP_TOP                         
+                        228     RETURN_CONST                    0: None
+                        230     RETURN_CONST                    0: None
+                        232     RETURN_CONST                    0: None
+                        234     CLEANUP_THROW                   
+                        236     JUMP_BACKWARD                   7 (to 224)
+                        238     PUSH_EXC_INFO                   
+                        240     LOAD_GLOBAL                     10: asyncio
+                        250     LOAD_ATTR                       12: CancelledError
+                        270     CHECK_EXC_MATCH                 
+                        272     POP_JUMP_IF_FALSE               3 (to 280)
+                        274     POP_TOP                         
+                        276     POP_EXCEPT                      
+                        278     RETURN_CONST                    0: None
+                        280     RERAISE                         0
+                        282     COPY                            3
+                        284     POP_EXCEPT                      
+                        286     RERAISE                         1
+                        288     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        290     RERAISE                         1
+                    [Exception Table]
+                        4 to 186 -> 288 [0] lasti
+                        188 to 218 -> 238 [0] 
+                        218 to 220 -> 234 [2] 
+                        220 to 228 -> 238 [0] 
+                        228 to 234 -> 288 [0] lasti
+                        234 to 236 -> 238 [0] 
+                        238 to 276 -> 282 [1] lasti
+                        276 to 280 -> 288 [0] lasti
+                        280 to 282 -> 282 [1] lasti
+                        282 to 288 -> 288 [0] lasti
+                [Code]
+                    File Name: backend\twitch.py
+                    Object Name: _run_forever
+                    Qualified Name: TwitchEventSubClient._run_forever
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 6
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        '_stop'
+                        'is_set'
+                        '_connect_once'
+                        'asyncio'
+                        'CancelledError'
+                        'Exception'
+                        'log'
+                        'exception'
+                        'sleep'
+                        'min'
+                    [Locals+Names]
+                        'self'
+                        'delay'
+                    [Constants]
+                        None
+                        2
+                        'Twitch EventSub Fehler; reconnect in %ss'
+                        60
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_CONST                      1: 2
+                        8       STORE_FAST                      1: delay
+                        10      LOAD_FAST                       0: self
+                        12      LOAD_ATTR                       0: _stop
+                        32      LOAD_ATTR                       3: is_set
+                        52      CALL                            0
+                        60      POP_JUMP_IF_TRUE                55 (to 172)
+                        62      NOP                             
+                        64      LOAD_FAST                       0: self
+                        66      LOAD_ATTR                       5: _connect_once
+                        86      CALL                            0
+                        94      GET_AWAITABLE                   0
+                        96      LOAD_CONST                      0: None
+                        98      SEND                            3 (to 106)
+                        102     YIELD_VALUE                     3
+                        104     RESUME                          3
+                        106     JUMP_BACKWARD_NO_INTERRUPT      5 (to 98)
+                        108     END_SEND                        
+                        110     POP_TOP                         
+                        112     LOAD_CONST                      1: 2
+                        114     STORE_FAST                      1: delay
+                        116     LOAD_FAST                       0: self
+                        118     LOAD_ATTR                       0: _stop
+                        138     LOAD_ATTR                       3: is_set
+                        158     CALL                            0
+                        166     POP_JUMP_IF_TRUE                1 (to 170)
+                        168     JUMP_BACKWARD                   54 (to 62)
+                        170     RETURN_CONST                    0: None
+                        172     RETURN_CONST                    0: None
+                        174     CLEANUP_THROW                   
+                        176     JUMP_BACKWARD                   35 (to 108)
+                        178     PUSH_EXC_INFO                   
+                        180     LOAD_GLOBAL                     6: asyncio
+                        190     LOAD_ATTR                       8: CancelledError
+                        210     CHECK_EXC_MATCH                 
+                        212     POP_JUMP_IF_FALSE               2 (to 218)
+                        214     POP_TOP                         
+                        216     RAISE_VARARGS                   0
+                        218     LOAD_GLOBAL                     10: Exception
+                        228     CHECK_EXC_MATCH                 
+                        230     POP_JUMP_IF_FALSE               70 (to 372)
+                        232     POP_TOP                         
+                        234     LOAD_GLOBAL                     12: log
+                        244     LOAD_ATTR                       15: exception
+                        264     LOAD_CONST                      2: 'Twitch EventSub Fehler; reconnect in %ss'
+                        266     LOAD_FAST                       1: delay
+                        268     CALL                            2
+                        276     POP_TOP                         
+                        278     LOAD_GLOBAL                     7: NULL + asyncio
+                        288     LOAD_ATTR                       16: sleep
+                        308     LOAD_FAST                       1: delay
+                        310     CALL                            1
+                        318     GET_AWAITABLE                   0
+                        320     LOAD_CONST                      0: None
+                        322     SEND                            4 (to 332)
+                        326     YIELD_VALUE                     3
+                        328     RESUME                          3
+                        330     JUMP_BACKWARD_NO_INTERRUPT      5 (to 322)
+                        332     CLEANUP_THROW                   
+                        334     END_SEND                        
+                        336     POP_TOP                         
+                        338     LOAD_GLOBAL                     19: NULL + min
+                        348     LOAD_CONST                      3: 60
+                        350     LOAD_FAST                       1: delay
+                        352     LOAD_CONST                      1: 2
+                        354     BINARY_OP                       5 (*)
+                        358     CALL                            2
+                        366     STORE_FAST                      1: delay
+                        368     POP_EXCEPT                      
+                        370     JUMP_BACKWARD                   128 (to 116)
+                        372     RERAISE                         0
+                        374     COPY                            3
+                        376     POP_EXCEPT                      
+                        378     RERAISE                         1
+                        380     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        382     RERAISE                         1
+                    [Exception Table]
+                        4 to 62 -> 380 [0] lasti
+                        64 to 102 -> 178 [0] 
+                        102 to 104 -> 174 [2] 
+                        104 to 116 -> 178 [0] 
+                        116 to 168 -> 380 [0] lasti
+                        170 to 174 -> 380 [0] lasti
+                        174 to 176 -> 178 [0] 
+                        178 to 326 -> 374 [1] lasti
+                        326 to 328 -> 332 [3] 
+                        328 to 368 -> 374 [1] lasti
+                        368 to 372 -> 380 [0] lasti
+                        372 to 374 -> 374 [1] lasti
+                        374 to 380 -> 380 [0] lasti
+                [Code]
+                    File Name: backend\twitch.py
+                    Object Name: _connect_once
+                    Qualified Name: TwitchEventSubClient._connect_once
+                    Arg Count: 1
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 8
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'ssl'
+                        'create_default_context'
+                        'certifi'
+                        'where'
+                        'aiohttp'
+                        'TCPConnector'
+                        'ClientSession'
+                        'ws_connect'
+                        'EVENTSUB_WS_URL'
+                        'log'
+                        'info'
+                        'type'
+                        'WSMsgType'
+                        'TEXT'
+                        'json'
+                        'loads'
+                        'data'
+                        '_handle_ws_message'
+                        'CLOSED'
+                        'ERROR'
+                    [Locals+Names]
+                        'self'
+                        'ssl_context'
+                        'connector'
+                        'session'
+                        'ws'
+                        'msg'
+                        'data'
+                    [Constants]
+                        None
+                        (
+                            'cafile'
+                        )
+                        (
+                            'ssl'
+                        )
+                        (
+                            'connector'
+                        )
+                        30
+                        (
+                            'heartbeat'
+                            'ssl'
+                        )
+                        'Mit Twitch EventSub WebSocket verbunden'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_GLOBAL                     1: NULL + ssl
+                        16      LOAD_ATTR                       2: create_default_context
+                        36      LOAD_GLOBAL                     5: NULL + certifi
+                        46      LOAD_ATTR                       6: where
+                        66      CALL                            0
+                        74      KW_NAMES                        1: ('cafile',)
+                        76      CALL                            1
+                        84      STORE_FAST                      1: ssl_context
+                        86      LOAD_GLOBAL                     9: NULL + aiohttp
+                        96      LOAD_ATTR                       10: TCPConnector
+                        116     LOAD_FAST                       1: ssl_context
+                        118     KW_NAMES                        2: ('ssl',)
+                        120     CALL                            1
+                        128     STORE_FAST                      2: connector
+                        130     LOAD_GLOBAL                     9: NULL + aiohttp
+                        140     LOAD_ATTR                       12: ClientSession
+                        160     LOAD_FAST                       2: connector
+                        162     KW_NAMES                        3: ('connector',)
+                        164     CALL                            1
+                        172     BEFORE_ASYNC_WITH               
+                        174     GET_AWAITABLE                   1
+                        176     LOAD_CONST                      0: None
+                        178     SEND                            3 (to 186)
+                        182     YIELD_VALUE                     2
+                        184     RESUME                          3
+                        186     JUMP_BACKWARD_NO_INTERRUPT      5 (to 178)
+                        188     END_SEND                        
+                        190     STORE_FAST                      3: session
+                        192     LOAD_FAST                       3: session
+                        194     LOAD_ATTR                       15: ws_connect
+                        214     LOAD_GLOBAL                     16: EVENTSUB_WS_URL
+                        224     LOAD_CONST                      4: 30
+                        226     LOAD_FAST                       1: ssl_context
+                        228     KW_NAMES                        5: ('heartbeat', 'ssl')
+                        230     CALL                            3
+                        238     BEFORE_ASYNC_WITH               
+                        240     GET_AWAITABLE                   1
+                        242     LOAD_CONST                      0: None
+                        244     SEND                            3 (to 252)
+                        248     YIELD_VALUE                     3
+                        250     RESUME                          3
+                        252     JUMP_BACKWARD_NO_INTERRUPT      5 (to 244)
+                        254     END_SEND                        
+                        256     STORE_FAST                      4: ws
+                        258     LOAD_GLOBAL                     18: log
+                        268     LOAD_ATTR                       21: info
+                        288     LOAD_CONST                      6: 'Mit Twitch EventSub WebSocket verbunden'
+                        290     CALL                            1
+                        298     POP_TOP                         
+                        300     LOAD_FAST                       4: ws
+                        302     GET_AITER                       
+                        304     GET_ANEXT                       
+                        306     LOAD_CONST                      0: None
+                        308     SEND                            3 (to 316)
+                        312     YIELD_VALUE                     5
+                        314     RESUME                          3
+                        316     JUMP_BACKWARD_NO_INTERRUPT      5 (to 308)
+                        318     END_SEND                        
+                        320     STORE_FAST                      5: msg
+                        322     LOAD_FAST                       5: msg
+                        324     LOAD_ATTR                       22: type
+                        344     LOAD_GLOBAL                     8: aiohttp
+                        354     LOAD_ATTR                       24: WSMsgType
+                        374     LOAD_ATTR                       26: TEXT
+                        394     COMPARE_OP                      40 (==)
+                        398     POP_JUMP_IF_FALSE               58 (to 516)
+                        400     LOAD_GLOBAL                     29: NULL + json
+                        410     LOAD_ATTR                       30: loads
+                        430     LOAD_FAST                       5: msg
+                        432     LOAD_ATTR                       32: data
+                        452     CALL                            1
+                        460     STORE_FAST                      6: data
+                        462     LOAD_FAST                       0: self
+                        464     LOAD_ATTR                       35: _handle_ws_message
+                        484     LOAD_FAST                       3: session
+                        486     LOAD_FAST                       6: data
+                        488     CALL                            2
+                        496     GET_AWAITABLE                   0
+                        498     LOAD_CONST                      0: None
+                        500     SEND                            3 (to 508)
+                        504     YIELD_VALUE                     4
+                        506     RESUME                          3
+                        508     JUMP_BACKWARD_NO_INTERRUPT      5 (to 500)
+                        510     END_SEND                        
+                        512     POP_TOP                         
+                        514     JUMP_BACKWARD                   106 (to 304)
+                        516     LOAD_FAST                       5: msg
+                        518     LOAD_ATTR                       22: type
+                        538     LOAD_GLOBAL                     8: aiohttp
+                        548     LOAD_ATTR                       24: WSMsgType
+                        568     LOAD_ATTR                       36: CLOSED
+                        588     LOAD_GLOBAL                     8: aiohttp
+                        598     LOAD_ATTR                       24: WSMsgType
+                        618     LOAD_ATTR                       38: ERROR
+                        638     BUILD_TUPLE                     2
+                        640     CONTAINS_OP                     0 (in)
+                        642     POP_JUMP_IF_TRUE                1 (to 646)
+                        644     JUMP_BACKWARD                   171 (to 304)
+                        646     POP_TOP                         
+                        648     LOAD_CONST                      0: None
+                        650     LOAD_CONST                      0: None
+                        652     LOAD_CONST                      0: None
+                        654     CALL                            2
+                        662     GET_AWAITABLE                   2
+                        664     LOAD_CONST                      0: None
+                        666     SEND                            3 (to 674)
+                        670     YIELD_VALUE                     3
+                        672     RESUME                          3
+                        674     JUMP_BACKWARD_NO_INTERRUPT      5 (to 666)
+                        676     END_SEND                        
+                        678     POP_TOP                         
+                        680     LOAD_CONST                      0: None
+                        682     LOAD_CONST                      0: None
+                        684     LOAD_CONST                      0: None
+                        686     CALL                            2
+                        694     GET_AWAITABLE                   2
+                        696     LOAD_CONST                      0: None
+                        698     SEND                            3 (to 706)
+                        702     YIELD_VALUE                     2
+                        704     RESUME                          3
+                        706     JUMP_BACKWARD_NO_INTERRUPT      5 (to 698)
+                        708     END_SEND                        
+                        710     POP_TOP                         
+                        712     RETURN_CONST                    0: None
+                        714     CLEANUP_THROW                   
+                        716     JUMP_BACKWARD                   266 (to 188)
+                        720     CLEANUP_THROW                   
+                        722     JUMP_BACKWARD                   235 (to 254)
+                        724     CLEANUP_THROW                   
+                        726     JUMP_BACKWARD                   205 (to 318)
+                        728     CLEANUP_THROW                   
+                        730     JUMP_BACKWARD                   111 (to 510)
+                        732     END_ASYNC_FOR                   
+                        734     JUMP_BACKWARD                   44 (to 648)
+                        736     CLEANUP_THROW                   
+                        738     JUMP_BACKWARD                   32 (to 676)
+                        740     PUSH_EXC_INFO                   
+                        742     WITH_EXCEPT_START               
+                        744     GET_AWAITABLE                   2
+                        746     LOAD_CONST                      0: None
+                        748     SEND                            4 (to 758)
+                        752     YIELD_VALUE                     4
+                        754     RESUME                          3
+                        756     JUMP_BACKWARD_NO_INTERRUPT      5 (to 748)
+                        758     CLEANUP_THROW                   
+                        760     END_SEND                        
+                        762     POP_JUMP_IF_TRUE                1 (to 766)
+                        764     RERAISE                         2
+                        766     POP_TOP                         
+                        768     POP_EXCEPT                      
+                        770     POP_TOP                         
+                        772     POP_TOP                         
+                        774     JUMP_BACKWARD                   48 (to 680)
+                        776     COPY                            3
+                        778     POP_EXCEPT                      
+                        780     RERAISE                         1
+                        782     CLEANUP_THROW                   
+                        784     JUMP_BACKWARD                   39 (to 708)
+                        786     PUSH_EXC_INFO                   
+                        788     WITH_EXCEPT_START               
+                        790     GET_AWAITABLE                   2
+                        792     LOAD_CONST                      0: None
+                        794     SEND                            4 (to 804)
+                        798     YIELD_VALUE                     3
+                        800     RESUME                          3
+                        802     JUMP_BACKWARD_NO_INTERRUPT      5 (to 794)
+                        804     CLEANUP_THROW                   
+                        806     END_SEND                        
+                        808     POP_JUMP_IF_TRUE                1 (to 812)
+                        810     RERAISE                         2
+                        812     POP_TOP                         
+                        814     POP_EXCEPT                      
+                        816     POP_TOP                         
+                        818     POP_TOP                         
+                        820     RETURN_CONST                    0: None
+                        822     COPY                            3
+                        824     POP_EXCEPT                      
+                        826     RERAISE                         1
+                        828     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        830     RERAISE                         1
+                    [Exception Table]
+                        4 to 182 -> 828 [0] lasti
+                        182 to 184 -> 714 [3] 
+                        184 to 190 -> 828 [0] lasti
+                        190 to 248 -> 786 [1] lasti
+                        248 to 250 -> 720 [4] 
+                        250 to 256 -> 786 [1] lasti
+                        256 to 304 -> 740 [2] lasti
+                        304 to 312 -> 732 [3] 
+                        312 to 314 -> 724 [5] 
+                        314 to 320 -> 732 [3] 
+                        320 to 504 -> 740 [2] lasti
+                        504 to 506 -> 728 [5] 
+                        506 to 644 -> 740 [2] lasti
+                        646 to 648 -> 740 [2] lasti
+                        648 to 670 -> 786 [1] lasti
+                        670 to 672 -> 736 [3] 
+                        672 to 680 -> 786 [1] lasti
+                        680 to 702 -> 828 [0] lasti
+                        702 to 704 -> 782 [2] 
+                        704 to 716 -> 828 [0] lasti
+                        720 to 722 -> 786 [1] lasti
+                        724 to 726 -> 732 [3] 
+                        728 to 730 -> 740 [2] lasti
+                        732 to 734 -> 740 [2] lasti
+                        736 to 738 -> 786 [1] lasti
+                        740 to 752 -> 776 [4] lasti
+                        752 to 754 -> 758 [7] 
+                        754 to 768 -> 776 [4] lasti
+                        768 to 782 -> 786 [1] lasti
+                        782 to 784 -> 828 [0] lasti
+                        786 to 798 -> 822 [3] lasti
+                        798 to 800 -> 804 [6] 
+                        800 to 814 -> 822 [3] lasti
+                        814 to 828 -> 828 [0] lasti
+                [Code]
+                    File Name: backend\twitch.py
+                    Object Name: _handle_ws_message
+                    Qualified Name: TwitchEventSubClient._handle_ws_message
+                    Arg Count: 3
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 4
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'get'
+                        '_subscribe_all'
+                        '_handle_notification'
+                        'RuntimeError'
+                    [Locals+Names]
+                        'self'
+                        'session'
+                        'data'
+                        'meta'
+                        'msg_type'
+                        'payload'
+                        'session_id'
+                        'sub_type'
+                        'event'
+                    [Constants]
+                        None
+                        'metadata'
+                        'message_type'
+                        'payload'
+                        'session_welcome'
+                        'session'
+                        'id'
+                        'notification'
+                        'subscription'
+                        'type'
+                        'event'
+                        'session_reconnect'
+                        'Twitch fordert Reconnect an'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       2: data
+                        8       LOAD_ATTR                       1: get
+                        28      LOAD_CONST                      1: 'metadata'
+                        30      BUILD_MAP                       0
+                        32      CALL                            2
+                        40      STORE_FAST                      3: meta
+                        42      LOAD_FAST                       3: meta
+                        44      LOAD_ATTR                       1: get
+                        64      LOAD_CONST                      2: 'message_type'
+                        66      CALL                            1
+                        74      STORE_FAST                      4: msg_type
+                        76      LOAD_FAST                       2: data
+                        78      LOAD_ATTR                       1: get
+                        98      LOAD_CONST                      3: 'payload'
+                        100     BUILD_MAP                       0
+                        102     CALL                            2
+                        110     STORE_FAST                      5: payload
+                        112     LOAD_FAST                       4: msg_type
+                        114     LOAD_CONST                      4: 'session_welcome'
+                        116     COMPARE_OP                      40 (==)
+                        120     POP_JUMP_IF_FALSE               35 (to 192)
+                        122     LOAD_FAST                       5: payload
+                        124     LOAD_CONST                      5: 'session'
+                        126     BINARY_SUBSCR                   
+                        130     LOAD_CONST                      6: 'id'
+                        132     BINARY_SUBSCR                   
+                        136     STORE_FAST                      6: session_id
+                        138     LOAD_FAST                       0: self
+                        140     LOAD_ATTR                       3: _subscribe_all
+                        160     LOAD_FAST                       1: session
+                        162     LOAD_FAST                       6: session_id
+                        164     CALL                            2
+                        172     GET_AWAITABLE                   0
+                        174     LOAD_CONST                      0: None
+                        176     SEND                            3 (to 184)
+                        180     YIELD_VALUE                     2
+                        182     RESUME                          3
+                        184     JUMP_BACKWARD_NO_INTERRUPT      5 (to 176)
+                        186     END_SEND                        
+                        188     POP_TOP                         
+                        190     RETURN_CONST                    0: None
+                        192     LOAD_FAST                       4: msg_type
+                        194     LOAD_CONST                      7: 'notification'
+                        196     COMPARE_OP                      40 (==)
+                        200     POP_JUMP_IF_FALSE               78 (to 358)
+                        202     LOAD_FAST                       5: payload
+                        204     LOAD_ATTR                       1: get
+                        224     LOAD_CONST                      8: 'subscription'
+                        226     BUILD_MAP                       0
+                        228     CALL                            2
+                        236     LOAD_ATTR                       1: get
+                        256     LOAD_CONST                      9: 'type'
+                        258     CALL                            1
+                        266     STORE_FAST                      7: sub_type
+                        268     LOAD_FAST                       5: payload
+                        270     LOAD_ATTR                       1: get
+                        290     LOAD_CONST                      10: 'event'
+                        292     BUILD_MAP                       0
+                        294     CALL                            2
+                        302     STORE_FAST                      8: event
+                        304     LOAD_FAST                       0: self
+                        306     LOAD_ATTR                       5: _handle_notification
+                        326     LOAD_FAST                       7: sub_type
+                        328     LOAD_FAST                       8: event
+                        330     CALL                            2
+                        338     GET_AWAITABLE                   0
+                        340     LOAD_CONST                      0: None
+                        342     SEND                            3 (to 350)
+                        346     YIELD_VALUE                     2
+                        348     RESUME                          3
+                        350     JUMP_BACKWARD_NO_INTERRUPT      5 (to 342)
+                        352     END_SEND                        
+                        354     POP_TOP                         
+                        356     RETURN_CONST                    0: None
+                        358     LOAD_FAST                       4: msg_type
+                        360     LOAD_CONST                      11: 'session_reconnect'
+                        362     COMPARE_OP                      40 (==)
+                        366     POP_JUMP_IF_FALSE               11 (to 390)
+                        368     LOAD_GLOBAL                     7: NULL + RuntimeError
+                        378     LOAD_CONST                      12: 'Twitch fordert Reconnect an'
+                        380     CALL                            1
+                        388     RAISE_VARARGS                   1
+                        390     RETURN_CONST                    0: None
+                        392     CLEANUP_THROW                   
+                        394     JUMP_BACKWARD                   105 (to 186)
+                        396     CLEANUP_THROW                   
+                        398     JUMP_BACKWARD                   24 (to 352)
+                        400     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        402     RERAISE                         1
+                    [Exception Table]
+                        4 to 180 -> 400 [0] lasti
+                        180 to 182 -> 392 [2] 
+                        182 to 346 -> 400 [0] lasti
+                        346 to 348 -> 396 [2] 
+                        348 to 394 -> 400 [0] lasti
+                        396 to 398 -> 400 [0] lasti
+                [Code]
+                    File Name: backend\twitch.py
+                    Object Name: _subscribe_all
+                    Qualified Name: TwitchEventSubClient._subscribe_all
+                    Arg Count: 3
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 8
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'broadcaster_user_id'
+                        'moderator_user_id'
+                        'client_id'
+                        'user_token'
+                        'post'
+                        'HELIX_EVENTSUB'
+                        'text'
+                        'status'
+                        'log'
+                        'error'
+                        'info'
+                    [Locals+Names]
+                        'self'
+                        'session'
+                        'session_id'
+                        'transport'
+                        'subs'
+                        'headers'
+                        'typ'
+                        'version'
+                        'condition'
+                        'body'
+                        'resp'
+                        'text'
+                    [Constants]
+                        None
+                        'websocket'
+                        (
+                            'method'
+                            'session_id'
+                        )
+                        'channel.follow'
+                        '2'
+                        (
+                            'broadcaster_user_id'
+                            'moderator_user_id'
+                        )
+                        'channel.cheer'
+                        '1'
+                        'broadcaster_user_id'
+                        'channel.subscribe'
+                        'channel.subscription.gift'
+                        'channel.subscription.message'
+                        'Bearer '
+                        'application/json'
+                        (
+                            'Client-Id'
+                            'Authorization'
+                            'Content-Type'
+                        )
+                        (
+                            'type'
+                            'version'
+                            'condition'
+                            'transport'
+                        )
+                        (
+                            'headers'
+                            'json'
+                        )
+                        (
+                            200
+                            202
+                            409
+                        )
+                        'Twitch Subscribe fehlgeschlagen %s: %s %s'
+                        'Twitch EventSub abonniert: %s'
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_CONST                      1: 'websocket'
+                        8       LOAD_FAST                       2: session_id
+                        10      LOAD_CONST                      2: ('method', 'session_id')
+                        12      BUILD_CONST_KEY_MAP             2
+                        14      STORE_FAST                      3: transport
+                        16      LOAD_CONST                      3: 'channel.follow'
+                        18      LOAD_CONST                      4: '2'
+                        20      LOAD_FAST                       0: self
+                        22      LOAD_ATTR                       0: broadcaster_user_id
+                        42      LOAD_FAST                       0: self
+                        44      LOAD_ATTR                       2: moderator_user_id
+                        64      LOAD_CONST                      5: ('broadcaster_user_id', 'moderator_user_id')
+                        66      BUILD_CONST_KEY_MAP             2
+                        68      BUILD_TUPLE                     3
+                        70      LOAD_CONST                      6: 'channel.cheer'
+                        72      LOAD_CONST                      7: '1'
+                        74      LOAD_CONST                      8: 'broadcaster_user_id'
+                        76      LOAD_FAST                       0: self
+                        78      LOAD_ATTR                       0: broadcaster_user_id
+                        98      BUILD_MAP                       1
+                        100     BUILD_TUPLE                     3
+                        102     LOAD_CONST                      9: 'channel.subscribe'
+                        104     LOAD_CONST                      7: '1'
+                        106     LOAD_CONST                      8: 'broadcaster_user_id'
+                        108     LOAD_FAST                       0: self
+                        110     LOAD_ATTR                       0: broadcaster_user_id
+                        130     BUILD_MAP                       1
+                        132     BUILD_TUPLE                     3
+                        134     LOAD_CONST                      10: 'channel.subscription.gift'
+                        136     LOAD_CONST                      7: '1'
+                        138     LOAD_CONST                      8: 'broadcaster_user_id'
+                        140     LOAD_FAST                       0: self
+                        142     LOAD_ATTR                       0: broadcaster_user_id
+                        162     BUILD_MAP                       1
+                        164     BUILD_TUPLE                     3
+                        166     LOAD_CONST                      11: 'channel.subscription.message'
+                        168     LOAD_CONST                      7: '1'
+                        170     LOAD_CONST                      8: 'broadcaster_user_id'
+                        172     LOAD_FAST                       0: self
+                        174     LOAD_ATTR                       0: broadcaster_user_id
+                        194     BUILD_MAP                       1
+                        196     BUILD_TUPLE                     3
+                        198     BUILD_LIST                      5
+                        200     STORE_FAST                      4: subs
+                        202     LOAD_FAST                       0: self
+                        204     LOAD_ATTR                       4: client_id
+                        224     LOAD_CONST                      12: 'Bearer '
+                        226     LOAD_FAST                       0: self
+                        228     LOAD_ATTR                       6: user_token
+                        248     FORMAT_VALUE                    0 (FVC_NONE)
+                        250     BUILD_STRING                    2
+                        252     LOAD_CONST                      13: 'application/json'
+                        254     LOAD_CONST                      14: ('Client-Id', 'Authorization', 'Content-Type')
+                        256     BUILD_CONST_KEY_MAP             3
+                        258     STORE_FAST                      5: headers
+                        260     LOAD_FAST                       4: subs
+                        262     GET_ITER                        
+                        264     FOR_ITER                        157 (to 580)
+                        268     UNPACK_SEQUENCE                 3
+                        272     STORE_FAST                      6: typ
+                        274     STORE_FAST                      7: version
+                        276     STORE_FAST                      8: condition
+                        278     LOAD_FAST                       6: typ
+                        280     LOAD_FAST                       7: version
+                        282     LOAD_FAST                       8: condition
+                        284     LOAD_FAST                       3: transport
+                        286     LOAD_CONST                      15: ('type', 'version', 'condition', 'transport')
+                        288     BUILD_CONST_KEY_MAP             4
+                        290     STORE_FAST                      9: body
+                        292     LOAD_FAST                       1: session
+                        294     LOAD_ATTR                       9: post
+                        314     LOAD_GLOBAL                     10: HELIX_EVENTSUB
+                        324     LOAD_FAST                       5: headers
+                        326     LOAD_FAST                       9: body
+                        328     KW_NAMES                        16: ('headers', 'json')
+                        330     CALL                            3
+                        338     BEFORE_ASYNC_WITH               
+                        340     GET_AWAITABLE                   1
+                        342     LOAD_CONST                      0: None
+                        344     SEND                            3 (to 352)
+                        348     YIELD_VALUE                     2
+                        350     RESUME                          3
+                        352     JUMP_BACKWARD_NO_INTERRUPT      5 (to 344)
+                        354     END_SEND                        
+                        356     STORE_FAST                      10: resp
+                        358     LOAD_FAST                       10: resp
+                        360     LOAD_ATTR                       13: text
+                        380     CALL                            0
+                        388     GET_AWAITABLE                   0
+                        390     LOAD_CONST                      0: None
+                        392     SEND                            3 (to 400)
+                        396     YIELD_VALUE                     3
+                        398     RESUME                          3
+                        400     JUMP_BACKWARD_NO_INTERRUPT      5 (to 392)
+                        402     END_SEND                        
+                        404     STORE_FAST                      11: text
+                        406     LOAD_FAST                       10: resp
+                        408     LOAD_ATTR                       14: status
+                        428     LOAD_CONST                      17: (200, 202, 409)
+                        430     CONTAINS_OP                     1 (not in)
+                        432     POP_JUMP_IF_FALSE               35 (to 504)
+                        434     LOAD_GLOBAL                     16: log
+                        444     LOAD_ATTR                       19: error
+                        464     LOAD_CONST                      18: 'Twitch Subscribe fehlgeschlagen %s: %s %s'
+                        466     LOAD_FAST                       6: typ
+                        468     LOAD_FAST                       10: resp
+                        470     LOAD_ATTR                       14: status
+                        490     LOAD_FAST                       11: text
+                        492     CALL                            4
+                        500     POP_TOP                         
+                        502     JUMP_FORWARD                    22 (to 548)
+                        504     LOAD_GLOBAL                     16: log
+                        514     LOAD_ATTR                       21: info
+                        534     LOAD_CONST                      19: 'Twitch EventSub abonniert: %s'
+                        536     LOAD_FAST                       6: typ
+                        538     CALL                            2
+                        546     POP_TOP                         
+                        548     LOAD_CONST                      0: None
+                        550     LOAD_CONST                      0: None
+                        552     LOAD_CONST                      0: None
+                        554     CALL                            2
+                        562     GET_AWAITABLE                   2
+                        564     LOAD_CONST                      0: None
+                        566     SEND                            3 (to 574)
+                        570     YIELD_VALUE                     2
+                        572     RESUME                          3
+                        574     JUMP_BACKWARD_NO_INTERRUPT      5 (to 566)
+                        576     END_SEND                        
+                        578     POP_TOP                         
+                        580     JUMP_BACKWARD                   159 (to 264)
+                        582     END_FOR                         
+                        584     RETURN_CONST                    0: None
+                        586     CLEANUP_THROW                   
+                        588     JUMP_BACKWARD                   118 (to 354)
+                        590     CLEANUP_THROW                   
+                        592     JUMP_BACKWARD                   96 (to 402)
+                        594     CLEANUP_THROW                   
+                        596     JUMP_BACKWARD                   11 (to 576)
+                        598     PUSH_EXC_INFO                   
+                        600     WITH_EXCEPT_START               
+                        602     GET_AWAITABLE                   2
+                        604     LOAD_CONST                      0: None
+                        606     SEND                            4 (to 616)
+                        610     YIELD_VALUE                     3
+                        612     RESUME                          3
+                        614     JUMP_BACKWARD_NO_INTERRUPT      5 (to 606)
+                        616     CLEANUP_THROW                   
+                        618     END_SEND                        
+                        620     POP_JUMP_IF_TRUE                1 (to 624)
+                        622     RERAISE                         2
+                        624     POP_TOP                         
+                        626     POP_EXCEPT                      
+                        628     POP_TOP                         
+                        630     POP_TOP                         
+                        632     JUMP_BACKWARD                   185 (to 264)
+                        634     COPY                            3
+                        636     POP_EXCEPT                      
+                        638     RERAISE                         1
+                        640     CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        642     RERAISE                         1
+                    [Exception Table]
+                        4 to 348 -> 640 [0] lasti
+                        348 to 350 -> 586 [4] 
+                        350 to 356 -> 640 [0] lasti
+                        356 to 396 -> 598 [2] lasti
+                        396 to 398 -> 590 [4] 
+                        398 to 548 -> 598 [2] lasti
+                        548 to 570 -> 640 [0] lasti
+                        570 to 572 -> 594 [3] 
+                        572 to 588 -> 640 [0] lasti
+                        590 to 592 -> 598 [2] lasti
+                        594 to 596 -> 640 [0] lasti
+                        598 to 610 -> 634 [4] lasti
+                        610 to 612 -> 616 [7] 
+                        612 to 626 -> 634 [4] lasti
+                        626 to 640 -> 640 [0] lasti
+                [Code]
+                    File Name: backend\twitch.py
+                    Object Name: _tier_multiplier_key
+                    Qualified Name: TwitchEventSubClient._tier_multiplier_key
+                    Arg Count: 2
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 2
+                    Flags: 0x01000003 (CO_OPTIMIZED | CO_NEWLOCALS | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                    [Locals+Names]
+                        'self'
+                        'tier'
+                    [Constants]
+                        None
+                        '2000'
+                        'seconds_per_tier2_sub'
+                        '3000'
+                        'seconds_per_tier3_sub'
+                        'seconds_per_sub'
+                    [Disassembly]
+                        0       RESUME                          0
+                        2       LOAD_FAST                       1: tier
+                        4       LOAD_CONST                      1: '2000'
+                        6       COMPARE_OP                      40 (==)
+                        10      POP_JUMP_IF_FALSE               1 (to 14)
+                        12      RETURN_CONST                    2: 'seconds_per_tier2_sub'
+                        14      LOAD_FAST                       1: tier
+                        16      LOAD_CONST                      3: '3000'
+                        18      COMPARE_OP                      40 (==)
+                        22      POP_JUMP_IF_FALSE               1 (to 26)
+                        24      RETURN_CONST                    4: 'seconds_per_tier3_sub'
+                        26      RETURN_CONST                    5: 'seconds_per_sub'
+                    [Exception Table]
+                [Code]
+                    File Name: backend\twitch.py
+                    Object Name: _handle_notification
+                    Qualified Name: TwitchEventSubClient._handle_notification
+                    Arg Count: 3
+                    Pos Only Arg Count: 0
+                    KW Only Arg Count: 0
+                    Stack Size: 15
+                    Flags: 0x01000083 (CO_OPTIMIZED | CO_NEWLOCALS | CO_COROUTINE | CO_FUTURE_ANNOTATIONS)
+                    [Names]
+                        'int'
+                        'float'
+                        'multipliers'
+                        'get'
+                        'dispatcher'
+                        'handle_event'
+                        'DonationEvent'
+                        'extract_first_youtube_url'
+                        '_tier_multiplier_key'
+                        'isinstance'
+                        'dict'
+                        'str'
+                    [Locals+Names]
+                        'self'
+                        'sub_type'
+                        'e'
+                        'seconds'
+                        'bits'
+                        'msg'
+                        'tier'
+                        'total'
+                        'msg_obj'
+                    [Constants]
+                        None
+                        'channel.follow'
+                        'seconds_per_follow'
+                        300
+                        'follow'
+                        'user_name'
+                        'Follower'
+                        1
+                        'Follow'
+                        'twitch'
+                        'channel.cheer'
+                        'bits'
+                        0
+                        'message'
+                        ''
+                        'seconds_per_bit'
+                        10
+                        'Anonymous'
+                        'Bits'
+                        (
+                            'message'
+                            'sound_url'
+                        )
+                        'channel.subscribe'
+                        'tier'
+                        '1000'
+                        2400
+                        'sub'
+                        'Sub'
+                        (
+                            'tier'
+                        )
+                        'channel.subscription.gift'
+                        'total'
+                        'gift_sub'
+                        'Gifter'
+                        'Subs'
+                        'channel.subscription.message'
+                        'text'
+                        (
+                            'message'
+                            'tier'
+                            'sound_url'
+                        )
+                    [Disassembly]
+                        0       RETURN_GENERATOR                
+                        2       POP_TOP                         
+                        4       RESUME                          0
+                        6       LOAD_FAST                       1: sub_type
+                        8       LOAD_CONST                      1: 'channel.follow'
+                        10      COMPARE_OP                      40 (==)
+                        14      POP_JUMP_IF_FALSE               112 (to 240)
+                        16      LOAD_GLOBAL                     1: NULL + int
+                        26      LOAD_GLOBAL                     3: NULL + float
+                        36      LOAD_FAST                       0: self
+                        38      LOAD_ATTR                       4: multipliers
+                        58      LOAD_ATTR                       7: get
+                        78      LOAD_CONST                      2: 'seconds_per_follow'
+                        80      LOAD_CONST                      3: 300
+                        82      CALL                            2
+                        90      CALL                            1
+                        98      CALL                            1
+                        106     STORE_FAST                      3: seconds
+                        108     LOAD_FAST                       0: self
+                        110     LOAD_ATTR                       8: dispatcher
+                        130     LOAD_ATTR                       11: handle_event
+                        150     LOAD_GLOBAL                     13: NULL + DonationEvent
+                        160     LOAD_CONST                      4: 'follow'
+                        162     LOAD_FAST                       2: e
+                        164     LOAD_ATTR                       7: get
+                        184     LOAD_CONST                      5: 'user_name'
+                        186     LOAD_CONST                      6: 'Follower'
+                        188     CALL                            2
+                        196     LOAD_CONST                      7: 1
+                        198     LOAD_CONST                      8: 'Follow'
+                        200     LOAD_FAST                       3: seconds
+                        202     LOAD_CONST                      9: 'twitch'
+                        204     CALL                            6
+                        212     CALL                            1
+                        220     GET_AWAITABLE                   0
+                        222     LOAD_CONST                      0: None
+                        224     SEND                            3 (to 232)
+                        228     YIELD_VALUE                     2
+                        230     RESUME                          3
+                        232     JUMP_BACKWARD_NO_INTERRUPT      5 (to 224)
+                        234     END_SEND                        
+                        236     POP_TOP                         
+                        238     RETURN_CONST                    0: None
+                        240     LOAD_FAST                       1: sub_type
+                        242     LOAD_CONST                      10: 'channel.cheer'
+                        244     COMPARE_OP                      40 (==)
+                        248     POP_JUMP_IF_FALSE               176 (to 602)
+                        250     LOAD_GLOBAL                     1: NULL + int
+                        260     LOAD_FAST                       2: e
+                        262     LOAD_ATTR                       7: get
+                        282     LOAD_CONST                      11: 'bits'
+                        284     LOAD_CONST                      12: 0
+                        286     CALL                            2
+                        294     CALL                            1
+                        302     STORE_FAST                      4: bits
+                        304     LOAD_FAST                       2: e
+                        306     LOAD_ATTR                       7: get
+                        326     LOAD_CONST                      13: 'message'
+                        328     LOAD_CONST                      14: ''
+                        330     CALL                            2
+                        338     COPY                            1
+                        340     POP_JUMP_IF_TRUE                2 (to 346)
+                        342     POP_TOP                         
+                        344     LOAD_CONST                      14: ''
+                        346     STORE_FAST                      5: msg
+                        348     LOAD_GLOBAL                     1: NULL + int
+                        358     LOAD_FAST                       4: bits
+                        360     LOAD_GLOBAL                     3: NULL + float
+                        370     LOAD_FAST                       0: self
+                        372     LOAD_ATTR                       4: multipliers
+                        392     LOAD_ATTR                       7: get
+                        412     LOAD_CONST                      15: 'seconds_per_bit'
+                        414     LOAD_CONST                      16: 10
+                        416     CALL                            2
+                        424     CALL                            1
+                        432     BINARY_OP                       5 (*)
+                        436     CALL                            1
+                        444     STORE_FAST                      3: seconds
+                        446     LOAD_FAST                       0: self
+                        448     LOAD_ATTR                       8: dispatcher
+                        468     LOAD_ATTR                       11: handle_event
+                        488     LOAD_GLOBAL                     13: NULL + DonationEvent
+                        498     LOAD_CONST                      11: 'bits'
+                        500     LOAD_FAST                       2: e
+                        502     LOAD_ATTR                       7: get
+                        522     LOAD_CONST                      5: 'user_name'
+                        524     LOAD_CONST                      17: 'Anonymous'
+                        526     CALL                            2
+                        534     LOAD_FAST                       4: bits
+                        536     LOAD_CONST                      18: 'Bits'
+                        538     LOAD_FAST                       3: seconds
+                        540     LOAD_CONST                      9: 'twitch'
+                        542     LOAD_FAST                       5: msg
+                        544     LOAD_GLOBAL                     15: NULL + extract_first_youtube_url
+                        554     LOAD_FAST                       5: msg
+                        556     CALL                            1
+                        564     KW_NAMES                        19: ('message', 'sound_url')
+                        566     CALL                            8
+                        574     CALL                            1
+                        582     GET_AWAITABLE                   0
+                        584     LOAD_CONST                      0: None
+                        586     SEND                            3 (to 594)
+                        590     YIELD_VALUE                     2
+                        592     RESUME                          3
+                        594     JUMP_BACKWARD_NO_INTERRUPT      5 (to 586)
+                        596     END_SEND                        
+                        598     POP_TOP                         
+                        600     RETURN_CONST                    0: None
+                        602     LOAD_FAST                       1: sub_type
+                        604     LOAD_CONST                      20: 'channel.subscribe'
+                        606     COMPARE_OP                      40 (==)
+                        610     POP_JUMP_IF_FALSE               147 (to 906)
+                        612     LOAD_FAST                       2: e
+                        614     LOAD_ATTR                       7: get
+                        634     LOAD_CONST                      21: 'tier'
+                        636     LOAD_CONST                      22: '1000'
+                        638     CALL                            2
+                        646     STORE_FAST                      6: tier
+                        648     LOAD_GLOBAL                     1: NULL + int
+                        658     LOAD_GLOBAL                     3: NULL + float
+                        668     LOAD_FAST                       0: self
+                        670     LOAD_ATTR                       4: multipliers
+                        690     LOAD_ATTR                       7: get
+                        710     LOAD_FAST                       0: self
+                        712     LOAD_ATTR                       17: _tier_multiplier_key
+                        732     LOAD_FAST                       6: tier
+                        734     CALL                            1
+                        742     LOAD_CONST                      23: 2400
+                        744     CALL                            2
+                        752     CALL                            1
+                        760     CALL                            1
+                        768     STORE_FAST                      3: seconds
+                        770     LOAD_FAST                       0: self
+                        772     LOAD_ATTR                       8: dispatcher
+                        792     LOAD_ATTR                       11: handle_event
+                        812     LOAD_GLOBAL                     13: NULL + DonationEvent
+                        822     LOAD_CONST                      24: 'sub'
+                        824     LOAD_FAST                       2: e
+                        826     LOAD_ATTR                       7: get
+                        846     LOAD_CONST                      5: 'user_name'
+                        848     LOAD_CONST                      25: 'Sub'
+                        850     CALL                            2
+                        858     LOAD_CONST                      7: 1
+                        860     LOAD_CONST                      25: 'Sub'
+                        862     LOAD_FAST                       3: seconds
+                        864     LOAD_CONST                      9: 'twitch'
+                        866     LOAD_FAST                       6: tier
+                        868     KW_NAMES                        26: ('tier',)
+                        870     CALL                            7
+                        878     CALL                            1
+                        886     GET_AWAITABLE                   0
+                        888     LOAD_CONST                      0: None
+                        890     SEND                            3 (to 898)
+                        894     YIELD_VALUE                     2
+                        896     RESUME                          3
+                        898     JUMP_BACKWARD_NO_INTERRUPT      5 (to 890)
+                        900     END_SEND                        
+                        902     POP_TOP                         
+                        904     RETURN_CONST                    0: None
+                        906     LOAD_FAST                       1: sub_type
+                        908     LOAD_CONST                      27: 'channel.subscription.gift'
+                        910     COMPARE_OP                      40 (==)
+                        914     POP_JUMP_IF_FALSE               181 (to 1278)
+                        916     LOAD_FAST                       2: e
+                        918     LOAD_ATTR                       7: get
+                        938     LOAD_CONST                      21: 'tier'
+                        940     LOAD_CONST                      22: '1000'
+                        942     CALL                            2
+                        950     STORE_FAST                      6: tier
+                        952     LOAD_GLOBAL                     1: NULL + int
+                        962     LOAD_FAST                       2: e
+                        964     LOAD_ATTR                       7: get
+                        984     LOAD_CONST                      28: 'total'
+                        986     LOAD_CONST                      7: 1
+                        988     CALL                            2
+                        996     COPY                            1
+                        998     POP_JUMP_IF_TRUE                2 (to 1004)
+                        1000    POP_TOP                         
+                        1002    LOAD_CONST                      7: 1
+                        1004    CALL                            1
+                        1012    STORE_FAST                      7: total
+                        1014    LOAD_GLOBAL                     1: NULL + int
+                        1024    LOAD_FAST                       7: total
+                        1026    LOAD_GLOBAL                     3: NULL + float
+                        1036    LOAD_FAST                       0: self
+                        1038    LOAD_ATTR                       4: multipliers
+                        1058    LOAD_ATTR                       7: get
+                        1078    LOAD_FAST                       0: self
+                        1080    LOAD_ATTR                       17: _tier_multiplier_key
+                        1100    LOAD_FAST                       6: tier
+                        1102    CALL                            1
+                        1110    LOAD_CONST                      23: 2400
+                        1112    CALL                            2
+                        1120    CALL                            1
+                        1128    BINARY_OP                       5 (*)
+                        1132    CALL                            1
+                        1140    STORE_FAST                      3: seconds
+                        1142    LOAD_FAST                       0: self
+                        1144    LOAD_ATTR                       8: dispatcher
+                        1164    LOAD_ATTR                       11: handle_event
+                        1184    LOAD_GLOBAL                     13: NULL + DonationEvent
+                        1194    LOAD_CONST                      29: 'gift_sub'
+                        1196    LOAD_FAST                       2: e
+                        1198    LOAD_ATTR                       7: get
+                        1218    LOAD_CONST                      5: 'user_name'
+                        1220    LOAD_CONST                      30: 'Gifter'
+                        1222    CALL                            2
+                        1230    LOAD_FAST                       7: total
+                        1232    LOAD_CONST                      31: 'Subs'
+                        1234    LOAD_FAST                       3: seconds
+                        1236    LOAD_CONST                      9: 'twitch'
+                        1238    LOAD_FAST                       6: tier
+                        1240    KW_NAMES                        26: ('tier',)
+                        1242    CALL                            7
+                        1250    CALL                            1
+                        1258    GET_AWAITABLE                   0
+                        1260    LOAD_CONST                      0: None
+                        1262    SEND                            3 (to 1270)
+                        1266    YIELD_VALUE                     2
+                        1268    RESUME                          3
+                        1270    JUMP_BACKWARD_NO_INTERRUPT      5 (to 1262)
+                        1272    END_SEND                        
+                        1274    POP_TOP                         
+                        1276    RETURN_CONST                    0: None
+                        1278    LOAD_FAST                       1: sub_type
+                        1280    LOAD_CONST                      32: 'channel.subscription.message'
+                        1282    COMPARE_OP                      40 (==)
+                        1286    POP_JUMP_IF_FALSE               225 (to 1738)
+                        1288    LOAD_FAST                       2: e
+                        1290    LOAD_ATTR                       7: get
+                        1310    LOAD_CONST                      21: 'tier'
+                        1312    LOAD_CONST                      22: '1000'
+                        1314    CALL                            2
+                        1322    STORE_FAST                      6: tier
+                        1324    LOAD_FAST                       2: e
+                        1326    LOAD_ATTR                       7: get
+                        1346    LOAD_CONST                      13: 'message'
+                        1348    BUILD_MAP                       0
+                        1350    CALL                            2
+                        1358    COPY                            1
+                        1360    POP_JUMP_IF_TRUE                2 (to 1366)
+                        1362    POP_TOP                         
+                        1364    BUILD_MAP                       0
+                        1366    STORE_FAST                      8: msg_obj
+                        1368    LOAD_GLOBAL                     19: NULL + isinstance
+                        1378    LOAD_FAST                       8: msg_obj
+                        1380    LOAD_GLOBAL                     20: dict
+                        1390    CALL                            2
+                        1398    POP_JUMP_IF_FALSE               18 (to 1436)
+                        1400    LOAD_FAST                       8: msg_obj
+                        1402    LOAD_ATTR                       7: get
+                        1422    LOAD_CONST                      33: 'text'
+                        1424    LOAD_CONST                      14: ''
+                        1426    CALL                            2
+                        1434    JUMP_FORWARD                    10 (to 1456)
+                        1436    LOAD_GLOBAL                     23: NULL + str
+                        1446    LOAD_FAST                       8: msg_obj
+                        1448    CALL                            1
+                        1456    STORE_FAST                      5: msg
+                        1458    LOAD_GLOBAL                     1: NULL + int
+                        1468    LOAD_GLOBAL                     3: NULL + float
+                        1478    LOAD_FAST                       0: self
+                        1480    LOAD_ATTR                       4: multipliers
+                        1500    LOAD_ATTR                       7: get
+                        1520    LOAD_FAST                       0: self
+                        1522    LOAD_ATTR                       17: _tier_multiplier_key
+                        1542    LOAD_FAST                       6: tier
+                        1544    CALL                            1
+                        1552    LOAD_CONST                      23: 2400
+                        1554    CALL                            2
+                        1562    CALL                            1
+                        1570    CALL                            1
+                        1578    STORE_FAST                      3: seconds
+                        1580    LOAD_FAST                       0: self
+                        1582    LOAD_ATTR                       8: dispatcher
+                        1602    LOAD_ATTR                       11: handle_event
+                        1622    LOAD_GLOBAL                     13: NULL + DonationEvent
+                        1632    LOAD_CONST                      24: 'sub'
+                        1634    LOAD_FAST                       2: e
+                        1636    LOAD_ATTR                       7: get
+                        1656    LOAD_CONST                      5: 'user_name'
+                        1658    LOAD_CONST                      25: 'Sub'
+                        1660    CALL                            2
+                        1668    LOAD_CONST                      7: 1
+                        1670    LOAD_CONST                      25: 'Sub'
+                        1672    LOAD_FAST                       3: seconds
+                        1674    LOAD_CONST                      9: 'twitch'
+                        1676    LOAD_FAST                       5: msg
+                        1678    LOAD_FAST                       6: tier
+                        1680    LOAD_GLOBAL                     15: NULL + extract_first_youtube_url
+                        1690    LOAD_FAST                       5: msg
+                        1692    CALL                            1
+                        1700    KW_NAMES                        34: ('message', 'tier', 'sound_url')
+                        1702    CALL                            9
+                        1710    CALL                            1
+                        1718    GET_AWAITABLE                   0
+                        1720    LOAD_CONST                      0: None
+                        1722    SEND                            3 (to 1730)
+                        1726    YIELD_VALUE                     2
+                        1728    RESUME                          3
+                        1730    JUMP_BACKWARD_NO_INTERRUPT      5 (to 1722)
+                        1732    END_SEND                        
+                        1734    POP_TOP                         
+                        1736    RETURN_CONST                    0: None
+                        1738    RETURN_CONST                    0: None
+                        1740    CLEANUP_THROW                   
+                        1742    JUMP_BACKWARD                   756 (to 234)
+                        1746    CLEANUP_THROW                   
+                        1748    JUMP_BACKWARD                   578 (to 596)
+                        1752    CLEANUP_THROW                   
+                        1754    JUMP_BACKWARD                   429 (to 900)
+                        1758    CLEANUP_THROW                   
+                        1760    JUMP_BACKWARD                   245 (to 1272)
+                        1762    CLEANUP_THROW                   
+                        1764    JUMP_BACKWARD                   17 (to 1732)
+                        1766    CALL_INTRINSIC_1                3 (INTRINSIC_STOPITERATION_ERROR)
+                        1768    RERAISE                         1
+                    [Exception Table]
+                        4 to 228 -> 1766 [0] lasti
+                        228 to 230 -> 1740 [2] 
+                        230 to 590 -> 1766 [0] lasti
+                        590 to 592 -> 1746 [2] 
+                        592 to 894 -> 1766 [0] lasti
+                        894 to 896 -> 1752 [2] 
+                        896 to 1266 -> 1766 [0] lasti
+                        1266 to 1268 -> 1758 [2] 
+                        1268 to 1726 -> 1766 [0] lasti
+                        1726 to 1728 -> 1762 [2] 
+                        1728 to 1742 -> 1766 [0] lasti
+                        1746 to 1748 -> 1766 [0] lasti
+                        1752 to 1754 -> 1766 [0] lasti
+                        1758 to 1760 -> 1766 [0] lasti
+                        1762 to 1764 -> 1766 [0] lasti
+                (
+                    None
+                )
+                (
+                    'dispatcher'
+                    'EventDispatcher'
+                    'multipliers'
+                    'dict[str, float]'
+                    'config'
+                    'dict[str, Any] | None'
+                    'return'
+                    'None'
+                )
+                (
+                    'return'
+                    'None'
+                )
+                (
+                    'session'
+                    'aiohttp.ClientSession'
+                    'data'
+                    'dict[str, Any]'
+                    'return'
+                    'None'
+                )
+                (
+                    'session'
+                    'aiohttp.ClientSession'
+                    'session_id'
+                    'str'
+                    'return'
+                    'None'
+                )
+                (
+                    'tier'
+                    'str | None'
+                    'return'
+                    'str'
+                )
+                (
+                    'sub_type'
+                    'str'
+                    'e'
+                    'dict[str, Any]'
+                    'return'
+                    'None'
+                )
+            [Disassembly]
+                0       RESUME                          0
+                2       LOAD_NAME                       0: __name__
+                4       STORE_NAME                      1: __module__
+                6       LOAD_CONST                      0: 'TwitchEventSubClient'
+                8       STORE_NAME                      2: __qualname__
+                10      LOAD_CONST                      1: 'Twitch EventSub WebSocket Client fuer Follow, Bits, Subs, Gift-Subs und Resub-Messages.'
+                12      STORE_NAME                      3: __doc__
+                14      LOAD_CONST                      12: (None,)
+                16      LOAD_CONST                      13: ('dispatcher', 'EventDispatcher', 'multipliers', 'dict[str, float]', 'config', 'dict[str, Any] | None', 'return', 'None')
+                18      LOAD_CONST                      3: <CODE> __init__
+                20      MAKE_FUNCTION                   5
+                22      STORE_NAME                      4: __init__
+                24      LOAD_CONST                      14: ('return', 'None')
+                26      LOAD_CONST                      4: <CODE> start
+                28      MAKE_FUNCTION                   4
+                30      STORE_NAME                      5: start
+                32      LOAD_CONST                      14: ('return', 'None')
+                34      LOAD_CONST                      5: <CODE> stop
+                36      MAKE_FUNCTION                   4
+                38      STORE_NAME                      6: stop
+                40      LOAD_CONST                      14: ('return', 'None')
+                42      LOAD_CONST                      6: <CODE> _run_forever
+                44      MAKE_FUNCTION                   4
+                46      STORE_NAME                      7: _run_forever
+                48      LOAD_CONST                      14: ('return', 'None')
+                50      LOAD_CONST                      7: <CODE> _connect_once
+                52      MAKE_FUNCTION                   4
+                54      STORE_NAME                      8: _connect_once
+                56      LOAD_CONST                      15: ('session', 'aiohttp.ClientSession', 'data', 'dict[str, Any]', 'return', 'None')
+                58      LOAD_CONST                      8: <CODE> _handle_ws_message
+                60      MAKE_FUNCTION                   4
+                62      STORE_NAME                      9: _handle_ws_message
+                64      LOAD_CONST                      16: ('session', 'aiohttp.ClientSession', 'session_id', 'str', 'return', 'None')
+                66      LOAD_CONST                      9: <CODE> _subscribe_all
+                68      MAKE_FUNCTION                   4
+                70      STORE_NAME                      10: _subscribe_all
+                72      LOAD_CONST                      17: ('tier', 'str | None', 'return', 'str')
+                74      LOAD_CONST                      10: <CODE> _tier_multiplier_key
+                76      MAKE_FUNCTION                   4
+                78      STORE_NAME                      11: _tier_multiplier_key
+                80      LOAD_CONST                      18: ('sub_type', 'str', 'e', 'dict[str, Any]', 'return', 'None')
+                82      LOAD_CONST                      11: <CODE> _handle_notification
+                84      MAKE_FUNCTION                   4
+                86      STORE_NAME                      12: _handle_notification
+                88      RETURN_CONST                    2: None
+            [Exception Table]
+        'TwitchEventSubClient'
+    [Disassembly]
+        0       RESUME                          0
+        2       LOAD_CONST                      0: 0
+        4       LOAD_CONST                      1: ('annotations',)
+        6       IMPORT_NAME                     0: __future__
+        8       IMPORT_FROM                     1: annotations
+        10      STORE_NAME                      1: annotations
+        12      POP_TOP                         
+        14      LOAD_CONST                      0: 0
+        16      LOAD_CONST                      2: None
+        18      IMPORT_NAME                     2: asyncio
+        20      STORE_NAME                      2: asyncio
+        22      LOAD_CONST                      0: 0
+        24      LOAD_CONST                      2: None
+        26      IMPORT_NAME                     3: json
+        28      STORE_NAME                      3: json
+        30      LOAD_CONST                      0: 0
+        32      LOAD_CONST                      2: None
+        34      IMPORT_NAME                     4: logging
+        36      STORE_NAME                      4: logging
+        38      LOAD_CONST                      0: 0
+        40      LOAD_CONST                      2: None
+        42      IMPORT_NAME                     5: os
+        44      STORE_NAME                      5: os
+        46      LOAD_CONST                      0: 0
+        48      LOAD_CONST                      2: None
+        50      IMPORT_NAME                     6: ssl
+        52      STORE_NAME                      6: ssl
+        54      LOAD_CONST                      0: 0
+        56      LOAD_CONST                      3: ('Any',)
+        58      IMPORT_NAME                     7: typing
+        60      IMPORT_FROM                     8: Any
+        62      STORE_NAME                      8: Any
+        64      POP_TOP                         
+        66      LOAD_CONST                      0: 0
+        68      LOAD_CONST                      2: None
+        70      IMPORT_NAME                     9: aiohttp
+        72      STORE_NAME                      9: aiohttp
+        74      LOAD_CONST                      0: 0
+        76      LOAD_CONST                      2: None
+        78      IMPORT_NAME                     10: certifi
+        80      STORE_NAME                      10: certifi
+        82      LOAD_CONST                      4: 1
+        84      LOAD_CONST                      5: ('DonationEvent', 'EventDispatcher', 'extract_first_youtube_url')
+        86      IMPORT_NAME                     11: events
+        88      IMPORT_FROM                     12: DonationEvent
+        90      STORE_NAME                      12: DonationEvent
+        92      IMPORT_FROM                     13: EventDispatcher
+        94      STORE_NAME                      13: EventDispatcher
+        96      IMPORT_FROM                     14: extract_first_youtube_url
+        98      STORE_NAME                      14: extract_first_youtube_url
+        100     POP_TOP                         
+        102     PUSH_NULL                       
+        104     LOAD_NAME                       4: logging
+        106     LOAD_ATTR                       30: getLogger
+        126     LOAD_NAME                       16: __name__
+        128     CALL                            1
+        136     STORE_NAME                      17: log
+        138     LOAD_CONST                      6: 'wss://eventsub.wss.twitch.tv/ws'
+        140     STORE_NAME                      18: EVENTSUB_WS_URL
+        142     LOAD_CONST                      7: 'https://api.twitch.tv/helix/eventsub/subscriptions'
+        144     STORE_NAME                      19: HELIX_EVENTSUB
+        146     PUSH_NULL                       
+        148     LOAD_BUILD_CLASS                
+        150     LOAD_CONST                      8: <CODE> TwitchEventSubClient
+        152     MAKE_FUNCTION                   0
+        154     LOAD_CONST                      9: 'TwitchEventSubClient'
+        156     CALL                            2
+        164     STORE_NAME                      20: TwitchEventSubClient
+        166     RETURN_CONST                    2: None
+    [Exception Table]

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sound Dono Player</title>
+  <style>
+    html, body { margin:0; width:100%; height:100%; background:transparent; overflow:hidden; font-family:system-ui,-apple-system,Segoe UI,sans-serif; }
+    #stage { width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; background:transparent; }
+    iframe, video { width:min(1120px,100vw); height:min(630px,100vh); border:0; border-radius:18px; background:#000; box-shadow:0 24px 80px rgba(0,0,0,.55); }
+    audio { width:min(760px, calc(100vw - 24px)); }
+    .fallback { min-width:460px; max-width:min(880px,calc(100vw - 40px)); padding:26px 32px; border-radius:24px; color:#fff; background:linear-gradient(135deg,rgba(15,23,42,.88),rgba(30,41,59,.78)); border:1px solid rgba(255,255,255,.16); box-shadow:0 24px 80px rgba(0,0,0,.55); text-align:center; font-weight:900; font-size:30px; }
+    .fallback .url { margin-top:10px; color:#cbd5e1; font-size:15px; font-family:ui-monospace,monospace; font-weight:600; overflow-wrap:anywhere; }
+    .debug { display:none; position:fixed; left:12px; bottom:12px; max-width:min(900px,calc(100vw - 24px)); padding:8px 10px; border-radius:10px; background:rgba(0,0,0,.72); color:white; font:13px ui-monospace,monospace; z-index:999; white-space:pre-wrap; }
+    body.debug { background:rgba(15,23,42,.92); }
+    body.debug .debug { display:block; }
+  </style>
+</head>
+<body>
+  <div id="stage"></div>
+  <div id="debug" class="debug">Verbinde…</div>
+<script>
+const stage = document.getElementById('stage');
+const debugEl = document.getElementById('debug');
+const params = new URLSearchParams(location.search);
+if (params.has('debug')) document.body.classList.add('debug');
+
+let ws;
+let retryMs = 500;
+let maxDuration = 120;
+let volume = 0.75;
+const queue = [];
+let playing = false;
+let finishTimer = null;
+
+function log(text){ console.log('[sound.html]', text); debugEl.textContent = String(text); }
+function cleanUrl(value){ return String(value || '').trim().replace(/^<|>$/g,'').replace(/^\[|\]$/g,'').trim(); }
+function youtubeId(rawUrl){
+  const url = cleanUrl(rawUrl);
+  try {
+    const u = new URL(url);
+    const host = u.hostname.replace(/^www\./,'').toLowerCase();
+    if (host === 'youtu.be') return u.pathname.split('/').filter(Boolean)[0] || null;
+    if (host.endsWith('youtube.com')) {
+      if (u.pathname === '/watch') return u.searchParams.get('v');
+      if (u.pathname.startsWith('/shorts/')) return u.pathname.split('/').filter(Boolean)[1] || null;
+      if (u.pathname.startsWith('/embed/')) return u.pathname.split('/').filter(Boolean)[1] || null;
+    }
+  } catch (_) {}
+  return null;
+}
+function clearStage(){ if (finishTimer) clearTimeout(finishTimer); finishTimer = null; stage.innerHTML = ''; }
+function showFallback(url, text='🎵 Sound-Dono läuft'){
+  const box = document.createElement('div');
+  box.className = 'fallback';
+  box.innerHTML = `${text}<div class="url"></div>`;
+  box.querySelector('.url').textContent = cleanUrl(url);
+  stage.appendChild(box);
+}
+function enqueue(sound){ queue.push(sound); runQueue(); }
+async function runQueue(){ if (playing) return; playing = true; while (queue.length) await playSound(queue.shift()); playing = false; }
+
+function playSound(sound){
+  return new Promise(resolve => {
+    clearStage();
+    const originalUrl = cleanUrl(sound.url);
+    const directUrl = cleanUrl(sound.direct_media_url);
+    const durationMs = Math.min(Number(sound.max_duration_seconds || maxDuration || 120), 120) * 1000;
+    const itemVolume = typeof sound.volume === 'number' ? sound.volume : volume;
+    let done = false;
+    const finish = () => { if (done) return; done = true; clearStage(); resolve(); };
+    finishTimer = setTimeout(finish, durationMs);
+
+    log(`Spiele über OBS. direct=${Boolean(directUrl)} url=${originalUrl}`);
+
+    if (directUrl) {
+      const video = document.createElement('video');
+      video.src = directUrl;
+      video.autoplay = true;
+      video.controls = params.has('debug');
+      video.muted = false;
+      video.volume = Math.max(0, Math.min(1, itemVolume));
+      video.playsInline = true;
+      video.onended = finish;
+      video.onerror = () => {
+        log('Direct media failed, fallback to YouTube iframe/original URL');
+        clearStage();
+        playFallback(originalUrl, itemVolume, finish);
+      };
+      stage.appendChild(video);
+      video.play().catch(err => {
+        log(`Direct video autoplay failed: ${err}. Fallback iframe.`);
+        clearStage();
+        playFallback(originalUrl, itemVolume, finish);
+      });
+      return;
+    }
+
+    playFallback(originalUrl, itemVolume, finish);
+  });
+}
+
+function playFallback(url, itemVolume, finish){
+  const id = youtubeId(url);
+  if (id) {
+    const iframe = document.createElement('iframe');
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&mute=0&controls=1&rel=0&playsinline=1&modestbranding=1`;
+    iframe.onload = () => log(`YouTube iframe geladen: ${id}`);
+    iframe.onerror = () => log(`YouTube iframe error: ${id}`);
+    stage.appendChild(iframe);
+    return;
+  }
+
+  const lower = url.split('?')[0].toLowerCase();
+  if (lower.endsWith('.mp4') || lower.endsWith('.webm') || lower.endsWith('.mov') || lower.endsWith('.m4v')) {
+    const video = document.createElement('video');
+    video.src = url; video.autoplay = true; video.controls = params.has('debug'); video.muted = false; video.volume = Math.max(0, Math.min(1, itemVolume)); video.playsInline = true;
+    video.onended = finish; video.onerror = () => { clearStage(); showFallback(url); };
+    stage.appendChild(video);
+    video.play().catch(err => log(`Video play failed: ${err}`));
+    return;
+  }
+
+  const audio = document.createElement('audio');
+  audio.src = url; audio.autoplay = true; audio.controls = params.has('debug'); audio.volume = Math.max(0, Math.min(1, itemVolume));
+  audio.onended = finish; audio.onerror = () => { clearStage(); showFallback(url); };
+  stage.appendChild(audio);
+  audio.play().catch(err => log(`Audio play failed: ${err}`));
+}
+
+function handle(data){
+  if (data.type === 'sound_settings') { if (data.max_duration_seconds) maxDuration = data.max_duration_seconds; if (typeof data.volume === 'number') volume = data.volume; log(`Settings: volume=${Math.round(volume*100)} max=${maxDuration}s`); return; }
+  if (data.type === 'sound_control' && data.action === 'stop') { queue.length = 0; clearStage(); playing = false; log('Gestoppt'); return; }
+  if (data.type === 'sound') enqueue(data.sound || data);
+}
+function connect(){
+  const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+  ws = new WebSocket(`${proto}//${location.host}/ws`);
+  ws.onopen = () => { retryMs = 500; log('WebSocket verbunden. Sound läuft über OBS.'); try { ws.send('hello'); } catch(_){} };
+  ws.onmessage = ev => { try { handle(JSON.parse(ev.data)); } catch(err){ log(`Ungültige Nachricht: ${err}`); } };
+  ws.onclose = () => { log(`WebSocket getrennt. Reconnect in ${Math.round(retryMs/1000)}s…`); setTimeout(connect, retryMs); retryMs = Math.min(10000, Math.floor(retryMs*1.7)); };
+  ws.onerror = () => { log('WebSocket Fehler'); try { ws.close(); } catch(_){} };
+}
+if (params.has('preview')) { document.body.classList.add('debug'); setTimeout(() => enqueue({url: params.get('preview'), max_duration_seconds: 30}), 500); }
+connect();
+</script>
+</body>
+</html>
