@@ -25,54 +25,110 @@ const debugEl = document.getElementById('debug');
 const params = new URLSearchParams(location.search);
 if (params.has('debug')) document.body.classList.add('debug');
 
+const MAX_SECONDS = 60;
 let ws;
 let retryMs = 500;
-let maxDuration = 120;
+let maxDuration = 60;
 let volume = 0.75;
 const queue = [];
 let playing = false;
-let finishTimer = null;
+let killTimers = [];
+let currentFinish = null;
 
-function log(text){ console.log('[sound.html]', text); debugEl.textContent = String(text); }
-function cleanUrl(value){ return String(value || '').trim().replace(/^<|>$/g,'').replace(/^\[|\]$/g,'').trim(); }
-function youtubeId(rawUrl){
-  const url = cleanUrl(rawUrl);
-  try {
-    const u = new URL(url);
-    const host = u.hostname.replace(/^www\./,'').toLowerCase();
-    if (host === 'youtu.be') return u.pathname.split('/').filter(Boolean)[0] || null;
-    if (host.endsWith('youtube.com')) {
-      if (u.pathname === '/watch') return u.searchParams.get('v');
-      if (u.pathname.startsWith('/shorts/')) return u.pathname.split('/').filter(Boolean)[1] || null;
-      if (u.pathname.startsWith('/embed/')) return u.pathname.split('/').filter(Boolean)[1] || null;
-    }
-  } catch (_) {}
-  return null;
-}
-function clearStage(){ if (finishTimer) clearTimeout(finishTimer); finishTimer = null; stage.innerHTML = ''; }
-function showFallback(url, text='🎵 Sound-Dono läuft'){
-  const box = document.createElement('div');
-  box.className = 'fallback';
-  box.innerHTML = `${text}<div class="url"></div>`;
-  box.querySelector('.url').textContent = cleanUrl(url);
-  stage.appendChild(box);
-}
-function enqueue(sound){ queue.push(sound); runQueue(); }
-async function runQueue(){ if (playing) return; playing = true; while (queue.length) await playSound(queue.shift()); playing = false; }
+function log(t){ console.log('[sound.html]', t); debugEl.textContent = String(t).slice(-200); }
 
-function playSound(sound){
+function nukeStage() {
+  killTimers.forEach(t => { try { clearTimeout(t); } catch(_){} });
+  killTimers = [];
+  while (stage.firstChild) {
+    const el = stage.firstChild;
+    try {
+      if (el.tagName === 'IFRAME') { el.src = 'about:blank'; }
+      else if (el.tagName === 'VIDEO' || el.tagName === 'AUDIO') { el.pause(); el.src = ''; el.load(); el.removeAttribute('src'); }
+    } catch(_) {}
+    try { stage.removeChild(el); } catch(_) {}
+  }
+  stage.innerHTML = '';
+  log('Stage gecleart');
+}
+
+function enqueue(sound) { queue.push(sound); runQueue(); }
+
+async function runQueue() {
+  if (playing) return;
+  playing = true;
+  while (queue.length) {
+    const item = queue.shift();
+    try { await playSound(item); } catch(e) { log('Fehler: '+e); }
+  }
+  playing = false;
+}
+
+function skipCurrent() {
+  log('Skip aktuellen Sound');
+  if (currentFinish) {
+    const f = currentFinish;
+    currentFinish = null;
+    f();
+  } else {
+    nukeStage();
+    playing = false;
+    setTimeout(() => runQueue(), 100);
+  }
+}
+
+function clearAll() {
+  queue.length = 0;
+  playing = false;
+  nukeStage();
+  currentFinish = null;
+  log('Queue gecleart');
+}
+
+function playSound(sound) {
   return new Promise(resolve => {
-    clearStage();
-    const originalUrl = cleanUrl(sound.url);
-    const directUrl = cleanUrl(sound.direct_media_url);
-    const durationMs = Math.min(Number(sound.max_duration_seconds || maxDuration || 120), 120) * 1000;
+    nukeStage();
+
+    const originalUrl = (sound.url || '').trim();
+    const directUrl = (sound.direct_media_url || '').trim();
     const itemVolume = typeof sound.volume === 'number' ? sound.volume : volume;
+
+    let sec = parseInt(sound.max_duration_seconds, 10);
+    if (isNaN(sec) || sec < 1) sec = parseInt(maxDuration, 10);
+    if (isNaN(sec) || sec < 1) sec = MAX_SECONDS;
+    sec = Math.min(sec, MAX_SECONDS);
+    const durationMs = sec * 1000;
+
     let done = false;
-    const finish = () => { if (done) return; done = true; clearStage(); resolve(); };
-    finishTimer = setTimeout(finish, durationMs);
+    const finish = () => {
+      if (done) return;
+      done = true;
+      currentFinish = null;
+      nukeStage();
+      setTimeout(resolve, 50);
+    };
+    currentFinish = finish;
 
-    log(`Spiele über OBS. direct=${Boolean(directUrl)} url=${originalUrl}`);
+    // Haupt-Kill-Timer
+    killTimers.push(setTimeout(finish, durationMs));
+    // Safety-Kill nach 65s – falls was wirklich klemmt
+    killTimers.push(setTimeout(() => { if (!done) { log('⚠ Not-Kill 65s'); finish(); } }, durationMs + 5000));
 
+    // KillSwitch-Intervall: checkt alle 500ms ob Zeit abgelaufen ist
+    const startedAt = Date.now();
+    const iv = setInterval(() => {
+      if (done) { clearInterval(iv); return; }
+      if (Date.now() - startedAt > durationMs + 2000) {
+        log('⚠ KillSwitch');
+        clearInterval(iv);
+        finish();
+      }
+    }, 500);
+    killTimers.push(iv);
+
+    log(`Spiele: ${sec}s, direct=${!!directUrl}`);
+
+    // Direct-Video (yt-dlp)
     if (directUrl) {
       const video = document.createElement('video');
       video.src = directUrl;
@@ -83,67 +139,104 @@ function playSound(sound){
       video.playsInline = true;
       video.onended = finish;
       video.onerror = () => {
-        log('Direct media failed, fallback to YouTube iframe/original URL');
-        clearStage();
-        playFallback(originalUrl, itemVolume, finish);
+        log('Direct-Fehler, Fallback');
+        nukeStage();
+        showFallback(originalUrl, '🎵 Sound');
       };
       stage.appendChild(video);
-      video.play().catch(err => {
-        log(`Direct video autoplay failed: ${err}. Fallback iframe.`);
-        clearStage();
-        playFallback(originalUrl, itemVolume, finish);
+      video.play().catch(() => {
+        log('Direct-Autoplay-Fehler, Fallback');
+        nukeStage();
+        showFallback(originalUrl, '🎵 Sound');
       });
       return;
     }
 
-    playFallback(originalUrl, itemVolume, finish);
+    // YouTube per Iframe
+    let ytId = null;
+    const cleanUrlVal = (originalUrl || '').replace(/^<|>$/g,'').replace(/^\[|\]$/g,'').trim();
+    try {
+      const u = new URL(cleanUrlVal);
+      const host = u.hostname.replace(/^www\./,'').toLowerCase();
+      if (host === 'youtu.be') ytId = u.pathname.split('/').filter(Boolean)[0];
+      else if (host.endsWith('youtube.com')) {
+        if (u.pathname === '/watch') ytId = u.searchParams.get('v');
+        else if (u.pathname.startsWith('/shorts/') || u.pathname.startsWith('/embed/'))
+          ytId = u.pathname.split('/').filter(Boolean).slice(-1)[0];
+      }
+    } catch(_) {}
+
+    if (ytId) {
+      const iframe = document.createElement('iframe');
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(ytId)}?autoplay=1&mute=0&controls=1&rel=0&playsinline=1&modestbranding=1`;
+      stage.appendChild(iframe);
+      log('YouTube-Iframe: ' + ytId);
+      return;
+    }
+
+    // Video-Datei (.mp4, .webm, etc.)
+    const lower = (originalUrl.split('?')[0] || '').toLowerCase();
+    if (lower.endsWith('.mp4') || lower.endsWith('.webm') || lower.endsWith('.mov') || lower.endsWith('.m4v')) {
+      const video = document.createElement('video');
+      video.src = originalUrl; video.autoplay = true; video.controls = params.has('debug');
+      video.muted = false; video.volume = Math.max(0, Math.min(1, itemVolume)); video.playsInline = true;
+      video.onended = finish;
+      video.onerror = () => { nukeStage(); showFallback(originalUrl); };
+      stage.appendChild(video);
+      video.play().catch(() => finish());
+      return;
+    }
+
+    // Audio-Datei
+    const audio = document.createElement('audio');
+    audio.src = originalUrl; audio.autoplay = true; audio.controls = params.has('debug');
+    audio.volume = Math.max(0, Math.min(1, itemVolume));
+    audio.onended = finish;
+    audio.onerror = () => { nukeStage(); showFallback(originalUrl); };
+    stage.appendChild(audio);
+    audio.play().catch(() => finish());
   });
 }
 
-function playFallback(url, itemVolume, finish){
-  const id = youtubeId(url);
-  if (id) {
-    const iframe = document.createElement('iframe');
-    iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-    iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&mute=0&controls=1&rel=0&playsinline=1&modestbranding=1`;
-    iframe.onload = () => log(`YouTube iframe geladen: ${id}`);
-    iframe.onerror = () => log(`YouTube iframe error: ${id}`);
-    stage.appendChild(iframe);
-    return;
-  }
-
-  const lower = url.split('?')[0].toLowerCase();
-  if (lower.endsWith('.mp4') || lower.endsWith('.webm') || lower.endsWith('.mov') || lower.endsWith('.m4v')) {
-    const video = document.createElement('video');
-    video.src = url; video.autoplay = true; video.controls = params.has('debug'); video.muted = false; video.volume = Math.max(0, Math.min(1, itemVolume)); video.playsInline = true;
-    video.onended = finish; video.onerror = () => { clearStage(); showFallback(url); };
-    stage.appendChild(video);
-    video.play().catch(err => log(`Video play failed: ${err}`));
-    return;
-  }
-
-  const audio = document.createElement('audio');
-  audio.src = url; audio.autoplay = true; audio.controls = params.has('debug'); audio.volume = Math.max(0, Math.min(1, itemVolume));
-  audio.onended = finish; audio.onerror = () => { clearStage(); showFallback(url); };
-  stage.appendChild(audio);
-  audio.play().catch(err => log(`Audio play failed: ${err}`));
+function showFallback(url, text) {
+  const box = document.createElement('div');
+  box.className = 'fallback';
+  box.innerHTML = (text || '🎵 Sound läuft') + '<div class="url"></div>';
+  const urlEl = box.querySelector('.url');
+  if (urlEl) urlEl.textContent = (url || '').slice(0, 120);
+  stage.appendChild(box);
 }
 
-function handle(data){
-  if (data.type === 'sound_settings') { if (data.max_duration_seconds) maxDuration = data.max_duration_seconds; if (typeof data.volume === 'number') volume = data.volume; log(`Settings: volume=${Math.round(volume*100)} max=${maxDuration}s`); return; }
-  if (data.type === 'sound_control' && data.action === 'stop') { queue.length = 0; clearStage(); playing = false; log('Gestoppt'); return; }
+function handle(data) {
+  if (data.type === 'sound_settings') {
+    if (data.max_duration_seconds) maxDuration = Math.min(parseInt(data.max_duration_seconds,10)||60, MAX_SECONDS);
+    if (typeof data.volume === 'number') volume = data.volume;
+    log(`Settings: vol=${Math.round(volume*100)} max=${maxDuration}s`);
+    return;
+  }
+  if (data.type === 'sound_control') {
+    if (data.action === 'stop') { clearAll(); log('Gestoppt'); return; }
+    if (data.action === 'skip') { skipCurrent(); log('Übersprungen'); return; }
+    if (data.action === 'clear') { clearAll(); log('Alles gecleart'); return; }
+  }
   if (data.type === 'sound') enqueue(data.sound || data);
 }
-function connect(){
+
+function connect() {
   const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
   ws = new WebSocket(`${proto}//${location.host}/ws`);
-  ws.onopen = () => { retryMs = 500; log('WebSocket verbunden. Sound läuft über OBS.'); try { ws.send('hello'); } catch(_){} };
-  ws.onmessage = ev => { try { handle(JSON.parse(ev.data)); } catch(err){ log(`Ungültige Nachricht: ${err}`); } };
-  ws.onclose = () => { log(`WebSocket getrennt. Reconnect in ${Math.round(retryMs/1000)}s…`); setTimeout(connect, retryMs); retryMs = Math.min(10000, Math.floor(retryMs*1.7)); };
-  ws.onerror = () => { log('WebSocket Fehler'); try { ws.close(); } catch(_){} };
+  ws.onopen = () => { retryMs = 500; log('Verbunden.'); try { ws.send('hello'); } catch(_){} };
+  ws.onmessage = ev => { try { handle(JSON.parse(ev.data)); } catch(e){ log('Fehler: '+e); } };
+  ws.onclose = () => { log('Getrennt. Reconnect...'); setTimeout(connect, retryMs); retryMs = Math.min(10000, Math.floor(retryMs*1.7)); };
+  ws.onerror = () => { try { ws.close(); } catch(_){} };
 }
-if (params.has('preview')) { document.body.classList.add('debug'); setTimeout(() => enqueue({url: params.get('preview'), max_duration_seconds: 30}), 500); }
+
+if (params.has('preview')) {
+  document.body.classList.add('debug');
+  setTimeout(() => enqueue({url: params.get('preview') || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', max_duration_seconds: 30}), 500);
+}
 connect();
 </script>
 </body>

@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+env/
+.env
+
+# Runtime-Daten (lokal, nicht ins Repo)
+logs/
+tools/
+*.log
+latest.log
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# PyInstaller Build
+*.spec
+OverlaySystem.exe
+OverlaySystem_data/

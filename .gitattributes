@@ -1,0 +1,25 @@
+# Automatische Zeilenumbrüche
+* text=auto
+
+# Windows-Batch-Dateien immer mit CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Shell-Skripte immer mit LF
+*.sh text eol=lf
+
+# Python-Dateien
+*.py text diff=python
+
+# HTML/JS/CSS
+*.html text diff=html
+*.css text
+*.js text
+*.json text
+
+# Bilder niemals textuell behandeln
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
